@@ -405,6 +405,10 @@ select:not([multiple]):not([size]) {
   color: white !important;
 }
 
+.container > .row:not(:only-child) {
+  margin-left: 5px;
+}
+
 /*---------- End Bootstrap 3 ------------------------------*/
 /*---------- Page ------------------------------*/
 h4.title, h4.title > * {
@@ -729,9 +733,14 @@ table a:not(.btn) {
       align-items: center;
 }
 
+ol > .list-group-item {
+  -ms-flex-align: start;
+      align-items: start;
+}
+
 .list-group-item .media-object, .icImg img {
-  min-width: 64px;
-  max-width: 64px;
+  min-width: 30px;
+  max-width: 50px;
 }
 
 .headSort.list-inline, .headSort.list-inline > li {
@@ -854,18 +863,44 @@ td {
   color: #c15254 !important;
 }
 
+[headers=bookContain] > a > h5 {
+  padding-right: 100px;
+}
+
+@media (max-width: 767px) {
+  [headers=bookContain] > a > h5 {
+    padding-right: 30px;
+  }
+
+  [headers=bookContain] .list-unstyled > li:last-child {
+    padding-right: 60px;
+  }
+}
 [headers=bookContain] .list-unstyled {
   list-style-type: none !important;
   margin: 0 !important;
 }
 
+@media (max-width: 767px) {
+  [headers=bookContain] .list-unstyled {
+    padding: 0 !important;
+  }
+}
 .checkbox-table > input[type=checkbox], .checkbox-table > input[type=radio] {
   margin-right: 5px;
 }
 
+@media (max-width: 767px) {
+  .checkbox-table > label {
+    display: none;
+  }
+}
 blockquote {
   font-size: inherit;
   font-style: inherit;
+  padding: 0;
+  padding-left: 20px;
+  margin-top: 1rem;
 }
 
 mark {
@@ -875,15 +910,20 @@ mark {
   display: inline-block;
 }
 
-.stickyItem, .sticky {
-  position: fixed;
-  z-index: 99;
-  width: 100%;
-  background: #fcfcfc;
-  bottom: 0;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+@media (max-width: 767px) {
+  .stickyItem, .sticky {
+    position: fixed;
+    z-index: 99;
+    width: 100%;
+    background: #fcfcfc;
+    bottom: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+}
+.mb-20 {
+  margin-bottom: 20px;
 }
 
 /*---------- End Page ------------------------------*/
