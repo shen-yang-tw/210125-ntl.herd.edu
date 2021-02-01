@@ -550,12 +550,13 @@ table a:not(.btn) {
 }
 .list-group-item, .list-group-item>input~a, .headSort.list-inline, .headSort.list-inline>li {
   display: flex;
+  align-items: center;
 }
-.list-group-item .media-object {
+.list-group-item .media-object, .icImg img {
   min-width: 64px;
+  max-width: 64px;
 }
 .headSort.list-inline, .headSort.list-inline>li {
-  align-items: center;
   flex-wrap: wrap;
 }
 @media (min-width: 768px) {
@@ -575,7 +576,7 @@ table a:not(.btn) {
   flex: none;
   width: auto;
 }
-.headSort.list-inline .btn-group.btn-group-sm {
+.headSort.list-inline .btn-group.btn-group-sm, .btn-group.btn-group-sm[aria-label="操作功能"]>a:not(:last-child) {
   margin-right: 5px;
 }
 .list-group-item>input[type=checkbox], .list-group-item>input[type=radio] {
@@ -588,10 +589,10 @@ table a:not(.btn) {
 .list-group-item>input~a:hover {
   text-decoration: none;
 }
-.list-group-item>input~a:hover>.badge {
+.badge {
   color: white !important;
-}
-.list-group-item>input~a>.badge {
+  border-radius: 0;
+  line-height: inherit;
   margin-left: 5px;
 }
 .list-group-item:hover {
@@ -624,10 +625,49 @@ td {
 .tag-table {
   position: absolute;
   right: 8px;
-  bottom: 20px;
+  bottom: 15px;
+  background: $color-primary;
+}
+.tag-table::before {
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900; content: "\f04b";
+  transform: rotate(180deg);
+  margin-left: -10px;
+  color: $color-primary;
+  top: -2px;
+  position: relative;
+}
+.tag-table > .label {
+  color: black;
+  padding: 0 5px;
+}
+[headers="bookContain"]>div[class*="col-"] {
+  padding: 0;
 }
 [headers="bookContain"]>a, [headers="bookContain"]>a>h5 {
   color: $color-secondary !important;
+}
+[headers="bookContain"] .list-unstyled {
+  list-style-type: none !important;
+  margin: 0 !important;
+}
+.checkbox-table>input[type=checkbox], .checkbox-table>input[type=radio] {
+  margin-right: 5px;
+}
+blockquote {
+  font-size: inherit;
+  font-style: inherit;
+}
+mark {
+  background: $color-secondary;
+  color: white;
+  padding: 0 5px;
+  display: inline-block;
 }
 
 /*---------- End Page ------------------------------*/
