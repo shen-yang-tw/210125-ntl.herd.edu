@@ -669,7 +669,16 @@ mark {
   padding: 0 5px;
   display: inline-block;
 }
-
+.stickyItem, .sticky {
+  position: fixed;
+  z-index: 99;
+  width: 100%;
+  background: #fcfcfc;
+  bottom: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
 /*---------- End Page ------------------------------*/
 
 @media (max-width: 959px) {}
