@@ -1,6 +1,7 @@
 ﻿.tmp
 node_modules
 Assets
+Layout
 temp
 *.psd
 *.ai
