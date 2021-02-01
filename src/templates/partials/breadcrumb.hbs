@@ -1,0 +1,22 @@
+{{!-- {{>breadcrumb breadcrumb1='true' breadcrumbLink1='#' breadcrumbTxt1='Link1' breadcrumb2='true' breadcrumbLink2='#' breadcrumbTxt2='Link2' breadcrumbCurrent='Current'}} --}}
+
+<!-- uk-breadcrumb -->
+<ul class="tw-m-0 tw-px-2 s:tw-p-0 uk-float-left uk-breadcrumb">
+	<li><a class="tw-text-xs m:tw-text-sm" href="index.html">首頁</a></li>
+	{{#if breadcrumb1}}
+		{{#if breadcrumbSpan1}}
+			<li><span class="tw-text-xs m:tw-text-sm">{{breadcrumbTxt1}}</span></li>
+		{{else}}
+			<li><a class="tw-text-xs m:tw-text-sm" href="{{breadcrumbLink1}}">{{breadcrumbTxt1}}</a></li>
+		{{/if}}
+	{{/if}}
+	{{#if breadcrumb2}}
+		{{#if breadcrumbSpan2}}
+			<li><span class="tw-text-xs m:tw-text-sm">{{breadcrumbTxt2}}</span></li>
+		{{else}}
+			<li><a class="tw-text-xs m:tw-text-sm" href="{{breadcrumbLink2}}">{{breadcrumbTxt2}}</a></li>
+		{{/if}}
+	{{/if}}
+	<li><span class="tw-text-xs m:tw-text-sm">{{breadcrumbCurrent}}</span></li>
+</ul>
+<!-- uk-breadcrumb -->

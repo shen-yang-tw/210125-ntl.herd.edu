@@ -1,0 +1,70 @@
+{{!-- {{>pagination pageArrowText='true' pageSelect='true' pageSum='2'}} --}}
+
+<!-- pagination -->
+<div class="pagination">
+	<div class="uk-grid uk-grid-collapse uk-child-width-auto uk-flex-auto uk-flex-middle uk-flex-center">
+		<div>
+			<a class="color_grey tw-no-underline hover:tw-bg-transparent btn btn-flat disabled" href="#" title="首頁"><i class="fas fa-angle-double-left fa-fw"></i>
+				<span{{#if pageArrowText}} class="uk-visible@m"{{else}} class="tw-sr-only"{{/if}}>首頁</span>
+			</a>
+			<a class="color_grey tw-no-underline hover:tw-bg-transparent btn btn-flat" href="#" title="首頁" hidden><i class="fas fa-angle-double-left fa-fw"></i>
+				<span{{#if pageArrowText}} class="uk-visible@m"{{else}} class="tw-sr-only"{{/if}}>首頁</span>
+			</a>
+			<a class="color_grey tw-no-underline hover:tw-bg-transparent btn btn-flat disabled" href="#" title="上一頁"><i class="fas fa-angle-left fa-fw"></i>
+				<span{{#if pageArrowText}} class="uk-visible@m"{{else}} class="tw-sr-only"{{/if}}>上一頁</span>
+			</a>
+			<a class="color_grey tw-no-underline hover:tw-bg-transparent btn btn-flat" href="#" title="上一頁" hidden><i class="fas fa-angle-left fa-fw"></i>
+				<span{{#if pageArrowText}} class="uk-visible@m"{{else}} class="tw-sr-only"{{/if}}>上一頁</span>
+			</a>
+		</div>
+		{{#if pageDropdown}}
+		{{!-- 頁碼下拉式選單，請提供欄位訊息說明，或使用Title屬性文字說明來標示欄位元件，以幫助使用者得知欄位提示訊息 --}}
+			<div>
+				<div class="uk-grid uk-grid-collapse uk-child-width-auto uk-flex-middle uk-margin">
+					<div class="uk-inline">
+						<button class="uk-button uk-button-default uk-button-small" type="button">-頁碼-<i uk-icon="icon: triangle-down"></i></button>
+						<div class="min_width-50" uk-dropdown title="頁碼選單">
+							<ul class="uk-nav uk-dropdown-nav">
+								<li><a href="">1</a></li>
+								<li><a href="">2</a></li>
+							</ul>
+						</div>
+					</div>
+					<span class="mx-1">/<span class="tw-pl-1" title="總頁數">{{pageSum}}</span></span>
+				</div>
+			</div>
+		{{/if}}
+		{{#if pageSelect}}
+		{{!-- 頁碼下拉式選單，請提供欄位訊息說明，或使用Title屬性文字說明來標示欄位元件，以幫助使用者得知欄位提示訊息 --}}
+			<div>
+				<div class="uk-grid uk-grid-collapse uk-child-width-auto uk-flex-middle uk-margin">
+					<label class="tw-flex items-center">第&nbsp;
+					<select class="w-auto uk-select uk-form-small" onChange="window.location.href=this.value" title="頁碼選單">
+						<option value="#" selected>1</option>
+						<option value="#">2</option>
+					</select>&nbsp;頁
+					</label>
+					<span class="mx-1">/<span class="tw-pl-1" title="總頁數">{{pageSum}}</span></span>
+				</div>
+			</div>
+		{{/if}}
+		{{#if pageNonumber}}
+			<div class="min_width-200"></div>
+		{{/if}}
+		<div>
+			<a class="color_grey tw-no-underline hover:tw-bg-transparent btn btn-flat" href="#" title="下一頁">
+				<span{{#if pageArrowText}} class="uk-visible@m"{{else}} class="tw-sr-only"{{/if}}>下一頁</span><i class="fas fa-angle-right fa-fw"></i>
+			</a>
+			<a class="color_grey tw-no-underline hover:tw-bg-transparent btn btn-flat disabled" href="#" title="下一頁" hidden>
+				<span{{#if pageArrowText}} class="uk-visible@m"{{else}} class="tw-sr-only"{{/if}}>下一頁</span><i class="fas fa-chevron-right fa-fw"></i>
+			</a>
+			<a class="color_grey tw-no-underline hover:tw-bg-transparent btn btn-flat" href="#" title="末頁">
+				<span{{#if pageArrowText}} class="uk-visible@m"{{else}} class="tw-sr-only"{{/if}}>末頁</span><i class="fas fa-angle-double-right fa-fw"></i>
+			</a>
+			<a class="color_grey tw-no-underline hover:tw-bg-transparent btn btn-flat disabled" href="#" title="末頁" hidden>
+				<span{{#if pageArrowText}} class="uk-visible@m"{{else}} class="tw-sr-only"{{/if}}>末頁</span><i class="fas fa-chevron-double-right fa-fw"></i>
+			</a>
+		</div>
+	</div>
+</div>
+<!-- pagination -->

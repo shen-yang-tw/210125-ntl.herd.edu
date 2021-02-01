@@ -1,0 +1,344 @@
+{{!-- {{>offcanvas titleIsLink='true' navMenuJS='true' subAccordion='true' level4='true'}} --}}
+
+<!-- uk-offcanvas -->
+{{#if titleIsLink}}
+{{#if navMenuJS}}
+<div id="offcanvas" uk-offcanvas>
+	<div class="bg_primary tw-py-5 uk-offcanvas-bar">
+		<button class="uk-offcanvas-close" type="button" title="關閉" uk-close></button>
+		<ul class="tw-pt-6 uk-nav uk-nav-default">
+			<li class="tw-py-1 uk-parent">
+				<a class="tw-p-0" href="#"><span class="tw-text-white">Level1</span></a>
+			</li>
+			<li class="tw-py-1 uk-parent">
+				<div class="tw-flex tw-justify-between">
+					<a class="tw-flex tw-flex-1 items-center" href="#"><span class="tw-text-white">Level2</span></a>
+					<a class="tw-flex tw-flex-none items-start tw-justify-end tw-pt-px w-16" href="javascript:void(0)" title="展開/收合選單"><span class="toggle" uk-icon="icon: chevron-right"></span><span class="toggle hidden" uk-icon="icon: chevron-down"></span></a>
+				</div>
+				<ul class="toggle hidden tw-py-0 uk-nav-sub">
+					<li class="tw-py-1"><a href="#"><span class="tw-text-white tw-text-opacity-50">Item</span></a>
+					</li>
+					<li class="tw-py-1"><a href="#"><span class="tw-text-white tw-text-opacity-50">Item</span></a>
+					</li>
+				</ul>
+			</li>
+			<li class="tw-py-1 uk-parent">
+				<div class="tw-flex tw-justify-between">
+					<a class="tw-flex tw-flex-1 items-center" href="#"><span class="tw-text-white">Level3</span></a>
+					<a class="tw-flex tw-flex-none items-start tw-justify-end tw-pt-px w-16" href="javascript:void(0)" title="展開/收合選單"><span class="toggle" uk-icon="icon: chevron-right"></span><span class="toggle hidden" uk-icon="icon: chevron-down"></span></a>
+				</div>
+				<ul class="toggle hidden tw-py-0 uk-nav-sub">
+					<li class="tw-py-1"><a href="#"><span class="tw-text-white tw-text-opacity-50">Item</span></a>
+					</li>
+					<li class="tw-py-1 uk-parent">
+						<a href="#"><span class="tw-text-white tw-text-opacity-50">Item</span></a>
+						<ul class="tw-py-0 uk-nav-sub">
+							<li class="tw-py-1"><a href="#"><span class="tw-text-white tw-text-opacity-50">Item</span></a>
+							</li>
+							<li class="tw-py-1"><a href="#"><span class="tw-text-white tw-text-opacity-50">Item</span></a>
+							</li>
+							<li class="tw-py-1"><a href="#"><span class="tw-text-white tw-text-opacity-50">Item</span></a>
+							</li>
+						</ul>
+					</li>
+					<li class="tw-py-1"><a href="#"><span class="tw-text-white tw-text-opacity-50">Item</span></a>
+					</li>
+				</ul>
+			</li>
+			{{#if level4}}
+			<li class="tw-py-1 uk-parent">
+				<div class="tw-flex tw-justify-between">
+					<a class="tw-flex tw-flex-1 items-center" href="#"><span class="tw-text-white">Level4</span></a>
+					<a class="tw-flex tw-flex-none items-start tw-justify-end tw-pt-px w-16" href="javascript:void(0)" title="展開/收合選單"><span class="toggle" uk-icon="icon: chevron-right"></span><span class="toggle hidden" uk-icon="icon: chevron-down"></span></a>
+				</div>
+				<ul class="toggle hidden tw-py-0 uk-nav-sub">
+					<li class="tw-py-1"><a href="#"><span class="tw-text-white tw-text-opacity-50">Item</span></a>
+					</li>
+					<li class="tw-py-1 uk-parent">
+						<a href="#"><span class="tw-text-white tw-text-opacity-50">Item</span></a>
+						<ul class="tw-py-0 uk-nav-sub">
+							<li class="tw-py-1"><a href="#"><span class="tw-text-white tw-text-opacity-50">Item</span></a>
+							</li>
+							<li class="tw-py-1 uk-parent">
+								<a href="#"><span class="tw-text-white tw-text-opacity-50">Item</span></a>
+								<ul class="tw-py-0 uk-nav-sub">
+									<li class="tw-py-1"><a href="#"><span class="tw-text-white tw-text-opacity-50">Item</span></a>
+									</li>
+									<li class="tw-py-1"><a href="#"><span class="tw-text-white tw-text-opacity-50">Item</span></a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li class="tw-py-1"><a href="#"><span class="tw-text-white tw-text-opacity-50">Item</span></a>
+					</li>
+				</ul>
+			</li>
+			{{/if}}
+			<li class="uk-nav-divider"></li>
+			<li><a href="index.html">首頁</a></li>
+			<li><a href="#">Item</a></li>
+			<li><a href="#">English</a></li>
+		</ul>
+	</div>
+</div>
+{{else}}
+{{#if subAccordion}}
+{{!-- every sub menu is collapsible --}}
+<div id="offcanvas" uk-offcanvas>
+	<div class="bg_primary tw-py-5 uk-offcanvas-bar">
+		<button class="uk-offcanvas-close" type="button" title="關閉" uk-close></button>
+		<ul class="tw-pt-6 uk-nav uk-nav-default">
+			<li class="tw-py-1 uk-parent">
+				<a class="tw-p-0" href="#"><span class="tw-text-white">Level1</span></a>
+			</li>
+			<li class="tw-py-1 uk-parent">
+				<div class="tw-flex tw-justify-between">
+					<a class="tw-flex tw-flex-1 items-center" href="#"><span class="tw-text-white">Level2</span></a>
+					<a class="tw-flex tw-flex-none items-start tw-justify-end tw-pt-px w-16" href="javascript:void(0)" title="展開/收合選單" onclick="toggleAllClass(findChildren(findParent(this, 'LI', ''), '.toggle'), 'hidden'); return false;"><span class="toggle" uk-icon="icon: chevron-right"></span><span class="toggle hidden" uk-icon="icon: chevron-down"></span></a>
+				</div>
+				<ul class="toggle hidden tw-py-0 uk-nav-sub">
+					<li class="tw-py-1"><a href="#"><span class="tw-text-white tw-text-opacity-50">Item</span></a>
+					</li>
+					<li class="tw-py-1"><a href="#"><span class="tw-text-white tw-text-opacity-50">Item</span></a>
+					</li>
+				</ul>
+			</li>
+			<li class="tw-py-1 uk-parent">
+				<div class="tw-flex tw-justify-between">
+					<a class="tw-flex tw-flex-1 items-center" href="#"><span class="tw-text-white">Level3</span></a>
+					<a class="tw-flex tw-flex-none items-start tw-justify-end tw-pt-px w-16" href="javascript:void(0)" title="展開/收合選單" onclick="toggleAllClass(findChildren(findParent(this, 'LI', ''), '.toggle'), 'hidden'); return false;"><span class="toggle" uk-icon="icon: chevron-right"></span><span class="toggle hidden" uk-icon="icon: chevron-down"></span></a>
+				</div>
+				<ul class="toggle hidden tw-py-0 uk-nav-sub">
+					<li class="tw-py-1"><a href="#"><span class="tw-text-white tw-text-opacity-50">Item</span></a>
+					</li>
+					<li class="tw-py-1 uk-parent">
+						<div class="tw-flex tw-justify-between">
+							<a class="tw-flex tw-flex-1 items-center" href="#"><span class="tw-text-white">Item</span></a>
+							<a class="tw-flex tw-flex-none items-start tw-justify-end tw-pt-px w-16" href="javascript:void(0)" title="展開/收合選單" onclick="toggleAllClass(findChildren(findParent(this, 'LI', ''), '.toggle'), 'hidden'); return false;"><span class="toggle" uk-icon="icon: chevron-right"></span><span class="toggle hidden" uk-icon="icon: chevron-down"></span></a>
+						</div>
+						<ul class="toggle hidden tw-py-0 uk-nav-sub">
+							<li class="tw-py-1"><a href="#"><span class="tw-text-white tw-text-opacity-50">Item</span></a>
+							</li>
+							<li class="tw-py-1"><a href="#"><span class="tw-text-white tw-text-opacity-50">Item</span></a>
+							</li>
+							<li class="tw-py-1"><a href="#"><span class="tw-text-white tw-text-opacity-50">Item</span></a>
+							</li>
+						</ul>
+					</li>
+					<li class="tw-py-1"><a href="#"><span class="tw-text-white tw-text-opacity-50">Item</span></a>
+					</li>
+				</ul>
+			</li>
+			{{#if level4}}
+			<li class="tw-py-1 uk-parent">
+				<div class="tw-flex tw-justify-between">
+					<a class="tw-flex tw-flex-1 items-center" href="#"><span class="tw-text-white">Level4</span></a>
+					<a class="tw-flex tw-flex-none items-start tw-justify-end tw-pt-px w-16" href="javascript:void(0)" title="展開/收合選單" onclick="toggleAllClass(findChildren(findParent(this, 'LI', ''), '.toggle'), 'hidden'); return false;"><span class="toggle" uk-icon="icon: chevron-right"></span><span class="toggle hidden" uk-icon="icon: chevron-down"></span></a>
+				</div>
+				<ul class="toggle hidden tw-py-0 uk-nav-sub">
+					<li class="tw-py-1"><a href="#"><span class="tw-text-white tw-text-opacity-50">Item</span></a>
+					</li>
+					<li class="tw-py-1 uk-parent">
+						<div class="tw-flex tw-justify-between">
+							<a class="tw-flex tw-flex-1 items-center" href="#"><span class="tw-text-white">Item</span></a>
+							<a class="tw-flex tw-flex-none items-start tw-justify-end tw-pt-px w-16" href="javascript:void(0)" title="展開/收合選單" onclick="toggleAllClass(findChildren(findParent(this, 'LI', ''), '.toggle'), 'hidden'); return false;"><span class="toggle" uk-icon="icon: chevron-right"></span><span class="toggle hidden" uk-icon="icon: chevron-down"></span></a>
+						</div>
+						<ul class="toggle hidden tw-py-0 uk-nav-sub">
+							<li class="tw-py-1"><a href="#"><span class="tw-text-white tw-text-opacity-50">Item</span></a>
+							</li>
+							<li class="tw-py-1 uk-parent">
+								<div class="tw-flex tw-justify-between">
+									<a class="tw-flex tw-flex-1 items-center" href="#"><span class="tw-text-white">Item</span></a>
+									<a class="tw-flex tw-flex-none items-start tw-justify-end tw-pt-px w-16" href="javascript:void(0)" title="展開/收合選單" onclick="toggleAllClass(findChildren(findParent(this, 'LI', ''), '.toggle'), 'hidden'); return false;"><span class="toggle" uk-icon="icon: chevron-right"></span><span class="toggle hidden" uk-icon="icon: chevron-down"></span></a>
+								</div>
+								<ul class="toggle hidden tw-py-0 uk-nav-sub">
+									<li class="tw-py-1"><a href="#"><span class="tw-text-white tw-text-opacity-50">Item</span></a>
+									</li>
+									<li class="tw-py-1"><a href="#"><span class="tw-text-white tw-text-opacity-50">Item</span></a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li class="tw-py-1"><a href="#"><span class="tw-text-white tw-text-opacity-50">Item</span></a>
+					</li>
+				</ul>
+			</li>
+			{{/if}}
+			<li class="uk-nav-divider"></li>
+			<li><a href="index.html">首頁</a></li>
+			<li><a href="#">Item</a></li>
+			<li><a href="#">English</a></li>
+		</ul>
+	</div>
+</div>
+{{else}}
+{{!-- only the 1st sub menu is collapsible, sub of sub menu not collapsible --}}
+<div id="offcanvas" uk-offcanvas>
+	<div class="bg_primary tw-py-5 uk-offcanvas-bar">
+		<button class="uk-offcanvas-close" type="button" title="關閉" uk-close></button>
+		<ul class="tw-pt-6 uk-nav uk-nav-default">
+			<li class="tw-py-1 uk-parent">
+				<a class="tw-p-0" href="#"><span class="tw-text-white">Level1</span></a>
+			</li>
+			<li class="tw-py-1 uk-parent">
+				<div class="tw-flex tw-justify-between">
+					<a class="tw-flex tw-flex-1 items-center" href="#"><span class="tw-text-white">Level2</span></a>
+					<a class="tw-flex tw-flex-none items-start tw-justify-end tw-pt-px w-16" href="javascript:void(0)" title="展開/收合選單" onclick="toggleAllClass(findChildren(findParent(this, 'LI', ''), '.toggle'), 'hidden'); return false;"><span class="toggle" uk-icon="icon: chevron-right"></span><span class="toggle hidden" uk-icon="icon: chevron-down"></span></a>
+				</div>
+				<ul class="toggle hidden tw-py-0 uk-nav-sub">
+					<li class="tw-py-1"><a href="#"><span class="tw-text-white tw-text-opacity-50">Item</span></a>
+					</li>
+					<li class="tw-py-1"><a href="#"><span class="tw-text-white tw-text-opacity-50">Item</span></a>
+					</li>
+				</ul>
+			</li>
+			<li class="tw-py-1 uk-parent">
+				<div class="tw-flex tw-justify-between">
+					<a class="tw-flex tw-flex-1 items-center" href="#"><span class="tw-text-white">Level3</span></a>
+					<a class="tw-flex tw-flex-none items-start tw-justify-end tw-pt-px w-16" href="javascript:void(0)" title="展開/收合選單" onclick="toggleAllClass(findChildren(findParent(this, 'LI', ''), '.toggle'), 'hidden'); return false;"><span class="toggle" uk-icon="icon: chevron-right"></span><span class="toggle hidden" uk-icon="icon: chevron-down"></span></a>
+				</div>
+				<ul class="toggle hidden tw-py-0 uk-nav-sub">
+					<li class="tw-py-1"><a href="#"><span class="tw-text-white tw-text-opacity-50">Item</span></a>
+					</li>
+					<li class="tw-py-1 uk-parent">
+						<a href="#"><span class="tw-text-white tw-text-opacity-50">Item</span></a>
+						<ul class="tw-py-0 uk-nav-sub">
+							<li class="tw-py-1"><a href="#"><span class="tw-text-white tw-text-opacity-50">Item</span></a>
+							</li>
+							<li class="tw-py-1"><a href="#"><span class="tw-text-white tw-text-opacity-50">Item</span></a>
+							</li>
+							<li class="tw-py-1"><a href="#"><span class="tw-text-white tw-text-opacity-50">Item</span></a>
+							</li>
+						</ul>
+					</li>
+					<li class="tw-py-1"><a href="#"><span class="tw-text-white tw-text-opacity-50">Item</span></a>
+					</li>
+				</ul>
+			</li>
+			{{#if level4}}
+			<li class="tw-py-1 uk-parent">
+				<div class="tw-flex tw-justify-between">
+					<a class="tw-flex tw-flex-1 items-center" href="#"><span class="tw-text-white">Level4</span></a>
+					<a class="tw-flex tw-flex-none items-start tw-justify-end tw-pt-px w-16" href="javascript:void(0)" title="展開/收合選單" onclick="toggleAllClass(findChildren(findParent(this, 'LI', ''), '.toggle'), 'hidden'); return false;"><span class="toggle" uk-icon="icon: chevron-right"></span><span class="toggle hidden" uk-icon="icon: chevron-down"></span></a>
+				</div>
+				<ul class="toggle hidden tw-py-0 uk-nav-sub">
+					<li class="tw-py-1"><a href="#"><span class="tw-text-white tw-text-opacity-50">Item</span></a>
+					</li>
+					<li class="tw-py-1 uk-parent">
+						<a href="#"><span class="tw-text-white tw-text-opacity-50">Item</span></a>
+						<ul class="tw-py-0 uk-nav-sub">
+							<li class="tw-py-1"><a href="#"><span class="tw-text-white tw-text-opacity-50">Item</span></a>
+							</li>
+							<li class="tw-py-1 uk-parent">
+								<a href="#"><span class="tw-text-white tw-text-opacity-50">Item</span></a>
+								<ul class="tw-py-0 uk-nav-sub">
+									<li class="tw-py-1"><a href="#"><span class="tw-text-white tw-text-opacity-50">Item</span></a>
+									</li>
+									<li class="tw-py-1"><a href="#"><span class="tw-text-white tw-text-opacity-50">Item</span></a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li class="tw-py-1"><a href="#"><span class="tw-text-white tw-text-opacity-50">Item</span></a>
+					</li>
+				</ul>
+			</li>
+			{{/if}}
+			<li class="uk-nav-divider"></li>
+			<li><a href="index.html">首頁</a></li>
+			<li><a href="#">Item</a></li>
+			<li><a href="#">English</a></li>
+		</ul>
+	</div>
+</div>
+{{/if}}
+{{/if}}
+{{else}}
+<div id="offcanvas" uk-offcanvas>
+	<div class="bg_primary tw-py-5 uk-offcanvas-bar">
+		<button class="uk-offcanvas-close" type="button" title="關閉" uk-close></button>
+		<ul class="uk-nav uk-nav-default uk-nav-parent-icon tw-text-white" uk-nav="multiple: true">
+			<li><a href="#">Level1</a></li>
+			<li class="uk-parent">
+				<a href="#">Level2</a>
+				<ul class="tw-py-0 uk-nav-sub">
+					<li class="tw-inline-tw-block"><a class="mx-2" href="#">Item</a></li>
+					<li class="tw-inline-tw-block"><a class="mx-2" href="#">Item</a></li>
+				</ul>
+			</li>
+			<li class="uk-parent">
+				<a href="#">Level3</a>
+				<ul class="tw-py-0 uk-nav-sub">
+					<li class="tw-mt-0 uk-nav-header">
+						<span>Item</span>
+						<ul class="tw-py-0 uk-nav-sub">
+							<li class="tw-inline-tw-block"><a class="mx-2" href="#">Item</a></li>
+							<li class="tw-inline-tw-block"><a class="mx-2" href="#">Item</a></li>
+						</ul>
+					</li>
+					<li class="tw-mt-0 uk-nav-header">
+						<span>Item</span>
+						<ul class="tw-py-0 uk-nav-sub">
+							<li class="tw-inline-tw-block"><a class="mx-2" href="#">Item</a></li>
+							<li class="tw-inline-tw-block"><a class="mx-2" href="#">Item</a></li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			{{#if level4}}
+			<li class="uk-parent">
+				<a href="#">Level4</a>
+				<ul class="tw-py-0 uk-nav-sub">
+					<li class="tw-mt-0 uk-nav-header">
+						<span>Item</span>
+						<ul class="tw-py-0 uk-nav-sub">
+							<li>
+								<a class="mx-2" href="#">Item</a>
+								<ul>
+									<li class="tw-inline-tw-block"><a class="mx-2" href="#">Item</a></li>
+									<li class="tw-inline-tw-block"><a class="mx-2" href="#">Item</a></li>
+								</ul>
+							</li>
+							<li>
+								<a class="mx-2" href="#">Item</a>
+								<ul>
+									<li class="tw-inline-tw-block"><a class="mx-2" href="#">Item</a></li>
+									<li class="tw-inline-tw-block"><a class="mx-2" href="#">Item</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li class="tw-mt-0 uk-nav-header">
+						<span>Item</span>
+						<ul class="tw-py-0 uk-nav-sub">
+							<li>
+								<a class="mx-2" href="#">Item</a>
+								<ul>
+									<li class="tw-inline-tw-block"><a class="mx-2" href="#">Item</a></li>
+									<li class="tw-inline-tw-block"><a class="mx-2" href="#">Item</a></li>
+								</ul>
+							</li>
+							<li>
+								<a class="mx-2" href="#">Item</a>
+								<ul>
+									<li class="tw-inline-tw-block"><a class="mx-2" href="#">Item</a></li>
+									<li class="tw-inline-tw-block"><a class="mx-2" href="#">Item</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			{{/if}}
+			<li class="uk-nav-divider"></li>
+			<li><a href="index.html">首頁</a></li>
+			<li><a href="#">Item</a></li>
+			<li><a href="#">English</a></li>
+		</ul>
+	</div>
+</div>
+{{/if}}
+<!-- uk-offcanvas -->

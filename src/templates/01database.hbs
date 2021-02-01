@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html class="text-m" lang="zh-Hant">
+
+	{{!-- First edit the title of the templateData in the gulp.task('templates') of gulpfile.js.
+	The title will be changed to {{title}} in all hbs --}}
+
+	<head>
+		{{!-- {{>meta bootstrap='true' bootstrap4='true' jquery='true' editor='true' }} --}}
+		{{>meta jquery='true' bootstrap='true'}}
+	</head>
+
+	<body>
+		{{>header}}
+
+		{{>pageContent card='true' content='database'}}
+
+		{{>footer}}
+		{{#if jqueryBody}}
+		<!-- jq:js -->
+		<script src="js/jquery.min.js"></script>
+		<!-- endinject -->
+		{{/if}}
+	</body>
+
+</html>

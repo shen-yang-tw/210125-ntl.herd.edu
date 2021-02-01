@@ -1,0 +1,25 @@
+{{!-- {{>dropdownCheckbox optionSum='true'}} --}}
+
+<!-- Dropdown Checkbox -->
+<div class="min_width-100" uk-dropdown>
+	<ul class="uk-nav uk-dropdown-nav uk-text-left">
+		<li class="tw-m-0 uk-nav-header">
+			<label class="tw-m-0 tw-w-full"><input class="checkAll tw-mr-1 uk-checkbox" type="checkbox" onchange="toggleCheckAll(this, '.listCheck')">全選</label>
+		</li>
+		<li class="tw-m-0 uk-nav-header"><span>Type</span></li>
+		<li class="tw-px-2 tw-py-1">
+			<label class="tw-m-0 tw-w-full"><input class="listCheck tw-mr-1 uk-checkbox" type="checkbox">Option{{#if optionSum}}<small class="pseudo:parentheses tw-text-xs">999</small>{{/if}}</label>
+		</li>
+		<li class="tw-px-2 tw-py-1">
+			<label class="tw-m-0 tw-w-full"><input class="listCheck tw-mr-1 uk-checkbox" type="checkbox">Option{{#if optionSum}}<small class="pseudo:parentheses tw-text-xs">999</small>{{/if}}</label>
+		</li>
+		<li class="tw-m-0 uk-nav-header"><span>Type</span></li>
+		<li class="tw-px-2 tw-py-1">
+			<label class="tw-m-0 tw-w-full"><input class="listCheck tw-mr-1 uk-checkbox" type="checkbox">Option{{#if optionSum}}<small class="pseudo:parentheses tw-text-xs">999</small>{{/if}}</label>
+		</li>
+		<li class="tw-px-2 tw-py-1">
+			<span class="tw-w-full"><a class="btn_primary tw-text-white tw-w-full uk-button uk-button-small uk-dropdown-close" href="" role="button">套用篩選</a></span>
+		</li>
+	</ul>
+</div>
+<!-- Dropdown Checkbox -->

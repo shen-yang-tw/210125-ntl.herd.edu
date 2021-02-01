@@ -1,0 +1,95 @@
+{{!-- {{> meta bootstrap='true' bootstrap4='true' headStyle='true' editor='true' moreStyle='true' jquery='true' navMenu='true' navMenuAccordion'true'}} --}}
+<link rel="shortcut icon" type="image/x-icon" href="img/favicon.png" />
+<link rel="bookmark" href="img/favicon.png" />
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<title>{{title}}</title>
+<!--[if lt IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+{{!-- <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="format-detection" content="telephone=no">
+<!-- Fix phone number style for MS Edge -->
+<meta name="Designer&Developer" content="楊軒羽 Shen Yang | Graphic Web Designer & Front-end Developer | 前端設計工程師">
+<title>{{title}}</title>
+{{#if favicon}}
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="img/apple-touch-icon-152x152.png" />
+<link rel="icon" type="image/png" href="img/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="img/favicon-16x16.png" sizes="16x16" />
+<meta name="application-name" content="&nbsp;"/>
+<meta name="msapplication-TileColor" content="#FFFFFF" />
+<meta name="msapplication-TileImage" content="mstile-144x144.png" />
+{{/if}} --}}
+{{#if bootstrap}}
+<!-- bs:css -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<!-- endinject -->
+{{/if}}
+<!-- uk:css -->
+<link rel="stylesheet" href="css/uikit.min.css">
+<!-- endinject -->
+<!-- tw:css -->
+<link rel="stylesheet" href="css/tailwind.css">
+<!-- endinject -->
+<!-- fa:css -->
+<link rel="stylesheet" href="css/fontawesome.min.css">
+<!-- endinject -->
+{{#if headStyle}}
+<!-- head:css -->
+<!-- endinject -->
+{{/if}}
+<!-- main:css -->
+<link rel="stylesheet" href="css/main.css">
+<!-- endinject -->
+<!-- colors:css -->
+<link rel="stylesheet" href="css/colors.css">
+<!-- endinject -->
+<!-- style:css -->
+<link rel="stylesheet" href="css/style.css">
+<!-- endinject -->
+{{#if editor}}
+<!-- inject:css -->
+<link rel="stylesheet" href="css/editor.css">
+<!-- endinject -->
+{{/if}}
+{{#if moreStyle}}
+<!-- inject:css -->
+<link rel="stylesheet" href="css/style-sub.css">
+<!-- endinject -->
+{{/if}}
+<!-- uk:js -->
+<script src="js/uikit.min.js"></script>
+<!-- endinject -->
+<!-- uk2:js -->
+<script src="js/uikit-icons.min.js"></script>
+<!-- endinject -->
+{{#if jqueryHead}}
+<!-- jq-defer:js -->
+<script src="js/jquery.min.js" defer></script>
+<!-- endinject -->
+{{/if}}
+{{#if bootstrap}}
+<!-- bs:js -->
+<script src="js/bootstrap.min.js" defer></script>
+<!-- endinject -->
+{{/if}}
+<!-- head:js -->
+{{#if script}}
+<script src="js/script.js" defer></script>
+{{/if}}
+<!-- endinject -->
+{{#if navMenu}}
+<!-- inject:js -->
+<script src="js/nav-menu.js" defer></script>
+<!-- endinject -->
+{{/if}}
+{{#if navMenuAccordion}}
+<!-- inject:js -->
+<script src="js/nav-menu-accordion.js" defer></script>
+<!-- endinject -->
+{{/if}}

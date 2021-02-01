@@ -1,0 +1,22 @@
+{{!-- {{>modal-content id='confirm' wide='true' modal-title='確定儲存？'}} --}}
+
+<!-- uk-modal-content -->
+<div id="{{id}}" class="uk-flex-top uk-modal{{#if wide}} uk-modal-container{{/if}}" uk-modal>
+	<div class="uk-modal-dialog uk-margin-auto-vertical">
+		<button class="uk-modal-close-default" type="button" title="刪除" uk-close></button>
+		<div class="uk-modal-header">
+			<p class="text-2xl tw-font-bold uk-modal-title">{{modal-title}}</p>
+		</div>
+		<div class="uk-modal-body">
+			<p class="tw-mt-0">詳細內容</p>
+		</div>
+		<div class="tw-text-center uk-modal-footer" uk-margin>
+			{{!-- <a href="#" class="btn_primary min_width-100 tw-m-0 tw-rounded-full uk-button uk-button-primary">註　　冊</a>
+			<button class="min_width-100 tw-rounded-full uk-button uk-button-default uk-modal-close" type="button">取　　消</button> --}}
+			{{!-- <a href="#" class="btn_primary min_width-100 tw-m-0 uk-button uk-button-primary">送　　出</a> --}}
+			<button class="min_width-100 uk-button uk-button-default uk-modal-close" type="button">關　　閉</button>
+			{{!-- <a href="#login" class="tw-rounded-full uk-button uk-button-default" uk-toggle>返回登入</a> --}}
+		</div>
+	</div>
+</div>
+<!-- uk-modal-content -->

@@ -1,0 +1,57 @@
+{{!-- {{>modal-login id='login' wide='true' modal-title='會員登入' errorOn='true' error='驗證提示語' captcha='true' rememberMe='true' register='true'}} --}}
+
+<!-- uk-modal-login -->
+<div id="{{id}}" class="uk-flex-top uk-modal{{#if wide}} uk-modal-container{{/if}}" uk-modal>
+  <div class="uk-modal-dialog uk-margin-auto-vertical">
+    <button class="uk-modal-close-default" type="button" title="刪除" uk-close></button>
+    <div class="uk-modal-header">
+      <h2 class="uk-modal-title">{{modal-title}}</h2>
+    </div>
+    <div class="uk-modal-body">
+      <form onsubmit="return false;">
+        <div class="uk-grid-small uk-child-width-expand@m uk-grid" uk-grid>
+          <div class="tw-space-y-1 min_width-1/2!@m">
+            <input class="uk-input" type="email" placeholder="請輸入個人信箱" title="輸入信箱">
+            {{#if errorOn}}
+              <p class="color_secondary-text uk-tw-text-small">{{error}}</p>
+            {{/if}}
+          </div>
+          <div class="tw-space-y-1 min_width-1/2!@m">
+            <input class="uk-input" type="password" placeholder="6-15碼英數混合密碼" title="輸入密碼">
+            {{#if errorOn}}
+              <p class="color_secondary-text uk-tw-text-small">{{error}}</p>
+            {{/if}}
+            {{!-- <p class="color_secondary-text uk-tw-text-small">英文字母需區分大小寫</p> --}}
+          </div>
+          {{#if captcha}}
+            <div class="tw-space-y-1 min_width-1/2!@m">
+              <input class="uk-input" type="text" placeholder="請輸入圖形6碼數字" title="輸入驗證碼">
+              {{#if errorOn}}
+                <p class="color_secondary-text uk-tw-text-small">{{error}}</p>
+              {{/if}}
+            </div>
+            <div class="tw-space-y-1 min_width-1/2!@m">
+              <img src="http://fakeimg.pl/150x40/" width="150" height="40" alt="驗證碼" uk-img>
+            </div>
+          {{/if}}
+          {{#if rememberMe}}
+            <div><label class="tw-mr-2"><input class="tw-mr-1 form_white uk-checkbox" type="checkbox">記住我的帳號</label></div>
+          {{/if}}
+        </div>
+      </form>
+    </div>
+    <div class="uk-modal-footer">
+      <div class="uk-grid-small uk-child-width-expand@m uk-grid" uk-grid>
+        <div class="min_width-1/2!@m">
+          {{#if register}}<a class="" href="#register" uk-toggle>會員註冊</a>{{/if}}
+          <a class="" href="#">忘記密碼</a>
+        </div>
+        <div class="margin_y_child-all min_width-1/2!@m s:text-right">
+          <a href="#" class="btn_primary min_width-100 uk-button uk-button-primary">登　　入</a>
+          <button class="min_width-100 uk-button uk-button-default uk-modal-close" type="button">取　　消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- uk-modal-login -->

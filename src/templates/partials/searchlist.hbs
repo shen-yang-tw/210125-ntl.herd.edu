@@ -1,0 +1,88 @@
+<h3>{{h3Title}}</h3>
+
+{{!-- {{>searchBox select1='true' select2='true' select3='true' select4='true' select5='true'}} --}}
+
+{{!-- {{>pagination}} --}}
+<table class="uk-table uk-table-small uk-table-striped uk-table-responsive">
+	<thead>
+		<tr>
+			<th class="uk-text-nowrap">序號</th>
+			<th class="uk-text-nowrap"></th>
+			<th class="w-1/6 uk-text-nowrap">題名</th>
+			<th class="uk-text-nowrap">作者</th>
+			<th class="uk-text-nowrap">出版者</th>
+			<th class="uk-text-nowrap">出版年</th>
+			<th class="uk-text-nowrap">ISBN</th>
+			<th class="w-1/10 uk-text-nowrap">功能</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			{{!-- <a class="uk-alert-close" title="刪除資料" uk-close></a> --}}
+			<td>01</td>
+			<td><img data-src="https://picsum.photos/90/120" width="90" height="120" alt="封面" uk-img></td>
+			<td>
+				{{!-- <i class="color_secondary tw-mr-1 fas fa-star"></i> --}}
+				<a class="color_primary hover:tw-underline" href="00detail.html">
+					中化公會路不真雙林一形必生部
+				</a>
+			</td>
+			<td><span class="tw-mr-2 tw-px-2 bg_black_opacity-15 tw-text-black tw-text-sm uk-hidden@m">作者</span>Justin Baldoni</td>
+			<td><span class="tw-mr-2 tw-px-2 bg_black_opacity-15 tw-text-black tw-text-sm uk-hidden@m">出版者</span>采昌國際多媒體</td>
+			<td><span class="tw-mr-2 tw-px-2 bg_black_opacity-15 tw-text-black tw-text-sm uk-hidden@m">出版年</span><time>2020-09-20</time>
+			</td>
+			<td><span class="tw-mr-2 tw-px-2 bg_black_opacity-15 tw-text-black tw-text-sm uk-hidden@m">ISBN</span>9789865024864</td>
+			<td>
+				<div class="tw-relative" uk-margin>
+					<a class="color_primary border-none uk-button uk-button-default" href="#recommend" title="推薦本書" uk-toggle><i
+							class="fas fa-star fa-lg"></i></a>
+					<button class="color_primary border-none uk-button uk-button-default" type="button" title="搜尋"><i
+							class="fas fa-search fa-lg"></i></button>
+					<div class="min_width-50 uk-dropdown" uk-dropdown>
+						<ul class="uk-nav uk-dropdown-nav">
+							<li><a class="hover:tw-underline tw-py-2" href="#">查詢【博客來】</a></li>
+							<li><a class="hover:tw-underline tw-py-2" href="#">查詢【三民書局】</a></li>
+							<li><a class="hover:tw-underline tw-py-2" href="#">查詢【Amazon】</a></li>
+							<li><a class="hover:tw-underline tw-py-2" href="#recommend" uk-toggle>我要推薦本書</a></li>
+						</ul>
+					</div>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			{{!-- <a class="uk-alert-close" title="刪除資料" uk-close></a> --}}
+			<td>02</td>
+			<td><img data-src="https://picsum.photos/93/124" width="90" height="120" alt="封面" uk-img></td>
+			<td>
+				{{!-- <i class="color_secondary tw-mr-1 fas fa-star"></i> --}}
+				<a class="color_primary hover:tw-underline" href="00detail.html">
+					中化公會路不真雙林一形必生部
+				</a>
+			</td>
+			<td><span class="tw-mr-2 tw-px-2 bg_black_opacity-15 tw-text-black tw-text-sm uk-hidden@m">作者</span>Justin Baldoni</td>
+			<td><span class="tw-mr-2 tw-px-2 bg_black_opacity-15 tw-text-black tw-text-sm uk-hidden@m">出版者</span>采昌國際多媒體</td>
+			<td><span class="tw-mr-2 tw-px-2 bg_black_opacity-15 tw-text-black tw-text-sm uk-hidden@m">出版年</span><time>2020-09-20</time>
+			</td>
+			<td><span class="tw-mr-2 tw-px-2 bg_black_opacity-15 tw-text-black tw-text-sm uk-hidden@m">ISBN</span>9789865024864</td>
+			<td>
+				<div class="tw-relative" uk-margin>
+					<a class="color_primary border-none uk-button uk-button-default" href="#recommend" title="推薦本書" uk-toggle><i
+							class="fas fa-star fa-lg"></i></a>
+					<button class="color_primary border-none uk-button uk-button-default" type="button" title="搜尋"><i
+							class="fas fa-search fa-lg"></i></button>
+					<div class="min_width-50 uk-dropdown" uk-dropdown>
+						<ul class="uk-nav uk-dropdown-nav">
+							<li><a class="hover:tw-underline tw-py-2" href="#">查詢【博客來】</a></li>
+							<li><a class="hover:tw-underline tw-py-2" href="#">查詢【三民書局】</a></li>
+							<li><a class="hover:tw-underline tw-py-2" href="#">查詢【Amazon】</a></li>
+							<li><a class="hover:tw-underline tw-py-2" href="#recommend" uk-toggle>我要推薦本書</a></li>
+						</ul>
+					</div>
+				</div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+{{>pagination}}
+
+{{>recommend-modal id='recommend' modal-title='我要推薦本書'}}

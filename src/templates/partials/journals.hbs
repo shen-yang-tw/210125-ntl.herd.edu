@@ -1,0 +1,429 @@
+<!-- id="boundary" -->
+<div id="boundary" class="tw-bg-gray-100 tw-p-2 tw-mt-2 tw-relative">
+	<a class="btn_white tw-m-0 tw-w-full uk-button uk-button-small uk-hidden@m"
+		onclick="toggleClasses('.option', 'hidden'); return false;">篩選<span class="option tw-ml-2"><i
+				class="fas fa-angle-right fa-fw"></i></span><span class="option tw-ml-2 hidden"><i
+				class="fas fa-angle-down fa-fw"></i></span></a>
+	<!-- uk-tab-switcher -->
+	<div class="option tw-mt-2 hidden m:tw-block">
+		<ul class="tab_buttons tab_buttons-txt-white tab_buttons-notw-border tw-my-0 uk-tab" uk-tab="connect: #switcher">
+			<li>
+				<a href="">簡易查詢</a>
+			</li>
+			<li>
+				<a href="">進階查詢</a>
+			</li>
+			<li hidden>
+				<a href="">縮小查詢</a>
+			</li>
+		</ul>
+		<div class="tw-border tw-border-solid tw-bg-white border-t-0">
+			<ul id="switcher" class="uk-switcher">
+				<li>
+					<div class="tw-p-2 m:tw-p-3">
+						<form onsubmit="return false;">
+							<div class="margin_y_all_child margin_y_child-0@s uk-grid uk-grid-small" uk-grid uk-margin>
+								<div class="uk-width-1-2@s uk-width-1-3@m">
+									<div class="uk-flex">
+										<div class="tw-flex-auto">
+											<input class="uk-input" type="text" placeholder="請輸入檢索詞" title="輸入關鍵字搜尋">
+										</div>
+										<!-- <div class="tw-flex-auto"><a class="btn_secondary min_width-100! tw-w-full uk-button" href="#search" uk-toggle>病症瀏覽</a></div> -->
+									</div>
+								</div>
+								<div class="uk-width-1-2@s uk-width-expand@m">
+									<select class="uk-select">
+										<option value="text">不限欄位</option>
+										<option value="ti">書刊名</option>
+										<option value="cu">叢書名</option>
+										<option value="au">作者</option>
+										<option value="pub">出版者</option>
+										<option value="isn" selected="">ISSN/ISBN</option>
+										<option value="sb">標題</option>
+										<option value="callno">索書號</option>
+										<option value="regno">條碼號</option>
+										<option value="ref_id">系統號</option>
+									</select>
+								</div>
+								<div class="uk-width-expand">
+									<button class="btn_primary min_width-100! tw-w-full uk-button">搜尋</button>
+								</div>
+								<div class="uk-width-expand">
+									<a class="btn_secondary color_white! min_width-100! tw-w-full uk-button" href="">檢索歷史</a>
+								</div>
+								<div class="tw-m-0 uk-width-1-1">
+									<div class="uk-flex uk-flex-wrap uk-flex-between">
+										<div class="min_width-120">
+											<label class="uk-margin-right"><input class="form_white uk-checkbox tw-mr-1"
+													type="checkbox">精確檢索</label>
+										</div>
+										<div><small>查詢 isn:147986143X OR isn:9781479861439 ，共 1 筆</small></div>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</li>
+				<li>
+					<div class="tw-p-2 m:tw-p-3">
+						<form onsubmit="return false;">
+							<div id="search_option" class="uk-grid uk-grid-small" uk-grid uk-margin>
+								<div class="tw-bg-transparent tw-py-0 tw-pr-0 uk-width-5-6@s" uk-alert>
+									<div class="uk-alert">
+										<div class="uk-grid uk-grid-small" uk-grid>
+											<div class="uk-width-2-5@s">
+												<input class="uk-input uk-width-1-1" type="text" placeholder="請輸入檢索詞" title="輸入關鍵字搜尋">
+											</div>
+											<div class="uk-width-3-6 uk-width-expand@s">
+												<select class="uk-select uk-width-1-1">
+													<option value="不限欄位">不限欄位</option>
+													<option value="資源名稱">資源名稱</option>
+													<option value="資料庫平台/出版者">資料庫平台/出版者</option>
+													<option value="資源主題">資源主題</option>
+													<option value="ISSN/ISBN">ISSN/ISBN</option>
+												</select>
+											</div>
+											<div class="option uk-width-2-6 uk-width-expand@s">
+												<select class="uk-select uk-width-1-1">
+													<option value="AND">AND</option>
+													<option value="OR">OR</option>
+													<option value="NOT">NOT</option>
+												</select>
+											</div>
+											<div class="uk-width-1-6">
+												<button
+													class="btn_primary opacity-100 static tw-py-1 uk-flex-center uk-flex uk-flex-middle uk-button uk-alert-close uk-width-1-1"
+													title="刪除">
+													<i class="fas fa-times fa-2x"></i>
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="uk-width-1-6@s">
+									<button id="add"
+										class="btn_secondary color_white! tw-py-1 uk-flex-center uk-flex uk-flex-middle uk-button uk-width-1-1">
+										<i class="fas fa-plus fa-2x"></i>
+									</button>
+								</div>
+							</div>
+							<div class="tw-my-2">
+								<button class="btn_secondary color_white! uk-button uk-margin-remove"
+									uk-toggle="target: .range">查詢篩選</button>
+								<div class="range tw-bg-gray-100 tw-p-2" hidden>
+									<div class="tw-px-4 uk-position-relative">
+										<input id="range" class="uk-input" type="text" name="range">
+									</div>
+									<div class="uk-margin uk-grid uk-grid-small" uk-grid>
+										<div class="min_width-1/3">
+											<label class="tw-w-full">語　　言
+												<select class="uk-select uk-form-width-medium uk-margin-right">
+													<option selected="selected">全部</option>
+												</select>
+											</label>
+										</div>
+										<div class="min_width-1/3">
+											<label class="tw-w-full">資料類型
+												<select class="uk-select uk-form-width-medium uk-margin-right">
+													<option selected="selected">全部</option>
+												</select>
+											</label>
+										</div>
+										<div class="min_width-1/3">
+											<label class="tw-w-full">
+												<input class="form_white uk-checkbox tw-mr-1" name="watch" type="checkbox">只查被收藏的書目
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="uk-flex-center@s uk-grid uk-grid-small" uk-grid>
+								<div class="uk-width-1-2 uk-width-1-4@s">
+									<a href="" class="btn_primary uk-margin-small-bottom uk-button uk-width-1-1">
+										<i class="fas fa-search tw-mr-1"></i>搜尋
+									</a>
+								</div>
+								<div class="uk-width-1-2 uk-width-1-4@s">
+									<a class="btn_secondary color_white! uk-button uk-width-1-1" href="">歷史</a>
+								</div>
+							</div>
+						</form>
+					</div>
+				</li>
+				<li hidden>
+					<div class="tw-p-2 m:tw-p-3">
+						<form onsubmit="return false;">
+							<div class="margin_y_all_child margin_y_child-0@s uk-grid uk-grid-small" uk-grid uk-margin>
+								<div class="uk-width-1-2@s uk-width-1-3@m">
+									<div class="uk-flex">
+										<div class="tw-flex-auto">
+											<input class="uk-input" type="text" placeholder="請輸入檢索詞" title="輸入關鍵字搜尋">
+										</div>
+										<!-- <div class="tw-flex-auto"><a class="btn_secondary min_width-100! tw-w-full uk-button" href="#search" uk-toggle>病症瀏覽</a></div> -->
+									</div>
+								</div>
+								<div class="uk-width-1-2@s uk-width-expand@m">
+									<select class="uk-select">
+										<option value="text" selected>不限欄位</option>
+										<option value="ti">書刊名</option>
+										<option value="cu">叢書名</option>
+										<option value="au">作者</option>
+										<option value="pub">出版者</option>
+										<option value="isn">ISSN/ISBN</option>
+										<option value="sb">標題</option>
+										<option value="callno">索書號</option>
+										<option value="regno">條碼號</option>
+										<option value="ref_id">系統號</option>
+									</select>
+								</div>
+								<div class="uk-width-expand">
+									<button class="btn_primary min_width-100! tw-w-full uk-button">搜尋</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- uk-tab-switcher -->
+</div>
+<!-- id="boundary" -->
+
+<div class="tw-mt-3 uk-grid uk-grid-small uk-grid-match uk-child-width-expand@s" uk-grid uk-margin uk-height-match="target: > div > .tw-bg-gray-100">
+	<!-- 新書介紹 -->
+	<div class="min_width-1/2!@s">
+		<div class="uk-flex uk-flex-between uk-flex-middle uk-flex-right">
+			<h2 class="bg_primary tw-text-sm tw-m-0 tw-p-2">新書介紹</h2>
+			<a class="tw-text-xs" href="#" title="更多">More<i class="tw-ml-1 fas fa-angle-right"></i></a>
+		</div>
+		<div class="tw-p-3 tw-bg-gray-100">
+			<ul class="border2 border_primary -tw-mt-2 uk-tab" uk-tab="connect: #newbooks">
+				<li>
+					<a href="">中文圖書</a>
+				</li>
+				<li>
+					<a href="">外文圖書</a>
+				</li>
+				<li>
+					<a href="">多媒體</a>
+				</li>
+			</ul>
+			<ul id="newbooks" class="uk-switcher">
+				<li>
+					<div class="uk-position-relative uk-visible-toggle uk-light uk-slider" uk-slider="autoplay: true"
+						tabindex="-1">
+						<ul
+							class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-5@l uk-child-width-1-6@xl uk-grid uk-grid-small">
+							<li>
+								<div class="tw-text-center hover:tw-shadow-2xl uk-card">
+									<a class="tw-block" href="">
+										<div class="aspect ratio-3/4">
+											{{!-- <img class="tw-object-contain tw-h-full tw-w-full" src="img/book_01.jpg" alt="封面"> --}}
+											{{!-- <img class="tw-w-full uk-responsive-height	" src="img/book_01.jpg" alt="封面"> --}}
+											<div class="uk-background-contain uk-flex uk-flex-center uk-flex-middle"
+												style="background-image: url(img/book_01.jpg);"></div>
+										</div>
+									</a>
+									<div class="tw-p-0 uk-card-body">
+										<h3 class="tw-truncate tw-text-xs m:tw-text-sm tw-pt-2 tw-m-0 uk-card-title">電商人妻社群圈粉思維</h3>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="tw-text-center hover:tw-shadow-2xl uk-card">
+									<a class="tw-block" href="">
+										<div class="aspect ratio-3/4">
+											<div class="uk-background-contain uk-flex uk-flex-center uk-flex-middle"
+												style="background-image: url(img/book_02.jpg);"></div>
+										</div>
+									</a>
+									<div class="tw-p-0 uk-card-body">
+										<h3 class="tw-truncate tw-text-xs m:tw-text-sm tw-pt-2 tw-m-0 uk-card-title">電商人妻社群圈粉思維</h3>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="tw-text-center hover:tw-shadow-2xl uk-card">
+									<a class="tw-block" href="">
+										<div class="aspect ratio-3/4">
+											<div class="uk-background-contain uk-flex uk-flex-center uk-flex-middle"
+												style="background-image: url(img/book_03.jpg);"></div>
+										</div>
+									</a>
+									<div class="tw-p-0 uk-card-body">
+										<h3 class="tw-truncate tw-text-xs m:tw-text-sm tw-pt-2 tw-m-0 uk-card-title">電商人妻社群圈粉思維</h3>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="tw-text-center hover:tw-shadow-2xl uk-card">
+									<a class="tw-block" href="">
+										<div class="aspect ratio-3/4">
+											<div class="uk-background-contain uk-flex uk-flex-center uk-flex-middle"
+												style="background-image: url(img/book_04.jpg);"></div>
+										</div>
+									</a>
+									<div class="tw-p-0 uk-card-body">
+										<h3 class="tw-truncate tw-text-xs m:tw-text-sm tw-pt-2 tw-m-0 uk-card-title">電商人妻社群圈粉思維</h3>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="tw-text-center hover:tw-shadow-2xl uk-card">
+									<a class="tw-block" href="">
+										<div class="aspect ratio-3/4">
+											<div class="uk-background-contain uk-flex uk-flex-center uk-flex-middle"
+												style="background-image: url(img/book_05.jpg);"></div>
+										</div>
+									</a>
+									<div class="tw-p-0 uk-card-body">
+										<h3 class="tw-truncate tw-text-xs m:tw-text-sm tw-pt-2 tw-m-0 uk-card-title">電商人妻社群圈粉思維</h3>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="tw-text-center hover:tw-shadow-2xl uk-card">
+									<a class="tw-block" href="">
+										<div class="aspect ratio-3/4">
+											<div class="uk-background-contain uk-flex uk-flex-center uk-flex-middle"
+												style="background-image: url(img/book_06.jpg);"></div>
+										</div>
+									</a>
+									<div class="tw-p-0 uk-card-body">
+										<h3 class="tw-truncate tw-text-xs m:tw-text-sm tw-pt-2 tw-m-0 uk-card-title">電商人妻社群圈粉思維</h3>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="tw-text-center hover:tw-shadow-2xl uk-card">
+									<a class="tw-block" href="">
+										<div class="aspect ratio-3/4">
+											<div class="uk-background-contain uk-flex uk-flex-center uk-flex-middle"
+												style="background-image: url(img/book_07.jpg);"></div>
+										</div>
+									</a>
+									<div class="tw-p-0 uk-card-body">
+										<h3 class="tw-truncate tw-text-xs m:tw-text-sm tw-pt-2 tw-m-0 uk-card-title">電商人妻社群圈粉思維</h3>
+									</div>
+								</div>
+							</li>
+						</ul>
+						{{!-- <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous
+                uk-slider-item="previous"><span class="tw-sr-only">前一個</span></a>
+              <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next
+                uk-slider-item="next"><span class="tw-sr-only">下一個</span></a> --}}
+						<a class="w-50 tw-px-lg-5 uk-position-left uk-flex uk-flex-middle uk-slidenav-large uk-hidden-hover" href="#"
+							uk-slidenav-previous uk-slider-item="previous"><span class="tw-sr-only">前一個</span></a>
+						<a class="w-50 tw-px-lg-5 uk-position-right uk-flex uk-flex-right uk-flex-middle uk-slidenav-large uk-hidden-hover"
+							href="#" uk-slidenav-next uk-slider-item="next"><span class="tw-sr-only">下一個</span></a>
+					</div>
+				</li>
+				<li>
+					<div class="uk-position-relative uk-visible-toggle uk-light uk-slider" uk-slider="autoplay: true"
+						tabindex="-1">
+						<ul
+							class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-5@l uk-child-width-1-6@xl uk-grid uk-grid-small">
+							<li>
+								<div class="tw-text-center hover:tw-shadow-2xl uk-card">
+									<a class="tw-block" href="">
+										<div class="aspect ratio-3/4">
+											<div class="uk-background-contain uk-flex uk-flex-center uk-flex-middle"
+												style="background-image: url(https://fakeimg.pl/300x400/);"></div>
+										</div>
+									</a>
+									<div class="tw-p-0 uk-card-body">
+										<h3 class="tw-truncate tw-text-xs m:tw-text-sm tw-pt-2 tw-m-0 uk-card-title">電商人妻社群圈粉思維</h3>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="tw-text-center hover:tw-shadow-2xl uk-card">
+									<a class="tw-block" href="">
+										<div class="aspect ratio-3/4">
+											<div class="uk-background-contain uk-flex uk-flex-center uk-flex-middle"
+												style="background-image: url(https://picsum.photos/300/400);"></div>
+										</div>
+									</a>
+									<div class="tw-p-0 uk-card-body">
+										<h3 class="tw-truncate tw-text-xs m:tw-text-sm tw-pt-2 tw-m-0 uk-card-title">電商人妻社群圈粉思維</h3>
+									</div>
+								</div>
+							</li>
+						</ul>
+						<a class="w-50 tw-px-lg-5 uk-position-left uk-flex uk-flex-middle uk-slidenav-large uk-hidden-hover" href="#"
+							uk-slidenav-previous uk-slider-item="previous"><span class="tw-sr-only">前一個</span></a>
+						<a class="w-50 tw-px-lg-5 uk-position-right uk-flex uk-flex-right uk-flex-middle uk-slidenav-large uk-hidden-hover"
+							href="#" uk-slidenav-next uk-slider-item="next"><span class="tw-sr-only">下一個</span></a>
+					</div>
+				</li>
+				<li>
+					<div class="uk-position-relative uk-visible-toggle uk-light uk-slider" uk-slider="autoplay: true"
+						tabindex="-1">
+						<ul
+							class="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-5@l uk-child-width-1-6@xl uk-grid uk-grid-small">
+							<li>
+								<div class="tw-text-center hover:tw-shadow-2xl uk-card">
+									<a class="tw-block" href="">
+										<div class="aspect ratio-3/4">
+											<div class="uk-background-contain uk-flex uk-flex-center uk-flex-middle"
+												style="background-image: url(https://fakeimg.pl/303x404/);"></div>
+										</div>
+									</a>
+									<div class="tw-p-0 uk-card-body">
+										<h3 class="tw-truncate tw-text-xs m:tw-text-sm tw-pt-2 tw-m-0 uk-card-title">電商人妻社群圈粉思維</h3>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="tw-text-center hover:tw-shadow-2xl uk-card">
+									<a class="tw-block" href="">
+										<div class="aspect ratio-3/4">
+											<div class="uk-background-contain uk-flex uk-flex-center uk-flex-middle"
+												style="background-image: url(https://picsum.photos/306/408);"></div>
+										</div>
+									</a>
+									<div class="tw-p-0 uk-card-body">
+										<h3 class="tw-truncate tw-text-xs m:tw-text-sm tw-pt-2 tw-m-0 uk-card-title">電商人妻社群圈粉思維</h3>
+									</div>
+								</div>
+							</li>
+						</ul>
+						<a class="w-50 tw-px-lg-5 uk-position-left uk-flex uk-flex-middle uk-slidenav-large uk-hidden-hover" href="#"
+							uk-slidenav-previous uk-slider-item="previous"><span class="tw-sr-only">前一個</span></a>
+						<a class="w-50 tw-px-lg-5 uk-position-right uk-flex uk-flex-right uk-flex-middle uk-slidenav-large uk-hidden-hover"
+							href="#" uk-slidenav-next uk-slider-item="next"><span class="tw-sr-only">下一個</span></a>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- 新書介紹 -->
+	<!-- 愛上閱讀 -->
+	<div class="min_width-1/2!@s">
+		<div class="uk-flex uk-flex-between uk-flex-middle uk-flex-right">
+			<h2 class="bg_primary tw-text-sm tw-m-0 tw-p-2">愛上閱讀</h2>
+			<a class="tw-text-xs" href="#" title="更多">More<i class="tw-ml-1 fas fa-angle-right"></i></a>
+		</div>
+		<div class="tw-p-3 tw-bg-gray-100"></div>
+	</div>
+	<!-- 愛上閱讀 -->
+	<!-- 最新消息 -->
+	<div class="min_width-1/2!@s">
+		<div class="uk-flex uk-flex-between uk-flex-middle uk-flex-right">
+			<h2 class="bg_primary tw-text-sm tw-m-0 tw-p-2">最新消息</h2>
+			<a class="tw-text-xs" href="#" title="更多">More<i class="tw-ml-1 fas fa-angle-right"></i></a>
+		</div>
+		<div class="tw-p-3 tw-bg-gray-100"></div>
+	</div>
+	<!-- 最新消息 -->
+	<!-- 熱門排行 -->
+	<div class="min_width-1/2!@s">
+		<div class="uk-flex uk-flex-between uk-flex-middle uk-flex-right">
+			<h2 class="bg_primary tw-text-sm tw-m-0 tw-p-2">熱門排行</h2>
+			<a class="tw-text-xs" href="#" title="更多">More<i class="tw-ml-1 fas fa-angle-right"></i></a>
+		</div>
+		<div class="tw-p-3 tw-bg-gray-100"></div>
+	</div>
+	<!-- 熱門排行 -->
+</div>

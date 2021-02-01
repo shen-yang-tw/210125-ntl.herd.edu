@@ -1,0 +1,671 @@
+//$<argument/virable>, &:The parent selector, #{$val}:selector(property) with level/CANNOT used for value ($val can be used), @import
+//@extend <name> | %<name> {}, @mixin <name> {$<var-name>} | @include <name> {$<var>}, #{$<var>}
+//@mixin / @include <name> { ... }, @mixin / @include <name>(<arguments...>) { ... }
+//$var:<value> !default; (!default:This assigns a value to a variable only if that variable isn’t defined or its value is null. Otherwise, the existing value will be used. This way, users can set variables before they import your library - https://sass-lang.com/documentation/variables#default-values)
+//map-get($fontsize-btn, m) map to:$fontsize-btn:("default":".fontSize", "m":".fontSizeM", "l":".fontSizeL");
+
+//mc: materializecss
+
+@import 'color', 'variables', 'functions';
+
+//### Font ###------------------------------------------------//
+@mixin google-font($family) {
+  @import url("https://fonts.googleapis.com/css?family=#{$family}&display=swap&subset=chinese-traditional");
+}
+
+@mixin mi {
+  font-family:'Material Icons';
+  font-weight:normal;
+  font-style:normal;
+  font-size:calc(24rem/16);  /* Preferred icon size: 24px */
+  display:inline-block;
+  line-height:1;
+  text-transform:none;
+  letter-spacing:normal;
+  word-wrap:normal;
+  white-space:nowrap;
+  direction:ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing:antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering:optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing:grayscale;
+  /* Support for IE. */
+  font-feature-settings:'liga';
+}
+@mixin fa {
+  display:inline-block;
+  font-style:normal;
+  font-variant:normal;
+  text-rendering:auto;
+  -webkit-font-smoothing:antialiased;
+}
+
+//### Line Height ###------------------------------------------------//
+@mixin line($line-height, $selectors...) {
+  #{$selectors} {
+      line-height:$line-height;
+  }
+}
+
+//### Words Wrap ###------------------------------------------------//
+@mixin break-word($break:break-word) {
+  overflow-wrap:$break;
+  word-wrap:$break;
+}
+
+//### Colors & Opacity ###------------------------------------------------//
+@mixin color($selector:&, $important:$boolean, $prefix:"", $suffix:"", $color:$color-primary-text, $hover:$boolean) {
+  @if $important {
+    @if not $hover {
+      #{$selector}#{$suffix}, #{$selector}#{$suffix}>*  {
+        // color:$color !important;
+        @if lightness($color) < 10% {color:change-color($color, $lightness: 15%) !important;}
+        @else if lightness($color) > 90% {color:change-color($color, $lightness: 85%) !important;}
+        @else {color:$color !important;}
+      }
+      #{$prefix}#{$selector}#{$suffix}:hover, #{$prefix}#{$selector}#{$suffix}:hover * {color:darken($color, 10%) !important;}
+    } @else {
+      #{$prefix}#{str-slice($selector, 2, -1)}#{$suffix}:hover, #{$prefix}#{str-slice($selector, 2, -1)}#{$suffix}:hover * {color:$color !important;}
+    }
+  } @else {
+    @if not $hover {
+      #{$selector}#{$suffix}, #{$selector}#{$suffix}>*  {
+        // color:$color;
+        @if lightness($color) < 10% {color:change-color($color, $lightness: 15%);}
+        @else if lightness($color) > 90% {color:change-color($color, $lightness: 85%);}
+        @else {color:$color;}
+      }
+      #{$prefix}#{$selector}#{$suffix}:hover, #{$prefix}#{$selector}#{$suffix}:hover * {color:darken($color, 10%)}
+    } @else {
+      #{$prefix}#{str-slice($selector, 2, -1)}#{$suffix}:hover, #{$prefix}#{str-slice($selector, 2, -1)}#{$suffix}:hover * {color:$color;}
+    }
+  }
+}
+@mixin fillcolor($selector:&, $important:$boolean, $prefix:"", $suffix:"", $color:$color-primary-text) {
+  @if $important {
+    #{$selector}#{$suffix}, #{$selector}#{$suffix}>*  {fill:$color !important;}
+    // #{$selector}#{$suffix} *  {fill:$color !important;}
+    #{$prefix}#{$selector}#{$suffix}:hover, #{$prefix}#{$selector}#{$suffix}:hover * {fill:darken($color, 10%) !important;}
+  } @else {
+    #{$selector}#{$suffix}, #{$selector}#{$suffix}>*  {fill:$color;}
+    // #{$selector}#{$suffix} *  {fill:$color;}
+    #{$prefix}#{$selector}#{$suffix}:hover, #{$prefix}#{$selector}#{$suffix}:hover * {fill:darken($color, 10%)}
+  }
+}
+@mixin gradient($selector:&, $type:linear-gradient, $direction:bottom, $color1:black 100%, $color2:rgba(black, 0) 0%, $important:$boolean, $prefix:"", $suffix:"") {
+  @if $important {
+    #{$prefix}#{$selector}#{$suffix} {
+      background: $type(to $direction, $color1, $color2) !important;
+    }
+  } @else {
+    #{$prefix}#{$selector}#{$suffix} {
+      background: $type(to $direction, $color1, $color2);
+    }
+  }
+}
+@mixin bg-color($selector:&, $bg-color:$color-primary, $important:$boolean, $important-sign:"") {
+  @if $important {
+    $important-sign:\!;
+    #{$selector}#{$important-sign}, a#{$selector}#{$important-sign}, button#{$selector}#{$important-sign} {
+      background-color:$bg-color !important;
+    }
+    #{$selector}#{$important-sign}, #{$selector}#{$important-sign}>*, a#{$selector}#{$important-sign}, a#{$selector}#{$important-sign}>*, button#{$selector}#{$important-sign}, button#{$selector}#{$important-sign}>* {
+      color:text-black-white($bg-color) !important;
+      // fill:text-color($bg-color);
+      // @if lightness($bg-color) > 50% {color:darken(text-color($bg-color), 5%) !important;}
+      // @else {color:text-color($bg-color) !important;}
+    }
+    a#{$selector}#{$important-sign}:hover, button#{$selector}#{$important-sign}:hover {
+      @if $selector == $bg-black {
+        background-color:lighten($bg-color, 20%) !important;
+      } @else {
+        background-color:darken($bg-color, 10%) !important;
+      }
+      text-decoration:none;
+    }
+    a#{$selector}#{$important-sign}:hover, button#{$selector}#{$important-sign}:hover, #{$selector}#{$important-sign}>a:hover {
+      &, >* {
+        // color:text-black-white($bg-color) !important;
+        @if lightness($bg-color) <= 30% {color:white !important;}
+        @else if lightness($bg-color) >= 70% {color:black !important;}
+        @else {color:text-black-white($bg-color) !important;}
+        // @if lightness($bg-color) <= 50% {color:lighten(text-color($bg-color), 10%) !important;}
+        // @else {color:darken(text-color($bg-color), 10%) !important;}
+        // @else {color:darken(text-color($bg-color), 10%) !important; fill:darken(text-color($bg-color), 10%) !important;}
+      }
+    }
+
+  } @else {
+    #{$selector}, a#{$selector}, button#{$selector} {
+      background-color:$bg-color;
+    }
+    #{$selector}, #{$selector}>*, a#{$selector}, a#{$selector}>*, button#{$selector}, button#{$selector}>* {
+      color:text-black-white($bg-color);
+      // fill:text-color($bg-color);
+      // @if lightness($bg-color) > 50% {color:darken(text-color($bg-color), 5%);}
+      // @else {color:text-color($bg-color);}
+    }
+    a#{$selector}:hover, button#{$selector}:hover {
+      @if $selector == $bg-black {
+        background-color:lighten($bg-color, 20%);
+      } @else {
+        background-color:darken($bg-color, 10%);
+      }
+      text-decoration:none;
+    }
+    a#{$selector}:hover, button#{$selector}:hover, #{$selector}>a:hover {
+      &, >* {
+        // color:text-color($bg-color) !important;
+        @if lightness($bg-color) <= 30% {color:white;}
+        @else if lightness($bg-color) >= 70% {color:black;}
+        @else {color:text-black-white($bg-color);}
+        // @else {color:darken(text-color($bg-color), 10%) !important; fill:darken(text-color($bg-color), 10%) !important;}
+      }
+    }
+  }
+}
+@mixin bg-opacity($color:white, $val:$opacity, $important:$boolean) {
+  @if $important {
+    background-color:rgba($color, $val) !important;
+    @if $color == white {
+      color: black !important;
+    }
+    @if $color == black {
+      color: white !important;
+    }
+  } @else {
+    background-color:rgba($color, $val);
+    @if $color == white {
+      color: black;
+    }
+    @if $color == black {
+      color: white;
+    }
+  }
+}
+@mixin opacity($val:$opacity, $important:$boolean) {
+  @if $important {
+    opacity:$val !important;
+  } @else {
+    opacity:$val;
+  }
+}
+
+@mixin button($pill:$boolean, $outline:$boolean, $three-d:$boolean, $groups:$boolean, $s:$boolean, $l:$boolean, $border-color:$color-primary, $bg:$color-primary, $important:$boolean) {
+  display: inline-block;
+  box-sizing: border-box;
+  overflow: visible;
+  @if $important {
+    text-transform: none !important;
+    text-decoration: none !important;
+    @if $pill {
+      border-radius: 9999px !important;
+    }
+    @if $outline {
+      border-width: 1px !important;
+      border-color: $border-color !important;
+      background-color: transparent !important;
+      color:darken($border-color, 20%) !important;
+      &#{$active}, &:hover {background-color:$border-color !important; color:text-color($border-color) !important;}
+    } @else if $groups {
+      display: inline-flex !important;
+      &>* {
+        background-color:$bg !important;
+        color:text-color($bg) !important;
+        &#{$active}, &:hover {background-color:darken($bg, 10%); color:text-color(darken($bg, 10%)) !important;}
+      }
+      &>:first-child {border-top-left-radius: .25rem !important; border-bottom-left-radius: .25rem !important;}
+      &>:last-child {border-top-right-radius: .25rem !important; border-bottom-right-radius: .25rem !important;}
+    } @else {
+      background-color:$bg !important;
+      color:text-color($bg) !important;
+      &#{$active}, &:hover {background-color:darken($bg, 10%); color:text-color(darken($bg, 10%)) !important;}
+    }
+    @if $three-d {
+      border-bottom-width: calc(4rem/#{$strip-unit($font-base)}) !important;
+      border-color: darken($border-color, 10%) !important;
+    }
+    &:disabled {
+      opacity: .5 !important;
+      cursor: not-allowed !important;
+    }
+  } @else {
+    text-transform: none;
+    text-decoration: none;
+    @if $s {
+      padding: $space-xs $space;
+    } @else if $l {
+      padding: $space-m $space-l;
+    } @else {
+      padding: $space $space-m;
+    }
+    @if $pill {
+      border-radius: 9999px;
+    }
+    @if $outline {
+      border-width: 1px;
+      border-color: $border-color;
+      background-color: transparent;
+      color:darken($border-color, 20%);
+      &#{$active}, &:hover {background-color:$border-color; color:text-color($border-color);}
+    } @else if $groups {
+      display: inline-flex;
+      &>* {
+        background-color:$bg;
+        color:text-color($bg);
+        &#{$active}, &:hover {background-color:darken($bg, 10%); color:text-color(darken($bg, 10%));}
+      }
+      &>:first-child {border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;}
+      &>:last-child {border-top-right-radius: .25rem; border-bottom-right-radius: .25rem;}
+    } @else {
+      background-color:$bg;
+      color:text-color($bg);
+      &#{$active}, &:hover {background-color:darken($bg, 10%); color:text-color(darken($bg, 10%));}
+    }
+    @if $three-d {
+      border-bottom-width: calc(4rem/#{$strip-unit($font-base)});
+      border-color: darken($border-color, 20%);
+    }
+  }
+  &:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+  }
+}
+
+// @if $theme {
+//   $color-primary:darken($color-primary, 60%) !default; //decreases the HSL lightness
+//   $accent-color:lighten($accent-color, 60%) !default; //increases the HSL lightness
+//   $color:rgba($color-primary, 60%) !default; //the 60% is alpha
+//   $color:opacify($accent-color, .5) !default; //increases the alpha
+//   $color:transparentize($accent-color, .5) !default; //decreases the alpha
+// }
+
+//### Display & Visibility ###------------------------------------------------//
+@mixin display($property:block) {
+  display:$property;
+}
+
+//### Border ###------------------------------------------------//
+@mixin focus($important:$boolean) {
+  @if $important {
+    & {-webkit-box-shadow: 0 0 0.2rem 0.2rem $color-border-focus !important; box-shadow: 0 0 0.2rem 0.2rem $color-border-focus !important; outline-color: $color-border-focus !important; outline-style: dashed !important; outline-width: 4px !important;}
+  } @else {
+    & {-webkit-box-shadow: 0 0 0.2rem 0.2rem $color-border-focus; box-shadow: 0 0 0.2rem 0.2rem $color-border-focus; outline-color: $color-border-focus; outline-style: dashed; outline-width: 4px;}
+  }
+}
+@mixin border-opacity($color:white, $val:$opacity, $important:$boolean) {
+  @if $important {
+    border-color:rgba($color, $val) !important;
+  } @else {
+    border-color:rgba($color, $val);
+  }
+}
+@mixin bordered($property:border, $width:1px, $style:solid, $color:$color-border, $all:true, $value:"", $important:$boolean) {
+  @if $important {
+		@if $all {
+      #{$property}:$width $style $color !important;
+		} @else {
+			#{$property}:$value !important;
+		}
+  } @else {
+		@if $all {
+			#{$property}:$width $style $color;
+		} @else {
+			#{$property}:$value;
+		}
+  }
+}
+
+@mixin square($size, $radius:0) {
+  width:$size;
+  height:$size;
+  @if $radius != 0 {
+    border-radius:$radius;
+  }
+}
+@mixin avatar($size, $circle:$boolean) {
+  width:$size;
+  height:$size;
+  @if $circle {
+    border-radius:$size / 2;
+  }
+}
+
+//### Position ###------------------------------------------------//
+$z-index:0 !default;
+@mixin position-index($position:relative, $z:$z-index) {
+  position:$position;
+  @if $z != 0 {
+    z-index:$z;
+  }
+}
+
+//### Space ###------------------------------------------------//
+@mixin space($property:margin, $size:$space, $calc:$boolean, $important:$boolean) {
+  @if $important {
+    @if $calc {
+      #{$property}:calc(#{strip-unit($size)}rem/16) !important;
+    } @else {
+      #{$property}:$size !important;
+    }
+  } @else {
+    @if $calc {
+      #{$property}:calc(#{strip-unit($size)}rem/16);
+    } @else {
+      #{$property}:$size;
+    }
+  }
+  // @if $calc {
+  //   #{$property}:calc(#{strip-unit($size)}rem/16);
+  // } @else {
+  //   #{$property}:$size;
+  // }
+}
+@mixin margin-padding($m:$space, $p:$space, $calc:$boolean) {
+  @if $calc {
+    margin:calc(#{strip-unit($m)}rem/16);
+    padding:calc(#{strip-unit($p)}rem/16);
+  } @else {
+    margin:$m;
+    padding:$p;
+  }
+}
+@mixin reset-space {
+  margin:0;
+  padding:0;
+}
+
+//### List ###------------------------------------------------//
+@mixin list-counter($reset:$boolean, $display:inherit, $name:dot-counter, $before:"", $after:". ") {
+  @if $reset {
+    list-style-type:none;
+    counter-reset:$name;
+  } @else {
+    display:$display;
+    counter-increment:$name;
+    content:$before counter($name) $after;
+  }
+}
+
+//### Indent ###------------------------------------------------//
+@mixin indent($align:flex-start, $margin:calc(5rem/16), $flex:$boolean, $padding:$space, $indent:-$space) {
+  @if $flex {
+    display:flex;
+    align-items:$align;
+    &>* {
+      margin:0;
+      margin-right:$margin;
+    }
+    &>:last-child {margin-right:0;}
+    &>svg {margin-top: $space; margin-right: $space;}
+  } @else {
+    padding-left: 1.25rem; text-indent: -1.25rem; /*work with fa-fw & no margin*/
+  }
+}
+
+//### Width & Height & Scroll ###------------------------------------------------//
+@mixin grid-width($min:2, $max:12, $property:width, $important:$boolean, $media:""){
+  @if $min <= 1 {@error "Property #{$min} must be greater than 1.";}
+  $i:$min; 
+  @while $i <= $max {
+    $j:1;
+    @while $j < $i {
+      $selector:"";
+      @if $important {$selector:#{$j}\/#{$i}\!#{$media};} @else {$selector:#{$j}\/#{$i}#{$media};}
+      &#{$selector} {
+        $k:2; $factor:$boolean;
+        @while $k <= $j {
+          @if $i%$k == 0 and $j%$k == 0 {$factor:true;}
+          $k:$k + 1;
+        }
+        @if not $factor or $j == 1 {
+          @if $important {
+            #{$property}:calc(100%*#{$j}/#{$i}) !important;
+          } @else {
+            #{$property}:calc(100%*#{$j}/#{$i});
+          }
+        } 
+      }
+      $j:$j + 1;
+    }
+    $i:$i + 1;
+  }
+}
+@mixin min-width($min:10px, $max:1000px, $step:10, $important:$boolean, $media:""){
+  @if $min < 0 {@error "Property #{$min} must be greater than 0.";}
+  $i:strip-unit($min);
+  @while $i <= strip-unit($max) {
+    $selector:"";
+    @if $important {$selector:#{$i}\!#{$media};} @else {$selector:#{$i}#{$media};}
+    &#{$selector} {
+      @if $important {
+        min-width:calc(#{$i}rem/16) !important;
+      } @else {
+        min-width:calc(#{$i}rem/16);
+      }
+    }
+    $i:$i + strip-unit($step);
+  }
+}
+@mixin max-width($min:10px, $max:1000px, $step:10, $important:$boolean, $media:""){
+  @if $min < 0 {@error "Property #{$min} must be greater than 0.";}
+  $i:strip-unit($min);
+  @while $i <= strip-unit($max) {
+    $selector:"";
+    @if $important {$selector:#{$i}\!#{$media};} @else {$selector:#{$i}#{$media};}
+    &#{$selector} {
+      @if $important {
+        max-width:calc(#{$i}rem/16) !important;
+      } @else {
+        max-width:calc(#{$i}rem/16);
+      }
+    }
+    $i:$i + strip-unit($step);
+  }
+}
+@mixin overflow-hidden($mask:$boolean) {
+  overflow:hidden;
+  position:relative;
+  @if $mask {
+    padding-bottom: calc(25rem/16);
+    &:after {
+      @include pseudo-content($display:block, $pos:absolute, $content:true, $background:true, $bg:$gradient-linear-white-transparent-top,$bg-txt:false, $l:0, $r:0, $b:0, $h:calc(45rem/16), $pointer-off:true);
+    }
+  }
+}
+@mixin ellipsis($lineHeight:$line-height, $lineCount:1, $bgColor:white, $truncate:$boolean){
+  &#{$lineCount} {
+    @include overflow-hidden;
+    line-height:$lineHeight;
+    max-height:$lineHeight * $lineCount;
+    text-align:justify;
+    @if not $truncate {
+      margin-right:-1rem;
+      padding-right:1rem;
+    }
+  }
+  &#{$lineCount}:before {
+    @if not $truncate {
+      content:'...';
+      position:absolute;
+      right:0;
+      bottom:0;
+    }
+  }
+  &#{$lineCount}:after {
+    content:'';
+    position:absolute;
+    right:0;
+    @if $truncate {
+      bottom:0;
+      width:25%;
+      background:linear-gradient(to right, rgba(255, 255, 255, 0), white 100%);
+      pointer-events:none;
+    } @else {
+      width:1rem;
+      height:1rem;
+      margin-top:0.2rem;
+      background:$bgColor;
+    }
+  }
+}
+@mixin cover {
+  position:absolute; top:0; left:0; right:0; bottom:0; height:100%;
+}
+
+//### Aspect Ratio ###------------------------------------------------//
+@mixin aspect-ratio {
+  
+}
+
+//### Shadow ###------------------------------------------------//
+@mixin box-shadow($base:true,$md:$boolean,$lg:$boolean,$xl:$boolean,$xxl:$boolean,$inner:$boolean,$outline:$boolean) {
+  @if $base {box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);}
+  @if $md {box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);}
+  @if $lg {box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);}
+  @if $xl {box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);}
+  @if $xxl {box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);}
+  @if $inner {box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);}
+  @if $outline {box-shadow: 0 0 0 3px $color-border-focus;}
+}
+@mixin uk-box-shadow($s:true,$m:$boolean,$l:$boolean,$xl:$boolean) {
+  @if $s {box-shadow: 0 2px 8px rgba(0,0,0,0.08);}
+  @if $m {box-shadow: 0 5px 15px rgba(0,0,0,0.08);}
+  @if $l {box-shadow: 0 14px 25px rgba(0,0,0,0.16);}
+  @if $xl {box-shadow: 0 28px 50px rgba(0,0,0,0.16);}
+}
+@mixin mc-box-shadow($depth-1:true,$depth-2:$boolean,$depth-3:$boolean,$depth-4:$boolean,$depth-5:$boolean) {
+  @if $depth-1 {
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+  }
+  @if $depth-2 {
+    -webkit-box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.3);
+  }
+  @if $depth-3 {
+    -webkit-box-shadow: 0 8px 17px 2px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 17px 2px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.2);
+  }
+  @if $depth-4 {
+    -webkit-box-shadow: 0 16px 24px 2px rgba(0,0,0,0.14), 0 6px 30px 5px rgba(0,0,0,0.12), 0 8px 10px -7px rgba(0,0,0,0.2);
+    box-shadow: 0 16px 24px 2px rgba(0,0,0,0.14), 0 6px 30px 5px rgba(0,0,0,0.12), 0 8px 10px -7px rgba(0,0,0,0.2);
+  }
+  @if $depth-5 {
+    -webkit-box-shadow: 0 24px 38px 3px rgba(0,0,0,0.14), 0 9px 46px 8px rgba(0,0,0,0.12), 0 11px 15px -7px rgba(0,0,0,0.2);
+    box-shadow: 0 24px 38px 3px rgba(0,0,0,0.14), 0 9px 46px 8px rgba(0,0,0,0.12), 0 11px 15px -7px rgba(0,0,0,0.2);
+  }
+}
+
+//### Pseudo ###------------------------------------------------//
+@mixin pseudo-content($display:inherit, $pos:inherit, $content:$boolean, $content-val:"", $property:"", $property-val:$space, $fontsize:inherit, $icon:"", $font:$font-fa, $weight:900, $color:inherit, $background:$boolean, $bg:$color-grey-light, $bg-txt:true, $l:auto, $t:auto, $r:auto, $b:auto, $radius:0, $margin:inherit, $padding:inherit, $line:inherit, $h:auto, $pointer-off:$boolean) {
+  // @if $min < 0 {@error "Property #{$min} must be greater than 0.";}
+  @if $display != inherit {display:$display;}
+  @if $pos != inherit {position:$pos;}
+  @if $content {content:$content-val;}
+  @if $fontsize != inherit {font-size:$fontsize;}
+  @if $icon == fa {@include fa; font-family:$font; font-weight:$weight;}
+  @if $icon == mi {@include mi}
+  @if $color != inherit {color:$color;}
+  @if $background {background:$bg; @if $bg-txt {color:text-color($bg);}}
+  @if $l != auto {left:$l;}
+  @if $t != auto {top:$t;}
+  @if $r != auto {right:$r;}
+  @if $b != auto {bottom:$b;}
+  @if $radius != 0 {border-radius:$radius;}
+  @if $margin != inherit {margin:$margin;}
+  @if $padding != inherit {padding:$padding;}
+  @if $line != inherit {line-height:$line;}
+  @if $h != auto {height:$h;}
+  @if $pointer-off {pointer-events:none;}
+  @if $property != "" {#{$property}:$property-val;} //not working with "$property:$property-val"
+}
+
+//### Loop ###------------------------------------------------//
+@mixin min-max($selector:&, $percent:1, $min:1, $max:50, $step:1, $plus:0, $property:$boolean, $property-name:font-size, $calc:$boolean, $unit:$boolean, $unit-val:rem, $denominator:$font-base, $bg:$boolean, $color-val:white, $opacity:$boolean, $border-opacity:$boolean, $border-color:white, $media:"", $html-class:"", $prefix:"", $prefix-sign:"", $suffix:"", $important:$boolean, $important-sign:"", $child:$boolean, $childSelector:"") {
+  #{$html-class} #{$prefix}#{$prefix-sign}#{$selector} {
+    $i:strip-unit($min);
+    @while $i <= strip-unit($max) {
+      @if $important {$important-sign:\!} @else {$important-sign:""}
+      @if $child {
+        &#{$i*$percent}#{$important-sign}#{$media}#{$suffix} {
+          &#{$childSelector} {
+            @if $important {
+              @if $property and $calc {#{$property-name}:calc(#{$i}#{$unit-val}/#{strip-unit($denominator)})!important}
+              @if $property and $unit {#{$property-name}:$i+$unit-val!important}
+              @if $property and not $unit and not $calc {#{$property-name}:#{$i}!important}
+              @if $bg {
+                @include bg-opacity($color:$color-val, $val:$i+$plus, $important:true);
+              }
+              @if $opacity {@include opacity($val:$i, $important:true)}
+              @if $border-opacity {@include border-opacity($color:$color-border, $val:$i, $important:true)}
+            } @else {
+              @if $property and $calc {#{$property-name}:calc(#{$i}#{$unit-val}/#{strip-unit($denominator)})}
+              @if $property and $unit {#{$property-name}:$i+$unit-val}
+              @if $property and not $unit and not $calc {#{$property-name}:#{$i}}
+              @if $bg {
+                @include bg-opacity($color:$color-val, $val:$i+$plus);
+              }
+              @if $opacity {@include opacity($val:$i)}
+              @if $border-opacity {@include border-opacity($color:$color-border, $val:$i)}
+            }
+          }
+        }
+      } @else {
+        &#{$i*$percent}#{$important-sign}#{$media}#{$suffix} {
+          @if $important {
+            @if $property and $calc {#{$property-name}:calc(#{$i}#{$unit-val}/#{strip-unit($denominator)})!important}
+            @if $property and $unit {#{$property-name}:$i+$unit-val!important}
+            @if $property and not $unit and not $calc {#{$property-name}:#{$i}!important}
+            @if $bg {
+              @include bg-opacity($color:$color-val, $val:$i+$plus, $important:true);
+            }
+            @if $opacity {@include opacity($val:$i, $important:true)}
+            @if $border-opacity {@include border-opacity($color:$color-border, $val:$i, $important:true)}
+          } @else {
+            @if $property and $calc {#{$property-name}:calc(#{$i}#{$unit-val}/#{strip-unit($denominator)})}
+            @if $property and $unit {#{$property-name}:$i+$unit-val}
+            @if $property and not $unit and not $calc {#{$property-name}:#{$i}}
+            @if $bg {
+              @include bg-opacity($color:$color-val, $val:$i+$plus);
+            }
+            @if $opacity {@include opacity($val:$i)}
+            @if $border-opacity {@include border-opacity($color:$color-border, $val:$i)}
+          }
+        }
+      }
+      $i:$i + $step;
+    }
+  }
+}
+
+//
+@mixin replace-text($image, $x:50%, $y:50%) {
+  text-indent:-99999em;
+  overflow:hidden;
+  text-align:left;
+
+  background: {
+    image:$image;
+    repeat:no-repeat;
+    position:$x $y;
+  }
+}
+// .mail-icon {
+//   @include replace-text(url("../img/mail.svg"), 0);
+// }
+
+//List Repeat & Double margin
+@mixin order($height, $selectors...) {
+  @for $i from 0 to length($selectors) {
+    #{nth($selectors, $i + 1)} {
+      position:absolute;
+      height:$height;
+      margin-top:$i * $height;
+    }
+  }
+}
+// @include order(150px, "input.name", "input.address", "input.zip");

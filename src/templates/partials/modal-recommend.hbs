@@ -1,0 +1,187 @@
+{{!-- {{>modal-recommend id='recommend' wide='true' modal-title=''}} --}}
+
+<!-- uk-modal-recommend -->
+<div id="{{id}}" class="uk-flex-top uk-modal{{#if wide}} uk-modal-container{{/if}}" uk-modal>
+	<div class="uk-modal-dialog uk-margin-auto-vertical uk-width-2-3@l uk-width-1-2@xl">
+		<form onsubmit="return false;">
+			<button class="uk-modal-close-default" type="button" title="刪除" uk-close></button>
+			<div class="uk-modal-header">
+				<h2 class="uk-modal-title">{{modal-title}}</h2>
+			</div>
+			<div class="uk-modal-body">
+				{{!-- <div>
+					<ul class="border2 border_primary tw-mb-8 uk-tab" uk-tab uk-margin>
+						<li class="uk-active"><a href="#">圖書資料</a></li>
+						<li><a href="#">視聽資料</a></li>
+						<li><a href="#">期刊雜誌</a></li>
+						<li><a href="#">資料庫</a></li>
+					</ul>
+				</div> --}}
+				{{!-- <ul class="uk-subnav uk-subnav-pill" uk-switcher="connect: .uk-switcher"> --}}
+				<ul class="tab_buttons tab_buttons-txt-white tab_buttons-notw-border uk-tab" uk-tab="connect: .uk-switcher">
+					<li><a href="#">目前推薦資料</a></li>
+					<li><a href="#">館藏查詢結果</a></li>
+				</ul>
+				<ul class="uk-switcher uk-margin">
+					<li>
+						<div class="margin_y_child-even-m uk-grid uk-grid-collapse uk-flex-middle uk-child-width-expand@s" uk-grid
+							uk-height-match="target: .match">
+							<div class="match min_width-1/5!@s flex uk-flex-middle"><label
+									class="font_size-10 tw-font-bold uk-form-label" for="rc_edit_lan">出版語文</label>
+							</div>
+							<div class="min_width-4/5!@s">
+								<div class="uk-margin uk-grid-small uk-child-width-expand@m" uk-margin uk-grid>
+									<div class="min_width1_2!@m">
+										<select id="rc_edit_lan" class="uk-select">
+											<option>-請選擇語文-</option>
+											<option value="41" selected>正體中文</option>
+											<option value="42">簡體中文</option>
+											<option value="43">英文</option>
+											<option value="44">日文</option>
+											<option value="45">韓文</option>
+											<option value="46">其它</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="match min_width-1/5!@s flex uk-flex-middle"><label
+									class="font_size-10 tw-font-bold uk-form-label" for="rc_edit_media">媒體類型</label>
+							</div>
+							<div class="min_width-4/5!@s">
+								<div class="uk-margin uk-grid-small uk-child-width-expand@m" uk-margin uk-grid>
+									<div class="min_width1_2!@m">
+										<select id="rc_edit_media" class="uk-select">
+											<option>-請選擇媒體-</option>
+											<option value="31" selected>紙本</option>
+											<option value="32">電子版</option>
+											<option value="120">優先考慮紙本 (西文書若有紙本、電子 版，仍選訂紙本)</option>
+											<option value="104">其他 (請於推薦說明欄位中說明)</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="match min_width-1/5!@s flex uk-flex-middle">
+								<label class="font_size-10 tw-font-bold uk-form-label" for="rc_edit_title">題名</label>
+							</div>
+							<div class="min_width-4/5!@s">
+								<input id="rc_edit_title" class="uk-input" type="text" placeholder="精通 Python：運用簡單的套件進行現代運算(第二版)"
+									value="精通 Python：運用簡單的套件進行現代運算(第二版)">
+							</div>
+							<div class="match min_width-1/5!@s flex uk-flex-middle">
+								<label class="font_size-10 tw-font-bold uk-form-label" for="rc_edit_name">作者</label>
+							</div>
+							<div class="min_width-4/5!@s">
+								<input id="rc_edit_name" class="uk-input" type="text" placeholder="Bill Lubanovic, 賴屹民"
+									value="Bill Lubanovic, 賴屹民">
+							</div>
+							<div class="match min_width-1/5!@s flex uk-flex-middle">
+								<label class="font_size-10 tw-font-bold uk-form-label" for="rc_edit_publisher">出版者</label>
+							</div>
+							<div class="min_width-4/5!@s">
+								<input id="rc_edit_publisher" class="uk-input" type="text" placeholder="歐萊禮" value="歐萊禮">
+							</div>
+							<div class="match min_width-1/5!@s flex uk-flex-middle">
+								<label class="font_size-10 tw-font-bold uk-form-label" for="rc_edit_version">版本</label>
+							</div>
+							<div class="min_width-4/5!@s">
+								<input id="rc_edit_version" class="uk-input" type="text" placeholder="" value="">
+							</div>
+							<div class="match min_width-1/5!@s flex uk-flex-middle">
+								<label class="font_size-10 tw-font-bold uk-form-label" for="rc_edit_date">出版年</label>
+							</div>
+							<div class="min_width-4/5!@s">
+								<input id="rc_edit_date" class="uk-input" type="text" placeholder="2020-06-02" value="2020-06-02">
+							</div>
+							<div class="match min_width-1/5!@s flex uk-flex-middle">
+								<label class="font_size-10 tw-font-bold uk-form-label" for="rc_edit_isbn">ISBN</label>
+							</div>
+							<div class="min_width-4/5!@s">
+								<input id="rc_edit_isbn" class="uk-input" type="text" placeholder="9789865024864" value="9789865024864">
+							</div>
+							<div class="match min_width-1/5!@s flex uk-flex-middle">
+								<label class="font_size-10 tw-font-bold uk-form-label" for="rc_edit_url">說明介紹網址</label>
+							</div>
+							<div class="min_width-4/5!@s">
+								<input id="rc_edit_url" class="uk-input" type="text" placeholder=""
+									value="https://www.books.com.tw/products/0010858475">
+							</div>
+							<div class="match min_width-1/5!@s flex uk-flex-middle">
+								<label class="font_size-10 tw-font-bold uk-form-label" for="rc_edit_note">推薦者說明</label>
+							</div>
+							<div class="min_width-4/5!@s">
+								<textarea id="rc_edit_note" class="uk-textarea" rows="5"
+									placeholder="">臺的不法園光河解各場主這富可山不，雲課康化告內香，裝我電稱量主來他進如這全還內有萬孩過際看國境告。更南家畫投。</textarea>
+							</div>
+							<div class="match min_width-1/5!@s flex uk-flex-middle">
+								<label class="font_size-10 tw-font-bold uk-form-label" for="rc_edit_booking">我要預約</label>
+							</div>
+							<div class="min_width-4/5!@s">
+								<label><input id="rc_edit_booking" class="form_white uk-checkbox" type="checkbox"> 確定預約</label>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="margin_y_child-even-m uk-grid uk-grid-collapse uk-flex-middle uk-child-width-expand@s" uk-grid
+							uk-height-match="target: .match">
+							<div class="match min_width-1/5!@s flex uk-flex-middle"><label
+									class="font_size-10 tw-font-bold uk-form-label" for="rc_search_lan">出版語文</label>
+							</div>
+							<div class="min_width-4/5!@s">
+								<div class="uk-margin uk-grid-small uk-child-width-expand@m" uk-margin uk-grid>
+									<div class="min_width1_2!@m">
+										<select id="rc_search_lan" class="uk-select">
+											<option>-請選擇語文-</option>
+											<option value="41">正體中文</option>
+											<option value="42">簡體中文</option>
+											<option value="43">英文</option>
+											<option value="44">日文</option>
+											<option value="45">韓文</option>
+											<option value="46">其它</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="match min_width-1/5!@s flex uk-flex-middle">
+								<label class="font_size-10 tw-font-bold uk-form-label" for="rc_search_title">題名</label>
+							</div>
+							<div class="min_width-4/5!@s">
+								<input id="rc_search_title" class="uk-input" type="text" placeholder="">
+							</div>
+							<div class="match min_width-1/5!@s flex uk-flex-middle">
+								<label class="font_size-10 tw-font-bold uk-form-label" for="rc_search_name">作者</label>
+							</div>
+							<div class="min_width-4/5!@s">
+								<input id="rc_search_name" class="uk-input" type="text" placeholder="">
+							</div>
+							<div class="match min_width-1/5!@s flex uk-flex-middle">
+								<label class="font_size-10 tw-font-bold uk-form-label" for="rc_search_isbn">ISBN</label>
+							</div>
+							<div class="min_width-4/5!@s">
+								<input id="rc_search_isbn" class="uk-input" type="text" placeholder="">
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="uk-margin uk-modal-footer">
+				<ul class="uk-switcher uk-margin">
+					<li>
+						<div class="tw-justify-between uk-grid uk-grid-small" uk-grid uk-margin>
+							<div><a href="#" class="btn_primary min_width-100 uk-button uk-button-primary">送出推薦資料</a></div>
+							<div><button class="min_width-100 uk-button uk-button-default uk-modal-close" type="button">取　　消</button>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="tw-justify-between uk-grid uk-grid-small" uk-grid uk-margin>
+							<div><a href="#" class="btn_primary min_width-100 uk-button uk-button-primary">送出推薦資料</a></div>
+							<div><button class="min_width-100 uk-button uk-button-default uk-modal-close" type="button">取　　消</button>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</form>
+	</div>
+</div>
+<!-- uk-modal-recommend -->

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html class="text-m" lang="zh-Hant">
+
+  {{!-- First edit the title of the templateData in the gulp.task('templates') of gulpfile.js.
+  The title will be changed to {{title}} in all hbs --}}
+
+  <head>
+    {{!-- {{>meta bootstrap='true' bootstrap4='true' jquery='true' editor='true' }} --}}
+    {{>meta jquery='true' bootstrap='true'}}
+  </head>
+
+  <body>
+    {{>header}}
+
+    {{>pageContent card='true' content='result-search'}}
+
+    {{>footer}}
+
+    {{#if jqueryBody}}
+    <!-- jq:js -->
+    <script src="js/jquery.min.js"></script>
+    <!-- endinject -->
+    {{/if}}
+    <script type="text/javascript">
+      //根據點選的頁籤名稱，換標題文字
+      function changeText(obj) {
+        var x = $(obj).text();
+        document.getElementById("changeTextByClick").innerHTML = x;
+        // console.log(x);
+      }
+      //側邊欄手風琴開闔效果，切換icon表示展開/收闔狀態
+      function toggleIcon(e) {
+        $(e.target)
+          .prev('.panel-heading')
+          .find(".more-less")
+          .toggleClass('glyphicon-plus glyphicon-minus');
+      }
+      $('.panel-group').on('hidden.bs.collapse', toggleIcon);
+      $('.panel-group').on('shown.bs.collapse', toggleIcon);
+
+    </script>
+  </body>
+
+</html>

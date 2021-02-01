@@ -1,0 +1,62 @@
+<form onsubmit="return false;">
+	<div class="margin_y_child-even-m margin_y_child-m@m uk-grid uk-grid-collapse uk-flex-right uk-flex-middle" uk-grid>
+		<div class="uk-width-1-3@m">
+			<label class="font_size-10 tw-font-bold uk-form-label" for="form_name">姓名</label>
+		</div>
+		<div class="uk-width-2-3@m uk-grid-margin">
+			<input id="form_name" class="uk-input" type="text" placeholder="">
+		</div>
+		<div class="uk-width-1-3@m"><label class="font_size-10 tw-font-bold uk-form-label" for="form_dep">科別</label></div>
+		<div class="uk-width-2-3@m">
+			<div class="uk-margin uk-grid-small uk-child-width-expand@m" uk-margin uk-grid>
+				<div class="min_width1_2!@m">
+					<select id="form_dep" class="uk-select" onchange="showOption(this,5,'#other_dep')">
+						<option>-請選擇科別-</option>
+						<option>整形外科</option>
+						<option>美容外科</option>
+						<option>一般外科</option>
+						<option>乳房外科</option>
+						<option>其它</option>
+					</select>
+				</div>
+				<div id="other_dep" class="min_width1_2!@m" hidden>
+					<div class="uk-hidden@m" style="height: 10px;"></div>
+					<input class="uk-input" type="text" placeholder="請輸入科別" title="輸入關鍵字搜尋">
+				</div>
+			</div>
+		</div>
+		<div class="uk-width-1-3@m">
+			<label class="font_size-10 tw-font-bold uk-form-label" for="form_certificate">外科醫師證書字號</label>
+		</div>
+		<div class="uk-width-2-3@m uk-grid-margin">
+			<input id="form_certificate" class="uk-input" type="text" placeholder="">
+		</div>
+		<div class="uk-width-1-3@m">
+			<label class="font_size-10 tw-font-bold uk-form-label" for="form_email">Email</label>
+		</div>
+		<div class="uk-width-2-3@m uk-grid-margin">
+			<input id="form_email" class="uk-input" type="text" placeholder="">
+		</div>
+		<div class="uk-width-1-3@m">
+			<label class="font_size-10 tw-font-bold uk-form-label" for="form_phone">連絡電話</label>
+		</div>
+		<div class="uk-width-2-3@m uk-grid-margin">
+			<input id="form_phone" class="uk-input" type="text" placeholder="">
+		</div>
+		<div class="m:tw-mt-8 uk-width-1-1">
+			<div class="tw-space-y-1 min_width-1/2!@m">
+				<a href="#" class="btn_primary tw-w-full tw-rounded-full uk-button uk-button-primary">確定</a>
+			</div>
+		</div>
+		{{!-- <div class="uk-width-1-1">
+			<div class="uk-grid-small uk-child-width-expand uk-grid" uk-grid>
+				<div class="tw-space-y-1 min_width-1/2!@m">
+					<a href="#" class="btn_primary tw-w-full tw-rounded-full uk-button uk-button-primary">確定</a>
+				</div>
+				<div class="tw-space-y-1 min_width-1/2!@m">
+					<a href="#" class="tw-w-full tw-rounded-full uk-button uk-button-default" type="reset">取消</a>
+				</div>
+			</div>
+		</div> --}}
+	</div>
+</form>

@@ -1,0 +1,72 @@
+{{!-- {{>login formTitleOn=='true' formTitle='' stack='true' stackClass='uk-width-1-2@s' errorOn='true' error='驗證提示語' note='true' noteText='密碼規則說明' loginToHref='#' forgetPsw='true' cancel='true' register='true' contact='true'}} --}}
+
+<form onsubmit="return false;">
+  {{#if formTitleOn}}
+  <h3>{{formTitle}}</h3>
+  {{/if}}
+	<div class="uk-grid uk-grid-small{{#if stack}} uk-flex-column{{else}} uk-child-width-expand@s{{/if}}" uk-grid>
+    <div class="tw-space-y-1{{#if stack}} mx-auto {{stackClass}}{{else}} min_width-1/2!@s{{/if}}">
+      <label class="tw-w-full" for="acc">帳 號</label>
+      <input id="acc" class="uk-input" type="email" placeholder="">
+      {{#if errorOn}}
+      <p class="color_secondary-text uk-tw-text-small">{{error}}</p>
+      {{/if}}
+    </div>
+    <div class="tw-space-y-1{{#if stack}} mx-auto {{stackClass}}{{else}} min_width-1/2!@s{{/if}}">
+      <label class="tw-w-full" for="paw">密 碼</label>
+      <input id="paw" class="uk-input" type="password" placeholder="">
+      {{#if errorOn}}
+      <p class="color_secondary-text uk-tw-text-small">{{error}}</p>
+      {{/if}}
+    </div>
+    {{#if captcha}}
+    <div class="tw-space-y-1{{#if stack}} mx-auto {{stackClass}}{{else}} min_width-1/2!@s{{/if}}">
+      <label class="tw-w-full" for="cap">驗證碼</label>
+      <input id="cap" class="uk-input" type="text" placeholder="">
+      {{#if errorOn}}
+      <p class="color_secondary-text s:tw-mt-1 uk-tw-text-small">{{error}}</p>
+      {{/if}}
+    </div>
+    <div class="tw-space-y-1{{#if stack}} mx-auto {{stackClass}}{{else}} min_width-1/2!@s{{/if}}">
+      <span class="tw-w-full uk-visible@m"></span>
+      <img class="tw-inline-tw-block tw-mr-2" data-src="http://fakeimg.pl/150x40/" width="150" height="40" alt="驗證碼" uk-img>
+      <a href="#" title="重新換圖"><i class="fas fa-redo"></i><span class="tw-sr-only">重新換圖</span></a>
+    </div>
+    {{/if}}
+    {{#if note}}
+		<div class="{{#if stack}}mx-auto tw-text-center {{stackClass}}{{else}}uk-width-1-1{{/if}}">
+      <small class="tw-mt-2"><i class="tw-mr-1 fas fa-question-circle"></i>{{noteText}}</small>
+    </div>
+    {{/if}}
+    <div class="m:tw-mt-2 mx-auto uk-width-1-1">
+      <div class="uk-grid uk-grid-small{{#if stack}} uk-flex-column{{else}} uk-child-width-expand{{/if}}" uk-grid>
+        <div class="tw-space-y-1{{#if stack}} mx-auto {{stackClass}}{{else}} uk-text-nowrap{{/if}}">
+          <a href="{{loginToHref}}" class="btn_primary tw-w-full uk-button uk-button-primary">登入</a>
+        </div>
+        {{#if forgetPsw}}
+        <div class="tw-space-y-1{{#if stack}} mx-auto {{stackClass}}{{else}} uk-text-nowrap{{/if}}">
+          <a href="#" class="btn_primary tw-w-full uk-button uk-button-primary">忘記密碼</a>
+        </div>
+        {{/if}}
+        {{#if cancel}}
+        <div class="tw-space-y-1{{#if stack}} mx-auto {{stackClass}}{{else}} uk-text-nowrap{{/if}}">
+          <a href="#" class="tw-w-full uk-button uk-button-default">取消</a>
+        </div>
+        {{/if}}
+        {{!-- {{#if register}}
+        <div class="tw-space-y-1{{#if stack}} mx-auto {{stackClass}}{{else}} uk-text-nowrap{{/if}}">
+          <a href="#register" class="tw-w-full uk-button uk-button-default uk-toggle" uk-toggle>註冊</a>
+        </div>
+        {{/if}} --}}
+      </div>
+      {{#if register}}
+      <small class="tw-mt-2 tw-text-center tw-block">
+        沒有帳戶？<a class="color_primary link_line tw-ml-2 uk-toggle" href="#register" uk-toggle>註冊</a>
+      </small>
+      {{/if}}
+      {{#if contact}}
+      <small class="tw-mt-2 tw-text-center tw-block">忘記帳戶資訊，請聯絡系統管理員<br><a class="color_primary link_line" href="mailto:sherry5473@tmu.edu.tw">sherry5473@tmu.edu.tw</a><br>02-6638-2736 分機 1219</small>
+      {{/if}}
+    </div>
+  </div>
+</form>

@@ -1,0 +1,915 @@
+//$<argument/virable>, &:The parent selector, #{$val}:selector(property) with level/CANNOT used for value ($val can be used), @import
+//@extend <name> | %<name> {}, @mixin <name> {$<var-name>} | @include <name> {$<var>}, #{$<var>}
+//@mixin / @include <name> { ... }, @mixin / @include <name>(<arguments...>) { ... }
+//$var:<value> !default; (!default:This assigns a value to a variable only if that variable isn’t defined or its value is null. Otherwise, the existing value will be used. This way, users can set variables before they import your library - https://sass-lang.com/documentation/variables#default-values)
+//map-get($fontsize-btn, m) map to:$fontsize-btn:("default":".fontSize", "m":".fontSizeM", "l":".fontSizeL");
+
+//mc: materializecss
+
+//### Media ###------------------------------------------------//
+$small:640px !default; //s
+$medium:960px !default; //m
+$large:1200px !default; //l
+$xlarge:1600px !default; //xl
+$small-range:"only screen and (min-width :#{$small})" !default;
+$medium-range:"only screen and (min-width :#{$medium})" !default;
+$large-range:"only screen and (min-width :#{$large})" !default;
+$xlarge-range:"only screen and (min-width :#{$xlarge})" !default;
+$small-down:"only screen and (max-width :#{$small}-1px)" !default;
+$medium-down:"only screen and (max-width :#{$medium}-1px)" !default;
+$medium-only:"only screen and (min-width :#{$medium}) and (max-width :#{$large}-1px)" !default;
+
+//### Font ###------------------------------------------------//
+$font-cht:'微軟正黑體', 'Microsoft JhengHei', 'PingFang TC', 'Heiti TC', 'Microsoft YaHei', Helvetica, Arial, Verdana, sans-serif !default;
+$font-cht-hei:'Noto Sans TC', sans-serif !default;
+$font-cht-ming:'Noto Serif TC', serif !default;
+$font-eng:Poppins, sans-serif !default;
+$font-fa:'Font Awesome 5 Free', 'Font Awesome 5 Brands' !default;
+$font-mi:'Material Icons' !default;
+$font-def:$font-cht-hei !default;
+
+$fontwight:400 !default;
+$font-base:16px !default;
+$fontsize:calc(#{strip-unit($font-base)}rem/16) !default; //it equals 18px=(18/16)rem, browser default fnot size in body:1rem=16px
+
+$fontsize-xs:calc(#{strip-unit($font-base)-2*2}rem/16) !default; //1rem=$font-base
+$fontsize-s:calc(#{strip-unit($font-base)-2}rem/16) !default;
+$fontsize-m:calc(#{strip-unit($font-base)+2}rem/16) !default;
+$fontsize-l:calc(#{strip-unit($font-base)+2*2}rem/16) !default;
+$fontsize-xl:calc(#{strip-unit($font-base)+2*3}rem/16) !default;
+$fontsize-xs-integer:strip-unit($font-base)-2*2 !default; //1rem=$font-base
+$fontsize-s-integer:strip-unit($font-base)-2 !default;
+$fontsize-integer:strip-unit($font-base) !default;
+$fontsize-m-integer:strip-unit($font-base)+2 !default;
+$fontsize-l-integer:strip-unit($font-base)+2*2 !default;
+$fontsize-xl-integer:strip-unit($font-base)+2*3 !default;
+$min-fontsize:strip-unit(10px) !default; //browser default display minimum fnot size, even smaller than 12px
+$max-fontsize:strip-unit(200px) !default;
+
+
+//### Text ###------------------------------------------------//
+$line-normal-val:normal !default;
+$line-height:1.5 !default;
+$min-line-height:1 !default;
+$max-line-height:2 !default;
+
+//### Selectors ###------------------------------------------------//
+$boolean:false !default;
+$base-text:h1, h2, h3, h4, h5, h6, p !default;
+$small-text:footer, small !default;
+$footer:"#footer" !default;
+$fa:"[class*=fa-]" !default;
+$mi:"[class*=material-]" !default;
+$font-def-name:".font_default" !default;
+$font-size-name:".font_size-" !default;
+$font-weight-name:".font_weight-" !default;
+$line-default:".line-default" !default;
+$line-normal:".line-normal" !default;
+$line-height-name:".line-" !default;
+$text-m:".text-m" !default;
+$text-l:".text-l" !default;
+$fontsize-btn:".text_size" !default;
+$fontsize-btn-s:".text_size-s" !default;
+$fontsize-btn-m:".text_size-m" !default;
+$fontsize-btn-l:".text_size-l" !default;
+$font-eng-name:".font_eng" !default;
+$font-number-name:".font_number" !default;
+$focus:".focus" !default;
+$focus-emphasis:"a:focus, button:focus, input:focus, select:focus, textarea:focus" !default;
+$url-fix:".urlFix" !default;
+$text-shadow-black:".text_shadow-black" !default;
+$text-color-white:".color_white" !default;
+$text-color-black:".color_black" !default;
+$text-color-default:".color_default" !default;
+$text-color-dark:".color_dark" !default;
+$text-color-grey:".color_grey" !default;
+$text-grey-100:".color_grey-100" !default;
+$text-grey-200:".color_grey-200" !default;
+$text-grey-300:".color_grey-300" !default;
+$text-grey-400:".color_grey-400" !default;
+$text-grey-500:".color_grey-500" !default;
+$text-grey-600:".color_grey-600" !default;
+$text-grey-700:".color_grey-700" !default;
+$text-grey-800:".color_grey-800" !default;
+$text-grey-900:".color_grey-900" !default;
+$text-bluegrey-100:".color_bluegrey-100" !default;
+$text-bluegrey-200:".color_bluegrey-200" !default;
+$text-bluegrey-300:".color_bluegrey-300" !default;
+$text-bluegrey-400:".color_bluegrey-400" !default;
+$text-bluegrey-500:".color_bluegrey-500" !default;
+$text-bluegrey-600:".color_bluegrey-600" !default;
+$text-bluegrey-700:".color_bluegrey-700" !default;
+$text-bluegrey-800:".color_bluegrey-800" !default;
+$text-bluegrey-900:".color_bluegrey-900" !default;
+$text-red-100:".color_red-100" !default;
+$text-red-200:".color_red-200" !default;
+$text-red-300:".color_red-300" !default;
+$text-red-400:".color_red-400" !default;
+$text-red-500:".color_red-500" !default;
+$text-red-600:".color_red-600" !default;
+$text-red-700:".color_red-700" !default;
+$text-red-800:".color_red-800" !default;
+$text-red-900:".color_red-900" !default;
+$text-orange-100:".color_orange-100" !default;
+$text-orange-200:".color_orange-200" !default;
+$text-orange-300:".color_orange-300" !default;
+$text-orange-400:".color_orange-400" !default;
+$text-orange-500:".color_orange-500" !default;
+$text-orange-600:".color_orange-600" !default;
+$text-orange-700:".color_orange-700" !default;
+$text-orange-800:".color_orange-800" !default;
+$text-orange-900:".color_orange-900" !default;
+$text-yellow-100:".color_yellow-100" !default;
+$text-yellow-200:".color_yellow-200" !default;
+$text-yellow-300:".color_yellow-300" !default;
+$text-yellow-400:".color_yellow-400" !default;
+$text-yellow-500:".color_yellow-500" !default;
+$text-yellow-600:".color_yellow-600" !default;
+$text-yellow-700:".color_yellow-700" !default;
+$text-yellow-800:".color_yellow-800" !default;
+$text-yellow-900:".color_yellow-900" !default;
+$text-green-100:".color_green-100" !default;
+$text-green-200:".color_green-200" !default;
+$text-green-300:".color_green-300" !default;
+$text-green-400:".color_green-400" !default;
+$text-green-500:".color_green-500" !default;
+$text-green-600:".color_green-600" !default;
+$text-green-700:".color_green-700" !default;
+$text-green-800:".color_green-800" !default;
+$text-green-900:".color_green-900" !default;
+$text-teal-100:".color_teal-100" !default;
+$text-teal-200:".color_teal-200" !default;
+$text-teal-300:".color_teal-300" !default;
+$text-teal-400:".color_teal-400" !default;
+$text-teal-500:".color_teal-500" !default;
+$text-teal-600:".color_teal-600" !default;
+$text-teal-700:".color_teal-700" !default;
+$text-teal-800:".color_teal-800" !default;
+$text-teal-900:".color_teal-900" !default;
+$text-blue-100:".color_blue-100" !default;
+$text-blue-200:".color_blue-200" !default;
+$text-blue-300:".color_blue-300" !default;
+$text-blue-400:".color_blue-400" !default;
+$text-blue-500:".color_blue-500" !default;
+$text-blue-600:".color_blue-600" !default;
+$text-blue-700:".color_blue-700" !default;
+$text-blue-800:".color_blue-800" !default;
+$text-blue-900:".color_blue-900" !default;
+$text-indigo-100:".color_indigo-100" !default;
+$text-indigo-200:".color_indigo-200" !default;
+$text-indigo-300:".color_indigo-300" !default;
+$text-indigo-400:".color_indigo-400" !default;
+$text-indigo-500:".color_indigo-500" !default;
+$text-indigo-600:".color_indigo-600" !default;
+$text-indigo-700:".color_indigo-700" !default;
+$text-indigo-800:".color_indigo-800" !default;
+$text-indigo-900:".color_indigo-900" !default;
+$text-purple-100:".color_purple-100" !default;
+$text-purple-200:".color_purple-200" !default;
+$text-purple-300:".color_purple-300" !default;
+$text-purple-400:".color_purple-400" !default;
+$text-purple-500:".color_purple-500" !default;
+$text-purple-600:".color_purple-600" !default;
+$text-purple-700:".color_purple-700" !default;
+$text-purple-800:".color_purple-800" !default;
+$text-purple-900:".color_purple-900" !default;
+$text-pink-100:".color_pink-100" !default;
+$text-pink-200:".color_pink-200" !default;
+$text-pink-300:".color_pink-300" !default;
+$text-pink-400:".color_pink-400" !default;
+$text-pink-500:".color_pink-500" !default;
+$text-pink-600:".color_pink-600" !default;
+$text-pink-700:".color_pink-700" !default;
+$text-pink-800:".color_pink-800" !default;
+$text-pink-900:".color_pink-900" !default;
+$tailwind-bg-white:".bg-white" !default;
+$bg-white:".bg_white" !default;
+$bg-black:".bg_black" !default;
+$bg-dark:".bg_dark" !default;
+$bg-grey:".bg_grey" !default;
+$bg-grey-100:".bg_grey-100" !default;
+$bg-grey-200:".bg_grey-200" !default;
+$bg-grey-300:".bg_grey-300" !default;
+$bg-grey-400:".bg_grey-400" !default;
+$bg-grey-500:".bg_grey-500" !default;
+$bg-grey-600:".bg_grey-600" !default;
+$bg-grey-700:".bg_grey-700" !default;
+$bg-grey-800:".bg_grey-800" !default;
+$bg-grey-900:".bg_grey-900" !default;
+$bg-bluegrey-100:".bg_bluegrey-100" !default;
+$bg-bluegrey-200:".bg_bluegrey-200" !default;
+$bg-bluegrey-300:".bg_bluegrey-300" !default;
+$bg-bluegrey-400:".bg_bluegrey-400" !default;
+$bg-bluegrey-500:".bg_bluegrey-500" !default;
+$bg-bluegrey-600:".bg_bluegrey-600" !default;
+$bg-bluegrey-700:".bg_bluegrey-700" !default;
+$bg-bluegrey-800:".bg_bluegrey-800" !default;
+$bg-bluegrey-900:".bg_bluegrey-900" !default;
+$bg-red-100:".bg_red-100" !default;
+$bg-red-200:".bg_red-200" !default;
+$bg-red-300:".bg_red-300" !default;
+$bg-red-400:".bg_red-400" !default;
+$bg-red-500:".bg_red-500" !default;
+$bg-red-600:".bg_red-600" !default;
+$bg-red-700:".bg_red-700" !default;
+$bg-red-800:".bg_red-800" !default;
+$bg-red-900:".bg_red-900" !default;
+$bg-orange-100:".bg_orange-100" !default;
+$bg-orange-200:".bg_orange-200" !default;
+$bg-orange-300:".bg_orange-300" !default;
+$bg-orange-400:".bg_orange-400" !default;
+$bg-orange-500:".bg_orange-500" !default;
+$bg-orange-600:".bg_orange-600" !default;
+$bg-orange-700:".bg_orange-700" !default;
+$bg-orange-800:".bg_orange-800" !default;
+$bg-orange-900:".bg_orange-900" !default;
+$bg-yellow-100:".bg_yellow-100" !default;
+$bg-yellow-200:".bg_yellow-200" !default;
+$bg-yellow-300:".bg_yellow-300" !default;
+$bg-yellow-400:".bg_yellow-400" !default;
+$bg-yellow-500:".bg_yellow-500" !default;
+$bg-yellow-600:".bg_yellow-600" !default;
+$bg-yellow-700:".bg_yellow-700" !default;
+$bg-yellow-800:".bg_yellow-800" !default;
+$bg-yellow-900:".bg_yellow-900" !default;
+$bg-green-100:".bg_green-100" !default;
+$bg-green-200:".bg_green-200" !default;
+$bg-green-300:".bg_green-300" !default;
+$bg-green-400:".bg_green-400" !default;
+$bg-green-500:".bg_green-500" !default;
+$bg-green-600:".bg_green-600" !default;
+$bg-green-700:".bg_green-700" !default;
+$bg-green-800:".bg_green-800" !default;
+$bg-green-900:".bg_green-900" !default;
+$bg-teal-100:".bg_teal-100" !default;
+$bg-teal-200:".bg_teal-200" !default;
+$bg-teal-300:".bg_teal-300" !default;
+$bg-teal-400:".bg_teal-400" !default;
+$bg-teal-500:".bg_teal-500" !default;
+$bg-teal-600:".bg_teal-600" !default;
+$bg-teal-700:".bg_teal-700" !default;
+$bg-teal-800:".bg_teal-800" !default;
+$bg-teal-900:".bg_teal-900" !default;
+$bg-blue-100:".bg_blue-100" !default;
+$bg-blue-200:".bg_blue-200" !default;
+$bg-blue-300:".bg_blue-300" !default;
+$bg-blue-400:".bg_blue-400" !default;
+$bg-blue-500:".bg_blue-500" !default;
+$bg-blue-600:".bg_blue-600" !default;
+$bg-blue-700:".bg_blue-700" !default;
+$bg-blue-800:".bg_blue-800" !default;
+$bg-blue-900:".bg_blue-900" !default;
+$bg-indigo-100:".bg_indigo-100" !default;
+$bg-indigo-200:".bg_indigo-200" !default;
+$bg-indigo-300:".bg_indigo-300" !default;
+$bg-indigo-400:".bg_indigo-400" !default;
+$bg-indigo-500:".bg_indigo-500" !default;
+$bg-indigo-600:".bg_indigo-600" !default;
+$bg-indigo-700:".bg_indigo-700" !default;
+$bg-indigo-800:".bg_indigo-800" !default;
+$bg-indigo-900:".bg_indigo-900" !default;
+$bg-purple-100:".bg_purple-100" !default;
+$bg-purple-200:".bg_purple-200" !default;
+$bg-purple-300:".bg_purple-300" !default;
+$bg-purple-400:".bg_purple-400" !default;
+$bg-purple-500:".bg_purple-500" !default;
+$bg-purple-600:".bg_purple-600" !default;
+$bg-purple-700:".bg_purple-700" !default;
+$bg-purple-800:".bg_purple-800" !default;
+$bg-purple-900:".bg_purple-900" !default;
+$bg-pink-100:".bg_pink-100" !default;
+$bg-pink-200:".bg_pink-200" !default;
+$bg-pink-300:".bg_pink-300" !default;
+$bg-pink-400:".bg_pink-400" !default;
+$bg-pink-500:".bg_pink-500" !default;
+$bg-pink-600:".bg_pink-600" !default;
+$bg-pink-700:".bg_pink-700" !default;
+$bg-pink-800:".bg_pink-800" !default;
+$bg-pink-900:".bg_pink-900" !default;
+$btn-white:".btn_white" !default;
+$btn-black:".btn_black" !default;
+$btn-dark:".btn_dark" !default;
+$btn-grey:".btn_grey" !default;
+$btn-grey-100:".btn_grey-100" !default;
+$btn-grey-200:".btn_grey-200" !default;
+$btn-grey-300:".btn_grey-300" !default;
+$btn-grey-400:".btn_grey-400" !default;
+$btn-grey-500:".btn_grey-500" !default;
+$btn-grey-600:".btn_grey-600" !default;
+$btn-grey-700:".btn_grey-700" !default;
+$btn-grey-800:".btn_grey-800" !default;
+$btn-grey-900:".btn_grey-900" !default;
+$btn-bluegrey-100:".btn_bluegrey-100" !default;
+$btn-bluegrey-200:".btn_bluegrey-200" !default;
+$btn-bluegrey-300:".btn_bluegrey-300" !default;
+$btn-bluegrey-400:".btn_bluegrey-400" !default;
+$btn-bluegrey-500:".btn_bluegrey-500" !default;
+$btn-bluegrey-600:".btn_bluegrey-600" !default;
+$btn-bluegrey-700:".btn_bluegrey-700" !default;
+$btn-bluegrey-800:".btn_bluegrey-800" !default;
+$btn-bluegrey-900:".btn_bluegrey-900" !default;
+$btn-red-100:".btn_red-100" !default;
+$btn-red-200:".btn_red-200" !default;
+$btn-red-300:".btn_red-300" !default;
+$btn-red-400:".btn_red-400" !default;
+$btn-red-500:".btn_red-500" !default;
+$btn-red-600:".btn_red-600" !default;
+$btn-red-700:".btn_red-700" !default;
+$btn-red-800:".btn_red-800" !default;
+$btn-red-900:".btn_red-900" !default;
+$btn-orange-100:".btn_orange-100" !default;
+$btn-orange-200:".btn_orange-200" !default;
+$btn-orange-300:".btn_orange-300" !default;
+$btn-orange-400:".btn_orange-400" !default;
+$btn-orange-500:".btn_orange-500" !default;
+$btn-orange-600:".btn_orange-600" !default;
+$btn-orange-700:".btn_orange-700" !default;
+$btn-orange-800:".btn_orange-800" !default;
+$btn-orange-900:".btn_orange-900" !default;
+$btn-yellow-100:".btn_yellow-100" !default;
+$btn-yellow-200:".btn_yellow-200" !default;
+$btn-yellow-300:".btn_yellow-300" !default;
+$btn-yellow-400:".btn_yellow-400" !default;
+$btn-yellow-500:".btn_yellow-500" !default;
+$btn-yellow-600:".btn_yellow-600" !default;
+$btn-yellow-700:".btn_yellow-700" !default;
+$btn-yellow-800:".btn_yellow-800" !default;
+$btn-yellow-900:".btn_yellow-900" !default;
+$btn-green-100:".btn_green-100" !default;
+$btn-green-200:".btn_green-200" !default;
+$btn-green-300:".btn_green-300" !default;
+$btn-green-400:".btn_green-400" !default;
+$btn-green-500:".btn_green-500" !default;
+$btn-green-600:".btn_green-600" !default;
+$btn-green-700:".btn_green-700" !default;
+$btn-green-800:".btn_green-800" !default;
+$btn-green-900:".btn_green-900" !default;
+$btn-teal-100:".btn_teal-100" !default;
+$btn-teal-200:".btn_teal-200" !default;
+$btn-teal-300:".btn_teal-300" !default;
+$btn-teal-400:".btn_teal-400" !default;
+$btn-teal-500:".btn_teal-500" !default;
+$btn-teal-600:".btn_teal-600" !default;
+$btn-teal-700:".btn_teal-700" !default;
+$btn-teal-800:".btn_teal-800" !default;
+$btn-teal-900:".btn_teal-900" !default;
+$btn-blue-100:".btn_blue-100" !default;
+$btn-blue-200:".btn_blue-200" !default;
+$btn-blue-300:".btn_blue-300" !default;
+$btn-blue-400:".btn_blue-400" !default;
+$btn-blue-500:".btn_blue-500" !default;
+$btn-blue-600:".btn_blue-600" !default;
+$btn-blue-700:".btn_blue-700" !default;
+$btn-blue-800:".btn_blue-800" !default;
+$btn-blue-900:".btn_blue-900" !default;
+$btn-indigo-100:".btn_indigo-100" !default;
+$btn-indigo-200:".btn_indigo-200" !default;
+$btn-indigo-300:".btn_indigo-300" !default;
+$btn-indigo-400:".btn_indigo-400" !default;
+$btn-indigo-500:".btn_indigo-500" !default;
+$btn-indigo-600:".btn_indigo-600" !default;
+$btn-indigo-700:".btn_indigo-700" !default;
+$btn-indigo-800:".btn_indigo-800" !default;
+$btn-indigo-900:".btn_indigo-900" !default;
+$btn-purple-100:".btn_purple-100" !default;
+$btn-purple-200:".btn_purple-200" !default;
+$btn-purple-300:".btn_purple-300" !default;
+$btn-purple-400:".btn_purple-400" !default;
+$btn-purple-500:".btn_purple-500" !default;
+$btn-purple-600:".btn_purple-600" !default;
+$btn-purple-700:".btn_purple-700" !default;
+$btn-purple-800:".btn_purple-800" !default;
+$btn-purple-900:".btn_purple-900" !default;
+$btn-pink-100:".btn_pink-100" !default;
+$btn-pink-200:".btn_pink-200" !default;
+$btn-pink-300:".btn_pink-300" !default;
+$btn-pink-400:".btn_pink-400" !default;
+$btn-pink-500:".btn_pink-500" !default;
+$btn-pink-600:".btn_pink-600" !default;
+$btn-pink-700:".btn_pink-700" !default;
+$btn-pink-800:".btn_pink-800" !default;
+$btn-pink-900:".btn_pink-900" !default;
+$bg-white-opacity:".bg_white_opacity-" !default;
+$bg-black-opacity:".bg_black_opacity-" !default;
+$text-color-facebook:".color_facebook" !default;
+$bg-facebook:".bg_facebook" !default;
+$text-color-twitter:".color_twitter" !default;
+$bg-twitter:".bg_twitter" !default;
+$text-color-googleplus:".color_googleplus" !default;
+$bg-googleplus:".bg_googleplus" !default;
+$text-color-linkedin:".color_linkedin" !default;
+$bg-linkedin:".bg_linkedin" !default;
+$text-color-line:".color_line" !default;
+$bg-line:".bg_line" !default;
+$bg-img-gradient:".bg_img_gradient" !default;
+$border:".border" !default;
+$border-dashed:".border_dashed" !default;
+$border-dotted:".border_dotted" !default;
+$border-double:".border_double" !default;
+$border-group:".border_group" !default;
+$border-white-opacity:".border_white_opacity-" !default;
+$border-black-opacity:".border_black_opacity-" !default;
+$divider-dashed:".divider_dashed" !default;
+$divider-child:".divider_child" !default;
+$opacity-name:".opacity-" !default;
+$active:".active" !default;
+$disabled:".disabled" !default;
+$inline-block:a, span, label, strong, small !default;
+$empty:".empty";
+$ifEmpty:".ifEmpty";
+$none:"img[src='']", "#{$empty}:empty:only-child" !default;
+$margin-child:".margin_child" !default;
+$margin-x-child:".margin_x_child" !default;
+$margin-x-child-m:".margin_x_child-m" !default;
+$margin-x-child-l:".margin_x_child-l" !default;
+$margin-y-child:".margin_y_child" !default;
+$margin-y-child-m:".margin_y_child-m" !default;
+$margin-y-child-l:".margin_y_child-l" !default;
+$margin-y-child-even:".margin_y_child-even" !default;
+$margin-y-child-even-m:".margin_y_child-even-m" !default;
+$margin-y-child-even-l:".margin_y_child-even-l" !default;
+$margin-y-child-0:".margin_y_child-0" !default;
+$margin-y-all-child:".margin_y_all_child" !default;
+$margin-y-all-child-m:".margin_y_all_child-m" !default;
+$margin-y-all-child-l:".margin_y_all_child-l" !default;
+$margin-y-all-child-even:".margin_y_all_child-even" !default;
+$margin-y-all-child-even-m:".margin_y_all_child-even-m" !default;
+$margin-y-all-child-even-l:".margin_y_all_child-even-l" !default;
+$padding-x-child-0:".padding_x_child-0" !default;
+$padding-x-child:".padding_x_child" !default;
+$padding-x-child-m:".padding_x_child-m" !default;
+$padding-x-child-l:".padding_x_child-l" !default;
+$list:".list" !default;
+$list-striped:".list_striped" !default;
+$list-horizontal:".list_horizontal" !default;
+$list-decimal:".list_decimal" !default;
+$list-decimal-ch:".list_decimal_ch" !default;
+$list-decimal-row:".list_decimal_row" !default;
+$list-decimal-leading-zero:".list_decimal-leading-zero" !default;
+$list-cjk-ideographic:".list_cjk-ideographic" !default;
+$list-upper-latin:".list_upper-latin" !default;
+$list-lower-latin:".list_lower-latin" !default;
+$list-lower-roman:".list_lower-roman" !default;
+$list-upper-roman:".list_upper-roman" !default;
+$list-initial:".list_initial" !default;
+$list-badge:".list_badge" !default;
+$list-badge-r:".list_badge-r" !default;
+$list-badge-divder:".list_badge-divder" !default;
+$list-badge-margin-s:".list_badge_margin-s" !default;
+$list-arrow:".list_arrow" !default;
+$list-dot:".list_dot" !default;
+$list-vline:".list_vline" !default;
+$list-btmline:".list_btmline" !default;
+$list-collapse:".list_collapse" !default;
+$list-small:".list_small" !default;
+$list-tabs:".list_tabs" !default;
+$list-tabs-icon-active-white:".list_tabs-icon-active-white" !default;
+$list-tabs-link:".list_tabs-link" !default;
+$list-tabs-bullet:".list_tabs-bullet" !default;
+$list-tabs-header:".list_tabs-header" !default;
+$list-tabs-secondary:".list_tabs-secondary" !default;
+$list-tabs-color3:".list_tabs-color3" !default;
+$list-tabs-color4:".list_tabs-color4" !default;
+$tab-buttons:".tab_buttons" !default;
+$tab-buttons-rounded:".tab_buttons-rounded" !default;
+$tab-buttons-txt-white:".tab_buttons-txt-white" !default;
+$tab-buttons-noborder:".tab_buttons-noborder" !default;
+$hanging-indent:".hanging_indent" !default;
+$listFaIcon-indent:".listFaIcon_indent" !default;
+$reset-indent:".reset_indent" !default;
+$width:".w-" !default;
+$min-width:".min_width-" !default;
+$max-width:".max_width-" !default;
+$min-height:".min_height-" !default;
+$max-height:".max_height-" !default;
+$overflow-hidden:".overflow_hidden" !default;
+$left:".left-" !default;
+$top:".top-" !default;
+$right:".right-" !default;
+$bottom:".bottom-" !default;
+$truncate:".truncate-" !default;
+$ellipsis:".ellipsis-" !default;
+$aspect:".aspect" !default;
+$ratio:".ratio-" !default;
+$pseudo-item-pipe:".pseudo\\:item_pipe" !default;
+$pseudo-item-circle:".pseudo\\:item_circle" !default;
+$pseudo-item-dot:".pseudo\\:item_dot" !default;
+$pseudo-item-link:".pseudo\\:item_link" !default;
+$pseudo-fa:".pseudo\\:fa-" !default;
+$pseudo-fa-angle-right:".pseudo\\:fa-angle-right" !default;
+$pseudo-parentheses:".pseudo\\:parentheses" !default;
+$pseudo-line-vertical:".pseudo\\:line_v" !default;
+$pseudo-slash:".pseudo\\:slash" !default;
+$pseudo-bottom-line:".pseudo\\:btm_line" !default;
+$pseudo-comma:".pseudo\\:comma" !default;
+$pseudo-comma-ch:".pseudo\\:comma_ch" !default;
+$pseudo-comma-dot:".pseudo\\:comma_dot" !default;
+$pseudo-arrow:".pseudo\\:arrow" !default;
+$pseudo-plus:".pseudo\\:plus" !default;
+$quotes-ch:".quotes" !default;
+$quotes-dashes:".dashes" !default;
+$checkbox:".checkbox" !default;
+$checkbox-circle:".checkbox_circle" !default;
+$grid-xl:".grid_xl" !default;
+$grid-l:".grid_l" !default;
+$grid-m:".grid_m" !default;
+$grid-s:".grid_s" !default;
+$grid-xs:".grid_xs" !default;
+$grid-divider-stack-remove:".grid_divider_stack_remove" !default;
+$container-responsive:".container_responsive" !default;
+$container-expand:".container_expand" !default;
+$pagination-padding-s:".pagination_padding_s" !default;
+$pagination-bg:".pagination_bg" !default;
+$pagination-link:".pagination_link" !default;
+$pagination:".pagination" !default;
+$button:".button" !default;
+$accordion-icon-l:".accordion_icon-l" !default;
+$accordion-icon-r:".accordion_icon-r" !default;
+$accordion-icon-r-arrow:".accordion_icon-r-arrow" !default;
+$table-responsive:".table_responsive" !default;
+$table-striped-aler:".table_striped-alert" !default;
+$form-white:".form_white" !default;
+$sub-nav:".sub_nav" !default;
+$hover:".hover" !default;
+$hover-bg:".hover_bg" !default;
+$nav-reset:".nav_reset" !default;
+$nav-bar:".nav_bar" !default;
+$nav-bar-primary:".nav_bar-primary" !default;
+$nav-bar-secondary:".nav_bar-secondary" !default;
+$nav-bar-color3:".nav_bar-color3" !default;
+$nav-bar-color4:".nav_bar-color4" !default;
+$nav-header-dotted:".nav_header-dotted" !default;
+$link-line:".link_line" !default;
+$bottom-line:".btm_line" !default;
+$logo:".logo" !default;
+$logo-bg:".logo_bg" !default;
+$logo-text:".logo_text" !default;
+$logo-control:".logo_control" !default;
+$logo-text-control:".logo_text_control" !default;
+$logo-cht:".logo_cht" !default;
+$logo-eng:".logo_eng" !default;
+$logo-change:".logo_change" !default;
+$logo-position:".logo_position" !default;
+$logo-pseudo:".logo_pseudo" !default;
+$dotnav-large:".dotnav_large" !default;
+$hidden-ie:".hidden_ie" !default;
+$tab-btn:".tab_btn" !default;
+$tab-btn-noline:".tab_btn-noline" !default;
+$tab-btn-secondary:".tab_btn-secondary" !default;
+$tab-btn-active-white:".tab_btn-active-white" !default;
+$tab-btn-space-s:".tab_btn-space-s" !default;
+$tab-btn-space-xs:".tab_btn-space-xs" !default;
+$slidenav-thick:".slidenav_thick" !default;
+$vertical-middle:".vertical_middle" !default;
+
+$mc-card:".card" !default;
+$mc-card-content:".card-content" !default;
+$mc-underline:".underline" !default;
+
+$uk:"[class*=uk-]" !default;
+$uk-breadcrumb:".uk-breadcrumb" !default;
+$uk-breadcrumb-pseudo:".uk-breadcrumb>:nth-child(n+2):not(.uk-first-column)::before" !default;
+$uk-tab:".uk-tab" !default;
+$uk-tab-pseudo:".uk-tab::before" !default;
+$uk-alert:".uk-alert" !default;
+$uk-grid:".uk-grid" !default;
+$uk-grid-divider:".uk-grid-divider" !default;
+$uk-grid-stack:".uk-grid-stack" !default;
+$uk-grid-margin:".uk-grid-margin" !default;
+$uk-width:"[class*='uk-width']" !default;
+$uk-card:".uk-card" !default;
+$uk-card-small:".uk-card-small" !default;
+$uk-card-large:".uk-card-large" !default;
+$uk-subnav:".uk-subnav" !default;
+$uk-nav:".uk-nav" !default;
+$uk-nav-sub:".uk-nav-sub" !default;
+$uk-nav-header:".uk-nav-header" !default;
+$uk-nav-divider:".uk-nav-divider" !default;
+$uk-navbar-nav:".uk-navbar-nav" !default;
+$uk-navbar-item:".uk-navbar-item" !default;
+$uk-navbar-toggle:".uk-navbar-toggle" !default;
+$uk-navbar-toggle-icon:".uk-navbar-toggle-icon" !default;
+$uk-slideshow:".uk-slideshow" !default;
+$uk-light:".uk-light" !default;
+$uk-slider:".uk-slider" !default;
+$uk-slidenav:".uk-slidenav" !default;
+$uk-modal:".uk-modal" !default;
+$uk-modal-dialog-lightbox:".uk-modal-dialog-lightbox" !default;
+$uk-lightbox:".uk-lightbox" !default;
+$uk-lightbox-content:".uk-lightbox-content" !default;
+$uk-lightbox-toolbar:".uk-lightbox-toolbar" !default;
+$uk-lightbox-button:".uk-lightbox-button" !default;
+$uk-close:".uk-close" !default;
+$uk-dotnav:".uk-dotnav" !default;
+$uk-active:".uk-active" !default;
+$uk-disabled:".uk-disabled" !default;
+$uk-pagination:".uk-pagination" !default;
+$uk-accordion-title:".uk-accordion-title" !default;
+$uk-table:".uk-table" !default;
+$uk-table-responsive:".uk-table-responsive" !default;
+$uk-table-link:".uk-table-link" !default;
+$uk-checkbox:".uk-checkbox" !default;
+$uk-radio:".uk-radio" !default;
+$uk-input:".uk-input" !default;
+$uk-select:".uk-select" !default;
+$uk-textarea:".uk-textarea" !default;
+$uk-button:".uk-button" !default;
+$uk-list:".uk-list" !default;
+$uk-list-bullet:".uk-list-bullet" !default;
+$uk-list-striped:".uk-list-striped" !default;
+$uk-container:".uk-container" !default;
+$uk-flex-top:".uk-flex-top" !default;
+$uk-open:".uk-open" !default;
+$uk-form-custom:".uk-form-custom" !default;
+$uk-form-small:".uk-form-small" !default;
+$uk-width-1-1:".uk-width-1-1" !default;
+$uk-width-auto:".uk-width-auto" !default;
+$uk-dropdown:".uk-dropdown" !default;
+$uk-dropdown-nav:".uk-dropdown-nav" !default;
+$uk-subnav-pill:".uk-subnav-pill" !default;
+$uk-nav-side:".uk-nav-side" !default;
+$uk-parent:".uk-parent" !default;
+$uk-position-cover:".uk-position-cover" !default;
+$uk-position-top:".uk-position-top" !default;
+$uk-logo:".uk-logo" !default;
+$uk-offcanvas-close:".uk-offcanvas-close" !default;
+$uk-offcanvas-bar:".uk-offcanvas-bar" !default;
+$uk-offcanvas-bar-a:".uk-offcanvas-bar .uk-nav-default .uk-nav-sub a" !default;
+$uk-first-column:".uk-first-column" !default;
+$uk-hidden-hover:".uk-hidden-hover" !default;
+
+$height-ie:".height_ie" !default;
+
+//### Exclude Selectors ###------------------------------------------------//
+$not-fa:":not([class*=fa-])" !default;
+$fa-exclude:":not(.fa-layers-text):not(.font_default)" !default;
+$uk-icon-exclude:":not([class*=uk-icon]):not(svg):not(polyline)" !default;
+$color-exclude:":not([class*=bg_]):not([class*=btn_]):not([class*=color_]):not([class*=uk-button]):not([class*=text-trans]):not([class*=text-current]):not([class*=text-black]):not([class*=text-white]):not([class*=text-gray]):not([class*=text-red]):not([class*=text-orange]):not([class*=text-yellow]):not([class*=text-green]):not([class*=text-teal]):not([class*=text-blue]):not([class*=text-indigo]):not([class*=text-purple]):not([class*=text-pink])" !default;
+$not-bg:":not([class*=bg_]):not([class*=btn_])" !default;
+$not-uk-width:":not([class*=uk-width])" !default;
+
+//### Line Height ###------------------------------------------------//
+
+//### Words Wrap ###------------------------------------------------//
+
+//### Colors & Opacity ###------------------------------------------------//
+// $color-white:white !default;
+// $color-black:black !default;
+// $color-grey:#9e9e9e !default;
+// $color-grey-light:lighten($color-grey, 20%) !default;
+// $color-grey-dark:darken($color-grey, 20%) !default;
+// $color-light:#fafafa !default;
+// $color-dark:#333 !default;
+// $color-body-bg:#F7FAFC !default;
+// $color-text:#616161 !default;
+// $color-text-light:lighten($color-text, 20%) !default;
+// $color-text-dark:darken($color-text, 20%) !default;
+// $color-text-grey:$color-grey-dark !default;
+// $color-link:$color-text-dark !default;
+// $color-link-hover:black !default;
+// $color-border:rgba(black,.12) !default;
+// $color-border-dark:rgba(black,.2) !default;
+// $color-border-focus:rgba(#1e87f0, 0.85) !default;
+// $color-blue-grey:#506873 !default;
+// $color-blue-grey-light:lighten($color-blue-grey, 20%) !default;
+// $color-blue-grey-lighter:lighten($color-blue-grey, 40%) !default;
+// $color-blue-grey-dark:darken($color-blue-grey, 20%) !default;
+// $color-grey-100:#f5f5f5;
+// $color-grey-200:#eeeeee;
+// $color-grey-300:#e0e0e0;
+// $color-grey-400:#bdbdbd;
+// $color-grey-500:#9e9e9e;
+// $color-grey-600:#757575;
+// $color-grey-700:#616161;
+// $color-grey-800:#424242;
+// $color-grey-900:#212121;
+// $color-bluegrey-100:#F7FAFC;
+// $color-bluegrey-200:#EDF2F7;
+// $color-bluegrey-300:#E2E8F0;
+// $color-bluegrey-400:#CBD5E0;
+// $color-bluegrey-500:#A0AEC0;
+// $color-bluegrey-600:#718096;
+// $color-bluegrey-700:#4A5568;
+// $color-bluegrey-800:#2D3748;
+// $color-bluegrey-900:#1A202C;
+// $color-red-100:#FFF5F5;
+// $color-red-200:#FED7D7;
+// $color-red-300:#FEB2B2;
+// $color-red-400:#FC8181;
+// $color-red-500:#F56565;
+// $color-red-600:#E53E3E;
+// $color-red-700:#C53030;
+// $color-red-800:#9B2C2C;
+// $color-red-900:#742A2A;
+// $color-orange-100:#FFFAF0;
+// $color-orange-200:#FEEBC8;
+// $color-orange-300:#FBD38D;
+// $color-orange-400:#F6AD55;
+// $color-orange-500:#ED8936;
+// $color-orange-600:#DD6B20;
+// $color-orange-700:#C05621;
+// $color-orange-800:#9C4221;
+// $color-orange-900:#7B341E;
+// $color-yellow-100:#FFFFF0;
+// $color-yellow-200:#FEFCBF;
+// $color-yellow-300:#FAF089;
+// $color-yellow-400:#F6E05E;
+// $color-yellow-500:#ECC94B;
+// $color-yellow-600:#D69E2E;
+// $color-yellow-700:#B7791F;
+// $color-yellow-800:#975A16;
+// $color-yellow-900:#744210;
+// $color-green-100:#F0FFF4;
+// $color-green-200:#C6F6D5;
+// $color-green-300:#9AE6B4;
+// $color-green-400:#68D391;
+// $color-green-500:#48BB78;
+// $color-green-600:#38A169;
+// $color-green-700:#2F855A;
+// $color-green-800:#276749;
+// $color-green-900:#22543D;
+// $color-teal-100:#E6FFFA;
+// $color-teal-200:#B2F5EA;
+// $color-teal-300:#81E6D9;
+// $color-teal-400:#4FD1C5;
+// $color-teal-500:#38B2AC;
+// $color-teal-600:#319795;
+// $color-teal-700:#2C7A7B;
+// $color-teal-800:#285E61;
+// $color-teal-900:#234E52;
+// $color-blue-100:#EBF8FF;
+// $color-blue-200:#BEE3F8;
+// $color-blue-300:#90CDF4;
+// $color-blue-400:#63B3ED;
+// $color-blue-500:#4299E1;
+// $color-blue-600:#3182CE;
+// $color-blue-700:#2B6CB0;
+// $color-blue-800:#2C5282;
+// $color-blue-900:#2A4365;
+// $color-indigo-100:#EBF4FF;
+// $color-indigo-200:#C3DAFE;
+// $color-indigo-300:#A3BFFA;
+// $color-indigo-400:#7F9CF5;
+// $color-indigo-500:#667EEA;
+// $color-indigo-600:#5A67D8;
+// $color-indigo-700:#4C51BF;
+// $color-indigo-800:#434190;
+// $color-indigo-900:#3C366B;
+// $color-purple-100:#FAF5FF;
+// $color-purple-200:#E9D8FD;
+// $color-purple-300:#D6BCFA;
+// $color-purple-400:#B794F4;
+// $color-purple-500:#9F7AEA;
+// $color-purple-600:#805AD5;
+// $color-purple-700:#6B46C1;
+// $color-purple-800:#553C9A;
+// $color-purple-900:#44337A;
+// $color-pink-100:#FFF5F7;
+// $color-pink-200:#FED7E2;
+// $color-pink-300:#FBB6CE;
+// $color-pink-400:#F687B3;
+// $color-pink-500:#ED64A6;
+// $color-pink-600:#D53F8C;
+// $color-pink-700:#B83280;
+// $color-pink-800:#97266D;
+// $color-pink-900:#702459;
+// $gradient-linear-white-transparent-top:linear-gradient(to top, rgba(white,1) 50%, rgba(white,0) 100%) !default;
+$opacity:1 !default;
+
+//*---------- Brand ------------------------------*//
+// $facebook:#1977f3 !default;
+// $twitter:#1ea1f2 !default;
+// $googleplus:#db4437 !default;
+// $linkedin:#007bb4 !default;
+// $line:#00b900 !default;
+
+//### Display & Visibility ###------------------------------------------------//
+
+//### Border ###------------------------------------------------//
+$radius-default:calc(4rem/16) !default; //=4px
+$focus-ouline:0 !default;
+
+//### Position ###------------------------------------------------//
+
+//### Space ###------------------------------------------------//
+// $space-1px:1px !default; //=1px
+$space-xs:2px !default; //=2px
+$space:5px !default; //=5px
+$space-s:5px !default; //=5px
+$space-m:10px !default; //=10px
+$space-l:15px !default; //=15px
+$space-xl:20px !default;
+// $space-1px-negative:-#{$space-1px} !default; //=1px
+$space-xs-negative:-#{$space-xs} !default; //=2px
+$space-negative:-#{$space} !default; //=5px
+$space-s-negative:-#{$space-s} !default; //=5px
+$space-m-negative:-#{$space-m} !default; //=10px
+$space-l-negative:-#{$space-l} !default; //=15px
+$space-xl-negative:-#{$space-xl} !default; //=20px
+// $space-1px-px:1px !default;
+// $space-xs-px:2px !default;
+// $space-px:5px !default;
+// $space-m-px:10px !default;
+// $space-l-px:15px !default;
+
+//### List ###------------------------------------------------//
+
+//### Indent ###------------------------------------------------//
+
+//### Width & Height & Scroll ###------------------------------------------------//
+
+//### Aspect Ratio ###------------------------------------------------//
+
+//### Shadow ###------------------------------------------------//
+
+//### Pseudo ###------------------------------------------------//
+
+//### nav ###------------------------------------------------//
+$nav-height:auto !default;
+$nav-line-height:$nav-height !default;
+$nav-height-mobile:auto !default;
+$nav-line-height-mobile:$nav-height-mobile !default;
+
+//### Loop ###------------------------------------------------//
+
+//###---------- Media ------------------------------###//
+//###uk-@s###//
+@media (min-width:640px) {
+}
+
+//###uk-@m###//
+@media (min-width:960px) {
+}
+
+//###uk-@l###//
+@media (min-width:1200px) {
+}
+
+//###uk-@xl###//
+@media (min-width:1600px) {
+}
+
+
+//###bs-sm###//
+@media (min-width:576px) {
+}
+//###bs-md###//
+@media (min-width:768px) {
+}
+//###bs-lg###//
+@media (min-width:992px) {
+}
+//###bs-xl###//
+@media (min-width:1200px) {
+}
+
+//### Portrait ###//
+@media screen and (orientation:portrait) {
+}
+//### Landscape ###//
+@media screen and (orientation:landscape) {
+}
+
+//### ----------- IE10+ ----------- ###//
+@media all and (-ms-high-contrast:none), (-ms-high-contrast:active) {
+}
+
+//### ----------- iPhone 4 and 4S ----------- ###//
+//### Portrait and Landscape ###//
+@media only screen
+  and (min-device-width:320px)
+  and (max-device-width:480px)
+  and (-webkit-min-device-pixel-ratio:2) {
+}
+
+//### ----------- iPhone 5, 5S, 5C and 5SE ----------- ###//
+//### Portrait and Landscape ###//
+@media only screen
+  and (min-device-width:320px)
+  and (max-device-width:568px)
+  and (-webkit-min-device-pixel-ratio:2) {
+}
+
+//### ----------- iPhone 6, 6S, 7 and 8 ----------- ###//
+//### Portrait and Landscape ###//
+@media only screen
+  and (min-device-width:375px)
+  and (max-device-width:667px)
+  and (-webkit-min-device-pixel-ratio:2) {
+}
+
+//### ----------- iPhone 6+, 7+ and 8+ ----------- ###//
+//### Portrait and Landscape ###//
+@media only screen
+  and (min-device-width:414px)
+  and (max-device-width:736px)
+  and (-webkit-min-device-pixel-ratio:3) {
+}
+
+//### ----------- iPhone X ----------- ###//
+//### Portrait and Landscape ###//
+@media only screen
+  and (min-device-width:375px)
+  and (max-device-width:812px)
+  and (-webkit-min-device-pixel-ratio:3) {
+}

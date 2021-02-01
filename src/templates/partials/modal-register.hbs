@@ -1,0 +1,75 @@
+{{!-- {{>modal-register id='register' wide='true' modal-title='會員註冊' errorOn='true' error='驗證提示語'}} --}}
+
+<!-- uk-modal-register -->
+<div id="{{id}}" class="uk-flex-top uk-modal{{#if wide}} uk-modal-container{{/if}}" uk-modal>
+	<div class="uk-modal-dialog uk-margin-auto-vertical">
+		<form onsubmit="return false;">
+			<button class="uk-modal-close-default" type="button" title="刪除" uk-close></button>
+			<div class="uk-modal-header">
+				<h2 class="uk-modal-title">{{modal-title}}</h2>
+			</div>
+			<div class="uk-modal-body">
+				<div class="margin_y_child-even-m uk-grid uk-grid-collapse uk-child-width-expand@s" uk-grid>
+					<div class="min_width-1/4!@s">
+						<label class="min_height-40 font_size-10 tw-font-bold flex uk-flex-middle uk-form-label" for="form_name">姓名</label>
+					</div>
+					<div class="tw-space-y-1 min_width-3/4!@s">
+						<input id="form_name" class="match uk-input" type="text" placeholder="">
+						{{#if errorOn}}
+							<p class="color_secondary-text uk-tw-text-small">{{error}}</p>
+						{{/if}}
+					</div>
+					{{!-- <div class="min_width-1/4!@s"><label class="min_height-40 font_size-10 tw-font-bold flex uk-flex-middle uk-form-label" for="form_dep">科別</label>
+					</div>
+					<div class="tw-space-y-1 min_width-3/4!@s">
+						<div class="uk-grid-small uk-child-width-expand@s" uk-grid>
+							<div class="min_width1_2!@s">
+								<select id="form_dep" class="match uk-select" onchange="showOption(this,5,'#other_dep')">
+									<option>-請選擇科別-</option>
+									<option>整形外科</option>
+									<option>美容外科</option>
+									<option>一般外科</option>
+									<option>乳房外科</option>
+									<option>其它</option>
+								</select>
+							</div>
+							<div id="other_dep" class="tw-m-0 min_width1_2!@s" hidden>
+								<div class="uk-hidden@m" style="height: 10px;"></div>
+								<input class="uk-input" type="text" placeholder="請輸入科別" title="輸入關鍵字搜尋">
+							</div>
+						</div>
+					</div>
+					<div class="min_width-1/4!@s">
+						<label class="min_height-40 font_size-10 tw-font-bold flex uk-flex-middle uk-form-label" for="form_certificate">外科醫師證書字號</label>
+					</div>
+					<div class="tw-space-y-1 min_width-3/4!@s">
+						<input id="form_certificate" class="match uk-input" type="text" placeholder="">
+					</div> --}}
+					<div class="min_width-1/4!@s">
+						<label class="min_height-40 font_size-10 tw-font-bold flex uk-flex-middle uk-form-label" for="form_email">Email</label>
+					</div>
+					<div class="tw-space-y-1 min_width-3/4!@s">
+						<input id="form_email" class="match uk-input" type="email" placeholder="">
+						{{#if errorOn}}
+							<p class="color_secondary-text uk-tw-text-small">{{error}}</p>
+						{{/if}}
+					</div>
+					{{!-- <div class="min_width-1/4!@s">
+						<label class="min_height-40 font_size-10 tw-font-bold flex uk-flex-middle uk-form-label" for="form_phone">連絡電話</label>
+					</div>
+					<div class="tw-space-y-1 min_width-3/4!@s">
+						<input id="form_phone" class="match uk-input" type="text" placeholder="">
+					</div> --}}
+				</div>
+			</div>
+			<div class="tw-text-center uk-modal-footer" uk-margin>
+				{{!-- <a href="#" class="btn_primary min_width-100 tw-m-0 tw-rounded-full uk-button uk-button-primary">註　　冊</a>
+			<button class="min_width-100 tw-rounded-full uk-button uk-button-default uk-modal-close" type="button">取　　消</button> --}}
+				<a href="#" class="btn_primary min_width-100 tw-m-0 uk-button uk-button-primary">註　　冊</a>
+				<button class="min_width-100 uk-button uk-button-default uk-modal-close" type="button">取　　消</button>
+				{{!-- <a href="#login" class="tw-rounded-full uk-button uk-button-default" uk-toggle>返回登入</a> --}}
+			</div>
+		</form>
+	</div>
+</div>
+<!-- uk-modal-register -->

@@ -1,0 +1,48 @@
+{{!-- {{>save-modal id='save' wide='true' modal-title='儲存'}} --}}
+
+<!-- uk-modal-save -->
+<div id="{{id}}" class="uk-flex-top uk-modal{{#if wide}} uk-modal-container{{/if}}" uk-modal>
+	<div class="uk-modal-dialog uk-margin-auto-vertical">
+		<button class="uk-modal-close-default" type="button" title="刪除" uk-close></button>
+		<div class="uk-modal-header">
+			<h2 class="uk-modal-title">{{modal-title}}</h2>
+		</div>
+		<div class="uk-modal-body">
+			<form onsubmit="return false;">
+				{{!-- <div class="uk-grid-small uk-child-width-expand@s uk-grid" uk-grid uk-margin> --}}
+				<div class="margin_y_child-even-m uk-grid uk-grid-collapse uk-flex-middle uk-child-width-expand@s"
+					uk-grid uk-height-match="target: .match">
+					<div class="match min_width-1/3!@s flex uk-flex-middle">
+						<label class="font_size-10 tw-font-bold uk-form-label" for="form_type">格　　式</label>
+					</div>
+					<div class="tw-space-y-1 min_width-2/3!@s">
+						<select id="form_type" class="match uk-select" name="type">
+              <option value="simple" selected="selected">簡目</option>
+              <option value="adv">詳目</option>
+              <option value="endnote">EndNote</option>
+              <option value="refworks">RefWorks</option>
+            </select>
+					</div>
+					<div class="match min_width-1/3!@s flex uk-flex-middle">
+						<label class="font_size-10 tw-font-bold uk-form-label" for="form_format">資料類型</label>
+					</div>
+					<div class="tw-space-y-1 min_width-2/3!@s">
+						<select id="form_format" class="match uk-select" name="format">
+              <option value="simple" selected="selected">CSV</option>
+              <option value="excel">Excel</option>
+              <option value="html">HTML</option>
+            </select>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="tw-text-center uk-margin uk-modal-footer" uk-margin>
+			{{!-- <a href="#" class="btn_primary min_width-100 tw-m-0 tw-rounded-full uk-button uk-button-primary">註　　冊</a>
+			<button class="min_width-100 tw-rounded-full uk-button uk-button-default uk-modal-close" type="button">取　　消</button> --}}
+			<a href="#" class="btn_primary min_width-100 tw-m-0 uk-button uk-button-primary">送　　出</a>
+			<button class="min_width-100 uk-button uk-button-default uk-modal-close" type="button">取　　消</button>
+			{{!-- <a href="#login" class="tw-rounded-full uk-button uk-button-default" uk-toggle>返回登入</a> --}}
+		</div>
+	</div>
+</div>
+<!-- uk-modal-save -->

@@ -1,0 +1,363 @@
+{{!-- <!-- --------------------- FontAwesome --------------------- --> --}}
+<i class="color_primary tw-mr-1 fas fa-search" title=""></i>
+<i class="color_secondary tw-mr-1 fas fa-thumbtack" title=""></i>
+<i class="color_secondary tw-mr-1 fas fa-thumbtack" title="" style="transform: rotate(-25deg);"></i>
+
+{{!-- <!-- --------------------- Picsum --------------------- --> --}}
+<img src="https://picsum.photos/200/300" alt="圖片">
+<img src="https://picsum.photos/id/237/200/300" alt="圖片">
+
+{{!-- Static Random Image --}}
+<img src="https://picsum.photos/seed/picsum/200/300" alt="圖片">
+
+{{!-- <!-- --------------------- Fakeimg --------------------- --> --}}
+<img src="https://fakeimg.pl/250x100/" alt="圖片">
+
+{{!-- <!-- --------------------- Uikit --------------------- --> --}}
+{{!-- <!-- uk-grid default to wrap --> --}}
+
+{{!-- <!-- --------------------- Tab & Switcher --------------------- --> --}}
+<!-- uk-tab-button -->
+<ul class="tab_btn tab_btn-secondary tab_btn-noline tab_btn-active-white tab_btn-space-xs tab_btn-space-s@m tw-m-0 uk-tab" uk-tab uk-margin>
+	<li class="uk-active"><a href="#">圖書資料</a></li>
+	<li><a href="#">視聽資料</a></li>
+</ul>
+<!-- uk-tab-button -->
+
+<!-- uk-tab:"NO uk-active" with switcher -->
+<ul class="border2 border_primary uk-tab" uk-tab uk-margin>
+	<li><a href="#">圖書資料</a></li>
+	<li><a href="#">視聽資料</a></li>
+</ul>
+<!-- uk-tab -->
+<!-- uk-switcher -->
+<ul class="uk-switcher">
+	<li></li>
+	<li></li>
+</ul>
+<!-- uk-switcher -->
+
+{{!-- <!-- --------------------- Flex --------------------- --> --}}
+{{!-- <!-- The 1st flex item will fit its content and the others will wrap if necessary --> --}}
+<!-- Flex hanging indent -->
+<div class="tw-flex">
+	<span class="tw-flex-none">資料類型：</span>
+	<div>
+		<label class="tw-mr-4"><input class="tw-mr-1 uk-checkbox" type="checkbox">數位檔</label>
+		<label class="tw-mr-4"><input class="tw-mr-1 uk-checkbox" type="checkbox">報紙</label>
+		<label class="tw-mr-4"><input class="tw-mr-1 uk-checkbox" type="checkbox">剪報</label>
+		<label class="tw-mr-4"><input class="tw-mr-1 uk-checkbox" type="checkbox">公報</label>
+		<label class="tw-mr-4"><input class="tw-mr-1 uk-checkbox" type="checkbox">期刊</label>
+		<label class="tw-mr-4"><input class="tw-mr-1 uk-checkbox" type="checkbox">圖書</label>
+		<label class="tw-mr-4"><input class="tw-mr-1 uk-checkbox" type="checkbox">檔案</label>
+	</div>
+</div>
+<!-- Flex hanging indent -->
+
+{{!-- <!-- The flex items auto grow and shrink width to fit the parent container and wrap if necessary --> --}}
+<!-- uk-flex -->
+<div class="uk-flex uk-flex-wrap uk-flex-between">
+	<div class="min_width-120">
+		<label class="uk-margin-right"><input class="form_white uk-checkbox tw-mr-1" type="checkbox">精確檢索</label>
+	</div>
+	<div><small>查詢 isn:147986143X OR isn:9781479861439 ，共 1 筆</small></div>
+</div>
+<!-- uk-flex -->
+
+{{!-- <!-- The flex items auto middle & justify with between space to fit the parent container "in One Row" --> --}}
+<!-- uk-flex -->
+<div class="color_black! uk-flex uk-flex-between uk-flex-middle uk-flex-right">
+	<h2 class="bg_primary tw-text-sm tw-m-0 tw-p-2">最新消息</h2>
+	<a class="tw-text-xs" href="#" title="更多">More</a>
+</div>
+<!-- uk-flex -->
+
+{{!-- <!-- The flex items auto grow and shrink width to fit the parent container "in One Row" --> --}}
+<!-- uk-flex -->
+<div class="uk-flex">
+	<div class="tw-flex-auto">
+		<input class="uk-input" type="text" placeholder="請輸入檢索詞" title="輸入關鍵字搜尋">
+	</div>
+	<div class="tw-flex-auto"><a class="btn_secondary min_width-100! tw-w-full uk-button" href="#search" uk-toggle>病症瀏覽</a></div>
+</div>
+<!-- uk-flex -->
+
+{{!-- <!-- --------------------- Grid --------------------- --> --}}
+{{!-- <!-- Wrap Auto & Expand grid child width --> --}}
+<!-- uk-grid -->
+<div class="uk-grid uk-text-center" uk-grid>
+	{{!-- <!-- Child <div> Default effect same as class="uk-width-auto" --> --}}
+	<div class="uk-width-auto">
+		<div class="uk-card uk-card-default uk-card-body">Auto</div>
+	</div>
+	<div class="uk-width-expand">
+		<div class="uk-card uk-card-default uk-card-body">Expand</div>
+	</div>
+</div>
+<!-- uk-grid -->
+
+{{!-- <!-- 2 Columns with grid match height from media 640px --> --}}
+<!-- uk-child-width-expand@s -->
+<div class="uk-grid uk-grid-small uk-grid-match uk-child-width-expand@s" uk-grid>
+	<div class="min_width-1/2!@s"></div>
+</div>
+<!-- uk-child-width-expand@s -->
+
+{{!-- <!-- Grid one child min-width and the other child expand-width --> --}}
+<!-- Left Image & Right Text -->
+<div class="uk-grid uk-grid-small" uk-grid>
+	<div class="min_width-1/3! min_width-1/4!@s uk-width-auto">
+		<a class="tw-block hover:tw-shadow-md" href="">
+			<div class="aspect ratio-3/4">
+				{{!-- <div class="uk-background-contain uk-flex uk-flex-center uk-flex-middle" style="background-image: url(img/book_01.jpg);"></div> --}}
+				<div class="uk-background-contain uk-flex uk-flex-center uk-flex-middle" data-src="img/book.svg" uk-img></div>
+			</div>
+		</a>
+	</div>
+	<div class="uk-width-expand">
+		<h3 class="color_primary tw-mt-0 tw-text-base tw-font-bold">Title</h3>
+		<time class="tw-text-sm">2020-12-1</time>
+		<p>了智會不相是能方物結，可率以認來過除建後相國得，評他石傳一手叫答成動時，類存沒務，形眾經來公狀入教裡青英運解仍強晚方真國的日</p>
+	</div>
+</div>
+<!-- Left Image & Right Text -->
+
+{{!-- <!-- Flow expand child width & match target height from 2 to 4 --> --}}
+<!-- uk-child-width-expand@s -->
+<div class="uk-grid uk-grid-small uk-grid-match uk-child-width-expand@s" uk-grid uk-height-match="target: > div">
+	<div class="min_width-1/2! min_width-1/4!@s">
+		<a class="btn_color3 tw-text-center tw-p-2 tw-px-3" href="#" target="_blank">Title</a>
+	</div>
+</div>
+<!-- uk-child-width-expand@s -->
+
+{{!-- <!-- Wrap fit child width & match height to max 5 --> --}}
+<!-- uk-child-width-1-5 -->
+<div class="uk-grid uk-grid-small uk-grid-match uk-child-width-1-5" uk-grid uk-height-match="target: > div">
+	<div class="min_width-200">
+		<a class="btn_color3 tw-p-2 tw-px-3 tw-text-center uk-flex uk-flex-middle uk-flex-center" href="#" title="#" target="_blank">Title</a>
+	</div>
+</div>
+<!-- uk-child-width-1-5 -->
+
+{{!-- <!-- --------------------- UK List --------------------- --> --}}
+<!-- uk-list-divider -->
+<ul class="uk-list uk-list-divider">
+    <li>Item1</li>
+    <li>Item2</li>
+</ul>
+<!-- uk-list-divider -->
+
+{{!-- <!-- --------------------- UK Card --------------------- --> --}}
+<!-- Card Box -->{{!-- small padding --}}
+<div class="uk-card uk-card-default uk-card-small uk-card-body">
+	<h3 class="uk-card-title"></h3>
+	<p></p>
+</div>
+<!-- Card Box -->
+<!-- Card Box -->{{!-- default padding --}}
+<div class="uk-card uk-card-default uk-card-body">
+	<h3 class="uk-card-title"></h3>
+	<p></p>
+</div>
+<!-- Card Box -->
+<!-- Card Box -->{{!-- large padding --}}
+<div class="uk-card uk-card-default uk-card-large uk-card-body">
+	<h3 class="uk-card-title"></h3>
+	<p></p>
+</div>
+<!-- Card Box -->
+
+<!-- Hover Card & Icon Box -->
+<div class="tw-p-3 hover:tw-shadow-2xl uk-card uk-card-default">
+	<div class="uk-grid uk-grid-small uk-child-width-expand" uk-grid uk-height-match="target: > div > .uk-flex">
+		<div class="min_width-1/2! min_width-1/4!@s">
+			<a class="tw-no-underline hover:color_secondary! tw-bg-gray-100 tw-space-y-2 tw-py-3 uk-flex uk-flex-column uk-flex-center uk-flex-middle" href="#">
+				<i class="color_primary tw-text-4xl fas fa-database"></i>
+				<span class="tw-text-xs tw-text-center tw-px-2">資料庫</span>
+			</a>
+		</div>
+	</div>
+</div>
+<!-- Hover Card & Icon Box -->
+
+<!-- Title Card with Overflow List -->
+<div class="min_width-1/3!@m">
+	{{!-- <h2 class="bg_secondary color_black! tw-text-sm tw-px-2 tw-py-1 tw-m-0 uk-flex uk-flex-between uk-flex-middle uk-flex-right">
+		<span class="tw-font-normal uk-width-expand">最新消息</span><a href="#" title="更多"><small>More</small></a></h2> --}}
+	<div class="color_black! uk-flex uk-flex-between uk-flex-middle uk-flex-right">
+		<h2 class="bg_primary tw-text-sm tw-m-0 tw-p-2">最新消息</h2>
+		{{!-- <a class="tw-text-xs" href="#" title="更多">More</a> --}}
+	</div>
+	<div class="tw-p-3 hover:tw-shadow-2xl uk-card uk-card-default">
+		<div class="overflow_hidden@m max_height-300">
+			<div class="min_height-100@m tw-p-3">
+				<ul class="text-justify uk-list">
+					<li>
+						<div class="uk-grid uk-grid-collapse uk-child-width-expand" uk-grid>
+							<div class="min_width-100 uk-width-auto"><i class="color_primary fas fa-angle-right fa-fw"></i><time class="tw-text-sm tw-mr-2">2020-07-03</time></div>
+							<div class="uk-width-expand">
+								<a class="tw-inline uk-text-break" href="#">高國節頭氣然取求王我告是人那學立班。色集國接，備其夫沒聲同主</a>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="uk-grid uk-grid-collapse uk-child-width-expand" uk-grid>
+							<div class="min_width-100 uk-width-auto"><i class="color_primary fas fa-angle-right fa-fw"></i><time class="tw-text-sm tw-mr-2">2020-08-21</time></div>
+							<div class="uk-width-expand">
+								<a class="tw-inline uk-text-break" href="#">高國節頭氣然取求王我告是人那學立班。色集國接，備其夫沒聲同主</a>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<a class="color3! tw-text-xs tw-text-right tw-mb-2 tw-mr-3 uk-position-bottom-right uk-position-z-index" href="#" title="更多">閱讀更多</a>
+		</div>
+	</div>
+</div>
+<!-- Title Card with Overflow List -->
+
+<!-- Title Card with Slider Books -->
+<div class="uk-width-1-1">
+	<div class="color_black! uk-flex uk-flex-between uk-flex-middle uk-flex-right">
+		<h2 class="bg_primary tw-text-sm tw-m-0 tw-p-2">新書推介</h2>
+		{{!-- <a class="tw-text-xs" href="#" title="更多">More</a> --}}
+	</div>
+	<!-- Slider Books with aspact ratio 3/4 -->
+	<div class="bg_primary tw-p-3">
+		<div class="slidenav_thick uk-position-relative uk-visible-toggle uk-light uk-slider" uk-slider tabindex="-1">
+			<ul class="uk-slider-items uk-child-width-1-2 uk-child-width-1-4@s uk-child-width-1-6@l uk-grid uk-grid-small">
+				<li>
+					<div class="tw-text-center hover:tw-shadow-2xl uk-card">
+						<a class="tw-block" href="">
+							<div class="aspect ratio-3/4 bg_primary">
+								{{!-- <img class="tw-object-contain tw-h-full tw-w-full" src="img/book_01.jpg" alt="圖片"> --}}
+								{{!-- <img class="tw-w-full uk-responsive-height	" src="img/book_01.jpg" alt="圖片"> --}}
+								<div class="uk-background-contain uk-flex uk-flex-center uk-flex-middle" style="background-image: url(img/book_01.jpg);"></div>
+							</div>
+						</a>
+						<div class="tw-p-0 uk-card-body">
+							<a class="bg_secondary color_white! tw-block" href="">西文<span class="tw-pl-2">>></span></a>
+							<h3 class="tw-truncate tw-text-xs m:tw-text-sm tw-text-black tw-pt-2 tw-m-0 uk-card-title">電商人妻社群圈粉思維</h3>
+						</div>
+					</div>
+				</li>
+			</ul>
+			{{!-- <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous
+				uk-slider-item="previous"><span class="tw-sr-only">前一個</span></a>
+			<a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next
+				uk-slider-item="next"><span class="tw-sr-only">下一個</span></a> --}}
+			<a class="w-50 tw-px-lg-5 uk-position-left uk-flex uk-flex-middle uk-slidenav-large uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"><span class="tw-sr-only">前一個</span></a>
+			<a class="w-50 tw-px-lg-5 uk-position-right uk-flex uk-flex-right uk-flex-middle uk-slidenav-large uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"><span class="tw-sr-only">下一個</span></a>
+		</div>
+	</div>
+	<!-- Slider Books with aspact ratio 3/4 -->
+</div>
+<!-- Title Card with Slider Books -->
+
+{{!-- <!-- --------------------- Slider --------------------- --> --}}
+<!-- Slider Buttons with flexible width -->
+<div class="uk-position-relative uk-visible-toggle uk-light uk-slider" uk-slider>
+	<ul class="uk-slider-items uk-child-width-expand">
+		<li class="uk-flex uk-flex-nowrap uk-width-auto">
+			<div>
+				<a class="uk-text-nowrap tw-bg-white tw-border tw-border-solid border-l-8 tw-p-2 tw-px-3 min_width-100!" href="#" target="_blank">社區服務</a>
+			</div>
+			<div><span class="min_width-10!">&nbsp;</span></div>
+		</li>
+	</ul>
+	<a class="w-50 tw-px-lg-5 uk-position-left uk-flex uk-flex-middle uk-slidenav-large uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous" aria-label="previous" title="上一張圖"><span class="tw-sr-only">上一張圖</span></a>
+	<a class="w-50 tw-px-lg-5 uk-position-right uk-flex uk-flex-right uk-flex-middle uk-slidenav-large uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next" aria-label="next" title="下一張圖"><span class="tw-sr-only">下一張圖</span></a>
+</div>
+<!-- Slider Buttons with flexible width -->
+
+{{!-- <!-- --------------------- Button --------------------- --> --}}
+<a class="tw-w-full uk-button uk-button-default" href=""></a>
+<a class="btn_primary tw-w-full uk-button uk-button-primary" href=""></a>
+<button class="tw-w-full uk-button uk-button-default"></button>
+<button class="tw-w-full uk-button uk-button-default" disabled></button>
+<button class="btn_primary tw-w-full uk-button uk-button-primary"></button>
+
+{{!-- <!-- --------------------- Dropdown --------------------- --> --}}
+<!-- Button with Dropdown -->
+<div class="uk-inline">
+	<button class="tw-w-full uk-button uk-button-default uk-button-small" type="button">排　　序 <i uk-icon="icon: triangle-down"></i></button>
+	<div class="min_width-100" uk-dropdown="mode: click; pos: bottom-right">
+		<ul class="uk-nav uk-dropdown-nav">
+			<li uk-filter-control="sort: data-year"><a href="#">年代 ↑</a></li>
+			<li uk-filter-control="sort: data-year; order: desc"><a href="#">年代 ↓</a></li>
+			<li uk-filter-control="sort: data-source"><a href="#">來源 ↑</a></li>
+			<li uk-filter-control="sort: data-source; order: desc"><a href="#">來源 ↓</a></li>
+			<li uk-filter-control="sort: data-title"><a href="#">題名 ↑</a></li>
+			<li uk-filter-control="sort: data-title; order: desc"><a href="#">題名 ↓</a></li>
+			<li uk-filter-control="sort: data-writer"><a href="#">作者 ↑</a></li>
+			<li uk-filter-control="sort: data-writer; order: desc"><a href="#">作者 ↓</a></li>
+		</ul>
+	</div>
+</div>
+
+{{!-- <!-- --------------------- Image & Icon --------------------- --> --}}
+{{!-- 替代說明文字：alt=""，標題屬性文字：title="" --}}
+{{!-- img若為有意義之圖片必需有說明，若<img>和<h2>都包含在<a>，因為已有h2為說明文字，則替代說明文字：img alt必需為空值<img alt="">
+若只有圖片在a標籤中，因為必需有說明文字，因此alt不可以為空值 --}}
+<a href="">
+	<img alt="">
+	<h2>文字說明</h2>
+</a>
+<a href="">
+	<img alt="文字說明">
+</a>
+<a href="">
+	<img alt="" src="img/icon.png">
+</a>
+
+<a href="">
+	更多
+	<i class="color_secondary tw-ml-1 fas fa-chevron-right"></i>
+</a>
+<a href="">
+	<i class="color_secondary tw-mr-1 fas fa-search"></i>
+	<span class="tw-sr-only">搜尋</span>
+</a>
+
+{{!-- img若為無意義圖片或是icon，完全只有裝飾作用，則無需有說明，並且不可使用title屬性，img alt必需為空值<img alt=""> --}}
+<h2>
+	<img alt="" src="img/icon.png">
+	標題文字
+</h2>
+<h2>
+	<i class="tw-mr-1 fab fa-envira"></i>
+	標題文字
+</h2>
+
+<img data-src="" width="" height="" alt="圖片說明" uk-img>
+<img data-src="" data-width data-height alt="圖片說明" uk-img>
+<div class="uk-height-medium uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light" data-src="img/photo.jpg" uk-img>
+	<h1>說明文字</h1>
+</div>
+
+<!-- Background Image with ratio:3/4 -->
+<a class="tw-block" href="" title="說明文字">
+	<div class="aspect ratio-3/4">
+		{{!-- <div class="uk-background-contain uk-flex uk-flex-center uk-flex-middle" style="background-image: url(img/book_01.jpg);"></div> --}}
+		<div class="uk-background-contain uk-flex uk-flex-center uk-flex-middle" data-src="img/book.svg" uk-img></div>
+	</div>
+</a>
+<!-- Background Image with ratio:3/4 -->
+
+{{!-- <!-- --------------------- Form --------------------- --> --}}
+<label><span class="tw-sr-only">請輪入關鍵字</span><input class="uk-input" type="text" placeholder="請輪入關鍵字"></label>
+<label>
+	<span class="tw-sr-only">選項選擇</span>
+	<select class="uk-select">
+			<option>不限欄位</option>
+	</select>
+</label>
+<div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+	<label><input class="tw-mr-1 uk-checkbox" type="checkbox">A</label>
+	<label><input class="tw-mr-1 uk-checkbox" type="checkbox">B</label>
+</div>
+<div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+		<label><input class="tw-mr-1 uk-radio" type="radio" name="radio2" checked>A</label>
+		<label><input class="tw-mr-1 uk-radio" type="radio" name="radio2">B</label>
+</div>

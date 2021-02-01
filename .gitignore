@@ -1,0 +1,13 @@
+﻿.tmp
+node_modules
+Assets
+temp
+*.psd
+*.ai
+*.zip
+*複製*
+*old*
+*-i.*
+*-bak.*
+*.lock
+.DS_Store

@@ -1,0 +1,465 @@
+<!-- 【內容區塊】頁首(含導覽列)、頁尾以外的所有內容放置區域 -->
+
+<!-- 新增的區塊 -->
+<section id="stickyTop" class="stickyItem">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-9 col-md-10  index-search">
+        <div class="input-group input-group-lg">
+          <input type="text" class="form-control" placeholder="請輸入關鍵字">
+          <span class="input-group-btn">
+            <select class="btn select-default hidden-xs" name="outfmt" id="outfmt">
+              <option value="條列式">館藏主題館</option>
+              <option value="xls">分類一</option>
+              <option value="htm">分類二</option>
+              <option value="xml">分類三</option>
+            </select>
+            <button type="button" class="btn btn-default">搜尋</button>
+          </span>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-3 col-md-2 p-0 hidden-xs">
+        <a href="" class="btn btn-sec btn-lg btn-block">進階查詢</a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /新增的區塊 -->
+
+<div class="container container-wrapper">
+  <div class="row">
+    <div class="col-xs-12">
+      <!-- 【內容區塊】開始塞內容 -->
+      <!-- 主頁籤-對應內容處 -->
+      <div id="tabContent" class="tab-content tab-contentWrapper">
+        <div role="tabpanel" class="tab-pane fade active in" id="parents_1" aria-labelledby="parents_1-tab">
+          <div class="row">
+            <!-- 這個頁面手機板時，內容會比側邊欄先出現，因此使用col-lg-push-3/9 -->
+            <!-- 右邊 -->
+            <div class="col-xs-12 col-lg-9 col-lg-push-3 mainContent">
+              <!-- 標題區塊 -->
+              <div class="col-xs-12 p-0">
+                <!-- 左邊：主標題/麵包屑功能 -->
+                <div class="col-xs-12 col-lg-7 p-0">
+                  <h4 class="title css-beforeTriangle"><a href="#">簡易檢索</a>/檢索結果</h4>
+                </div>
+                <!-- /左邊：主標題/麵包屑功能 -->
+                <!-- 右邊：小功能(分享、返回等) -->
+                <div class="col-xs-12 col-lg-5 pv-10 text-right"></div>
+                <!-- /右邊：小功能(分享、返回等) -->
+              </div>
+              <!-- /標題區塊 -->
+              <!-- 標題以外內容放置處.content-wrapper -->
+              <div class="col-xs-12 content-wrapper p-0">
+                <!-- 搜尋結果-說明文字 與 再檢索.content-discription -->
+                <div class="col-xs-12 content-discription">
+                  <!-- 結果分類 -->
+                  <div class="col-xs-12 headSort list-unstyled">
+                    <li>
+                      <p>檢索策略：<strong class="text-mark">"學習成效.ti(精準)"</strong></p>
+                    </li>
+                    <li>
+                      <div class="row">
+                        <div class="col-xs-12 col-md-6">
+                          <p>檢索結果：共<strong class="text-mark">327</strong>筆資料</p>
+                        </div>
+                        <div class="col-xs-12 col-md-6 text-right hidden-xs">
+                          <div class="btn-group btn-group-sm" role="group" aria-label="操作功能">
+                            <a class="btn btn-default btn-xs disabled" role="button" title="上一頁" aria-label="上一頁" herf=""><span class="glyphicon glyphicon-arrow-left"></span>&ensp;上一頁</a>
+                            <a class="btn btn-default btn-xs" role="button" title="下一頁" aria-label="下一頁" herf="">下一頁&ensp;<span class="glyphicon glyphicon-arrow-right"></span></a>
+                          </div>
+
+                        </div>
+                      </div>
+                    </li>
+                  </div>
+                  <div class="col-xs-12 headSort list-inline">
+                    <li>
+                      <p>排序：</p>
+                      <select title="排序方式選項：" aria-label="排序方式選項：">
+                        <option value="PubMonth_Pre ASC">研究生 &Delta;</option>
+                        <option value="PubMonth_Pre DESC" selected>研究生 &nabla;</option>
+                        <option value="Title ASC">書名 &Delta;</option>
+                      </select>&emsp;&ensp;
+                    </li>
+                    <li class="hidden-xs">
+                      <p>每頁筆數：</p>
+                      <select title="每頁筆數選項：" aria-label="每頁筆數選項：">
+                        <option value="5">5</option>
+                        <option value="10" selected="selected">10</option>
+                        <option value="20">20</option>
+                        <option value="30">30</option>
+                        <option value="40">40</option>
+                        <option value="50">50</option>
+                      </select>&emsp;&ensp;
+                    </li>
+                    <li>
+                      <div class="btn-group btn-group-sm" role="group" aria-label="操作功能">
+                        <a type="button" data-toggle="modal" href="#focusModal_1" class="btn btn-sec">儲存</a>
+                        <a type="button" data-toggle="modal" href="#focusModal_2" class="btn btn-sec ">列印</a>
+                        <a type="button" data-toggle="modal" href="#focusModal_3" class="btn btn-sec">E-mail</a>
+                        <a type="button" data-toggle="modal" href="#focusModal_4" class="btn btn-sec ">研究偏好</a>
+                      </div>
+                      <p>已勾選<strong class="text-mark">2</strong>筆資料</p>
+                    </li>
+                  </div>
+                  <!-- /結果分類 -->
+                </div>
+                <!-- /搜尋結果-說明文字 與 再檢索.content-discription -->
+                <hr class="hr-blank">
+                <!-- /分隔線 -->
+                <!-- 搜尋結果-表格 -->
+                <div class="col-xs-12 p-0">
+                  <table class="table m-0">
+                    <tr>
+                      <td class="css-beforeImg">
+                        <p>1</p>
+                      </td>
+                      <td headers="bookContain">
+                        <a title="在新視窗打開鏈結" href="p3-1-查詢結果-詳目.html">
+                          <h5>高中地理科影片教學與學生學習成效的關係</h5>
+                        </a>
+                        <div class="hidden-xs col-sm-1 icImg">
+                          <a href="">
+                            <p class="glyphicon glyphicon-floppy-save visible-xs">檔案下載</p><img class="hidden-xs" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 512'%3E%3Cpath d='M537.6 226.6c4.1-10.7 6.4-22.4 6.4-34.6 0-53-43-96-96-96-19.7 0-38.1 6-53.3 16.2C367 64.2 315.3 32 256 32c-88.4 0-160 71.6-160 160 0 2.7.1 5.4.2 8.1C40.2 219.8 0 273.2 0 336c0 79.5 64.5 144 144 144h368c70.7 0 128-57.3 128-128 0-61.9-44-113.6-102.4-125.4zm-132.9 88.7L299.3 420.7c-6.2 6.2-16.4 6.2-22.6 0L171.3 315.3c-10.1-10.1-2.9-27.3 11.3-27.3H248V176c0-8.8 7.2-16 16-16h48c8.8 0 16 7.2 16 16v112h65.4c14.2 0 21.4 17.2 11.3 27.3z' style='&%2310; fill: %23c15254;&%2310;'/%3E%3C/svg%3E">
+                          </a>
+                        </div>
+                        <div class="col-xs-12 col-sm-11">
+                          <ul class="list-unstyled sub">
+                            <li>
+                              <i class="glyphicon glyphicon-education"></i><span><a title="在新視窗打開鏈結" target="_blank" href="">國立臺灣師範大學</a>/<a title="在新視窗打開鏈結" target="_blank" href="">物理學系在職進修碩士班</a>/94/碩士</span>
+                            </li>
+                            <li>
+                              <i class="glyphicon glyphicon-user"></i><span>研究生：丁建仁</span>&ensp;<i class="glyphicon glyphicon-pencil"></i><span>指導教授：陳文典</span>
+                            </li>
+                            <li>
+                              <blockquote>如果所探求的是屬於人類各種特質的改變情形，如不同年齡兒童的推理能發展狀況，則此種研究稱為生長<mark>研究</mark>；如果所探求的是屬於某種教育或社會現象的改變情形，如教師離職的變化傾向，則此種研究稱為趨向<mark>研究</mark>。</blockquote>
+                            </li>
+                            <li>
+                              <i class="glyphicon glyphicon-eye-open"></i><span>點閱：233</span>&ensp;
+                              <i class="glyphicon glyphicon-floppy-save"></i><span>下載：66</span>&ensp;
+                              <i class="glyphicon glyphicon-link"></i><span>被引用：65</span>&ensp;
+                            </li>
+                          </ul>
+                        </div>
+
+                        <span class="checkbox-table">
+                          <input title="選取方塊" type="checkbox" aria-label="checkbox" id="1"><label for="1">加入清單</label>
+                        </span>
+                        <span class="tag-table">
+                          <span class="label label-tag">學位論文</span>
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="css-beforeImg">
+                        <p>2</p>
+                      </td>
+                      <td headers="bookContain">
+                        <a title="在新視窗打開鏈結" href="p3-1-查詢結果-詳目.html">
+                          <h5>「精熟學習」策略對學生學習成效之分析</h5>
+                        </a>
+                        <div class="col-xs-12 col-sm-1 icImg">
+                          <a href=""><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 512'%3E%3Cpath d='M537.6 226.6c4.1-10.7 6.4-22.4 6.4-34.6 0-53-43-96-96-96-19.7 0-38.1 6-53.3 16.2C367 64.2 315.3 32 256 32c-88.4 0-160 71.6-160 160 0 2.7.1 5.4.2 8.1C40.2 219.8 0 273.2 0 336c0 79.5 64.5 144 144 144h368c70.7 0 128-57.3 128-128 0-61.9-44-113.6-102.4-125.4zm-132.9 88.7L299.3 420.7c-6.2 6.2-16.4 6.2-22.6 0L171.3 315.3c-10.1-10.1-2.9-27.3 11.3-27.3H248V176c0-8.8 7.2-16 16-16h48c8.8 0 16 7.2 16 16v112h65.4c14.2 0 21.4 17.2 11.3 27.3z' style='&%2310; fill: %23c15254;&%2310;'/%3E%3C/svg%3E"></a>
+                        </div>
+                        <div class="col-xs-12 col-sm-11">
+                          <ul class="list-unstyled sub">
+                            <li>
+                              <i class="glyphicon glyphicon-education"></i><span><a title="在新視窗打開鏈結" target="_blank" href="">國立臺灣師範大學</a>/<a title="在新視窗打開鏈結" target="_blank" href="">物理學系在職進修碩士班</a>/94/碩士</span>
+                            </li>
+                            <li>
+                              <i class="glyphicon glyphicon-user"></i><span>研究生：丁建仁</span>&ensp;<i class="glyphicon glyphicon-pencil"></i><span>指導教授：陳文典</span>
+                            </li>
+                            <li>
+                              <blockquote>如果所探求的是屬於人類各種特質的改變情形，如不同年齡兒童的推理能發展狀況，則此種研究稱為生長<mark>研究</mark>；如果所探求的是屬於某種教育或社會現象的改變情形，如教師離職的變化傾向，則此種研究稱為趨向<mark>研究</mark>。</blockquote>
+                            </li>
+                            <li>
+                              <i class="glyphicon glyphicon-eye-open"></i><span>點閱：233</span>&ensp;
+                              <i class="glyphicon glyphicon-floppy-save"></i><span>下載：66</span>&ensp;
+                              <i class="glyphicon glyphicon-link"></i><span>被引用：65</span>&ensp;
+                            </li>
+                          </ul>
+                        </div>
+                        <span class="checkbox-table">
+                          <input title="選取方塊" type="checkbox" aria-label="checkbox" id="2"><label for="2">加入清單</label>
+                        </span>
+                        <span class="tag-table">
+                          <span class="label label-tag">學位論文</span>
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="css-beforeImg">
+                        <p>3</p>
+                      </td>
+                      <td headers="bookContain">
+                        <a title="在新視窗打開鏈結" href="p3-1-查詢結果-詳目.html">
+                          <h5>高中地理科影片教學與學生學習成效的關係</h5>
+                        </a>
+                        <div class="col-xs-12 col-sm-1 icImg">
+                          <a href=""><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 512'%3E%3Cpath d='M537.6 226.6c4.1-10.7 6.4-22.4 6.4-34.6 0-53-43-96-96-96-19.7 0-38.1 6-53.3 16.2C367 64.2 315.3 32 256 32c-88.4 0-160 71.6-160 160 0 2.7.1 5.4.2 8.1C40.2 219.8 0 273.2 0 336c0 79.5 64.5 144 144 144h368c70.7 0 128-57.3 128-128 0-61.9-44-113.6-102.4-125.4zm-132.9 88.7L299.3 420.7c-6.2 6.2-16.4 6.2-22.6 0L171.3 315.3c-10.1-10.1-2.9-27.3 11.3-27.3H248V176c0-8.8 7.2-16 16-16h48c8.8 0 16 7.2 16 16v112h65.4c14.2 0 21.4 17.2 11.3 27.3z' style='&%2310; fill: %23c15254;&%2310;'/%3E%3C/svg%3E"></a>
+                        </div>
+                        <div class="col-xs-12 col-sm-11">
+                          <ul class="list-unstyled sub">
+                            <li>
+                              <i class="glyphicon glyphicon-education"></i><span><a title="在新視窗打開鏈結" target="_blank" href="">國立臺灣師範大學</a>/<a title="在新視窗打開鏈結" target="_blank" href="">物理學系在職進修碩士班</a>/94/碩士</span>
+                            </li>
+                            <li>
+                              <i class="glyphicon glyphicon-user"></i><span>研究生：丁建仁</span>&ensp;<i class="glyphicon glyphicon-pencil"></i><span>指導教授：陳文典</span>
+                            </li>
+                            <li>
+                              <blockquote>如果所探求的是屬於人類各種特質的改變情形，如不同年齡兒童的推理能發展狀況，則此種研究稱為生長<mark>研究</mark>；如果所探求的是屬於某種教育或社會現象的改變情形，如教師離職的變化傾向，則此種研究稱為趨向<mark>研究</mark>。</blockquote>
+                            </li>
+                            <li>
+                              <i class="glyphicon glyphicon-eye-open"></i><span>點閱：233</span>&ensp;
+                              <i class="glyphicon glyphicon-floppy-save"></i><span>下載：66</span>&ensp;
+                              <i class="glyphicon glyphicon-link"></i><span>被引用：65</span>&ensp;
+                            </li>
+                          </ul>
+                        </div>
+                        <span class="checkbox-table">
+                          <input title="選取方塊" type="checkbox" aria-label="checkbox" id="3"><label for="3">加入清單</label>
+                        </span>
+                        <span class="tag-table">
+                          <span class="label label-tag">學位論文</span>
+                        </span>
+                      </td>
+                    </tr>
+                  </table>
+                  <div class="footSort list-inline">
+                    <li class="hidden-xs w-full">
+                      <div class="col-xs-3 text-left p-0">
+                        <a class="btn btn-default btn-xs disabled" role="button" title="上一頁" aria-label="上一頁" herf=""><span class="glyphicon glyphicon-arrow-left"></span>上一頁</a>
+                      </div>
+                      <div class="col-xs-6 text-center">
+                        <a class="btn btn-pager btn-xs active" role="button" title="頁數按鈕1" aria-label="頁數按鈕1" herf="">1</a>
+                        <a class="btn btn-pager btn-xs" role="button" title="頁數按鈕2" aria-label="頁數按鈕2" herf="">2</a>
+                        <a class="btn btn-pager btn-xs" role="button" title="頁數按鈕3" aria-label="頁數按鈕3" herf="">3</a>
+                        <a class="btn btn-pager btn-xs" role="button" title="頁數按鈕4" aria-label="頁數按鈕4" herf="">4</a>
+                        <a class="btn btn-pager btn-xs" role="button" title="頁數按鈕5" aria-label="頁數按鈕5" herf="">5</a>
+                        <a class="btn btn-pager btn-xs" role="button" title="下10頁" aria-label="下10頁" herf="">下10頁</a>
+                      </div>
+                      <div class="col-xs-3 text-right p-0">
+                        <a class="btn btn-default btn-xs" role="button" title="下一頁" aria-label="下一頁" herf="">下一頁<span class="glyphicon glyphicon-arrow-right"></span></a>
+                      </div>
+                    </li>
+                    <li class="visible-xs w-full">
+                      <div class="col-xs-3 text-left p-0">
+                        <a class="btn btn-default btn-xs" role="button" title="上一頁" aria-label="上一頁" herf=""><span class="glyphicon glyphicon-arrow-left"></span>&ensp;上一頁</a>
+                      </div>
+                      <div class="col-xs-6 text-center">
+                        <p>第</p>
+                        <select title="選擇要跳到的頁數" aria-label="選擇要跳到的頁數">
+                          <option value="1">1</option>
+                          <option value="2" selected="selected">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                        </select>
+                        <p>/10&ensp;頁</p>
+                      </div>
+                      <div class="col-xs-3 text-right p-0">
+                        <a class="btn btn-default btn-xs" role="button" title="下一頁" aria-label="下一頁" herf="">下一頁&ensp;<span class="glyphicon glyphicon-arrow-right"></span></a>
+                      </div>
+                    </li>
+                  </div>
+                </div>
+                <!-- /搜尋結果-表格 -->
+              </div>
+              <!-- /標題以外內容放置處.content-wrapper -->
+            </div>
+            <!-- /右邊 -->
+            <!-- 左邊 -->
+            <div class="col-xs-12 col-lg-3 col-lg-pull-9 sideContent-right">
+              <!-- 側邊欄-結果分類 -->
+              <div class="panel-group panel-default" role="tablist">
+                <div class="panel panel-default">
+                  <div class="panel-heading" role="tab" id="collapseListGroupHeading_2_1">
+                    <h4 class="panel-title">
+                      <a href="#collapseListGroup_2_1" class="" role="button" data-toggle="collapse" aria-expanded="true" aria-controls="collapseListGroup_2_1"><i class="more-less glyphicon glyphicon-minus"></i>中文關鍵詞</a>
+                    </h4>
+                  </div>
+                  <div class="panel-collapse collapse in" role="tabpanel" id="collapseListGroup_2_1" aria-labelledby="collapseListGroupHeading_2_1" aria-expanded="true">
+                    <ul class="list-group">
+                      <li class="list-group-item">
+                        <input type="checkbox" name="2-1-1" value="2-1-1"><a href="">學習成效<span class="badge">4</span></a>
+                      </li>
+                      <li class="list-group-item">
+                        <input type="checkbox" name="2-1-2" value="2-1-2"><a href="">擴增實境<span class="badge">4</span></a>
+                      </li>
+                      <li class="list-group-item">
+                        <input type="checkbox" name="2-1-3" value="2-1-3"><a href="">學習風格<span class="badge">14</span></a>
+                      </li>
+                      <li class="list-group-item">
+                        <input type="checkbox" name="2-1-4" value="2-1-4"><a href="">學習態度<span class="badge">5</span></a>
+                      </li>
+                      <li class="list-group-item">
+                        <input type="checkbox" name="2-1-5" value="2-1-5"><a href="">電腦輔助教學<span class="badge">6</span></a>
+                      </li>
+                    </ul>
+                    <div class="panel-footer"><a href="" class="more">顯示更多</a></div>
+                  </div>
+                  <!-- 側邊欄-結果分類-第一項 -->
+                  <div class="panel-heading" role="tab" id="collapseListGroupHeading_2_2">
+                    <h4 class="panel-title">
+                      <a href="#collapseListGroup_2_2" class="" role="button" data-toggle="collapse" aria-expanded="true" aria-controls="collapseListGroup_2_2"><i class="more-less glyphicon glyphicon-plus"></i>系所名稱</a>
+                    </h4>
+                  </div>
+                  <div class="panel-collapse collapse" role="tabpanel" id="collapseListGroup_2_2" aria-labelledby="collapseListGroupHeading_2_2" aria-expanded="true">
+                    <ul class="list-group">
+                      <li class="list-group-item">
+                        <a href="">資訊教育研究所<span class="badge">4</span></a>
+                      </li>
+                      <li class="list-group-item">
+                        <a href="">工業教育學系<span class="badge">4</span></a>
+                      </li>
+                      <li class="list-group-item">
+                        <a href="">特殊教育學系<span class="badge">14</span></a>
+                      </li>
+                      <li class="list-group-item">
+                        <a href="">科技應用與人力資源發展學系<span class="badge">5</span></a>
+                      </li>
+                      <li class="list-group-item">
+                        <a href="">科學教育研究所<span class="badge">6</span></a>
+                      </li>
+                    </ul>
+                    <div class="panel-footer"><a href="" class="more">顯示更多</a></div>
+                  </div>
+                  <!-- 側邊欄-結果分類-第二項 -->
+                  <div class="panel-heading" role="tab" id="collapseListGroupHeading_2_3">
+                    <h4 class="panel-title">
+                      <a href="#collapseListGroup_2_3" class="" role="button" data-toggle="collapse" aria-expanded="true" aria-controls="collapseListGroup_2_3"><i class="more-less glyphicon glyphicon-plus"></i>指導教授</a>
+                    </h4>
+                  </div>
+                  <div class="panel-collapse collapse" role="tabpanel" id="collapseListGroup_2_3" aria-labelledby="collapseListGroupHeading_2_3" aria-expanded="true">
+                    <ul class="list-group">
+                      <li class="list-group-item">
+                        <a href="">劉碧蓉<span class="badge">4</span></a>
+                      </li>
+                      <li class="list-group-item">
+                        <a href="">莊政<span class="badge">4</span></a>
+                      </li>
+                      <li class="list-group-item">
+                        <a href="">東方白<span class="badge">14</span></a>
+                      </li>
+                      <li class="list-group-item">
+                        <a href="">高立範<span class="badge">5</span></a>
+                      </li>
+                      <li class="list-group-item">
+                        <a href="">彭婷婷<span class="badge">6</span></a>
+                      </li>
+                    </ul>
+                    <div class="panel-footer"><a href="" class="more">顯示更多</a></div>
+                  </div>
+                  <!-- 側邊欄-結果分類-第三項 -->
+                  <div class="panel-heading" role="tab" id="collapseListGroupHeading_2_4">
+                    <h4 class="panel-title">
+                      <a href="#collapseListGroup_2_4" class="btn-switch" role="button" data-toggle="collapse" data-target="#collapseListGroup_2_4" aria-expanded="true" aria-controls="collapseListGroup_2_4"><i class="more-less glyphicon glyphicon-plus"></i></span>畢業學年度</a>
+                    </h4>
+                  </div>
+                  <div class="panel-collapse collapse" role="tabpanel" id="collapseListGroup_2_4" aria-labelledby="collapseListGroupHeading_2_4" aria-expanded="true">
+                    <ul class="list-group">
+                      <li class="list-group-item">
+                        <a href="">107<span class="badge">4</span></a>
+                      </li>
+                      <li class="list-group-item">
+                        <a href="">106<span class="badge">4</span></a>
+                      </li>
+                      <li class="list-group-item">
+                        <a href="">105<span class="badge">14</span></a>
+                      </li>
+                      <li class="list-group-item">
+                        <a href="">104<span class="badge">5</span></a>
+                      </li>
+                      <li class="list-group-item">
+                        <a href="">103<span class="badge">6</span></a>
+                      </li>
+                    </ul>
+                    <div class="panel-footer"><a href="" class="more">顯示更多</a></div>
+                  </div>
+                  <!-- 側邊欄-結果分類-第四項 -->
+                </div>
+              </div>
+              <!-- /側邊欄-結果分類 -->
+            </div>
+            <!-- /左邊 -->
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="parents_2" aria-labelledby="parents_2-tab">
+          <div class="row">
+            <div class="col-xs-12">
+              <p>選項二</p>
+            </div>
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="parents_3_1" aria-labelledby="parents_3_1-tab">
+          <div class="row">
+            <div class="col-xs-12">
+              <p>選項三下拉一</p>
+            </div>
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="parents_3_2" aria-labelledby="parents_3_2-tab">
+          <div class="row">
+            <div class="col-xs-12">
+              <p>選項三下拉二</p>
+            </div>
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="parents_4" aria-labelledby="parents_4-tab">
+          <div class="row">
+            <div class="col-xs-12">
+              <p>選項4</p>
+            </div>
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="parents_5" aria-labelledby="parents_5-tab">
+          <div class="row">
+            <div class="col-xs-12">
+              <p>選項5</p>
+            </div>
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="parents_6" aria-labelledby="parents_6-tab">
+          <div class="row">
+            <div class="col-xs-12">
+              <p>選項6</p>
+            </div>
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="parents_7" aria-labelledby="parents_7-tab">
+          <div class="row">
+            <div class="col-xs-12">
+              <p>選項7</p>
+            </div>
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="parents_8" aria-labelledby="parents_8-tab">
+          <div class="row">
+            <div class="col-xs-12">
+              <p>選項8</p>
+            </div>
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="parents_9" aria-labelledby="parents_9-tab">
+          <div class="row">
+            <div class="col-xs-12">
+              <p>選項9</p>
+            </div>
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="parents_10" aria-labelledby="parents_10-tab">
+          <div class="row">
+            <div class="col-xs-12">
+              <p>選項10</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /主頁籤-對應內容處 -->
+      <!-- /【內容區塊】內容結束處 -->
+    </div>
+  </div>
+</div>
+<!-- /【內容區塊】頁首(含導覽列)、頁尾以外的所有內容放置區域 -->

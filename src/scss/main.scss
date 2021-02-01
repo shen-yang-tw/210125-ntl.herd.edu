@@ -1,0 +1,1423 @@
+@import 'functions', 'variables', 'colors-variables', 'color', 'mixin';
+
+/*---------- Text ------------------------------*/
+// @include google-font("Noto+Sans+TC:100,300,400,500,700,900|Noto+Serif+TC|Poppins|Material+Icons"); //It's too slow on loading
+// * {font-family:map-get($font, 'cht-hei');}
+html {
+  font-size:$fontsize;
+  &#{$text-m} {font-size:$fontsize-m;};
+  &#{$text-l} {font-size:$fontsize-l;};
+}
+body {
+  background-color:$color-body-bg;
+  font-weight:$fontwight;
+  * {
+    font-family:$font-cht;
+    line-height:$line-height;
+  }
+}
+#{$fa}#{$fa-exclude} {font-family:$font-fa;}
+#{$mi} {font-family:$font-mi;}
+#{$small-text} {
+  font-size:$fontsize-s;
+  #{$text-m} & {font-size:calc(#{strip-unit($font-base)}rem/#{$fontsize-m-integer})}
+  #{$text-l} & {font-size:calc(#{strip-unit($font-base)+2}rem/#{$fontsize-l-integer})}
+}
+
+em, strong {
+  color: $color-primary
+}
+
+/*---------- Google Fonts ------------------------------*/
+#{$font-eng-name} {font-family:$font-eng;}
+
+/*---------- Link ------------------------------*/
+a, button {
+  &#{$color-exclude}, &#{$color-exclude}:visited, &#{$color-exclude}:focus, nav &#{$color-exclude} {color:$color-link;}
+  &#{$color-exclude}:hover, &#{$color-exclude}:hover * {color:$color-link-hover;}
+}
+
+/* Remove outline for non-keyboard :focus */
+*:focus {outline: none;}
+button:focus {background-color: inherit;} //fix Materialize
+/* Optional: Customize Class .focus-visible */
+#{$focus}, #{$focus} a:focus, #{$focus} button:focus {@include focus($important:true)}
+
+#{$link-line}, #{$link-line}>* {text-decoration: underline;}
+#{$link-line}:hover, #{$link-line}:hover>*, #{$mc-underline}:hover, #{$mc-underline}:hover>* {text-decoration: none}
+
+/*---------- Button ------------------------------*/
+#{$button} {opacity: 0.7; &:hover {opacity: 1;}}
+
+/*---------- Long words wrap (Parent tag CANNOT be inline-block or flex) ------------------------------*/
+#{$url-fix} {
+  @include break-word;
+  >*:not(table) {display:inline !important;}
+}
+
+/*---------- Color ------------------------------*/
+#{$text-shadow-black} {text-shadow: 0px 1px 2px #000000;}
+#{$text-color-white}, #{$text-color-white}>*, #{$hover}\:#{str-slice($text-color-white, 2, -1)}:hover, #{$hover}\:#{str-slice($text-color-white, 2, -1)}:hover * {color:white;}
+#{$text-color-black}, #{$text-color-black}>*, #{$hover}\:#{str-slice($text-color-black, 2, -1)}:hover, #{$hover}\:#{str-slice($text-color-black, 2, -1)}:hover * {color:black;}
+#{$text-color-white}\!, #{$text-color-white}\!>*, #{$hover}\:#{str-slice($text-color-white, 2, -1)}\!:hover, #{$hover}\:#{str-slice($text-color-white, 2, -1)}\!:hover * {color:white !important;}
+#{$text-color-black}\!, #{$text-color-black}\!>*, #{$hover}\:#{str-slice($text-color-black, 2, -1)}\!:hover, #{$hover}\:#{str-slice($text-color-black, 2, -1)}\!:hover * {color:black !important;}
+#{$text-color-default}, #{$text-color-default}>* {color:$color-text;}
+#{$text-color-dark}, #{$text-color-dark}>* {color:$color-text-dark;}
+#{$text-color-grey}, #{$text-color-grey}>* {color:$color-text-grey;}
+#{$text-color-grey}#{$disabled}, #{$text-color-grey}#{$disabled}>* {color:$color-grey;}
+#{$text-color-white}\!, #{$text-color-white}\!>*, #{$hover}\:#{str-slice($text-color-white, 2, -1)}\!:hover, #{$hover}\:#{str-slice($text-color-white, 2, -1)}\!:hover * {color:white !important;}
+#{$text-color-black}\!, #{$text-color-black}\!>*, #{$hover}\:#{str-slice($text-color-black, 2, -1)}\!:hover, #{$hover}\:#{str-slice($text-color-black, 2, -1)}\!:hover * {color:black !important;}
+#{$text-color-default}\!, #{$text-color-default}\!>* {color:$color-text !important;}
+#{$text-color-dark}\!, #{$text-color-dark}\!>* {color:$color-text-dark !important;}
+#{$text-color-grey}\!, #{$text-color-grey}\!>* {color:$color-text-grey !important;}
+
+@include bg-color($selector:$bg-white, $bg-color:$color-white);
+@include bg-color($selector:$bg-black, $bg-color:$color-black);
+@include bg-color($selector:$bg-dark, $bg-color:$color-dark);
+@include bg-color($selector:$bg-grey, $bg-color:$color-grey);
+
+#{$btn-white} {
+  @extend #{$bg-white};
+  &#{$active}, &:hover, &:focus {
+    background-color:darken($color-white, 10%);
+    color:text-color(darken($color-white, 10%)) !important;
+    text-decoration: none;
+  }
+}
+#{$btn-black} {
+  @extend #{$bg-black};
+  &#{$active}, &:hover, &:focus {
+    background-color:lighten($color-black, 10%);
+    color:text-color(lighten($color-black, 10%)) !important;
+    text-decoration: none;
+  }
+}
+
+@include bg-color($selector:$bg-white, $bg-color:$color-white, $important:true);
+@include bg-color($selector:$bg-black, $bg-color:$color-black, $important:true);
+@include bg-color($selector:$bg-dark, $bg-color:$color-dark, $important:true);
+@include bg-color($selector:$bg-grey, $bg-color:$color-grey, $important:true);
+
+/*** Brand ***/
+$brand-text:$text-color-facebook $facebook, $text-color-twitter $twitter, $text-color-googleplus $googleplus, $text-color-linkedin $linkedin, $text-color-line $line;
+@each $name, $color in $brand-text {
+  #{$name} {&, & * {color:$color;}}
+  #{$name}\! {&, & * {color:$color !important;}}
+  a#{$name}:hover, a#{$name}:hover * {color:darken($color, 10%);}
+  a#{$name}\!:hover, a#{$name}\!:hover * {color:darken($color, 10%) !important;}
+}
+$brand-bg:$bg-facebook $facebook, $bg-twitter $twitter, $bg-googleplus $googleplus, $bg-linkedin $linkedin, $bg-line $line;
+@each $name, $color in $brand-bg {
+  @include bg-color($selector:$name, $bg-color:$color)
+}
+@each $name, $color in $brand-bg {
+  @include bg-color($selector:$name, $bg-color:$color, $important:true)
+}
+$hover-brand-bg:"bg_facebook" $facebook, "bg_twitter" $twitter, "bg_googleplus" $googleplus, "bg_linkedin" $linkedin, "bg_line" $line;
+@each $name, $color in $hover-brand-bg {
+  // .hover\:#{$name}, .hover\:#{$name} * {color:text-color($color);}
+  a.hover\:#{$name}:hover, a.hover\:#{$name}:hover * {color:lighten(text-color($color), 10%);}
+  a.hover\:#{$name}:hover {background-color:$color;}
+}
+@each $name, $color in $hover-brand-bg {
+  // .hover\:#{$name}\!, .hover\:#{$name}\! * {color:text-color($color) !important;}
+  a.hover\:#{$name}\!:hover, a.hover\:#{$name}\!:hover * {color:lighten(text-color($color), 10%) !important;}
+  a.hover\:#{$name}\!:hover {background-color:$color !important;}
+}
+
+/*---------- Display & Visibility ------------------------------*/
+#{$empty}, #{$ifEmpty}:empty {display:none;}
+#{$ifEmpty}[class*=border]:empty {border: none !important;}
+
+/*---------- Border ------------------------------*/
+// *, *::before, *::after {box-sizing: border-box;} //prevent the errors of the padding changing width
+#{$border-group} {
+  &>* {@include bordered(); margin-left: -1px;}
+}
+
+/*---------- uk-grid-divider ------------------------------*/
+#{$divider-dashed} {
+  &#{$uk-grid-divider}>:not(#{$uk-first-column})::before, &#{$uk-grid-divider}#{$uk-grid-stack}>#{$uk-grid-margin}::before {@include bordered($style:dashed)}
+}
+#{$divider-child}>:not(:last-child) {@include bordered($property:border-right)}
+
+/*---------- Space ------------------------------*/
+#{$margin-y-all-child}>:not(#{$footer}) ,#{$margin-y-all-child-even}>:nth-child(even):not(#{$footer}) {@include space($property:margin-bottom, $size:$space)}
+#{$margin-y-all-child-m}>:not(#{$footer}) ,#{$margin-y-all-child-even-m}>:nth-child(even):not(#{$footer}) {@include space($property:margin-bottom, $size:$space-m)}
+#{$margin-y-all-child-l}>:not(#{$footer}) ,#{$margin-y-all-child-even-l}>:nth-child(even):not(#{$footer}) {@include space($property:margin-bottom, $size:$space-l)}
+#{$margin-y-all-child}\!>:not(#{$footer}) ,#{$margin-y-all-child-even}\!>:nth-child(even):not(#{$footer}) {@include space($property:margin-bottom, $size:$space, $important:$boolean)}
+#{$margin-y-all-child-m}\!>:not(#{$footer}) ,#{$margin-y-all-child-even-m}\!>:nth-child(even):not(#{$footer}) {@include space($property:margin-bottom, $size:$space-m, $important:$boolean)}
+#{$margin-y-all-child-l}\!>:not(#{$footer}) ,#{$margin-y-all-child-even-l}\!>:nth-child(even):not(#{$footer}) {@include space($property:margin-bottom, $size:$space-l, $important:$boolean)}
+
+/*uk-@s*/
+@media (min-width:640px) {
+  #{$margin-y-all-child}\@s>:not(#{$footer}) ,#{$margin-y-all-child-even}\@s>:nth-child(even):not(#{$footer}) {@include space($property:margin-bottom, $size:$space)}
+  #{$margin-y-all-child-m}\@s>:not(#{$footer}) ,#{$margin-y-all-child-even-m}\@s>:nth-child(even):not(#{$footer}) {@include space($property:margin-bottom, $size:$space-m)}
+  #{$margin-y-all-child-l}\@s>:not(#{$footer}) ,#{$margin-y-all-child-even-l}\@s>:nth-child(even):not(#{$footer}) {@include space($property:margin-bottom, $size:$space-l)}
+  #{$margin-y-all-child}\!\@s>:not(#{$footer}) ,#{$margin-y-all-child-even}\!\@s>:nth-child(even):not(#{$footer}) {@include space($property:margin-bottom, $size:$space, $important:$boolean)}
+  #{$margin-y-all-child-m}\!\@s>:not(#{$footer}) ,#{$margin-y-all-child-even-m}\!\@s>:nth-child(even):not(#{$footer}) {@include space($property:margin-bottom, $size:$space-m, $important:$boolean)}
+  #{$margin-y-all-child-l}\!\@s>:not(#{$footer}) ,#{$margin-y-all-child-even-l}\!\@s>:nth-child(even):not(#{$footer}) {@include space($property:margin-bottom, $size:$space-l, $important:$boolean)}
+}
+
+/*uk-@m*/
+@media (min-width:960px) {
+  #{$margin-y-all-child}\@m>:not(#{$footer}) ,#{$margin-y-all-child-even}\@m>:nth-child(even):not(#{$footer}) {@include space($property:margin-bottom, $size:$space)}
+  #{$margin-y-all-child-m}\@m>:not(#{$footer}) ,#{$margin-y-all-child-even-m}\@m>:nth-child(even):not(#{$footer}) {@include space($property:margin-bottom, $size:$space-m)}
+  #{$margin-y-all-child-l}\@m>:not(#{$footer}) ,#{$margin-y-all-child-even-l}\@m>:nth-child(even):not(#{$footer}) {@include space($property:margin-bottom, $size:$space-l)}
+  #{$margin-y-all-child}\!\@m>:not(#{$footer}) ,#{$margin-y-all-child-even}\!\@m>:nth-child(even):not(#{$footer}) {@include space($property:margin-bottom, $size:$space, $important:$boolean)}
+  #{$margin-y-all-child-m}\!\@m>:not(#{$footer}) ,#{$margin-y-all-child-even-m}\!\@m>:nth-child(even):not(#{$footer}) {@include space($property:margin-bottom, $size:$space-m, $important:$boolean)}
+  #{$margin-y-all-child-l}\!\@m>:not(#{$footer}) ,#{$margin-y-all-child-even-l}\!\@m>:nth-child(even):not(#{$footer}) {@include space($property:margin-bottom, $size:$space-l, $important:$boolean)}
+}
+
+/*uk-@l*/
+@media (min-width:1200px) {
+  #{$margin-y-all-child}\@l>:not(#{$footer}) ,#{$margin-y-all-child-even}\@l>:nth-child(even):not(#{$footer}) {@include space($property:margin-bottom, $size:$space)}
+  #{$margin-y-all-child-m}\@l>:not(#{$footer}) ,#{$margin-y-all-child-even-m}\@l>:nth-child(even):not(#{$footer}) {@include space($property:margin-bottom, $size:$space-m)}
+  #{$margin-y-all-child-l}\@l>:not(#{$footer}) ,#{$margin-y-all-child-even-l}\@l>:nth-child(even):not(#{$footer}) {@include space($property:margin-bottom, $size:$space-l)}
+  #{$margin-y-all-child}\!\@l>:not(#{$footer}) ,#{$margin-y-all-child-even}\!\@l>:nth-child(even):not(#{$footer}) {@include space($property:margin-bottom, $size:$space, $important:$boolean)}
+  #{$margin-y-all-child-m}\!\@l>:not(#{$footer}) ,#{$margin-y-all-child-even-m}\!\@l>:nth-child(even):not(#{$footer}) {@include space($property:margin-bottom, $size:$space-m, $important:$boolean)}
+  #{$margin-y-all-child-l}\!\@l>:not(#{$footer}) ,#{$margin-y-all-child-even-l}\!\@l>:nth-child(even):not(#{$footer}) {@include space($property:margin-bottom, $size:$space-l, $important:$boolean)}
+}
+
+/*uk-@xl*/
+@media (min-width:1600px) {
+  #{$margin-y-all-child}\@xl>:not(#{$footer}) ,#{$margin-y-all-child-even}\@xl>:nth-child(even):not(#{$footer}) {@include space($property:margin-bottom, $size:$space)}
+  #{$margin-y-all-child-m}\@xl>:not(#{$footer}) ,#{$margin-y-all-child-even-m}\@xl>:nth-child(even):not(#{$footer}) {@include space($property:margin-bottom, $size:$space-m)}
+  #{$margin-y-all-child-l}\@xl>:not(#{$footer}) ,#{$margin-y-all-child-even-l}\@xl>:nth-child(even):not(#{$footer}) {@include space($property:margin-bottom, $size:$space-l)}
+  #{$margin-y-all-child}\!\@xl>:not(#{$footer}) ,#{$margin-y-all-child-even}\!\@xl>:nth-child(even):not(#{$footer}) {@include space($property:margin-bottom, $size:$space, $important:$boolean)}
+  #{$margin-y-all-child-m}\!\@xl>:not(#{$footer}) ,#{$margin-y-all-child-even-m}\!\@xl>:nth-child(even):not(#{$footer}) {@include space($property:margin-bottom, $size:$space-m, $important:$boolean)}
+  #{$margin-y-all-child-l}\@xl>:not(#{$footer}) ,#{$margin-y-all-child-even-l}\@xl>:nth-child(even):not(#{$footer}) {@include space($property:margin-bottom, $size:$space-l, $important:$boolean)}
+}
+
+/*---------- List ------------------------------*/
+#{$list} {
+  &>li::before {position: absolute; @include space($property:margin-left, $size:-4rem); @include space($property:padding-right, $size:0.5rem); @include space($property:padding-left, $size:1rem); text-align: right; width: 4rem;}
+  &>li {
+    position: relative;
+    @include space($property:margin-bottom, $size:$space-m); @include space($property:left, $size:4rem); width: calc(100% - 4rem); text-align: justify;
+    &>* {display: inline-block; margin: 0;}
+  }
+}
+#{$list-striped} {
+  &>li {@include position-index($z:1); @include space($property:padding); @include bordered($property:border-bottom)}
+  &>li:first-child {@include bordered($property:border-top)}
+  &>li:nth-of-type(odd) {background:$color-light}
+}
+#{$list-horizontal} {
+  display:block;
+  list-style:none;
+  @include margin-padding($m:0, $p:$space-xs 0);
+  li {
+    display:inline-block;
+    float:none;
+    @include space($property:margin-left, $size:calc(-4rem/16));
+    a {
+      @include space($property:padding, $size:0 $space-xs);
+      &:hover {text-decoration:none;}
+    }
+  }
+}
+#{$list-decimal} {
+  @include list-counter($reset:true);
+  &>li:before {@include list-counter($display:inline-block);}
+}
+#{$list-decimal-ch} {list-style-type:cjk-ideographic; padding-left: 30px;}
+#{$list-decimal-row} {
+  @include list-counter($reset:true); @include space($property:padding, $size:0);
+  &>li:before {@include list-counter($display:block);}
+  &#{$list-badge}>li {
+    position:relative; @include space($property:padding-top, $size:calc(45rem/16));
+    &:before {
+      @include list-counter($display:inline-block); @include pseudo-content ($pos:absolute, $l:$space-m, $t:$space-m, $background:true, $radius:$radius-default, $padding:0 calc(7rem/16));
+    }
+  }
+  &#{$list-badge}#{$list-badge-r}>li {
+    @include space($property:padding-top, $size:$space-m);
+    &:before {left:auto; right:$space-m;}
+  }
+  &#{$list-badge}#{$list-badge-r}#{$list-badge-margin-s}>li:before {right:$space;}
+  &#{$list-badge}#{$list-badge-divder}>li {
+    @include space($property:padding-top, $size:calc(65rem/16));
+    &:after {
+      @include pseudo-content ($display:block, $pos:absolute, $content:true, $l:0, $t:calc(50rem/16), $r:0, $background:true, $radius:0, $margin:0 $space-m, $h:1px);
+    }
+  }
+  &#{$list-badge}#{$list-badge-margin-s}>li {
+    @include space($property:padding-top, $size:0);
+    &:before {top:$space; left:$space;}
+  }
+  &#{$list-badge}#{$uk-list-striped}>li#{$uk-alert} {
+    background:transparent;
+    border:none;
+    margin:0;
+    color:inherit;
+    @include bordered($property:border-bottom);
+    &:first-child {@include bordered($property:border-top)}
+    &:nth-of-type(odd) {background:$color-light;}
+  }
+}
+#{$list-dot}, #{$list-arrow} {
+  &>li:before {
+    @include space($property:margin-left, $size:-2rem);
+    width: 2rem;
+  }
+  &>li {@include space($property:left, $size:2rem); width: calc(100% - 2rem);}
+}
+#{$list-dot} {
+  &>li:before {@include pseudo-content($content:true, $content-val:"•", $icon:fa);}
+}
+#{$list-arrow} {
+  &>li:before {@include pseudo-content($content:true, $content-val:"▸", $icon:fa);}
+}
+#{$list-vline} {
+  &>li:not(:last-child):after {@include pseudo-content($pos:absolute, $content:true, $content-val:│, $padding:0 $space-xs);}
+}
+#{$list-btmline} {
+  &>li:not(:last-child) {@include space($property:margin-bottom); @include space($property:padding, $size:$space-m 0 $space-m $space);}
+}
+#{$list-initial} {
+  list-style: initial;
+  list-style-position: initial;
+  // padding-inline-start: 2.5rem;
+  &>li {
+    width: calc(100% - 2.5rem);
+    position: relative;
+    left: 2.5rem;
+    text-align: justify;
+  }
+  // &::before {display: none;}
+}
+@media all and (-ms-high-contrast: none),
+(-ms-high-contrast: active) {
+  #{$list-initial} {
+    list-style: disc;
+  }
+}
+#{$list-decimal-leading-zero} {
+  list-style: decimal-leading-zero;
+}
+#{$list-cjk-ideographic} {
+  list-style: cjk-ideographic;
+}
+#{$list-upper-latin} {
+  list-style: upper-latin;
+}
+#{$list-lower-latin} {
+  list-style: lower-latin;
+}
+#{$list-upper-roman} {
+  list-style: upper-roman;
+}
+#{$list-lower-roman} {
+  list-style: lower-roman;
+}
+
+[class*=#{str-slice($list-tabs, 2, -1)}] {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding-left: 0;
+  margin-bottom: 0;
+  >li {
+    position: relative;
+    display: block;
+    width: 100%;
+    color: $color-text;
+    text-align: inherit;
+    margin-bottom: -1px;
+    background-color: white;
+    border: 1px solid $color-border;
+    &:last-child {
+      margin-bottom: 0;
+      border-bottom: 3px solid $color-border;
+    }
+    &#{$tab-buttons-rounded}:first-child {
+      border-top-left-radius: .25rem;
+      border-top-right-radius: .25rem;
+    }
+    &#{$tab-buttons-rounded}:last-child {
+      border-bottom-right-radius: .25rem;
+      border-bottom-left-radius: .25rem;
+    }
+    a {color:$color-text;}
+    &>*:not(ul), a {padding:$space-m}
+    & li a {padding:$space-m $space-m+10}
+    & li li a {padding:$space-m $space-m+20}
+    &#{$active}>a, & a:hover, &#{$uk-parent}#{$uk-open}>a {
+      color: text-color($color-light);
+      background-color: $color-light;
+    }
+    &#{$active}, & #{$active}>a, &#{$uk-parent}#{$uk-open}>a {
+      font-weight: 300;
+    }
+    &#{$uk-nav-header} {
+      font-size: 1rem;
+      margin-top: 0;
+      padding: 0;
+      >*:not(ul) {font-weight: 500 !important;}
+    }
+  }
+}
+#{$list-tabs-bullet} {
+  >li {
+    &#{$uk-nav-header}>*:not(ul) {
+      &, * {font-weight: 500;}
+      &::before {content: "•"; padding-right: calc(6rem/16);}
+    }
+  }
+}
+#{$tab-buttons} {
+  &::before {
+    border-bottom: 1px solid #f8f8f8;
+  }
+  &, &>* {
+    padding-left: 10px;
+  }
+  >*>a {
+    background: #f8f8f8;
+    &, &:hover {
+      border: none;
+    }
+    // padding: 5px 30px;
+    @media (min-width:960px) {
+      & {
+        padding: 5px 30px;
+      }
+    }  
+  }
+  &>.uk-active>a, &>*>a:hover {
+    background: $color-primary;
+  }
+  &#{$tab-buttons-txt-white}>#{$uk-active}>a, &#{$tab-buttons-txt-white}>*>a:hover, &#{$tab-buttons-txt-white}>*>a:hover>* {
+    color: white !important;
+  }
+}
+#{$tab-buttons-noborder} {
+  &::before {
+    border-bottom: none;
+  }
+}
+#{$nav-header-dotted} {
+  >li {
+    &#{$uk-nav-header}>*:not(ul) {
+      & {width: 100%;}
+      &, * {font-weight: 500;}
+      &::after {content: ""; display: block; @include bordered($property:border-bottom, $style:dotted, $color:$color-border-dark)}
+      &:hover {text-decoration: none !important;}
+      &:hover::after {content: ""; display: block; @include bordered($property:border-bottom, $color:black)}
+    }
+  }
+}
+
+/*---------- Indent ------------------------------*/
+#{$hanging-indent} {@include indent($margin:calc(10rem/16), $flex:true)}
+#{$listFaIcon-indent} {@include indent($padding:1.25rem, $indent:-1.25rem); &>*, &>*::after {display: inline !important;}}
+#{$listFaIcon-indent}-2 {@include indent($padding:2rem, $indent:-2rem)}
+#{$listFaIcon-indent}-3 {@include indent($padding:3rem, $indent:-3rem)}
+#{$listFaIcon-indent}-4 {@include indent($padding:4rem, $indent:-4rem)}
+#{$reset-indent} {display:inherit;}
+
+/*---------- Width & Height & Scroll ------------------------------*/
+#{$width}auto {width:auto}
+#{$width}auto\! {width:auto !important}
+#{$width} {@include grid-width}
+#{$width} {@include grid-width($important:true)}
+// #{$min-width} {@include min-width}
+// #{$min-width} {@include min-width($important:true)}
+// #{$max-width} {@include max-width}
+// #{$max-width} {@include max-width($important:true)}
+#{$min-width}auto {min-width:auto}
+#{$min-width}auto\! {min-width:auto !important}
+#{$min-width}full {min-width:100%}
+#{$min-width}full\! {min-width:100% !important}
+#{$min-width} {@include grid-width($max:30, $property:min-width)}
+#{$min-width} {@include grid-width($max:30, $property:min-width, $important:true)}
+#{$max-width} {@include grid-width($max:30, $property:max-width)}
+#{$max-width} {@include grid-width($max:30, $property:max-width, $important:true)}
+@include min-max($selector:$min-width, $min:10, $max:1000, $step:5, $property:true, $property-name:min-width, $unit:true, $unit-val:px);
+@include min-max($selector:$max-width, $min:10, $max:1000, $step:5, $property:true, $property-name:max-width, $unit:true, $unit-val:px);
+@include min-max($selector:$min-width, $min:10, $max:1000, $step:5, $property:true, $property-name:min-width, $unit:true, $unit-val:px, $important:true);
+@include min-max($selector:$max-width, $min:10, $max:1000, $step:5, $property:true, $property-name:max-width, $unit:true, $unit-val:px, $important:true);
+@include min-max($selector:$min-height, $min:10, $max:1000, $step:1, $property:true, $property-name:min-height, $unit:true, $unit-val:px);
+@include min-max($selector:$max-height, $min:10, $max:1000, $step:5, $property:true, $property-name:max-height, $unit:true, $unit-val:px);
+@include min-max($selector:$min-height, $min:10, $max:1000, $step:1, $property:true, $property-name:min-height, $unit:true, $unit-val:px, $important:true);
+@include min-max($selector:$max-height, $min:10, $max:1000, $step:5, $property:true, $property-name:max-height, $unit:true, $unit-val:px, $important:true);
+
+/*uk-@s*/
+@media (min-width:640px) {
+  #{$width}auto\@s {width:auto}
+  #{$width}auto\!\@s {width:auto !important}
+  #{$width} {@include grid-width($media:\@s)}
+  #{$width} {@include grid-width($important:true, $media:\@s)}
+  // #{$min-width} {@include min-width($media:\@s)}
+  // #{$min-width} {@include min-width($important:true, $media:\@s)}
+  #{$min-width}auto\@s {min-width:auto}
+  #{$min-width}auto\!\@s {min-width:auto !important}
+  #{$min-width}full\@s {min-width:100%}
+  #{$min-width}full\!\@s {min-width:100% !important}
+  #{$min-width} {@include grid-width($max:30, $property:min-width, $media:\@s)}
+  #{$min-width} {@include grid-width($max:30, $property:min-width, $important:true, $media:\@s)}
+  #{$max-width} {@include grid-width($max:30, $property:max-width, $media:\@s)}
+  #{$max-width} {@include grid-width($max:30, $property:max-width, $important:true, $media:\@s)}
+  @include min-max($selector:$min-width, $min:10, $max:1000, $step:5, $property:true, $property-name:min-width, $unit:true, $unit-val:px, $media:\@s);
+  @include min-max($selector:$max-width, $min:10, $max:1000, $step:5, $property:true, $property-name:max-width, $unit:true, $unit-val:px, $media:\@s);
+  @include min-max($selector:$min-width, $min:10, $max:1000, $step:5, $property:true, $property-name:min-width, $unit:true, $unit-val:px, $media:\@s, $important:true);
+  @include min-max($selector:$max-width, $min:10, $max:1000, $step:5, $property:true, $property-name:max-width, $unit:true, $unit-val:px, $media:\@s, $important:true);
+  @include min-max($selector:$min-height, $min:10, $max:1000, $step:1, $property:true, $property-name:min-height, $unit:true, $unit-val:px, $media:\@s);
+  @include min-max($selector:$max-height, $min:10, $max:1000, $step:5, $property:true, $property-name:max-height, $unit:true, $unit-val:px, $media:\@s);
+  @include min-max($selector:$min-height, $min:10, $max:1000, $step:1, $property:true, $property-name:min-height, $unit:true, $unit-val:px, $media:\@s, $important:true);
+  @include min-max($selector:$max-height, $min:10, $max:1000, $step:5, $property:true, $property-name:max-height, $unit:true, $unit-val:px, $media:\@s, $important:true);
+}
+
+/*uk-@m*/
+@media (min-width:960px) {
+  #{$width}auto\@m {width:auto}
+  #{$width}auto\!\@m {width:auto !important}
+  #{$width} {@include grid-width($media:\@m)}
+  #{$width} {@include grid-width($important:true, $media:\@m)}
+  // #{$min-width} {@include min-width($media:\@m)}
+  // #{$min-width} {@include min-width($important:true, $media:\@m)}
+  #{$min-width}auto\@m {min-width:auto}
+  #{$min-width}auto\!\@m {min-width:auto !important}
+  #{$min-width}full\@m {min-width:100%}
+  #{$min-width}full\!\@m {min-width:100% !important}
+  #{$min-width} {@include grid-width($max:30, $property:min-width, $media:\@m)}
+  #{$min-width} {@include grid-width($max:30, $property:min-width, $important:true, $media:\@m)}
+  #{$max-width} {@include grid-width($max:30, $property:max-width, $media:\@m)}
+  #{$max-width} {@include grid-width($max:30, $property:max-width, $important:true, $media:\@m)}
+  @include min-max($selector:$min-width, $min:10, $max:1000, $step:5, $property:true, $property-name:min-width, $unit:true, $unit-val:px, $media:\@m);
+  @include min-max($selector:$max-width, $min:10, $max:1000, $step:5, $property:true, $property-name:max-width, $unit:true, $unit-val:px, $media:\@m);
+  @include min-max($selector:$min-width, $min:10, $max:1000, $step:5, $property:true, $property-name:min-width, $unit:true, $unit-val:px, $media:\@m, $important:true);
+  @include min-max($selector:$max-width, $min:10, $max:1000, $step:5, $property:true, $property-name:max-width, $unit:true, $unit-val:px, $media:\@m, $important:true);
+  @include min-max($selector:$min-height, $min:10, $max:1000, $step:1, $property:true, $property-name:min-height, $unit:true, $unit-val:px, $media:\@m);
+  @include min-max($selector:$max-height, $min:10, $max:1000, $step:5, $property:true, $property-name:max-height, $unit:true, $unit-val:px, $media:\@m);
+  @include min-max($selector:$min-height, $min:10, $max:1000, $step:1, $property:true, $property-name:min-height, $unit:true, $unit-val:px, $media:\@m, $important:true);
+  @include min-max($selector:$max-height, $min:10, $max:1000, $step:5, $property:true, $property-name:max-height, $unit:true, $unit-val:px, $media:\@m, $important:true);
+}
+
+/*uk-@l*/
+@media (min-width:1200px) {
+  #{$width}auto\@l {width:auto}
+  #{$width}auto\!\@l {width:auto !important}
+  #{$width} {@include grid-width($media:\@l)}
+  #{$width} {@include grid-width($important:true, $media:\@l)}
+  // #{$min-width} {@include min-width($media:\@l)}
+  // #{$min-width} {@include min-width($important:true, $media:\@l)}
+  #{$min-width}auto\@l {min-width:auto}
+  #{$min-width}auto\!\@l {min-width:auto !important}
+  #{$min-width}full\@l {min-width:100%}
+  #{$min-width}full\!\@l {min-width:100% !important}
+  #{$min-width} {@include grid-width($max:30, $property:min-width, $media:\@l)}
+  #{$min-width} {@include grid-width($max:30, $property:min-width, $important:true, $media:\@l)}
+  #{$max-width} {@include grid-width($max:30, $property:max-width, $media:\@l)}
+  #{$max-width} {@include grid-width($max:30, $property:max-width, $important:true, $media:\@l)}
+  @include min-max($selector:$min-width, $min:10, $max:1000, $step:5, $property:true, $property-name:min-width, $unit:true, $unit-val:px, $media:\@l);
+  @include min-max($selector:$max-width, $min:10, $max:1000, $step:5, $property:true, $property-name:max-width, $unit:true, $unit-val:px, $media:\@l);
+  @include min-max($selector:$min-width, $min:10, $max:1000, $step:5, $property:true, $property-name:min-width, $unit:true, $unit-val:px, $media:\@l, $important:true);
+  @include min-max($selector:$max-width, $min:10, $max:1000, $step:5, $property:true, $property-name:max-width, $unit:true, $unit-val:px, $media:\@l, $important:true);
+  @include min-max($selector:$min-height, $min:10, $max:1000, $step:1, $property:true, $property-name:min-height, $unit:true, $unit-val:px, $media:\@l);
+  @include min-max($selector:$max-height, $min:10, $max:1000, $step:5, $property:true, $property-name:max-height, $unit:true, $unit-val:px, $media:\@l);
+  @include min-max($selector:$min-height, $min:10, $max:1000, $step:1, $property:true, $property-name:min-height, $unit:true, $unit-val:px, $media:\@l, $important:true);
+  @include min-max($selector:$max-height, $min:10, $max:1000, $step:5, $property:true, $property-name:max-height, $unit:true, $unit-val:px, $media:\@l, $important:true);
+}
+
+/*uk-@xl*/
+@media (min-width:1600px) {
+  #{$width}auto\@xl {width:auto}
+  #{$width}auto\!\@xl {width:auto !important}
+  #{$width} {@include grid-width($media:\@xl)}
+  #{$width} {@include grid-width($important:true, $media:\@xl)}
+  // #{$min-width} {@include min-width($media:\@xl)}
+  // #{$min-width} {@include min-width($important:true, $media:\@xl)}
+  #{$min-width}auto\@xl {min-width:auto}
+  #{$min-width}auto\!\@xl {min-width:auto !important}
+  #{$min-width}full\@xl {min-width:100%}
+  #{$min-width}full\!\@xl {min-width:100% !important}
+  #{$min-width} {@include grid-width($max:30, $property:min-width, $media:\@xl)}
+  #{$min-width} {@include grid-width($max:30, $property:min-width, $important:true, $media:\@xl)}
+  #{$max-width} {@include grid-width($max:30, $property:max-width, $media:\@xl)}
+  #{$max-width} {@include grid-width($max:30, $property:max-width, $important:true, $media:\@xl)}
+  @include min-max($selector:$min-width, $min:10, $max:1000, $step:5, $property:true, $property-name:min-width, $unit:true, $unit-val:px, $media:\@xl);
+  @include min-max($selector:$max-width, $min:10, $max:1000, $step:5, $property:true, $property-name:max-width, $unit:true, $unit-val:px, $media:\@xl);
+  @include min-max($selector:$min-width, $min:10, $max:1000, $step:5, $property:true, $property-name:min-width, $unit:true, $unit-val:px, $media:\@xl, $important:true);
+  @include min-max($selector:$max-width, $min:10, $max:1000, $step:5, $property:true, $property-name:max-width, $unit:true, $unit-val:px, $media:\@xl, $important:true);
+  @include min-max($selector:$min-height, $min:10, $max:1000, $step:1, $property:true, $property-name:min-height, $unit:true, $unit-val:px, $media:\@xl);
+  @include min-max($selector:$max-height, $min:10, $max:1000, $step:5, $property:true, $property-name:max-height, $unit:true, $unit-val:px, $media:\@xl);
+  @include min-max($selector:$min-height, $min:10, $max:1000, $step:1, $property:true, $property-name:min-height, $unit:true, $unit-val:px, $media:\@xl, $important:true);
+  @include min-max($selector:$max-height, $min:10, $max:1000, $step:5, $property:true, $property-name:max-height, $unit:true, $unit-val:px, $media:\@xl, $important:true);
+}
+
+#{$overflow-hidden} {@include overflow-hidden($mask:true)}
+#{$overflow-hidden}\@m {@media (min-width: 960px) {@include overflow-hidden($mask:true)}}
+#{$truncate} {@include ellipsis($lineCount:3, $truncate:true)}
+#{$ellipsis} {@include ellipsis($lineCount:3)}
+
+/*---------- Aspect Ratio - padding-top:calc(100%*height/width) ------------------------------*/
+#{$aspect} {
+  position: relative;
+  &#{$not-uk-width} {width:100%; padding-top:100%;}
+  // &:before {@include pseudo-content($display:block, $content:true); padding-top:100%;}
+  &#{$ratio}3\/4 {padding-top:calc(100%*4/3);}
+  &#{$ratio}9\/16 {padding-top:calc(100%*16/9);}
+  &#{$ratio}9\/21 {padding-top:calc(100%*21/9);}
+  &#{$ratio}4\/3 {padding-top:calc(100%*3/4);}
+  &#{$ratio}16\/9 {padding-top:calc(100%*9/16);}
+  &#{$ratio}21\/9 {padding-top:calc(100%*9/21);}
+  >* {@include cover}
+}
+
+/*---------- Pseudo ------------------------------*/
+// @include pseudo-content($display:inherit, $pos:inherit, $content:$boolean, $content-val:"", $property:"", $property-val:$space, $fontsize:inherit, $icon:"", $font:$font-fa, $weight:900, $color:inherit, $background:$boolean, $bg:$color-grey-light, $bg-txt:true, $l:auto, $t:auto, $r:auto, $b:auto, $radius:0, $margin:inherit, $padding:inherit, $line:inherit, $h:auto, $pointer-off:$boolean);
+
+#{$pseudo-item-pipe}:before {@include pseudo-content($content:true, $content-val:"▍", $property:padding-right)}
+#{$pseudo-item-pipe},#{$pseudo-item-circle},#{$pseudo-item-dot},#{$pseudo-item-link} {@include space($property:margin-right, $size:$space-l)}
+#{$pseudo-item-circle}:before {@include pseudo-content($display:inline-block, $content:true, $content-val:"○", $property:margin-right, $property-val:1px); transform:scale(0.6) translate($space-negative, 1px);}
+#{$pseudo-item-dot}:before {@include pseudo-content($display:inline-block, $content:true, $content-val:"·"); transform:scale(3) translate(1px, -1px); @include space($property:margin-left, $size:-17px); @include space($property:margin-right, $size:12px)}
+#{$pseudo-item-dot} {@include space($property:padding-left, $size:17px)}
+#{$pseudo-item-link} {@include pseudo-content($content:true, $content-val:"§", $property:padding-right, $color:$color-text-light)}
+#{$pseudo-fa-angle-right}:before {@include pseudo-content($content:true, $content-val:"\f105", $icon:fa)}
+#{$pseudo-parentheses}:before {@include pseudo-content($content:true, $content-val:"("); @include space($property:margin-left, $size:3px); @include space($property:padding-right, $size:1px)}
+#{$pseudo-parentheses}:after {@include pseudo-content($content:true, $content-val:")"); @include space($property:padding-left, $size:1px)}
+#{$pseudo-line-vertical}:not(:last-child):after {@include pseudo-content($content:true, $content-val:"│", $property:padding, $property-val:0 $space)}
+#{$pseudo-slash}:not(:last-child):after {@include pseudo-content($content:true, $content-val:"/", $property:padding-left, $property-val:$space)}
+#{$pseudo-bottom-line}:not(:last-child):after {@include pseudo-content($pos:absolute, $content:true, $property:height, $property-val:1px, $background:true, $bg:$color-grey-light, $bg-txt:false, $l:0, $r:0, $b:0)}
+#{$pseudo-comma}:not(:last-child):after {@include pseudo-content($content:true, $content-val:",", $property:padding-right, $property-val:$space-m)}
+#{$pseudo-comma-ch}:not(:last-child):after {@include pseudo-content($content:true, $content-val:"、")}
+#{$pseudo-comma-dot}:not(:last-child):after {@include pseudo-content($display:inline-block, $content:true, $content-val:"·"); @include space($property:margin-left, $size:$space); @include space($property:margin-right, $size:$space); transform:scale(2) translate(1px, -1px)}
+#{$pseudo-arrow}:not(:last-child):after {@include pseudo-content($content:true, $content-val:"→"); @include space($property:padding-left, $size:$space); @include space($property:padding-right, $size:$space)}
+#{$pseudo-plus}:not(:last-child):after {@include pseudo-content($content:true, $content-val:"+"); @include space($property:padding-left, $size:$space); @include space($property:padding-right, $size:$space)}
+ /*The below works with <q> */
+#{$quotes-ch} {quotes:"「" "」";}
+#{$quotes-dashes} {quotes:"- " " -";}
+
+/*---------- Circle Checkbox - white ------------------------------*/
+#{$checkbox-circle} {
+  position: absolute; opacity: 0;
+  &+label {position: relative; cursor: pointer; padding: 0;}
+  &+label:before {content:""; margin-right:$space; display:inline-block; vertical-align:baseline; width:calc(13rem/16); height:calc(13rem/16); border-radius: 50%; @include bordered}
+  &:hover+label:before {background:$color-border}
+  &:focus+label:before {@include box-shadow($outline:true)}
+  &:checked+label:before {@include pseudo-content($content:true, $content-val:"\f00c", $property:text-align, $property-val:center, $fontsize:calc(12rem/16), $icon:fa, $color:inherit, $line:calc(18rem/16))}
+  &:disabled+label {
+    color: $color-grey; cursor: auto;
+    &:before {background: $color-grey-light;}
+  }
+}
+
+/*---------- Section & Container ------------------------------*/
+section {
+  padding:$space-l 0;
+  @media (min-width:640px) {
+    padding:$space-l;
+  }
+  @media (min-width:960px) {
+    padding:$space-xl $space-l;
+  }
+}
+
+#{$container-responsive}, #{$container-responsive}\@s, #{$container-responsive}\@m {
+  // padding: 0 $space-m;
+  padding: 0;
+  &>#{$uk-card} {padding: $space-l;}
+  &>#{$uk-card}, &#{$mc-card}> {border: none; border-radius: 0; box-shadow: none;}
+}
+#{$container-responsive}\@s {
+  @media (min-width:640px) {
+    // padding: 0 15px;
+    &>#{$uk-card} {padding: 30px; @include uk-box-shadow}
+    &>#{$uk-card}#{$uk-card-small} {padding: 20px;}
+    &>#{$uk-card}#{$uk-card-large} {padding: 70px;}
+    &>#{$uk-card}#{$mc-card} {
+      margin: .5rem 0 1rem 0;
+      border-radius: 2px;
+      #{$mc-card-content} {
+        padding: 24px;
+        border-radius: 0 0 2px 2px;
+      }
+    }
+  }
+}
+#{$container-responsive}\@m {
+  @media (min-width:960px) {
+    // padding: 0 15px;
+    &>#{$uk-card} {padding: 30px; @include uk-box-shadow}
+    &>#{$uk-card}#{$uk-card-small} {padding: 20px;}
+    &>#{$uk-card}#{$uk-card-large} {padding: 70px;}
+    &>#{$uk-card}#{$mc-card} {
+      margin: .5rem 0 1rem 0;
+      border-radius: 2px;
+      #{$mc-card-content} {
+        padding: 24px;
+        border-radius: 0 0 2px 2px;
+      }
+    }
+  }
+}
+
+/*---------- Tab ------------------------------*/
+#{$tab-btn}#{$uk-tab} {
+  margin-left: 0;
+}
+#{$tab-btn}#{$uk-tab}::before {
+  border-bottom: 1px solid $color-border;
+}
+#{$tab-btn}#{$uk-tab}#{$tab-btn-noline}::before {
+  display: none;
+}
+#{$tab-btn}#{$uk-tab}>li:first-child, #{$tab-btn}#{$uk-tab}>li#{$uk-first-column}, #{$tab-btn-secondary}#{$uk-tab}>li#{$uk-first-column} {
+  padding-left: 0;
+}
+#{$tab-btn}#{$uk-tab}>*>a, #{$tab-btn-secondary}#{$uk-tab}>*>a {
+  background-color: rgba(0, 0, 0, 0.1);
+  border: none;
+}
+#{$tab-btn}#{$uk-tab}>#{$uk-active}>a {
+  background-color: $color-primary;
+  color: text-black-white($color-primary) !important;
+}
+#{$tab-btn-secondary}#{$uk-tab}>#{$uk-active}>a {
+  background-color: $color-secondary;
+  color: text-black-white($color-secondary) !important;
+}
+#{$tab-btn}#{$uk-tab}>*>a:hover, #{$tab-btn}#{$uk-tab}>*>a:focus {
+  background-color: $color-primary;
+  color: text-black-white(text-black-white($color-primary)) !important;
+}
+#{$tab-btn-secondary}#{$uk-tab}>*>a:hover, #{$tab-btn-secondary}#{$uk-tab}>*>a:focus {
+  background-color: $color-secondary;
+  color: text-black-white(text-black-white($color-secondary)) !important;
+}
+#{$tab-btn-active-white}#{$uk-tab}>#{$uk-active}>a {
+  color: white !important;
+}
+#{$tab-btn-space-xs}>*:not(#{$uk-first-column}):not(:first-child) {
+  padding-left: 5px;
+}
+#{$tab-btn-space-xs}\!>*:not(#{$uk-first-column}):not(:first-child) {
+  padding-left: 5px !important;
+}
+#{$tab-btn-space-s}>*:not(#{$uk-first-column}):not(:first-child) {
+  padding-left: 10px;
+}
+#{$tab-btn-space-s}\!>*:not(#{$uk-first-column}):not(:first-child) {
+  padding-left: 10px !important;
+}
+@media (min-width: 640px) {
+  #{$tab-btn-space-xs}\@s>*:not(#{$uk-first-column}):not(:first-child) {
+    padding-left: 5px;
+  }
+  #{$tab-btn-space-xs}\!\@s>*:not(#{$uk-first-column}):not(:first-child) {
+    padding-left: 5px !important;
+  }
+  #{$tab-btn-space-s}\@s>*:not(#{$uk-first-column}):not(:first-child) {
+    padding-left: 10px;
+  }
+  #{$tab-btn-space-s}\!\@s>*:not(#{$uk-first-column}):not(:first-child) {
+    padding-left: 10px !important;
+  }  
+}
+
+@media (min-width: 960px) {
+  #{$tab-btn-space-xs}\@m>*:not(#{$uk-first-column}):not(:first-child) {
+    padding-left: 5px;
+  }
+  #{$tab-btn-space-xs}\!\@m>*:not(#{$uk-first-column}):not(:first-child) {
+    padding-left: 5px !important;
+  }
+  #{$tab-btn-space-s}\@m>*:not(#{$uk-first-column}):not(:first-child) {
+    padding-left: 10px;
+  }
+  #{$tab-btn-space-s}\!\@m>*:not(#{$uk-first-column}):not(:first-child) {
+    padding-left: 10px !important;
+  }  
+}
+
+@media (min-width: 1200px) {
+  #{$tab-btn-space-xs}\@l>*:not(#{$uk-first-column}):not(:first-child) {
+    padding-left: 5px;
+  }
+  #{$tab-btn-space-xs}\!\@l>*:not(#{$uk-first-column}):not(:first-child) {
+    padding-left: 5px !important;
+  }
+  #{$tab-btn-space-s}\@l>*:not(#{$uk-first-column}):not(:first-child) {
+    padding-left: 10px;
+  }
+  #{$tab-btn-space-s}\!\@l>*:not(#{$uk-first-column}):not(:first-child) {
+    padding-left: 10px !important;
+  }  
+}
+
+@media (min-width: 1600px) {
+  #{$tab-btn-space-xs}\@xl>*:not(#{$uk-first-column}):not(:first-child) {
+    padding-left: 5px;
+  }
+  #{$tab-btn-space-xs}\!\@xl>*:not(#{$uk-first-column}):not(:first-child) {
+    padding-left: 5px !important;
+  }
+  #{$tab-btn-space-s}\@xl>*:not(#{$uk-first-column}):not(:first-child) {
+    padding-left: 10px;
+  }
+  #{$tab-btn-space-s}\!\@xl>*:not(#{$uk-first-column}):not(:first-child) {
+    padding-left: 10px !important;
+  }  
+}
+
+/*---------- Nav ------------------------------*/
+nav#{$nav-reset} {
+  background: transparent;
+  color: text-color($color-white);
+  // a {color: $color-link;}
+}
+
+#{$sub-nav} {
+  #{$tailwind-bg-white} & *, #{$bg-white} & * {color:$color-text;}
+  * {line-height: 1;}
+  #{$hover-bg} {
+    &:hover, &#{$active} {background:black;}
+    &:hover, &:hover>*, &#{$active}>*, >button:focus {color:white !important; text-decoration:none;}
+    >* {
+      padding: $space $space-m;
+    }
+    >button {
+      font-size: inherit;
+      &:focus {background:black;}
+    }
+  }
+}
+
+#{$bg-black} {
+  &>button {font-size: inherit; line-height: inherit; background: transparent; vertical-align: inherit;}
+  &#{$active}>a, &>a:hover, &>a:hover>*, &#{$active}>span>a, &>span>a:hover, &#{$active}>button, &>button:hover, &#{$active}>span>button, &>span>button:hover {background: black !important; color: white !important; text-decoration: none !important; transition: none;}
+  &>span>a:hover {background: $color-link;}
+  &>* {line-height: 1; padding: $space;}
+}
+
+/*---------- Pagination ------------------------------*/
+#{$pagination} a {
+  &:not(.disabled):hover, &:not(.disabled):hover * {
+    color: black;
+  }
+  padding: 0 8px;
+  @media (min-width:640px) {
+    padding: 0 $space-l;
+  }
+}
+
+/*---------- Footer ------------------------------*/
+#{$footer}, #{$footer} *:not([class*=bg]):not([class*=btn]):not([class*=color_]):not([class*=text-]), #{$footer} *:not([class*=bg]):not([class*=btn]):not([class*=color_]):not([class*=text-]) *, footer, footer *:not([class*=bg]):not([class*=btn]):not([class*=color_]):not([class*=text-]), footer *:not([class*=bg]):not([class*=btn]):not([class*=color_]):not([class*=text-]) * {color: $color-text-dark;}
+#{$footer}, footer {
+  #{$uk-grid-divider}>:not(#{$uk-first-column})::before, &#{$uk-grid-divider}#{$uk-grid-stack}>#{$uk-grid-margin}::before {border-color: $color-border;}
+} 
+
+/*---------- Uikit 3 Style
+---------------------------------------------------------------------------------- */
+address, dl, fieldset, figure, ol, p, pre, ul {
+  margin: 10px 0;
+}
+#{$uk} * {text-transform: inherit !important;}
+
+#{$grid-xs} {
+  @include space($property:margin-left, $size:$space-xs-negative);
+  &>* {@include space($property:padding-left, $size:$space-xs)}
+  &\! {
+    @include space($property:margin-left, $size:$space-xs-negative, $important:true);
+    &>* {@include space($property:padding-left, $size:$space-xs, $important:true)}
+  }
+  &\@s {
+    @media (min-width:640px) {
+      @include space($property:margin-left, $size:$space-xs-negative);
+      &>* {@include space($property:padding-left, $size:$space-xs)}
+    }
+  }
+  &\@m {
+    @media (min-width:960px) {
+      @include space($property:margin-left, $size:$space-xs-negative);
+      &>* {@include space($property:padding-left, $size:$space-xs)}
+    }
+  }
+  &\@l {
+    @media (min-width:1200px) {
+      @include space($property:margin-left, $size:$space-xs-negative);
+      &>* {@include space($property:padding-left, $size:$space-xs)}
+    }
+  }
+  &\@xl {
+    @media (min-width:1600px) {
+      @include space($property:margin-left, $size:$space-xs-negative);
+      &>* {@include space($property:padding-left, $size:$space-xs)}
+    }
+  }
+  &\!\@s {
+    @media (min-width:640px) {
+      @include space($property:margin-left, $size:$space-xs-negative, $important:true);
+      &>* {@include space($property:padding-left, $size:$space-xs, $important:true)}
+    }
+  }
+  &\!\@m {
+    @media (min-width:960px) {
+      @include space($property:margin-left, $size:$space-xs-negative, $important:true);
+      &>* {@include space($property:padding-left, $size:$space-xs, $important:true)}
+    }
+  }
+  &\!\@l {
+    @media (min-width:1200px) {
+      @include space($property:margin-left, $size:$space-xs-negative, $important:true);
+      &>* {@include space($property:padding-left, $size:$space-xs, $important:true)}
+    }
+  }
+  &\!\@xl {
+    @media (min-width:1600px) {
+      @include space($property:margin-left, $size:$space-xs-negative, $important:true);
+      &>* {@include space($property:padding-left, $size:$space-xs, $important:true)}
+    }
+  }
+}
+#{$grid-s} {
+  @include space($property:margin-left, $size:$space-s-negative);
+  &>* {@include space($property:padding-left, $size:$space-s)}
+  &\! {
+    @include space($property:margin-left, $size:$space-s-negative, $important:true);
+    &>* {@include space($property:padding-left, $size:$space-s, $important:true)}      
+  }
+  &\@s {
+    @media (min-width:640px) {
+      @include space($property:margin-left, $size:$space-s-negative);
+      &>* {@include space($property:padding-left, $size:$space-s)}
+    }
+  }
+  &\@m {
+    @media (min-width:960px) {
+      @include space($property:margin-left, $size:$space-s-negative);
+      &>* {@include space($property:padding-left, $size:$space-s)}
+    }
+  }
+  &\@l {
+    @media (min-width:1200px) {
+      @include space($property:margin-left, $size:$space-s-negative);
+      &>* {@include space($property:padding-left, $size:$space-s)}
+    }
+  }
+  &\@xl {
+    @media (min-width:1600px) {
+      @include space($property:margin-left, $size:$space-s-negative);
+      &>* {@include space($property:padding-left, $size:$space-s)}
+    }
+  }
+  &\!\@s {
+    @media (min-width:640px) {
+      @include space($property:margin-left, $size:$space-s-negative, $important:true);
+      &>* {@include space($property:padding-left, $size:$space-s, $important:true)}
+    }
+  }
+  &\!\@m {
+    @media (min-width:960px) {
+      @include space($property:margin-left, $size:$space-s-negative, $important:true);
+      &>* {@include space($property:padding-left, $size:$space-s, $important:true)}
+    }
+  }
+  &\!\@l {
+    @media (min-width:1200px) {
+      @include space($property:margin-left, $size:$space-s-negative, $important:true);
+      &>* {@include space($property:padding-left, $size:$space-s, $important:true)}
+    }
+  }
+  &\!\@xl {
+    @media (min-width:1600px) {
+      @include space($property:margin-left, $size:$space-s-negative, $important:true);
+      &>* {@include space($property:padding-left, $size:$space-s, $important:true)}
+    }
+  }
+}
+#{$grid-m} {
+  @include space($property:margin-left, $size:$space-m-negative);
+  &>* {@include space($property:padding-left, $size:$space-m)}
+  &\! {
+    @include space($property:margin-left, $size:$space-m-negative, $important:true);
+    &>* {@include space($property:padding-left, $size:$space-m, $important:true)}      
+  }
+  &\@s {
+    @media (min-width:640px) {
+      @include space($property:margin-left, $size:$space-m-negative);
+      &>* {@include space($property:padding-left, $size:$space-m)}
+    }
+  }
+  &\@m {
+    @media (min-width:960px) {
+      @include space($property:margin-left, $size:$space-m-negative);
+      &>* {@include space($property:padding-left, $size:$space-m)}
+    }
+  }
+  &\@l {
+    @media (min-width:1200px) {
+      @include space($property:margin-left, $size:$space-m-negative);
+      &>* {@include space($property:padding-left, $size:$space-m)}
+    }
+  }
+  &\@xl {
+    @media (min-width:1600px) {
+      @include space($property:margin-left, $size:$space-m-negative);
+      &>* {@include space($property:padding-left, $size:$space-m)}
+    }
+  }
+  &\!\@s {
+    @media (min-width:640px) {
+      @include space($property:margin-left, $size:$space-m-negative, $important:true);
+      &>* {@include space($property:padding-left, $size:$space-m, $important:true)}
+    }
+  }
+  &\!\@m {
+    @media (min-width:960px) {
+      @include space($property:margin-left, $size:$space-m-negative, $important:true);
+      &>* {@include space($property:padding-left, $size:$space-m, $important:true)}
+    }
+  }
+  &\!\@l {
+    @media (min-width:1200px) {
+      @include space($property:margin-left, $size:$space-m-negative, $important:true);
+      &>* {@include space($property:padding-left, $size:$space-m, $important:true)}
+    }
+  }
+  &\!\@xl {
+    @media (min-width:1600px) {
+      @include space($property:margin-left, $size:$space-m-negative, $important:true);
+      &>* {@include space($property:padding-left, $size:$space-m, $important:true)}
+    }
+  }
+}
+#{$grid-l} {
+  @include space($property:margin-left, $size:$space-l-negative);
+  &>* {@include space($property:padding-left, $size:$space-l)}
+  &\! {
+    @include space($property:margin-left, $size:$space-l-negative, $important:true);
+    &>* {@include space($property:padding-left, $size:$space-l, $important:true)}      
+  }
+  &\@s {
+    @media (min-width:640px) {
+      @include space($property:margin-left, $size:$space-l-negative);
+      &>* {@include space($property:padding-left, $size:$space-l)}
+    }
+  }
+  &\@m {
+    @media (min-width:960px) {
+      @include space($property:margin-left, $size:$space-l-negative);
+      &>* {@include space($property:padding-left, $size:$space-l)}
+    }
+  }
+  &\@l {
+    @media (min-width:1200px) {
+      @include space($property:margin-left, $size:$space-l-negative);
+      &>* {@include space($property:padding-left, $size:$space-l)}
+    }
+  }
+  &\@xl {
+    @media (min-width:1600px) {
+      @include space($property:margin-left, $size:$space-l-negative);
+      &>* {@include space($property:padding-left, $size:$space-l)}
+    }
+  }
+  &\!\@s {
+    @media (min-width:640px) {
+      @include space($property:margin-left, $size:$space-l-negative, $important:true);
+      &>* {@include space($property:padding-left, $size:$space-l, $important:true)}
+    }
+  }
+  &\!\@m {
+    @media (min-width:960px) {
+      @include space($property:margin-left, $size:$space-l-negative, $important:true);
+      &>* {@include space($property:padding-left, $size:$space-l, $important:true)}
+    }
+  }
+  &\!\@l {
+    @media (min-width:1200px) {
+      @include space($property:margin-left, $size:$space-l-negative, $important:true);
+      &>* {@include space($property:padding-left, $size:$space-l, $important:true)}
+    }
+  }
+  &\!\@xl {
+    @media (min-width:1600px) {
+      @include space($property:margin-left, $size:$space-l-negative, $important:true);
+      &>* {@include space($property:padding-left, $size:$space-l, $important:true)}
+    }
+  }
+}
+#{$grid-xl} {
+  @include space($property:margin-left, $size:$space-xl-negative);
+  &>* {@include space($property:padding-left, $size:$space-xl)}
+  &\! {
+    @include space($property:margin-left, $size:$space-xl-negative, $important:true);
+    &>* {@include space($property:padding-left, $size:$space-xl, $important:true)}      
+  }
+  &\@s {
+    @media (min-width:640px) {
+      @include space($property:margin-left, $size:$space-xl-negative);
+      &>* {@include space($property:padding-left, $size:$space-xl)}
+    }
+  }
+  &\@m {
+    @media (min-width:960px) {
+      @include space($property:margin-left, $size:$space-xl-negative);
+      &>* {@include space($property:padding-left, $size:$space-xl)}
+    }
+  }
+  &\@l {
+    @media (min-width:1200px) {
+      @include space($property:margin-left, $size:$space-xl-negative);
+      &>* {@include space($property:padding-left, $size:$space-xl)}
+    }
+  }
+  &\@xl {
+    @media (min-width:1600px) {
+      @include space($property:margin-left, $size:$space-xl-negative);
+      &>* {@include space($property:padding-left, $size:$space-xl)}
+    }
+  }
+  &\!\@s {
+    @media (min-width:640px) {
+      @include space($property:margin-left, $size:$space-xl-negative, $important:true);
+      &>* {@include space($property:padding-left, $size:$space-xl, $important:true)}
+    }
+  }
+  &\!\@m {
+    @media (min-width:960px) {
+      @include space($property:margin-left, $size:$space-xl-negative, $important:true);
+      &>* {@include space($property:padding-left, $size:$space-xl, $important:true)}
+    }
+  }
+  &\!\@l {
+    @media (min-width:1200px) {
+      @include space($property:margin-left, $size:$space-xl-negative, $important:true);
+      &>* {@include space($property:padding-left, $size:$space-xl, $important:true)}
+    }
+  }
+  &\!\@xl {
+    @media (min-width:1600px) {
+      @include space($property:margin-left, $size:$space-xl-negative, $important:true);
+      &>* {@include space($property:padding-left, $size:$space-xl, $important:true)}
+    }
+  }
+}
+
+#{$uk-grid} {
+  >#{$uk-width}:first-child>svg.fa-angle-right {
+    margin-left: -6px;
+  }
+}
+
+#{$uk-navbar-toggle} {min-height: 30px;}
+#{$uk-navbar-toggle-icon} {min-width: 50px;}
+
+#{$uk-breadcrumb} a:focus, #{$uk-breadcrumb} a:hover {color: black; text-decoration: underline;}
+
+#{$text-color-black} {
+  &#{$uk-breadcrumb-pseudo}, &#{$uk-breadcrumb}>li>span {color: black;}
+  &#{$uk-breadcrumb-pseudo}, &#{$uk-breadcrumb}>li>span {color: $color-text-dark;}
+}
+
+#{$uk-navbar-nav} {
+  &>li#{$bg-black} {display: flex; align-items: center;}
+  &>li>span {font-size: $fontsize-s;}
+  &>li>a, #{$uk-navbar-item}, #{$uk-navbar-toggle} {height: inherit; padding: 0 $space;}
+}
+
+#{$nav-bar} {
+  &#{$uk-tab}:before {border-bottom: none;}
+  li {float: none;}
+  >li {padding: 0; &#{$active} {background-color: transparent;}}
+  >*>a {color: white ;border-bottom-width: 4px; padding: $space $space-m; margin: 0 $space;}
+  a#{$uk-open}, >#{$uk-active}>a, >#{$active}>a, >li>a:focus, >li>a:hover {border-color: white !important; background-color: transparent;}
+  &#{$nav-bar-primary} a#{$uk-open}, &#{$nav-bar-primary}>#{$uk-active}>a, &#{$nav-bar-primary}>#{$active}>a, &#{$nav-bar-primary}>li>a:focus, &#{$nav-bar-primary}>li>a:hover {border-color: $color-primary !important}
+  &#{$nav-bar-secondary} a#{$uk-open}, &#{$nav-bar-secondary}>#{$uk-active}>a, &#{$nav-bar-secondary}>#{$active}>a, &#{$nav-bar-secondary}>li>a:focus, &#{$nav-bar-secondary}>li>a:hover {border-color: $color-secondary !important}
+}
+
+#{$uk-dropdown-nav} {
+  li a, #{$uk-nav-sub} a {
+    color:$color-link; &:hover {color:$color-link-hover;}
+  }
+  li {
+    a {
+      &:not([class*=underline])::after {content: ""; display: block; @include bordered($property:border-bottom, $style:dotted, $color:transparent)}
+      &:not([class*=underline]):hover {text-decoration: none !important;}
+      &:not([class*=underline]):hover::after {content: ""; display: block; @include bordered($property:border-bottom, $style:dotted, $color:$color-border-dark)}
+    }
+    &#{$active}, &#{$uk-active} {
+      a:not([class*=underline])::after {content: ""; display: block; @include bordered($property:border-bottom, $style:dotted, $color:$color-border-dark)}
+    }
+  }
+  li>span {font-size: $fontsize-s; font-weight: 400;}
+}
+
+#{$uk-subnav} {
+  margin-left: $space-m-negative;
+  &>* {padding-left: $space-m;}
+  &-divider>:nth-child(n+2):not(#{$uk-first-column})::before {margin-right: $space-m;}
+  &-pill>*>:first-child {color: $color-text;}
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  /* --- Fix lists bullets to hidden in Edge. It's a 1x1 transparent PNG image --- */
+  #{$uk-nav}, #{$uk-nav} ul {list-style-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=);}
+}
+
+#{$uk-nav}:not([class*=#{str-slice($list-tabs, 2, -1)}]) li a:hover {background: transparent; >* {text-decoration: none !important;}}
+#{$uk-nav-sub}, ul#{$uk-nav-sub} {padding: 5px 0 5px 15px; & ul {padding-left: 15px;}}
+
+#{$uk-offcanvas-bar-a} {color: inherit;}
+#{$uk-offcanvas-bar} {padding-top: 40px !important; * {word-break: break-all;}}
+#{$uk-offcanvas-close} {top: 10px;}
+
+#{$uk-slideshow}, #{$uk-slider} {
+  #{$uk-hidden-hover} {visibility: hidden;}
+  &:hover {
+    &#{$uk-light} #{$uk-slidenav}, #{$uk-light} #{$uk-slidenav} {
+      * {color: rgba(255, 255, 255, 0.5) !important; text-shadow: 0 0 5px rgba(0, 0, 0, 0.7) !important;}
+      &-previous:not([class*=-out]) {background: linear-gradient(to right, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 100%);}
+      &-next:not([class*=-out]) {background: linear-gradient(to left, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 100%);}
+    }
+    #{$uk-hidden-hover} {visibility: visible;}
+  }
+}
+#{$uk-slider}#{$slidenav-thick} {
+  svg[data-svg*=slidenav]>polyline {
+    stroke-width: 5;
+  }
+}
+/* purgecss ignore */
+#{$uk-slideshow} #{$uk-light} #{$uk-slidenav} *, #{$uk-slideshow} #{$uk-light} #{$uk-slidenav}:hover *, #{$uk-slider}#{$uk-light} #{$uk-slidenav}:not([class*=-out]):hover *, #{$uk-slider} #{$uk-light} #{$uk-slidenav}:not([class*=-out]):hover *, #{$uk-modal-dialog-lightbox} #{$uk-lightbox-content} {color: rgba(255, 255, 255, 1) !important; text-shadow: 0 0 5px rgba(0, 0, 0, 0.5) !important;}
+
+#{$uk-light} #{$uk-dotnav} {
+  &>*>* {border: 1px solid white; @include box-shadow}
+  &>#{$uk-active}>*, &>*>:focus, &>*>:hover {background-color: rgba(255, 255, 255, 1);}
+  &#{$dotnav-large}>*>* {width: $space-l; height: $space-l;}
+}
+
+#{$uk-lightbox} {
+  background: rgba(0, 0, 0, 0.8);
+  // #{$uk-lightbox-button} {
+  //   width: calc(100%/10); height: 100vh; margin: 0;
+  // }
+  &#{$uk-active} {
+    #{$uk-lightbox-button} {
+      * {color: rgba(255, 255, 255, 0.7);}
+      // &[uk-slidenav-previous] {background: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);}
+      // &[uk-slidenav-next] {background: linear-gradient(to left, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);}
+      &:hover {
+        * {color: rgba(255, 255, 255, 1) !important;}
+      }
+    }
+  }
+  #{$uk-lightbox-toolbar} {
+    color: white;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+    * {color: rgba(255, 255, 255, 0.7);}
+    #{$uk-close} {
+      &:hover * {color: white !important;}
+    }
+    &#{$uk-position-top} {
+      width: 50px;
+      right: 0;
+      left: auto;
+    }
+  }
+}
+
+/* Pagination */
+#{$uk-pagination} {
+  &>li>a:hover {text-decoration: none;}
+  &#{$pagination-padding-s} {margin-left: $space-m-negative;}
+  &#{$pagination-padding-s}>*, &#{$pagination-bg}>* {padding-left: $space-m;}
+}
+#{$uk-pagination}#{$pagination-bg}>li>a, #{$uk-pagination}#{$pagination-bg}>li>span, #{$pagination-link} {min-width: 16px; padding: 3px 5px; box-sizing: content-box; text-align: center; border: 1px solid rgba(0, 0, 0, 0.06); border-radius: 4px;}
+/** Links */
+#{$uk-pagination}#{$pagination-bg}>li>a, #{$pagination-link} {background: #f5f5f5; color: #6f6f6f;}
+/** Hover */
+#{$uk-pagination}#{$pagination-bg}>li>a:hover, #{$uk-pagination}#{$pagination-bg}>li>a:focus, #{$pagination-link}:hover {background-color: #fdfdfd; color: #444; outline: none; border-color: rgba(0, 0, 0, 0.16); text-decoration: none;}
+/** OnClick */
+#{$uk-pagination}#{$pagination-bg}>li>a:active {background-color: #eee; color: #444;}
+/** Active */
+#{$uk-pagination}#{$pagination-bg}>#{$uk-active}>span, #{$uk-pagination}#{$pagination-bg}>#{$active}>span, #{$pagination}>#{$active} #{$pagination-link} {background: #989898; color: white; border-color: transparent; box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05);}
+/** Disabled */
+#{$uk-pagination}#{$pagination-bg}>#{$uk-disabled}>*, #{$uk-pagination}#{$pagination}>#{$disabled}>*, #{$pagination}>#{$disabled}>* {background-color: #fdfdfd; color: #c5c5c5; border: 1px solid rgba(0, 0, 0, 0.06);}
+#{$uk-pagination}#{$pagination-bg}>li:not(#{$uk-active}):not(#{$uk-disabled})>span {border: none;}
+
+#{$uk-disabled}#{$button} {background: $color-light !important;}
+
+#{$accordion-icon-l}#{$uk-accordion-title}::before {float: none; display: inline-block; vertical-align: bottom; margin-bottom: 2px; margin-right: 5px;}
+#{$accordion-icon-r}#{$uk-accordion-title}::before {float: none;}
+#{$accordion-icon-r}#{$uk-accordion-title}::after {content: ""; display: inline-block; vertical-align: bottom; width: 1.4em; height: 1.4em; margin-left: 5px; margin-bottom: 2px; background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMyIgaGVpZ2h0PSIxMyIgdmlld0JveD0iMCAwIDEzIDEzIj4KICAgIDxyZWN0IGZpbGw9IiM2NjYiIHdpZHRoPSIxMyIgaGVpZ2h0PSIxIiB4PSIwIiB5PSI2Ij48L3JlY3Q+CiAgICA8cmVjdCBmaWxsPSIjNjY2IiB3aWR0aD0iMSIgaGVpZ2h0PSIxMyIgeD0iNiIgeT0iMCI+PC9yZWN0Pgo8L3N2Zz4="); background-repeat: no-repeat; background-position: 50% 50%;}
+#{$uk-open}>#{$accordion-icon-r}#{$uk-accordion-title}::after {background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMyIgaGVpZ2h0PSIxMyIgdmlld0JveD0iMCAwIDEzIDEzIj4KICAgIDxyZWN0IGZpbGw9IiM2NjYiIHdpZHRoPSIxMyIgaGVpZ2h0PSIxIiB4PSIwIiB5PSI2Ij48L3JlY3Q+Cjwvc3ZnPg=="); background-repeat: no-repeat; background-position: 50% 50%;}
+#{$accordion-icon-r-arrow}#{$uk-accordion-title}::after {background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBkYXRhLXN2Zz0iY2hldnJvbi1yaWdodCI+PHBvbHlsaW5lIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLXdpZHRoPSIxLjAzIiBwb2ludHM9IjcgNCAxMyAxMCA3IDE2Ij48L3BvbHlsaW5lPjwvc3ZnPg=="); margin-bottom: -1px;}
+#{$uk-open}>#{$accordion-icon-r-arrow}#{$uk-accordion-title}::after {background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBkYXRhLXN2Zz0iY2hldnJvbi1kb3duIj48cG9seWxpbmUgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEuMDMiIHBvaW50cz0iMTYgNyAxMCAxMyA0IDciPjwvcG9seWxpbmU+PC9zdmc+");}
+
+#{$uk-table} th {color: $color-text-dark; font-weight: 700;}
+@media (max-width: 1119px) {
+#{$uk-table-responsive}#{$table-responsive}\@l thead {display: none;}
+#{$uk-table-responsive}#{$table-responsive}\@l #{$uk-table-link}:not(:last-child)>a, #{$uk-table-responsive}#{$table-responsive}\@l td:not(:last-child):not(#{$uk-table-link}), #{$uk-table-responsive}#{$table-responsive}\@l th:not(:last-child):not(#{$uk-table-link}) {padding-bottom: 5px!important;}
+#{$uk-table-responsive}#{$table-responsive}\@l td, #{$uk-table-responsive}#{$table-responsive}\@l th {width: auto!important; max-width: none!important; min-width: 0!important; overflow: visible!important; white-space: normal!important;}
+#{$uk-table-responsive}#{$table-responsive}\@l, #{$uk-table-responsive}#{$table-responsive}\@l tbody, #{$uk-table-responsive}#{$table-responsive}\@l td, #{$uk-table-responsive}#{$table-responsive}\@l th, #{$uk-table-responsive}#{$table-responsive}\@l tr {display: block;}
+}
+@media (max-width: 1599px) {
+#{$uk-table-responsive}#{$table-responsive}\@xl thead {display: none;}
+#{$uk-table-responsive}#{$table-responsive}\@xl #{$uk-table-link}:not(:last-child)>a, #{$uk-table-responsive}#{$table-responsive}\@xl td:not(:last-child):not(#{$uk-table-link}), #{$uk-table-responsive}#{$table-responsive}\@xl th:not(:last-child):not(#{$uk-table-link}) {padding-bottom: 5px!important;}
+#{$uk-table-responsive}#{$table-responsive}\@xl td, #{$uk-table-responsive}#{$table-responsive}\@xl th {width: auto!important; max-width: none!important; min-width: 0!important; overflow: visible!important; white-space: normal!important;}
+#{$uk-table-responsive}#{$table-responsive}\@xl, #{$uk-table-responsive}#{$table-responsive}\@xl tbody, #{$uk-table-responsive}#{$table-responsive}\@xl td, #{$uk-table-responsive}#{$table-responsive}\@xl th, #{$uk-table-responsive}#{$table-responsive}\@xl tr { display: block;}
+}
+#{$table-striped-aler}#{$uk-table}-striped tbody tr#{$uk-alert}, #{$table-striped-aler}#{$uk-table}-striped>tr#{$uk-alert} {
+  background: white;
+}
+#{$table-striped-aler}#{$uk-table}-striped tbody tr:nth-of-type(odd), #{$table-striped-aler}#{$uk-table}-striped>tr:nth-of-type(odd) {
+  background: #f8f8f8;
+}
+
+#{$uk-checkbox}#{$form-white}, #{$uk-radio}#{$form-white} {background-color: white;}
+#{$uk-checkbox}#{$form-white}:checked, #{$uk-checkbox}#{$form-white}:indeterminate, #{$uk-radio}#{$form-white}:checked {background-color: #1e87f0;}
+#{$uk-input}:disabled, #{$uk-select}:disabled, #{$uk-textarea}:disabled {background-color: #fcfcfc;}
+
+#{$uk-button} {padding: 0 10px;}
+[class*=uk-button].btn-secondary {color: white; background-color: #6c757d;}
+[class*=uk-button].btn-secondary:hover {color: white; background-color: #5a6268;}
+[class*=uk-button].btn-light {color: #212529; background-color: #f8f9fa;}
+[class*=uk-button].btn-light:hover {color: #212529; background-color: #e2e6ea;}
+
+#{$uk-list}#{$list-collapse}>li:nth-child(n+2), #{$uk-list}#{$list-collapse}>li>ul {margin-top: 0;}
+#{$uk-list}#{$list-small}>li:nth-child(n+2), #{$uk-list}#{$list-small}>li>ul {margin-top: 5px;}
+#{$uk-list-bullet}>li {padding-left: 0.75em; &::before {margin-left: -0.75em;}}
+#{$uk-list-bullet}#{$uk-light}>li::before {background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc2JyBoZWlnaHQ9JzYnIHZpZXdCb3g9JzAgMCA2IDYnPjxjaXJjbGUgZmlsbD0nI2ZmZicgY3g9JzMnIGN5PSczJyByPSczJy8+PC9zdmc+');}
+
+#{$uk-grid-divider}#{$grid-divider-stack-remove}#{$uk-grid-stack}>#{$uk-grid-margin}::before {border: none;}
+
+#{$container-expand}#{$uk-container} {padding: 0;}
+
+#{$uk-alert}.badge {margin-top:0; margin-bottom: 5px; padding: 7px 29px 7px 10px;}
+#{$uk-alert}.badge #{$uk-alert}-close {top: calc(14px / 2); right: 7px; opacity: .7;}
+#{$uk-alert}.badge-secondary {color: white; background-color: #6c757d;}
+
+#{$uk-modal}#{$uk-flex-top}#{$uk-open} {display: flex !important;}
+
+#{$uk-form-custom} {width: 50%; min-height: 27px;}
+#{$uk-form-custom} input[type=file]::before {content: ""; display: block; position: absolute; top: 0; bottom: 0; left: 0; right: 0; background: white;}
+#{$uk-form-custom} input[type=file]:focus {opacity: 1;}
+#{$uk-form-custom} input[type=file]:focus+.uk-link {z-index: 1; position: absolute; width: 100%; left: 0;}
+#{$uk-form-small}:not(textarea):not([multiple]):not([size]) {padding-right: 25px;}
+
+@media (min-width:640px) {
+#{$uk-width-auto}\@s {flex: inherit;}
+#{$container-expand}#{$uk-container} {padding: 0 30px;}
+}
+@media (min-width:960px) {
+#{$uk-width-auto}\@m {flex: inherit;}
+#{$container-expand}#{$uk-container} {padding: 0 40px;}
+}
+@media (min-width:1200px) {
+#{$uk-width-auto}\@l {flex: inherit;}
+}
+@media (min-width:1600px) {
+#{$uk-width-auto}\@xl {flex: inherit;}
+}
+/*---------- End Uikit 3 Style
+---------------------------------------------------------------------------------- */
+
+/*---------- Fullcalendar Style
+---------------------------------------------------------------------------------- */
+.fc-event {border: none; padding: 0 5px !important;}
+.fc-scroller {height: auto !important;}
+.fc-unthemed td.fc-today {background: #eaeaea; font-weight: 900;}
+@media (max-width:767px) {
+.fc-toolbar {flex-wrap: wrap;}
+.fc-toolbar>*>* {margin: 5px 0;}
+.fc-list-table tr {display: flex;}
+.fc-list-table td {display: block; width: auto; flex: 1 1 auto; white-space: normal;}
+.fc-center h2 {font-size: 1.5rem !important;}
+.fc-button {padding: .4rem .49rem; font-size: .84rem !important;}
+}
+/*---------- End Fullcalendar Style
+---------------------------------------------------------------------------------- */
+
+/*---------- Select2
+---------------------------------------------------------------------------------- */
+.select2 {
+  height: 40px !important;
+  flex: 1 1 auto;
+  .selection, .select2-selection--single {
+    width: 100%;
+    height: 40px;
+    border: 0 none;
+    padding: 0 10px;
+    background: #fff;
+    color: #666;
+    border: 1px solid #e5e5e5;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    // padding-right: 20px;
+    // background-image: url(data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2224%22%20height%3D%2216%22%20viewBox%3D%220%200%2024%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Cpolygon%20fill%3D%22%23666%22%20points%3D%2212%201%209%206%2015%206%22%20%2F%3E%0A%20%20%20%20%3Cpolygon%20fill%3D%22%23666%22%20points%3D%2212%2013%209%208%2015%208%22%20%2F%3E%0A%3C%2Fsvg%3E%0A);
+    background-repeat: no-repeat;
+    background-position: 100% 50%;
+    .select2-selection {
+      background: transparent !important;
+      border: none !important;
+    }
+    .select2-selection--single .select2-selection__rendered {
+      line-height: 40px;
+    }
+  }
+  .select2-selection--single {
+    height: 38px !important;
+    padding: 0 !important;
+    // padding-right: 10px !important;
+    background-image: none;
+    .select2-selection__arrow {
+      display: none;
+    }
+  }
+}
+.select2-container--open .selection, .select2-dropdown {
+    outline: none;
+    background-color: #fff;
+    color: #666;
+    border-color: #1e87f0;
+}
+.select2-search__field {
+  width: calc(100% - 10px) !important;
+  margin: auto;
+  display: block;
+  border: 1px solid #e5e5e5;
+}
+.select2-results__option:first-child:empty {
+    display: none;
+}
+
+/*---------- End Select2
+---------------------------------------------------------------------------------- */
+
+/*---------- IE10+ ------------------------------*/
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .bg-gradient-to-r.from-transparent.via-black.to-transparent, .tw-bg-gradient-to-r.tw-from-transparent.tw-via-black.tw-to-transparent {
+    background: linear-gradient(to right, #ffffff 0%, #000000 50%, #ffffff 100%);
+  }
+  .space-x-2 > :not(template) ~ :not(template), .tw-space-x-2 > :not(template) ~ :not(template) {
+    margin-right: .5rem !important;
+    margin-left: .5rem !important;
+  }
+  #{$uk-grid}>th[class*=uk-width-], #{$uk-grid}>td[class*=uk-width-] {display: block;}
+  #{$uk-table-responsive} #{$uk-grid}>td#{$uk-width-1-1} {flex-basis: 100%;}
+  #{$uk-dropdown-nav} li>*:not(#{$hidden-ie}) {display: block !important;}
+  #{$height-ie} {height: 100%;}
+  #{$uk-nav-divider} {height: 0;}
+  input:-ms-input-placeholder,textarea:-ms-input-placeholder{opacity:1} //fix tailwindcss
+  img:not([class*=inline-block]) {
+    width: 100%; //fix tailwindcss img <display: block>
+  }
+  #{$uk-tab} #{$uk-dropdown} {
+    margin-left: 0;
+  }
+  @media (min-width: 960px) {
+    .min_width-1\/3\!\@m {
+      min-width: calc(100%*1/3 - 1px) !important;
+    }
+  }
+  [uk-height-viewport] {
+    height: auto !important;
+  }
+  #{$hidden-ie} {display: none !important;}
+}

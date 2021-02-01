@@ -1,0 +1,104 @@
+@import 'constants';
+
+/// Remove the unit of a length
+/// @param {Number} $number - Number to remove unit from
+/// @return {Number} - Unitless number
+@function strip-unit($number) {
+  @if type-of($number)=='number'and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+//*** Calculate the luminance for a color. See https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests ***//
+@function luminance($bg-color) {
+  $red: nth($linear-channel-values, red($bg-color) + 1);
+  $green: nth($linear-channel-values, green($bg-color) + 1);
+  $blue: nth($linear-channel-values, blue($bg-color) + 1);
+
+  @return .2126 * $red+.7152 * $green+.0722 * $blue;
+}
+
+//*** Calculate the contrast ratio between two colors. See https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests ***//
+@function contrast($back, $front) {
+  $backLum: luminance($back) + .05;
+  $foreLum: luminance($front) + .05;
+
+  @return max($backLum, $foreLum) / min($backLum, $foreLum);
+}
+
+//*** Determine whether to use dark or light text on top of given color. Returns black for dark text and white for light text. ***//
+@function text-color($bg-color, $contrast-val: 4.5) {
+  // $lightContrast: contrast($bg-color, white);
+  // $darkContrast: contrast($bg-color, black);
+
+  // @if ($lightContrast > $darkContrast) {
+  //   @return white;
+  // }
+  // @else {
+  //   @return black;
+  // }
+  
+  $lightContrast: contrast($bg-color, white);
+  $darkContrast: contrast($bg-color, black);
+  @if ($lightContrast > $darkContrast) {
+    @for $light from 0% through 100% {
+      $color: change-color($bg-color, $lightness: $light);
+      $contrast: contrast($bg-color, $color);
+      // @if $contrast >= $contrast-val {@if lightness($color) < 50% {@return darken(white, 10%);} @return $color;}
+      @if $contrast >= $contrast-val {
+        @if lightness($color) < 90% {@return darken(white, 5%);} //It's right for light color - 2020/2/21
+        @else {@return $color;}
+      }
+    }
+  }
+  @else {
+    @for $dark from 100% through 0% {
+      $color: change-color($bg-color, $lightness: $dark);
+      $contrast: contrast($bg-color, $color);
+      // @if $contrast >= $contrast-val {@if lightness($color) > 50% {@return lighten(black, 10%);} @return $color;}
+      @if $contrast >= $contrast-val {
+        @if lightness($color) > 90% {@return lighten(black, 5%);} //It's not sure for dark color - 2020/2/21
+        @else {@return $color;}
+      }
+    }
+  }
+}
+
+@function text-black-white($bg-color) {
+  $lightContrast: contrast($bg-color, white);
+  $darkContrast: contrast($bg-color, black);
+
+  @if ($lightContrast > $darkContrast) {
+    @return white;
+  }
+  @else {
+    @return black;
+  }
+}
+
+@function color-reduce($color) {
+	@if lightness($color) == 0% {
+		@return lighten($color, 10%);
+	} @else if  lightness($color) == 100% {
+		@return darken($color, 10%);
+	}
+	@else {
+		@return $color;
+	}
+}
+
+//
+// @function color($color, $type) {
+//   @if map-has-key($colors, $color) {
+//     $curr_color: map-get($colors, $color);
+
+//     @if map-has-key($curr_color, $type) {
+//       @return map-get($curr_color, $type);
+//     }
+//   }
+
+//   @warn "Unknown `#{$color}` - `#{$type}` in $colors.";
+//   @return null;
+// }

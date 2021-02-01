@@ -1,0 +1,146 @@
+{{!-- {{>searchBox select1='true' select2='true' select3='true' select4='true' select5='true' only1button='true' bottomOption='true' leftText='true' leftTxt='縮小查詢範圍' checkbox='true' keywords='true' rightHref='true' rightTxt='進階查詢'}} --}}
+
+<!-- searchBox -->
+<form onsubmit="return false;">
+	<div class="uk-grid uk-grid-small uk-child-width-expand" uk-grid>
+		<div class="{{#if select}}min_width-2/3! min_width-1/6!@m min_width-1/3!@l{{else}}min_width-3/4! uk-width-auto@s{{/if}}">
+			<div class="uk-flex uk-flex-middle">
+				<div class="tw-flex-auto"><input class="uk-input" type="text" placeholder="{{placeholder}}" title="輸入關鍵字搜尋"></div>
+				{{#if 2ndInput}}
+				<div class="tw-px-2">或</div>
+				<div class="tw-flex-auto"><input class="uk-input" type="text" placeholder="{{2ndPlaceholder}}" title="輸入關鍵字搜尋"></div>
+				{{/if}}
+				{{!-- <!-- <div class="tw-flex-auto"><a class="btn_secondary min_width-100! tw-w-full uk-button uk-button-primary" href="#search" uk-toggle>病症瀏覽</a></div> --> --}}
+			</div>
+		</div>
+		{{#if select1}}
+		<div class="min_width-1/2! min_width-2/3!@s min_width-1/2!@m uk-width-auto@s">
+			<div class="uk-grid uk-grid-small uk-child-width-expand" uk-grid>
+				<div>
+					<select class="uk-select">
+						<option value="0" selected>-年-</option>
+						<option value="">2020</option>
+					</select>
+				</div>
+				<div>
+					<select class="uk-select">
+						<option value="0" selected>-月-</option>
+						<option value="">9</option>
+					</select>
+				</div>
+				<div>
+					<select class="uk-select">
+						<option value="0" selected>-類別-</option>
+						<option value="">全部</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		{{/if}}
+		{{#if select2}}
+		<div class="min_width-1/2! min_width-2/3!@s min_width-1/2!@m uk-width-auto@s">
+			<div class="uk-grid uk-grid-small uk-child-width-expand" uk-grid>
+				<div>
+					<select class="uk-select">
+						<option value="0" selected>-資料類型-</option>
+						<option value="">全部</option>
+					</select>
+				</div>
+				<div>
+					<select class="uk-select">
+						<option value="0" selected>-主題/學科-</option>
+						<option value="">全部</option>
+					</select>
+				</div>
+				<div>
+					<select class="uk-select">
+						<option value="0" selected>-語文-</option>
+						<option value="">全部</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		{{/if}}
+		{{#if select3}}
+		<div class="min_width-1/2! uk-width-auto@s">
+			<select class="uk-select">
+				<option value="0" selected>-資料類型-</option>
+				<option value="">option</option>
+			</select>
+		</div>
+		{{/if}}
+		{{#if select4}}
+		<div class="min_width-1/2! uk-width-auto@s">
+			<select class="uk-select">
+				<option value="0" selected>-處理狀態-</option>
+				<option value="">option</option>
+			</select>
+		</div>
+		{{/if}}
+		{{#if select5}}
+		<div class="min_width-1/2! uk-width-auto@s">
+			<select class="uk-select">
+				<option value="0" selected>-出版語文-</option>
+				<option value="">option</option>
+			</select>
+		</div>
+		{{/if}}
+		<div class="{{#if only1button}}min_width-100! min_width-150!@l{{else}}min_width-100!{{/if}} uk-width-expand@s uk-text-nowrap">
+			<button class="btn_primary tw-w-full uk-button uk-button-primary"><i class="tw-mr-2 fas fa-search"></i>搜尋</button>
+		</div>
+		{{#if 2ndButton}}
+		<div class="min_width-100! uk-width-auto@s uk-text-nowrap">
+			<button class="btn_primary tw-w-full uk-button uk-button-primary">{{#if 2ndButtonFaicon}}<i class="tw-mr-2 {{2ndButtonFaiconClasses}}"></i>{{/if}}{{2ndButtonName}}</button>
+		</div>
+		{{/if}}
+		{{#if 3rdButton}}
+		<div class="min_width-100! uk-width-auto@s uk-text-nowrap">
+			<button class="btn_primary tw-w-full uk-button uk-button-primary">{{#if 3rdButtonFaicon}}<i class="tw-mr-2 {{3rdButtonFaiconClasses}}"></i>{{/if}}{{3rdButtonName}}</button>
+		</div>
+		{{/if}}
+		{{#if bottomOption}}
+		<div class="tw-m-0 uk-width-1-1">
+			<div class="tw-mt-1 uk-clearfix">
+				{{#if leftHref}}
+				<div class="float-left"><a class="color_primary" href="#">{{leftTxt}}</a></div>
+				{{/if}}
+				{{#if leftText}}
+				<div class="float-left">{{leftTxt}}</div>
+				{{/if}}
+				{{#if rightHref}}
+				<div class="float-right"><a class="color_primary" href="#">{{rightTxt}}</a></div>
+				{{/if}}
+			</div>
+			{{#if checkbox}}
+			<div class="tw-mt-1">
+				<div class="tw-flex">
+					<span class="tw-flex-none">資料類型：</span>
+					<div>
+						<label class="tw-mr-4"><input class="tw-mr-1 uk-checkbox" type="checkbox">數位檔</label>
+						<label class="tw-mr-4"><input class="tw-mr-1 uk-checkbox" type="checkbox">報紙</label>
+						<label class="tw-mr-4"><input class="tw-mr-1 uk-checkbox" type="checkbox">剪報</label>
+						<label class="tw-mr-4"><input class="tw-mr-1 uk-checkbox" type="checkbox">公報</label>
+						<label class="tw-mr-4"><input class="tw-mr-1 uk-checkbox" type="checkbox">期刊</label>
+						<label class="tw-mr-4"><input class="tw-mr-1 uk-checkbox" type="checkbox">圖書</label>
+						<label class="tw-mr-4"><input class="tw-mr-1 uk-checkbox" type="checkbox">檔案</label>
+					</div>
+				</div>
+			</div>
+			<div class="tw-mt-1">
+				<span>數位檔：</span>
+				<label class="tw-mr-4"><input class="tw-mr-1 uk-checkbox" type="checkbox">只搜尋有數位檔案的資料</label>
+			</div>
+			{{/if}}
+			{{#if keywords}}
+			<div class="tw-mt-1">
+				<span>熱門關鍵詞：</span>
+				<span class="pseudo:comma_ch"><a class="underline" href="#">每議人已識影</a></span>
+				<span class="pseudo:comma_ch"><a class="underline" href="#">期異回麼響</a></span>
+				<span class="pseudo:comma_ch"><a class="underline" href="#">研能感表</a></span>
+			</div>
+			{{/if}}
+		</div>
+		{{/if}}
+	</div>
+</form>
+<!-- searchBox -->

@@ -1,0 +1,765 @@
+@import 'variables', 'colors-variables', 'color', 'mixin', 'functions';
+
+@include color($selector:#{$text-color-primary}, $prefix:"a", $color:$color-primary);
+@include color($selector:#{$text-color-primary-text}, $prefix:"a", $color:$color-primary-text);
+@include color($selector:#{$text-color-primary-light}, $prefix:"a", $color:$color-primary-light);
+@include color($selector:#{$text-color-primary-lighter}, $prefix:"a", $color:$color-primary-lighter);
+@include color($selector:#{$text-color-primary-dark}, $prefix:"a", $color:$color-primary-dark);
+@include color($selector:#{$text-color-primary-darker}, $prefix:"a", $color:$color-primary-darker);
+@include color($selector:#{$text-color-primary-darkest}, $prefix:"a", $color:$color-primary-darkest);
+@include color($selector:#{$text-color-primary-black}, $prefix:"a", $color:$color-primary-black);
+@include color($selector:#{$text-color-primary}, $important:true, $prefix:"a", $suffix:\!, $color:$color-primary);
+@include color($selector:#{$text-color-primary-text}, $important:true, $prefix:"a", $suffix:\!, $color:$color-primary-text);
+@include color($selector:#{$text-color-primary-light}, $important:true, $prefix:"a", $suffix:\!, $color:$color-primary-light);
+@include color($selector:#{$text-color-primary-lighter}, $important:true, $prefix:"a", $suffix:\!, $color:$color-primary-lighter);
+@include color($selector:#{$text-color-primary-dark}, $important:true, $prefix:"a", $suffix:\!, $color:$color-primary-dark);
+@include color($selector:#{$text-color-primary-darker}, $important:true, $prefix:"a", $suffix:\!, $color:$color-primary-darker);
+@include color($selector:#{$text-color-primary-darkest}, $important:true, $prefix:"a", $suffix:\!, $color:$color-primary-darkest);
+@include color($selector:#{$text-color-primary-black}, $important:true, $prefix:"a", $suffix:\!, $color:$color-primary-black);
+@include color($selector:#{$text-color-secondary}, $prefix:"a", $color:$color-secondary);
+@include color($selector:#{$text-color-secondary-text}, $prefix:"a", $color:$color-secondary-text);
+@include color($selector:#{$text-color-secondary-light}, $prefix:"a", $color:$color-secondary-light);
+@include color($selector:#{$text-color-secondary-lighter}, $prefix:"a", $color:$color-secondary-lighter);
+@include color($selector:#{$text-color-secondary-dark}, $prefix:"a", $color:$color-secondary-dark);
+@include color($selector:#{$text-color-secondary-darker}, $prefix:"a", $color:$color-secondary-darker);
+@include color($selector:#{$text-color-secondary-darkest}, $prefix:"a", $color:$color-secondary-darkest);
+@include color($selector:#{$text-color-secondary-black}, $prefix:"a", $color:$color-secondary-black);
+@include color($selector:#{$text-color-secondary}, $important:true, $prefix:"a", $suffix:\!, $color:$color-secondary);
+@include color($selector:#{$text-color-secondary-text}, $important:true, $prefix:"a", $suffix:\!, $color:$color-secondary-text);
+@include color($selector:#{$text-color-secondary-light}, $important:true, $prefix:"a", $suffix:\!, $color:$color-secondary-light);
+@include color($selector:#{$text-color-secondary-lighter}, $important:true, $prefix:"a", $suffix:\!, $color:$color-secondary-lighter);
+@include color($selector:#{$text-color-secondary-dark}, $important:true, $prefix:"a", $suffix:\!, $color:$color-secondary-dark);
+@include color($selector:#{$text-color-secondary-darker}, $important:true, $prefix:"a", $suffix:\!, $color:$color-secondary-darker);
+@include color($selector:#{$text-color-secondary-darkest}, $important:true, $prefix:"a", $suffix:\!, $color:$color-secondary-darkest);
+@include color($selector:#{$text-color-secondary-black}, $important:true, $prefix:"a", $suffix:\!, $color:$color-secondary-black);
+@include color($selector:#{$text-color-color3}, $prefix:"a", $color:$color3);
+@include color($selector:#{$text-color-color3-text}, $prefix:"a", $color:$color3-text);
+@include color($selector:#{$text-color-color3-light}, $prefix:"a", $color:$color3-light);
+@include color($selector:#{$text-color-color3-lighter}, $prefix:"a", $color:$color3-lighter);
+@include color($selector:#{$text-color-color3-dark}, $prefix:"a", $color:$color3-dark);
+@include color($selector:#{$text-color-color3-darker}, $prefix:"a", $color:$color3-darker);
+@include color($selector:#{$text-color-color3-darkest}, $prefix:"a", $color:$color3-darkest);
+@include color($selector:#{$text-color-color3-black}, $prefix:"a", $color:$color3-black);
+@include color($selector:#{$text-color-color3}, $important:true, $prefix:"a", $suffix:\!, $color:$color3);
+@include color($selector:#{$text-color-color3-text}, $important:true, $prefix:"a", $suffix:\!, $color:$color3-text);
+@include color($selector:#{$text-color-color3-light}, $important:true, $prefix:"a", $suffix:\!, $color:$color3-light);
+@include color($selector:#{$text-color-color3-lighter}, $important:true, $prefix:"a", $suffix:\!, $color:$color3-lighter);
+@include color($selector:#{$text-color-color3-dark}, $important:true, $prefix:"a", $suffix:\!, $color:$color3-dark);
+@include color($selector:#{$text-color-color3-darker}, $important:true, $prefix:"a", $suffix:\!, $color:$color3-darker);
+@include color($selector:#{$text-color-color3-darkest}, $important:true, $prefix:"a", $suffix:\!, $color:$color3-darkest);
+@include color($selector:#{$text-color-color3-black}, $important:true, $prefix:"a", $suffix:\!, $color:$color3-black);
+@include color($selector:#{$text-color-color4}, $prefix:"a", $color:$color4);
+@include color($selector:#{$text-color-color4-text}, $prefix:"a", $color:$color4-text);
+@include color($selector:#{$text-color-color4-light}, $prefix:"a", $color:$color4-light);
+@include color($selector:#{$text-color-color4-lighter}, $prefix:"a", $color:$color4-lighter);
+@include color($selector:#{$text-color-color4-dark}, $prefix:"a", $color:$color4-dark);
+@include color($selector:#{$text-color-color4-darker}, $prefix:"a", $color:$color4-darker);
+@include color($selector:#{$text-color-color4-darkest}, $prefix:"a", $color:$color4-darkest);
+@include color($selector:#{$text-color-color4-black}, $prefix:"a", $color:$color4-black);
+@include color($selector:#{$text-color-color4}, $important:true, $prefix:"a", $suffix:\!, $color:$color4);
+@include color($selector:#{$text-color-color4-text}, $important:true, $prefix:"a", $suffix:\!, $color:$color4-text);
+@include color($selector:#{$text-color-color4-light}, $important:true, $prefix:"a", $suffix:\!, $color:$color4-light);
+@include color($selector:#{$text-color-color4-lighter}, $important:true, $prefix:"a", $suffix:\!, $color:$color4-lighter);
+@include color($selector:#{$text-color-color4-dark}, $important:true, $prefix:"a", $suffix:\!, $color:$color4-dark);
+@include color($selector:#{$text-color-color4-darker}, $important:true, $prefix:"a", $suffix:\!, $color:$color4-darker);
+@include color($selector:#{$text-color-color4-darkest}, $important:true, $prefix:"a", $suffix:\!, $color:$color4-darkest);
+@include color($selector:#{$text-color-color4-black}, $important:true, $prefix:"a", $suffix:\!, $color:$color4-black);
+
+@include color($selector:#{$text-color-primary}, $prefix:#{$hover}\:, $color:$color-primary, $hover:true);
+@include color($selector:#{$text-color-primary-text}, $prefix:#{$hover}\:, $color:$color-primary-text, $hover:true);
+@include color($selector:#{$text-color-primary-light}, $prefix:#{$hover}\:, $color:$color-primary-light, $hover:true);
+@include color($selector:#{$text-color-primary-lighter}, $prefix:#{$hover}\:, $color:$color-primary-lighter, $hover:true);
+@include color($selector:#{$text-color-primary-dark}, $prefix:#{$hover}\:, $color:$color-primary-dark, $hover:true);
+@include color($selector:#{$text-color-primary-darker}, $prefix:#{$hover}\:, $color:$color-primary-darker, $hover:true);
+@include color($selector:#{$text-color-primary-darkest}, $prefix:#{$hover}\:, $color:$color-primary-darkest, $hover:true);
+@include color($selector:#{$text-color-primary-black}, $prefix:#{$hover}\:, $color:$color-primary-black, $hover:true);
+@include color($selector:#{$text-color-primary}, $important:true, $prefix:#{$hover}\:, $suffix:\!, $color:$color-primary, $hover:true);
+@include color($selector:#{$text-color-primary-text}, $important:true, $prefix:#{$hover}\:, $suffix:\!, $color:$color-primary-text, $hover:true);
+@include color($selector:#{$text-color-primary-light}, $important:true, $prefix:#{$hover}\:, $suffix:\!, $color:$color-primary-light, $hover:true);
+@include color($selector:#{$text-color-primary-lighter}, $important:true, $prefix:#{$hover}\:, $suffix:\!, $color:$color-primary-lighter, $hover:true);
+@include color($selector:#{$text-color-primary-dark}, $important:true, $prefix:#{$hover}\:, $suffix:\!, $color:$color-primary-dark, $hover:true);
+@include color($selector:#{$text-color-primary-darker}, $important:true, $prefix:#{$hover}\:, $suffix:\!, $color:$color-primary-darker, $hover:true);
+@include color($selector:#{$text-color-primary-darkest}, $important:true, $prefix:#{$hover}\:, $suffix:\!, $color:$color-primary-darkest, $hover:true);
+@include color($selector:#{$text-color-primary-black}, $important:true, $prefix:#{$hover}\:, $suffix:\!, $color:$color-primary-black, $hover:true);
+@include color($selector:#{$text-color-secondary}, $prefix:#{$hover}\:, $color:$color-secondary, $hover:true);
+@include color($selector:#{$text-color-secondary-text}, $prefix:#{$hover}\:, $color:$color-secondary-text, $hover:true);
+@include color($selector:#{$text-color-secondary-light}, $prefix:#{$hover}\:, $color:$color-secondary-light, $hover:true);
+@include color($selector:#{$text-color-secondary-lighter}, $prefix:#{$hover}\:, $color:$color-secondary-lighter, $hover:true);
+@include color($selector:#{$text-color-secondary-dark}, $prefix:#{$hover}\:, $color:$color-secondary-dark, $hover:true);
+@include color($selector:#{$text-color-secondary-darker}, $prefix:#{$hover}\:, $color:$color-secondary-darker, $hover:true);
+@include color($selector:#{$text-color-secondary-darkest}, $prefix:#{$hover}\:, $color:$color-secondary-darkest, $hover:true);
+@include color($selector:#{$text-color-secondary-black}, $prefix:#{$hover}\:, $color:$color-secondary-black, $hover:true);
+@include color($selector:#{$text-color-secondary}, $important:true, $prefix:#{$hover}\:, $suffix:\!, $color:$color-secondary, $hover:true);
+@include color($selector:#{$text-color-secondary-text}, $important:true, $prefix:#{$hover}\:, $suffix:\!, $color:$color-secondary-text, $hover:true);
+@include color($selector:#{$text-color-secondary-light}, $important:true, $prefix:#{$hover}\:, $suffix:\!, $color:$color-secondary-light, $hover:true);
+@include color($selector:#{$text-color-secondary-lighter}, $important:true, $prefix:#{$hover}\:, $suffix:\!, $color:$color-secondary-lighter, $hover:true);
+@include color($selector:#{$text-color-secondary-dark}, $important:true, $prefix:#{$hover}\:, $suffix:\!, $color:$color-secondary-dark, $hover:true);
+@include color($selector:#{$text-color-secondary-darker}, $important:true, $prefix:#{$hover}\:, $suffix:\!, $color:$color-secondary-darker, $hover:true);
+@include color($selector:#{$text-color-secondary-darkest}, $important:true, $prefix:#{$hover}\:, $suffix:\!, $color:$color-secondary-darkest, $hover:true);
+@include color($selector:#{$text-color-secondary-black}, $important:true, $prefix:#{$hover}\:, $suffix:\!, $color:$color-secondary-black, $hover:true);
+@include color($selector:#{$text-color-color3}, $prefix:#{$hover}\:, $color:$color3, $hover:true);
+@include color($selector:#{$text-color-color3-text}, $prefix:#{$hover}\:, $color:$color3-text, $hover:true);
+@include color($selector:#{$text-color-color3-light}, $prefix:#{$hover}\:, $color:$color3-light, $hover:true);
+@include color($selector:#{$text-color-color3-lighter}, $prefix:#{$hover}\:, $color:$color3-lighter, $hover:true);
+@include color($selector:#{$text-color-color3-dark}, $prefix:#{$hover}\:, $color:$color3-dark, $hover:true);
+@include color($selector:#{$text-color-color3-darker}, $prefix:#{$hover}\:, $color:$color3-darker, $hover:true);
+@include color($selector:#{$text-color-color3-darkest}, $prefix:#{$hover}\:, $color:$color3-darkest, $hover:true);
+@include color($selector:#{$text-color-color3-black}, $prefix:#{$hover}\:, $color:$color3-black, $hover:true);
+@include color($selector:#{$text-color-color3}, $important:true, $prefix:#{$hover}\:, $suffix:\!, $color:$color3, $hover:true);
+@include color($selector:#{$text-color-color3-text}, $important:true, $prefix:#{$hover}\:, $suffix:\!, $color:$color3-text, $hover:true);
+@include color($selector:#{$text-color-color3-light}, $important:true, $prefix:#{$hover}\:, $suffix:\!, $color:$color3-light, $hover:true);
+@include color($selector:#{$text-color-color3-lighter}, $important:true, $prefix:#{$hover}\:, $suffix:\!, $color:$color3-lighter, $hover:true);
+@include color($selector:#{$text-color-color3-dark}, $important:true, $prefix:#{$hover}\:, $suffix:\!, $color:$color3-dark, $hover:true);
+@include color($selector:#{$text-color-color3-darker}, $important:true, $prefix:#{$hover}\:, $suffix:\!, $color:$color3-darker, $hover:true);
+@include color($selector:#{$text-color-color3-darkest}, $important:true, $prefix:#{$hover}\:, $suffix:\!, $color:$color3-darkest, $hover:true);
+@include color($selector:#{$text-color-color3-black}, $important:true, $prefix:#{$hover}\:, $suffix:\!, $color:$color3-black, $hover:true);
+@include color($selector:#{$text-color-color4}, $prefix:#{$hover}\:, $color:$color4, $hover:true);
+@include color($selector:#{$text-color-color4-text}, $prefix:#{$hover}\:, $color:$color4-text, $hover:true);
+@include color($selector:#{$text-color-color4-light}, $prefix:#{$hover}\:, $color:$color4-light, $hover:true);
+@include color($selector:#{$text-color-color4-lighter}, $prefix:#{$hover}\:, $color:$color4-lighter, $hover:true);
+@include color($selector:#{$text-color-color4-dark}, $prefix:#{$hover}\:, $color:$color4-dark, $hover:true);
+@include color($selector:#{$text-color-color4-darker}, $prefix:#{$hover}\:, $color:$color4-darker, $hover:true);
+@include color($selector:#{$text-color-color4-darkest}, $prefix:#{$hover}\:, $color:$color4-darkest, $hover:true);
+@include color($selector:#{$text-color-color4-black}, $prefix:#{$hover}\:, $color:$color4-black, $hover:true);
+@include color($selector:#{$text-color-color4}, $important:true, $prefix:#{$hover}\:, $suffix:\!, $color:$color4, $hover:true);
+@include color($selector:#{$text-color-color4-text}, $important:true, $prefix:#{$hover}\:, $suffix:\!, $color:$color4-text, $hover:true);
+@include color($selector:#{$text-color-color4-light}, $important:true, $prefix:#{$hover}\:, $suffix:\!, $color:$color4-light, $hover:true);
+@include color($selector:#{$text-color-color4-lighter}, $important:true, $prefix:#{$hover}\:, $suffix:\!, $color:$color4-lighter, $hover:true);
+@include color($selector:#{$text-color-color4-dark}, $important:true, $prefix:#{$hover}\:, $suffix:\!, $color:$color4-dark, $hover:true);
+@include color($selector:#{$text-color-color4-darker}, $important:true, $prefix:#{$hover}\:, $suffix:\!, $color:$color4-darker, $hover:true);
+@include color($selector:#{$text-color-color4-darkest}, $important:true, $prefix:#{$hover}\:, $suffix:\!, $color:$color4-darkest, $hover:true);
+@include color($selector:#{$text-color-color4-black}, $important:true, $prefix:#{$hover}\:, $suffix:\!, $color:$color4-black, $hover:true);
+
+@include fillcolor($selector:#{$fill-color-primary}, $prefix:"a", $color:$color-primary);
+@include fillcolor($selector:#{$fill-color-primary-light}, $prefix:"a", $color:$color-primary-light);
+@include fillcolor($selector:#{$fill-color-primary-lighter}, $prefix:"a", $color:$color-primary-lighter);
+@include fillcolor($selector:#{$fill-color-primary-dark}, $prefix:"a", $color:$color-primary-dark);
+@include fillcolor($selector:#{$fill-color-primary-darker}, $prefix:"a", $color:$color-primary-darker);
+@include fillcolor($selector:#{$fill-color-primary-darkest}, $prefix:"a", $color:$color-primary-darkest);
+@include fillcolor($selector:#{$fill-color-primary-black}, $prefix:"a", $color:$color-primary-black);
+@include fillcolor($selector:#{$fill-color-primary}, $important:true, $prefix:"a", $suffix:\!, $color:$color-primary);
+@include fillcolor($selector:#{$fill-color-primary-light}, $important:true, $prefix:"a", $suffix:\!, $color:$color-primary-light);
+@include fillcolor($selector:#{$fill-color-primary-lighter}, $important:true, $prefix:"a", $suffix:\!, $color:$color-primary-lighter);
+@include fillcolor($selector:#{$fill-color-primary-dark}, $important:true, $prefix:"a", $suffix:\!, $color:$color-primary-dark);
+@include fillcolor($selector:#{$fill-color-primary-darker}, $important:true, $prefix:"a", $suffix:\!, $color:$color-primary-darker);
+@include fillcolor($selector:#{$fill-color-primary-darkest}, $important:true, $prefix:"a", $suffix:\!, $color:$color-primary-darkest);
+@include fillcolor($selector:#{$fill-color-primary-black}, $important:true, $prefix:"a", $suffix:\!, $color:$color-primary-black);
+@include fillcolor($selector:#{$fill-color-secondary}, $prefix:"a", $color:$color-secondary);
+@include fillcolor($selector:#{$fill-color-secondary-light}, $prefix:"a", $color:$color-secondary-light);
+@include fillcolor($selector:#{$fill-color-secondary-lighter}, $prefix:"a", $color:$color-secondary-lighter);
+@include fillcolor($selector:#{$fill-color-secondary-dark}, $prefix:"a", $color:$color-secondary-dark);
+@include fillcolor($selector:#{$fill-color-secondary-darker}, $prefix:"a", $color:$color-secondary-darker);
+@include fillcolor($selector:#{$fill-color-secondary-darkest}, $prefix:"a", $color:$color-secondary-darkest);
+@include fillcolor($selector:#{$fill-color-secondary-black}, $prefix:"a", $color:$color-secondary-black);
+@include fillcolor($selector:#{$fill-color-secondary}, $important:true, $prefix:"a", $suffix:\!, $color:$color-secondary);
+@include fillcolor($selector:#{$fill-color-secondary-light}, $important:true, $prefix:"a", $suffix:\!, $color:$color-secondary-light);
+@include fillcolor($selector:#{$fill-color-secondary-lighter}, $important:true, $prefix:"a", $suffix:\!, $color:$color-secondary-lighter);
+@include fillcolor($selector:#{$fill-color-secondary-dark}, $important:true, $prefix:"a", $suffix:\!, $color:$color-secondary-dark);
+@include fillcolor($selector:#{$fill-color-secondary-darker}, $important:true, $prefix:"a", $suffix:\!, $color:$color-secondary-darker);
+@include fillcolor($selector:#{$fill-color-secondary-darkest}, $important:true, $prefix:"a", $suffix:\!, $color:$color-secondary-darkest);
+@include fillcolor($selector:#{$fill-color-secondary-black}, $important:true, $prefix:"a", $suffix:\!, $color:$color-secondary-black);
+@include fillcolor($selector:#{$fill-color-color3}, $prefix:"a", $color:$color3);
+@include fillcolor($selector:#{$fill-color-color3-light}, $prefix:"a", $color:$color3-light);
+@include fillcolor($selector:#{$fill-color-color3-lighter}, $prefix:"a", $color:$color3-lighter);
+@include fillcolor($selector:#{$fill-color-color3-dark}, $prefix:"a", $color:$color3-dark);
+@include fillcolor($selector:#{$fill-color-color3-darker}, $prefix:"a", $color:$color3-darker);
+@include fillcolor($selector:#{$fill-color-color3-darkest}, $prefix:"a", $color:$color3-darkest);
+@include fillcolor($selector:#{$fill-color-color3-black}, $prefix:"a", $color:$color3-black);
+@include fillcolor($selector:#{$fill-color-color3}, $important:true, $prefix:"a", $suffix:\!, $color:$color3);
+@include fillcolor($selector:#{$fill-color-color3-light}, $important:true, $prefix:"a", $suffix:\!, $color:$color3-light);
+@include fillcolor($selector:#{$fill-color-color3-lighter}, $important:true, $prefix:"a", $suffix:\!, $color:$color3-lighter);
+@include fillcolor($selector:#{$fill-color-color3-dark}, $important:true, $prefix:"a", $suffix:\!, $color:$color3-dark);
+@include fillcolor($selector:#{$fill-color-color3-darker}, $important:true, $prefix:"a", $suffix:\!, $color:$color3-darker);
+@include fillcolor($selector:#{$fill-color-color3-darkest}, $important:true, $prefix:"a", $suffix:\!, $color:$color3-darkest);
+@include fillcolor($selector:#{$fill-color-color3-black}, $important:true, $prefix:"a", $suffix:\!, $color:$color3-black);
+@include fillcolor($selector:#{$fill-color-color4}, $prefix:"a", $color:$color4);
+@include fillcolor($selector:#{$fill-color-color4-light}, $prefix:"a", $color:$color4-light);
+@include fillcolor($selector:#{$fill-color-color4-lighter}, $prefix:"a", $color:$color4-lighter);
+@include fillcolor($selector:#{$fill-color-color4-dark}, $prefix:"a", $color:$color4-dark);
+@include fillcolor($selector:#{$fill-color-color4-darker}, $prefix:"a", $color:$color4-darker);
+@include fillcolor($selector:#{$fill-color-color4-darkest}, $prefix:"a", $color:$color4-darkest);
+@include fillcolor($selector:#{$fill-color-color4-black}, $prefix:"a", $color:$color4-black);
+@include fillcolor($selector:#{$fill-color-color4}, $important:true, $prefix:"a", $suffix:\!, $color:$color4);
+@include fillcolor($selector:#{$fill-color-color4-light}, $important:true, $prefix:"a", $suffix:\!, $color:$color4-light);
+@include fillcolor($selector:#{$fill-color-color4-lighter}, $important:true, $prefix:"a", $suffix:\!, $color:$color4-lighter);
+@include fillcolor($selector:#{$fill-color-color4-dark}, $important:true, $prefix:"a", $suffix:\!, $color:$color4-dark);
+@include fillcolor($selector:#{$fill-color-color4-darker}, $important:true, $prefix:"a", $suffix:\!, $color:$color4-darker);
+@include fillcolor($selector:#{$fill-color-color4-darkest}, $important:true, $prefix:"a", $suffix:\!, $color:$color4-darkest);
+@include fillcolor($selector:#{$fill-color-color4-black}, $important:true, $prefix:"a", $suffix:\!, $color:$color4-black);
+
+@include bg-color($selector:#{$bg-primary}, $bg-color:$color-primary);
+@include bg-color($selector:#{$bg-primary-light}, $bg-color:$color-primary-light);
+@include bg-color($selector:#{$bg-primary-lighter}, $bg-color:$color-primary-lighter);
+@include bg-color($selector:#{$bg-primary-dark}, $bg-color:$color-primary-dark);
+@include bg-color($selector:#{$bg-primary-darker}, $bg-color:$color-primary-darker);
+@include bg-color($selector:#{$bg-primary-darkest}, $bg-color:$color-primary-darkest);
+@include bg-color($selector:#{$bg-secondary}, $bg-color:$color-secondary);
+@include bg-color($selector:#{$bg-secondary-light}, $bg-color:$color-secondary-light);
+@include bg-color($selector:#{$bg-secondary-lighter}, $bg-color:$color-secondary-lighter);
+@include bg-color($selector:#{$bg-secondary-dark}, $bg-color:$color-secondary-dark);
+@include bg-color($selector:#{$bg-secondary-darker}, $bg-color:$color-secondary-darker);
+@include bg-color($selector:#{$bg-secondary-darkest}, $bg-color:$color-secondary-darkest);
+@include bg-color($selector:#{$bg-color3}, $bg-color:$color3);
+@include bg-color($selector:#{$bg-color3-light}, $bg-color:$color3-light);
+@include bg-color($selector:#{$bg-color3-lighter}, $bg-color:$color3-lighter);
+@include bg-color($selector:#{$bg-color3-dark}, $bg-color:$color3-dark);
+@include bg-color($selector:#{$bg-color3-darker}, $bg-color:$color3-darker);
+@include bg-color($selector:#{$bg-color3-darkest}, $bg-color:$color3-darkest);
+@include bg-color($selector:#{$bg-color4}, $bg-color:$color4);
+@include bg-color($selector:#{$bg-color4-light}, $bg-color:$color4-light);
+@include bg-color($selector:#{$bg-color4-lighter}, $bg-color:$color4-lighter);
+@include bg-color($selector:#{$bg-color4-dark}, $bg-color:$color4-dark);
+@include bg-color($selector:#{$bg-color4-darker}, $bg-color:$color4-darker);
+@include bg-color($selector:#{$bg-color4-darkest}, $bg-color:$color4-darkest);
+@include bg-color($selector:#{$bg-primary}, $bg-color:$color-primary, $important:true);
+@include bg-color($selector:#{$bg-primary-light}, $bg-color:$color-primary-light, $important:true);
+@include bg-color($selector:#{$bg-primary-lighter}, $bg-color:$color-primary-lighter, $important:true);
+@include bg-color($selector:#{$bg-primary-dark}, $bg-color:$color-primary-dark, $important:true);
+@include bg-color($selector:#{$bg-primary-darker}, $bg-color:$color-primary-darker, $important:true);
+@include bg-color($selector:#{$bg-primary-darkest}, $bg-color:$color-primary-darkest, $important:true);
+@include bg-color($selector:#{$bg-secondary}, $bg-color:$color-secondary, $important:true);
+@include bg-color($selector:#{$bg-secondary-light}, $bg-color:$color-secondary-light, $important:true);
+@include bg-color($selector:#{$bg-secondary-lighter}, $bg-color:$color-secondary-lighter, $important:true);
+@include bg-color($selector:#{$bg-secondary-dark}, $bg-color:$color-secondary-dark, $important:true);
+@include bg-color($selector:#{$bg-secondary-darker}, $bg-color:$color-secondary-darker, $important:true);
+@include bg-color($selector:#{$bg-secondary-darkest}, $bg-color:$color-secondary-darkest, $important:true);
+@include bg-color($selector:#{$bg-color3}, $bg-color:$color3, $important:true);
+@include bg-color($selector:#{$bg-color3-light}, $bg-color:$color3-light, $important:true);
+@include bg-color($selector:#{$bg-color3-lighter}, $bg-color:$color3-lighter, $important:true);
+@include bg-color($selector:#{$bg-color3-dark}, $bg-color:$color3-dark, $important:true);
+@include bg-color($selector:#{$bg-color3-darker}, $bg-color:$color3-darker, $important:true);
+@include bg-color($selector:#{$bg-color3-darkest}, $bg-color:$color3-darkest, $important:true);
+@include bg-color($selector:#{$bg-color4}, $bg-color:$color4, $important:true);
+@include bg-color($selector:#{$bg-color4-light}, $bg-color:$color4-light, $important:true);
+@include bg-color($selector:#{$bg-color4-lighter}, $bg-color:$color4-lighter, $important:true);
+@include bg-color($selector:#{$bg-color4-dark}, $bg-color:$color4-dark, $important:true);
+@include bg-color($selector:#{$bg-color4-darker}, $bg-color:$color4-darker, $important:true);
+@include bg-color($selector:#{$bg-color4-darkest}, $bg-color:$color4-darkest, $important:true);
+
+#{$btn-primary} {
+  @extend #{$bg-primary};
+  &#{$active}, &:hover, &:focus {
+    background-color:$color-primary-hover;
+    &, &>* {
+      color:text-color($color-primary-hover) !important;
+    }
+    text-decoration: none;
+  }
+}
+#{$btn-primary-light} {
+  @extend #{$bg-primary-light};
+  &#{$active}, &:hover, &:focus {
+    background-color:darken($color-primary-light, 10%);
+    &, &>* {
+      color:text-color(darken($color-primary-light, 10%)) !important;
+    }
+    text-decoration: none;
+  }
+}
+#{$btn-primary-lighter} {
+  @extend #{$bg-primary-lighter};
+  &#{$active}, &:hover, &:focus {
+    background-color:darken($color-primary-lighter, 10%);
+    &, &>* {
+      color:text-color(darken($color-primary-lighter, 10%)) !important;
+    }
+    text-decoration: none;
+  }
+}
+#{$btn-primary-dark} {
+  @extend #{$bg-primary-dark};
+  &#{$active}, &:hover, &:focus {
+    background-color:darken($color-primary-dark, 10%);
+    &, &>* {
+      color:text-color(darken($color-primary-dark, 10%)) !important;
+    }
+    text-decoration: none;
+  }
+}
+#{$btn-primary-darker} {
+  @extend #{$bg-primary-darker};
+  &#{$active}, &:hover, &:focus {
+    background-color:darken($color-primary-darker, 10%);
+    &, &>* {
+      color:text-color(darken($color-primary-darker, 10%)) !important;
+    }
+    text-decoration: none;
+  }
+}
+#{$btn-primary-darkest} {
+  @extend #{$bg-primary-darkest};
+  &#{$active}, &:hover, &:focus {
+    background-color:darken($color-primary-darkest, 10%);
+    &, &>* {
+      color:text-color(darken($color-primary-darkest, 10%)) !important;
+    }
+    text-decoration: none;
+  }
+}
+#{$btn-secondary} {
+  @extend #{$bg-secondary};
+  &#{$active}, &:hover, &:focus {
+    background-color:$color-secondary-hover;
+    &, &>* {
+      color:text-color($color-secondary-hover) !important;
+    }
+    text-decoration: none;
+  }
+}
+#{$btn-secondary-light} {
+  @extend #{$bg-secondary-light};
+  &#{$active}, &:hover, &:focus {
+    background-color:darken($color-secondary-light, 10%);
+    &, &>* {
+      color:text-color(darken($color-secondary-light, 10%)) !important;
+    }
+    text-decoration: none;
+  }
+}
+#{$btn-secondary-lighter} {
+  @extend #{$bg-secondary-lighter};
+  &#{$active}, &:hover, &:focus {
+    background-color:darken($color-secondary-lighter, 10%);
+    &, &>* {
+      color:text-color(darken($color-secondary-lighter, 10%)) !important;
+    }
+    text-decoration: none;
+  }
+}
+#{$btn-secondary-dark} {
+  @extend #{$bg-secondary-dark};
+  &#{$active}, &:hover, &:focus {
+    background-color:darken($color-secondary-dark, 10%);
+    &, &>* {
+      color:text-color(darken($color-secondary-dark, 10%)) !important;
+    }
+    text-decoration: none;
+  }
+}
+#{$btn-secondary-darker} {
+  @extend #{$bg-secondary-darker};
+  &#{$active}, &:hover, &:focus {
+    background-color:darken($color-secondary-darker, 10%);
+    &, &>* {
+      color:text-color(darken($color-secondary-darker, 10%)) !important;
+    }
+    text-decoration: none;
+  }
+}
+#{$btn-secondary-darkest} {
+  @extend #{$bg-secondary-darkest};
+  &#{$active}, &:hover, &:focus {
+    background-color:darken($color-secondary-darkest, 10%);
+    &, &>* {
+      color:text-color(darken($color-secondary-darkest, 10%)) !important;
+    }
+    text-decoration: none;
+  }
+}
+#{$btn-color3} {
+  @extend #{$bg-color3};
+  &#{$active}, &:hover, &:focus {
+    background-color:$color3-hover;
+    &, &>* {
+      color:text-color($color3-hover) !important;
+    }
+    text-decoration: none;
+  }
+}
+#{$btn-color3-light} {
+  @extend #{$bg-color3-light};
+  &#{$active}, &:hover, &:focus {
+    background-color:darken($color3-light, 10%);
+    &, &>* {
+      color:text-color(darken($color3-light, 10%)) !important;
+    }
+    text-decoration: none;
+  }
+}
+#{$btn-color3-lighter} {
+  @extend #{$bg-color3-lighter};
+  &#{$active}, &:hover, &:focus {
+    background-color:darken($color3-lighter, 10%);
+    &, &>* {
+      color:text-color(darken($color3-lighter, 10%)) !important;
+    }
+    text-decoration: none;
+  }
+}
+#{$btn-color3-dark} {
+  @extend #{$bg-color3-dark};
+  &#{$active}, &:hover, &:focus {
+    background-color:darken($color3-dark, 10%);
+    &, &>* {
+      color:text-color(darken($color3-dark, 10%)) !important;
+    }
+    text-decoration: none;
+  }
+}
+#{$btn-color3-darker} {
+  @extend #{$bg-color3-darker};
+  &#{$active}, &:hover, &:focus {
+    background-color:darken($color3-darker, 10%);
+    &, &>* {
+      color:text-color(darken($color3-darker, 10%)) !important;
+    }
+    text-decoration: none;
+  }
+}
+#{$btn-color3-darkest} {
+  @extend #{$bg-color3-darkest};
+  &#{$active}, &:hover, &:focus {
+    background-color:darken($color3-darkest, 10%);
+    &, &>* {
+      color:text-color(darken($color3-darkest, 10%)) !important;
+    }
+    text-decoration: none;
+  }
+}
+#{$btn-color4} {
+  @extend #{$bg-color4};
+  &#{$active}, &:hover, &:focus {
+    background-color:$color4-hover;
+    &, &>* {
+      color:text-color($color4-hover) !important;
+    }
+    text-decoration: none;
+  }
+}
+#{$btn-color4-light} {
+  @extend #{$bg-color4-light};
+  &#{$active}, &:hover, &:focus {
+    background-color:darken($color4-light, 10%);
+    &, &>* {
+      color:text-color(darken($color4-light, 10%)) !important;
+    }
+    text-decoration: none;
+  }
+}
+#{$btn-color4-lighter} {
+  @extend #{$bg-color4-lighter};
+  &#{$active}, &:hover, &:focus {
+    background-color:darken($color4-lighter, 10%);
+    &, &>* {
+      color:text-color(darken($color4-lighter, 10%)) !important;
+    }
+    text-decoration: none;
+  }
+}
+#{$btn-color4-dark} {
+  @extend #{$bg-color4-dark};
+  &#{$active}, &:hover, &:focus {
+    background-color:darken($color4-dark, 10%);
+    &, &>* {
+      color:text-color(darken($color4-dark, 10%)) !important;
+    }
+    text-decoration: none;
+  }
+}
+#{$btn-color4-darker} {
+  @extend #{$bg-color4-darker};
+  &#{$active}, &:hover, &:focus {
+    background-color:darken($color4-darker, 10%);
+    &, &>* {
+      color:text-color(darken($color4-darker, 10%)) !important;
+    }
+    text-decoration: none;
+  }
+}
+#{$btn-color4-darkest} {
+  @extend #{$bg-color4-darkest};
+  &#{$active}, &:hover, &:focus {
+    background-color:darken($color4-darkest, 10%);
+    &, &>* {
+      color:text-color(darken($color4-darkest, 10%)) !important;
+    }
+    text-decoration: none;
+  }
+}
+#{$border-primary}, #{$border-primary}[class*=divider]>::before, #{$border-primary} li[class*=active] a, #{$border-primary} li a[class*=open], #{$border-primary} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color-primary)
+}
+#{$border-primary-light}, #{$border-primary-light}[class*=divider]>::before, #{$border-primary-light} li[class*=active] a, #{$border-primary-light} li a[class*=open], #{$border-primary-light} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color-primary-light)
+}
+#{$border-primary-lighter}, #{$border-primary-lighter}[class*=divider]>::before, #{$border-primary-lighter} li[class*=active] a, #{$border-primary-lighter} li a[class*=open], #{$border-primary-lighter} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color-primary-lighter)
+}
+#{$border-primary-dark}, #{$border-primary-dark}[class*=divider]>::before, #{$border-primary-dark} li[class*=active] a, #{$border-primary-dark} li a[class*=open], #{$border-primary-dark} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color-primary-dark)
+}
+#{$border-primary-darker}, #{$border-primary-darker}[class*=divider]>::before, #{$border-primary-darker} li[class*=active] a, #{$border-primary-darker} li a[class*=open], #{$border-primary-darker} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color-primary-darker)
+}
+#{$border-primary-darkest}, #{$border-primary-darkest}[class*=divider]>::before, #{$border-primary-darkest} li[class*=active] a, #{$border-primary-darkest} li a[class*=open], #{$border-primary-darkest} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color-primary-darkest)
+}
+#{$border-primary-black}, #{$border-primary-black}[class*=divider]>::before, #{$border-primary-black} li[class*=active] a, #{$border-primary-black} li a[class*=open], #{$border-primary-black} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color-primary-black)
+}
+#{$border-secondary}, #{$border-secondary}[class*=divider]>::before, #{$border-secondary} li[class*=active] a, #{$border-secondary} li a[class*=open], #{$border-secondary} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color-secondary)
+}
+#{$border-secondary-light}, #{$border-secondary-light}[class*=divider]>::before, #{$border-secondary-light} li[class*=active] a, #{$border-secondary-light} li a[class*=open], #{$border-secondary-light} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color-secondary-light)
+}
+#{$border-secondary-lighter}, #{$border-secondary-lighter}[class*=divider]>::before, #{$border-secondary-lighter} li[class*=active] a, #{$border-secondary-lighter} li a[class*=open], #{$border-secondary-lighter} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color-secondary-lighter)
+}
+#{$border-secondary-dark}, #{$border-secondary-dark}[class*=divider]>::before, #{$border-secondary-dark} li[class*=active] a, #{$border-secondary-dark} li a[class*=open], #{$border-secondary-dark} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color-secondary-dark)
+}
+#{$border-secondary-darker}, #{$border-secondary-darker}[class*=divider]>::before, #{$border-secondary-darker} li[class*=active] a, #{$border-secondary-darker} li a[class*=open], #{$border-secondary-darker} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color-secondary-darker)
+}
+#{$border-secondary-darkest}, #{$border-secondary-darkest}[class*=divider]>::before, #{$border-secondary-darkest} li[class*=active] a, #{$border-secondary-darkest} li a[class*=open], #{$border-secondary-darkest} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color-secondary-darkest)
+}
+#{$border-secondary-black}, #{$border-secondary-black}[class*=divider]>::before, #{$border-secondary-black} li[class*=active] a, #{$border-secondary-black} li a[class*=open], #{$border-secondary-black} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color-secondary-black)
+}
+#{$border-color3}, #{$border-color3}[class*=divider]>::before, #{$border-color3} li[class*=active] a, #{$border-color3} li a[class*=open], #{$border-color3} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color3)
+}
+#{$border-color3-light}, #{$border-color3-light}[class*=divider]>::before, #{$border-color3-light} li[class*=active] a, #{$border-color3-light} li a[class*=open], #{$border-color3-light} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color3-light)
+}
+#{$border-color3-lighter}, #{$border-color3-lighter}[class*=divider]>::before, #{$border-color3-lighter} li[class*=active] a, #{$border-color3-lighter} li a[class*=open], #{$border-color3-lighter} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color3-lighter)
+}
+#{$border-color3-dark}, #{$border-color3-dark}[class*=divider]>::before, #{$border-color3-dark} li[class*=active] a, #{$border-color3-dark} li a[class*=open], #{$border-color3-dark} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color3-dark)
+}
+#{$border-color3-darker}, #{$border-color3-darker}[class*=divider]>::before, #{$border-color3-darker} li[class*=active] a, #{$border-color3-darker} li a[class*=open], #{$border-color3-darker} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color3-darker)
+}
+#{$border-color3-darkest}, #{$border-color3-darkest}[class*=divider]>::before, #{$border-color3-darkest} li[class*=active] a, #{$border-color3-darkest} li a[class*=open], #{$border-color3-darkest} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color3-darkest)
+}
+#{$border-color3-black}, #{$border-color3-black}[class*=divider]>::before, #{$border-color3-black} li[class*=active] a, #{$border-color3-black} li a[class*=open], #{$border-color3-black} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color3-black)
+}
+#{$border-color4}, #{$border-color4}[class*=divider]>::before, #{$border-color4} li[class*=active] a, #{$border-color4} li a[class*=open], #{$border-color4} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color4)
+}
+#{$border-color4-light}, #{$border-color4-light}[class*=divider]>::before, #{$border-color4-light} li[class*=active] a, #{$border-color4-light} li a[class*=open], #{$border-color4-light} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color4-light)
+}
+#{$border-color4-lighter}, #{$border-color4-lighter}[class*=divider]>::before, #{$border-color4-lighter} li[class*=active] a, #{$border-color4-lighter} li a[class*=open], #{$border-color4-lighter} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color4-lighter)
+}
+#{$border-color4-dark}, #{$border-color4-dark}[class*=divider]>::before, #{$border-color4-dark} li[class*=active] a, #{$border-color4} li a[class*=open], #{$border-color4} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color4-dark)
+}
+#{$border-color4-darker}, #{$border-color4-darker}[class*=divider]>::before, #{$border-color4-darker} li[class*=active] a, #{$border-color4-darker} li a[class*=open], #{$border-color4-darker} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color4-darker)
+}
+#{$border-color4-darkest}, #{$border-color4-darkest}[class*=divider]>::before, #{$border-color4-darkest} li[class*=active] a, #{$border-color4-darkest} li a[class*=open], #{$border-color4-darkest} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color4-darkest)
+}
+#{$border-color4-black}, #{$border-color4-black}[class*=divider]>::before, #{$border-color4-black} li[class*=active] a, #{$border-color4-black} li a[class*=open], #{$border-color4-black} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color4-black)
+}
+#{$border-primary}\!, #{$border-primary}\![class*=divider]>::before, #{$border-primary}\! li[class*=active] a, #{$border-primary} li a[class*=open], #{$border-primary} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color-primary, $important:true)
+}
+#{$border-primary-light}\!, #{$border-primary-light}\![class*=divider]>::before, #{$border-primary-light}\! li[class*=active] a, #{$border-primary-light} li a[class*=open], #{$border-primary-light} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color-primary-light, $important:true)
+}
+#{$border-primary-lighter}\!, #{$border-primary-lighter}\![class*=divider]>::before, #{$border-primary-lighter}\! li[class*=active] a, #{$border-primary-lighter} li a[class*=open], #{$border-primary-lighter} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color-primary-lighter, $important:true)
+}
+#{$border-primary-dark}\!, #{$border-primary-dark}\![class*=divider]>::before, #{$border-primary-dark}\! li[class*=active] a, #{$border-primary-dark} li a[class*=open], #{$border-primary-dark} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color-primary-dark, $important:true)
+}
+#{$border-primary-darker}\!, #{$border-primary-darker}\![class*=divider]>::before, #{$border-primary-darker}\! li[class*=active] a, #{$border-primary-darker} li a[class*=open], #{$border-primary-darker} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color-primary-darker, $important:true)
+}
+#{$border-primary-darkest}\!, #{$border-primary-darkest}\![class*=divider]>::before, #{$border-primary-darkest}\! li[class*=active] a, #{$border-primary-darkest} li a[class*=open], #{$border-primary-darkest} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color-primary-darkest, $important:true)
+}
+#{$border-primary-black}\!, #{$border-primary-black}\![class*=divider]>::before, #{$border-primary-black}\! li[class*=active] a, #{$border-primary-black} li a[class*=open], #{$border-primary-black} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color-primary-black, $important:true)
+}
+#{$border-secondary}\!, #{$border-secondary}\![class*=divider]>::before, #{$border-secondary}\! li[class*=active] a, #{$border-secondary} li a[class*=open], #{$border-secondary} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color-secondary, $important:true)
+}
+#{$border-secondary-light}\!, #{$border-secondary-light}\![class*=divider]>::before, #{$border-secondary-light}\! li[class*=active] a, #{$border-secondary-light} li a[class*=open], #{$border-secondary-light} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color-secondary-light, $important:true)
+}
+#{$border-secondary-lighter}\!, #{$border-secondary-lighter}\![class*=divider]>::before, #{$border-secondary-lighter}\! li[class*=active] a, #{$border-secondary-lighter} li a[class*=open], #{$border-secondary-lighter} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color-secondary-lighter, $important:true)
+}
+#{$border-secondary-dark}\!, #{$border-secondary-dark}\![class*=divider]>::before, #{$border-secondary-dark}\! li[class*=active] a, #{$border-secondary-dark} li a[class*=open], #{$border-secondary-dark} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color-secondary-dark, $important:true)
+}
+#{$border-secondary-darker}\!, #{$border-secondary-darker}\![class*=divider]>::before, #{$border-secondary-darker}\! li[class*=active] a, #{$border-secondary-darker} li a[class*=open], #{$border-secondary-darker} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color-secondary-darker, $important:true)
+}
+#{$border-secondary-darkest}\!, #{$border-secondary-darkest}\![class*=divider]>::before, #{$border-secondary-darkest}\! li[class*=active] a, #{$border-secondary-darkest} li a[class*=open], #{$border-secondary-darkest} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color-secondary-darkest, $important:true)
+}
+#{$border-secondary-black}\!, #{$border-secondary-black}\![class*=divider]>::before, #{$border-secondary-black}\! li[class*=active] a, #{$border-secondary-black} li a[class*=open], #{$border-secondary-black} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color-secondary-black, $important:true)
+}
+#{$border-color3}\!, #{$border-color3}\![class*=divider]>::before, #{$border-color3}\! li[class*=active] a, #{$border-color3} li a[class*=open], #{$border-color3} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color3, $important:true)
+}
+#{$border-color3-light}\!, #{$border-color3-light}\![class*=divider]>::before, #{$border-color3-light}\! li[class*=active] a, #{$border-color3-light} li a[class*=open], #{$border-color3-light} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color3-light, $important:true)
+}
+#{$border-color3-lighter}\!, #{$border-color3-lighter}\![class*=divider]>::before, #{$border-color3-lighter}\! li[class*=active] a, #{$border-color3-lighter} li a[class*=open], #{$border-color3-lighter} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color3-lighter, $important:true)
+}
+#{$border-color3-dark}\!, #{$border-color3-dark}\![class*=divider]>::before, #{$border-color3-dark}\! li[class*=active] a, #{$border-color3-dark} li a[class*=open], #{$border-color3-dark} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color3-dark, $important:true)
+}
+#{$border-color3-darker}\!, #{$border-color3-darker}\![class*=divider]>::before, #{$border-color3-darker}\! li[class*=active] a, #{$border-color3-darker} li a[class*=open], #{$border-color3-darker} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color3-darker, $important:true)
+}
+#{$border-color3-darkest}\!, #{$border-color3-darkest}\![class*=divider]>::before, #{$border-color3-darkest}\! li[class*=active] a, #{$border-color3-darkest} li a[class*=open], #{$border-color3-darkest} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color3-darkest, $important:true)
+}
+#{$border-color3-black}\!, #{$border-color3-black}\![class*=divider]>::before, #{$border-color3-black}\! li[class*=active] a, #{$border-color3-black} li a[class*=open], #{$border-color3-black} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color3-black, $important:true)
+}
+#{$border-color4}\!, #{$border-color4}\![class*=divider]>::before, #{$border-color4}\! li[class*=active] a, #{$border-color4} li a[class*=open], #{$border-color4} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color4, $important:true)
+}
+#{$border-color4-light}\!, #{$border-color4-light}\![class*=divider]>::before, #{$border-color4-light}\! li[class*=active] a, #{$border-color4-light} li a[class*=open], #{$border-color4-light} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color4-light, $important:true)
+}
+#{$border-color4-lighter}\!, #{$border-color4-lighter}\![class*=divider]>::before, #{$border-color4-lighter}\! li[class*=active] a, #{$border-color4-lighter} li a[class*=open], #{$border-color4-lighter} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color4-lighter, $important:true)
+}
+#{$border-color4-dark}\!, #{$border-color4-dark}\![class*=divider]>::before, #{$border-color4-dark}\! li[class*=active] a, #{$border-color4-dark} li a[class*=open], #{$border-color4-dark} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color4-dark, $important:true)
+}
+#{$border-color4-darker}\!, #{$border-color4-darker}\![class*=divider]>::before, #{$border-color4-darker}\! li[class*=active] a, #{$border-color4-darker} li a[class*=open], #{$border-color4-darker} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color4-darker, $important:true)
+}
+#{$border-color4-darkest}\!, #{$border-color4-darkest}\![class*=divider]>::before, #{$border-color4-darkest}\! li[class*=active] a, #{$border-color4-darkest} li a[class*=open], #{$border-color4-darkest} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color4-darkest, $important:true)
+}
+#{$border-color4-black}\!, #{$border-color4-black}\![class*=divider]>::before, #{$border-color4-black}\! li[class*=active] a, #{$border-color4-black} li a[class*=open], #{$border-color4-black} li a:hover {
+  @include bordered($property:border-color, $all:false, $value:$color4-black, $important:true)
+}
+
+#{$list-tabs}, #{$list-tabs-bullet} {
+  >li {
+    &#{$active}>a, &#{$uk-active}>a, &#{$uk-active}>a::after, &#{$active}>a:focus, &#{$active}>a:hover, &#{$active}>a:hover>*, &#{$uk-active}>a:hover>*, & #{$active}>a, & #{$uk-active}>a {
+      background-color:$color-primary !important;
+      border-color:$color-primary;
+      color:text-color($color-primary) !important;
+    }
+    &#{$tab-buttons-rounded}:first-child {
+      &#{$active}>a, &#{$uk-active}>a, &#{$uk-active}>a::after, &#{$active}>a:focus, &#{$active}>a:hover, &#{$active}>a:hover>*, &#{$uk-active}>a:hover>*, & #{$active}>a, & #{$uk-active}>a {
+        border-top-left-radius: .25rem;
+        border-top-right-radius: .25rem;
+      }
+    }
+    &#{$tab-buttons-rounded}:last-child {
+      &#{$active}>a, &#{$uk-active}>a, &#{$uk-active}>a::after, &#{$active}>a:focus, &#{$active}>a:hover, &#{$active}>a:hover>*, &#{$uk-active}>a:hover>*, & #{$active}>a, & #{$uk-active}>a {
+        border-bottom-right-radius: .25rem;
+        border-bottom-left-radius: .25rem;
+      }
+    }
+  }
+}
+#{$list-tabs-secondary}, #{$list-tabs-bullet}#{$list-tabs-secondary} {
+  >li {
+    &#{$active}>a, &#{$uk-active}>a, &#{$uk-active}>a::after, &#{$active}>a:focus, &#{$active}>a:hover, &#{$active}>a:hover>*, &#{$uk-active}>a:hover>*, & #{$active}>a, & #{$uk-active}>a {
+      background-color:$color-secondary;
+      border-color:$color-secondary;
+      color:text-color($color-secondary);
+    }
+    &#{$tab-buttons-rounded}:first-child {
+      &#{$active}>a, &#{$uk-active}>a, &#{$uk-active}>a::after, &#{$active}>a:focus, &#{$active}>a:hover, &#{$active}>a:hover>*, &#{$uk-active}>a:hover>*, & #{$active}>a, & #{$uk-active}>a {
+        border-top-left-radius: .25rem;
+        border-top-right-radius: .25rem;
+      }
+    }
+    &#{$tab-buttons-rounded}:last-child {
+      &#{$active}>a, &#{$uk-active}>a, &#{$uk-active}>a::after, &#{$active}>a:focus, &#{$active}>a:hover, &#{$active}>a:hover>*, &#{$uk-active}>a:hover>*, & #{$active}>a, & #{$uk-active}>a {
+        border-bottom-right-radius: .25rem;
+        border-bottom-left-radius: .25rem;
+      }
+    }
+  }
+}
+#{$list-tabs-color3}, #{$list-tabs-bullet}#{$list-tabs-color3} {
+  >li {
+    &#{$active}>a, &#{$uk-active}>a, &#{$uk-active}>a::after, &#{$active}>a:focus, &#{$active}>a:hover, &#{$active}>a:hover>*, &#{$uk-active}>a:hover>*, & #{$active}>a, & #{$uk-active}>a {
+      background-color:$color3;
+      border-color:$color3;
+      color:text-color($color3);
+    }
+    &#{$tab-buttons-rounded}:first-child {
+      &#{$active}>a, &#{$uk-active}>a, &#{$uk-active}>a::after, &#{$active}>a:focus, &#{$active}>a:hover, &#{$active}>a:hover>*, &#{$uk-active}>a:hover>*, & #{$active}>a, & #{$uk-active}>a {
+        border-top-left-radius: .25rem;
+        border-top-right-radius: .25rem;
+      }
+    }
+    &#{$tab-buttons-rounded}:last-child {
+      &#{$active}>a, &#{$uk-active}>a, &#{$uk-active}>a::after, &#{$active}>a:focus, &#{$active}>a:hover, &#{$active}>a:hover>*, &#{$uk-active}>a:hover>*, & #{$active}>a, & #{$uk-active}>a {
+        border-bottom-right-radius: .25rem;
+        border-bottom-left-radius: .25rem;
+      }
+    }
+  }
+}
+#{$list-tabs-color4}, #{$list-tabs-bullet}#{$list-tabs-color4} {
+  >li {
+    &#{$active}>a, &#{$uk-active}>a, &#{$uk-active}>a::after, &#{$active}>a:focus, &#{$active}>a:hover, &#{$active}>a:hover>*, &#{$uk-active}>a:hover>*, & #{$active}>a, & #{$uk-active}>a {
+      background-color:$color4;
+      border-color:$color4;
+      color:text-color($color4);
+    }
+    &#{$tab-buttons-rounded}:first-child {
+      &#{$active}>a, &#{$uk-active}>a, &#{$uk-active}>a::after, &#{$active}>a:focus, &#{$active}>a:hover, &#{$active}>a:hover>*, &#{$uk-active}>a:hover>*, & #{$active}>a, & #{$uk-active}>a {
+        border-top-left-radius: .25rem;
+        border-top-right-radius: .25rem;
+      }
+    }
+    &#{$tab-buttons-rounded}:last-child {
+      &#{$active}>a, &#{$uk-active}>a, &#{$uk-active}>a::after, &#{$active}>a:focus, &#{$active}>a:hover, &#{$active}>a:hover>*, &#{$uk-active}>a:hover>*, & #{$active}>a, & #{$uk-active}>a {
+        border-bottom-right-radius: .25rem;
+        border-bottom-left-radius: .25rem;
+      }
+    }
+  }
+}
+#{$list-tabs}#{$list-tabs-icon-active-white}.uk-nav-parent-icon {
+  >#{$uk-parent}#{$active}>a::after, >#{$uk-parent}#{$uk-active}>a::after {
+    background-image: url(data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2214%22%20height%3D%2214%22%20viewBox%3D%220%200%2014%2014%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Cpolyline%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%221.1%22%20points%3D%2210%201%204%207%2010%2013%22%20%2F%3E%0A%3C%2Fsvg%3E);
+  }
+  >#{$uk-parent}#{$uk-open}#{$active}>a::after, >#{$uk-parent}#{$uk-open}#{$uk-active}>a::after {
+    background-image: url(data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2214%22%20height%3D%2214%22%20viewBox%3D%220%200%2014%2014%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Cpolyline%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%221.1%22%20points%3D%221%204%207%2010%2013%204%22%20%2F%3E%0A%3C%2Fsvg%3E);
+  }
+}
+// #{$list-tabs}#{$list-tabs-icon-active-white}.uk-nav-parent-icon>#{$uk-parent}#{$active}>a::after, #{$list-tabs}#{$list-tabs-icon-active-white}.uk-nav-parent-icon>#{$uk-parent}#{$uk-active}>a::after {
+//   background-image: url(data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2214%22%20height%3D%2214%22%20viewBox%3D%220%200%2014%2014%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Cpolyline%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%221.1%22%20points%3D%2210%201%204%207%2010%2013%22%20%2F%3E%0A%3C%2Fsvg%3E);
+// }
+// #{$list-tabs}#{$list-tabs-icon-active-white}.uk-nav-parent-icon>#{$uk-parent}#{$uk-open}#{$active}>a::after, #{$list-tabs}#{$list-tabs-icon-active-white}.uk-nav-parent-icon>#{$uk-parent}#{$uk-open}#{$uk-active}>a::after {
+//   background-image: url(data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2214%22%20height%3D%2214%22%20viewBox%3D%220%200%2014%2014%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Cpolyline%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%221.1%22%20points%3D%221%204%207%2010%2013%204%22%20%2F%3E%0A%3C%2Fsvg%3E);
+// }
+
+/* Uikit 3 Style
+---------------------------------------------------- */
+#{$uk-pagination} > #{$uk-active} > span, #{$uk-subnav-pill}>#{$uk-active}>a {background:$color-primary; color:text-color($color-primary) !important;};
+
+#{$nav-bar} {
+  #{$nav-bar-primary} &>*>a {color:text-color($color-primary)}
+  #{$nav-bar-secondary} &>*>a {color:text-color($color-secondary)}
+  #{$nav-bar-color3} &>*>a {color:text-color($color3)}
+  #{$nav-bar-color4} &>*>a {color:text-color($color4)}
+}
+
+/* End Uikit 3 Style
+---------------------------------------------------- */
+
+/*---------- Fullcalendar Style
+---------------------------------------------------------------------------------- */
+.fc-event, .fc-event-dot {background-color:$color-primary;}
+/*---------- End Fullcalendar Style
+---------------------------------------------------------------------------------- */

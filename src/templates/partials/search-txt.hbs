@@ -1,0 +1,768 @@
+<!-- id="boundary" -->
+<div id="boundary" class="tw-bg-gray-100 tw-p-2 tw-mt-2 tw-relative">
+	<a class="btn_white tw-m-0 tw-w-full uk-button uk-button-small uk-hidden@m"
+		onclick="toggleClasses('.option', 'hidden'); return false;">篩選<span class="option tw-ml-2"><i
+				class="fas fa-angle-right fa-fw"></i></span><span class="option tw-ml-2 hidden"><i
+				class="fas fa-angle-down fa-fw"></i></span></a>
+	{{!-- <!-- <button class="btn_secondary color_white! uk-button" type="button">篩選</button> --> --}}
+	{{!-- <!-- uk-dropdown for mobile -->
+	<div class="tw-mt-2 tw-mr-2 uk-position-top-right uk-hidden@m">
+		<button class="btn_white uk-button uk-button-default" type="button">細分搜尋結果</button>
+		<div class="uk-dropdown uk-position-z-index" uk-dropdown="boundary:#boundary; pos:bottom-right">
+			<ul class="uk-nav uk-dropdown-nav">
+				<li class="uk-parent">
+					<span>Item</span>
+					<ul class="tw-pl-0 uk-nav-sub">
+						<li>
+							<a href="" title="#"><i class="fas fa-angle-right fa-fw"></i>subItem<span
+									class="pseudo:parentheses tw-text-xs">999</span></a>
+						</li>
+						<li>
+							<a href="" title="#"><i class="fas fa-angle-right fa-fw"></i>subItem<span
+									class="pseudo:parentheses tw-text-xs">999</span></a>
+						</li>
+						<li>
+							<a href="" title="#"><i class="fas fa-angle-right fa-fw"></i>subItem<span
+									class="pseudo:parentheses tw-text-xs">999</span></a>
+						</li>
+					</ul>
+				</li>
+				<li class="uk-parent">
+					<span>Item</span>
+					<ul class="tw-pl-0 uk-nav-sub">
+						<li>
+							<a href="" title="#"><i class="fas fa-angle-right fa-fw"></i>subItem<span
+									class="pseudo:parentheses tw-text-xs">999</span></a>
+						</li>
+						<li>
+							<a href="" title="#"><i class="fas fa-angle-right fa-fw"></i>subItem<span
+									class="pseudo:parentheses tw-text-xs">999</span></a>
+						</li>
+						<li>
+							<a href="" title="#"><i class="fas fa-angle-right fa-fw"></i>subItem<span
+									class="pseudo:parentheses tw-text-xs">999</span></a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- uk-dropdown for mobile --> --}}
+
+	<!-- uk-tab-switcher -->
+	<div class="option tw-mt-2 hidden m:tw-block">
+		<ul class="tab_buttons tab_buttons-txt-white tab_buttons-notw-border tw-my-0 uk-tab" uk-tab="connect: #switcher">
+			<li>
+				<a href="" title="#">簡易查詢</a>
+			</li>
+			<li>
+				<a href="" title="#">進階查詢</a>
+			</li>
+			<li>
+				<a href="" title="#">縮小查詢</a>
+			</li>
+		</ul>
+		<div class="tw-border tw-border-solid tw-bg-white border-t-0">
+			<ul id="switcher" class="uk-switcher">
+				<li>
+					<div class="tw-p-2 m:tw-p-3">
+						<form onsubmit="return false;">
+							<div class="margin_y_all_child margin_y_child-0@s uk-grid uk-grid-small" uk-grid uk-margin>
+								<div class="uk-width-1-2@s uk-width-1-3@m">
+									<div class="uk-flex">
+										<div class="tw-flex-auto">
+											<input class="uk-input" type="text" placeholder="請輸入檢索詞" title="輸入關鍵字搜尋">
+										</div>
+										<!-- <div class="tw-flex-auto"><a class="btn_secondary min_width-100! tw-w-full uk-button" href="#search" uk-toggle>病症瀏覽</a></div> -->
+									</div>
+								</div>
+								<div class="uk-width-1-2@s uk-width-expand@m">
+									<select class="uk-select">
+										<option value="text">不限欄位</option>
+										<option value="ti">書刊名</option>
+										<option value="cu">叢書名</option>
+										<option value="au">作者</option>
+										<option value="pub">出版者</option>
+										<option value="isn" selected="">ISSN/ISBN</option>
+										<option value="sb">標題</option>
+										<option value="callno">索書號</option>
+										<option value="regno">條碼號</option>
+										<option value="ref_id">系統號</option>
+									</select>
+								</div>
+								<div class="uk-width-expand">
+									<button class="btn_primary min_width-100! tw-w-full uk-button">搜尋</button>
+								</div>
+								<div class="uk-width-expand">
+									<a class="btn_secondary color_white! min_width-100! tw-w-full uk-button" href="">檢索歷史</a>
+								</div>
+								<div class="tw-m-0 uk-width-1-1">
+									<div class="uk-flex uk-flex-wrap uk-flex-between">
+										<div class="min_width-120">
+											<label class="uk-margin-right"><input class="form_white uk-checkbox tw-mr-1"
+													type="checkbox">精確檢索</label>
+										</div>
+										<div><small>查詢 isn:147986143X OR isn:9781479861439 ，共 1 筆</small></div>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</li>
+				<li>
+					<div class="tw-p-2 m:tw-p-3">
+						<form onsubmit="return false;">
+							<div id="search_option" class="uk-grid uk-grid-small" uk-grid uk-margin>
+								<div class="tw-bg-transparent tw-py-0 tw-pr-0 uk-width-5-6@s" uk-alert>
+									<div class="uk-alert">
+										<div class="uk-grid uk-grid-small" uk-grid>
+											<div class="uk-width-2-5@s">
+												<input class="uk-input uk-width-1-1" type="text" placeholder="請輸入檢索詞" title="輸入關鍵字搜尋">
+											</div>
+											<div class="uk-width-3-6 uk-width-expand@s">
+												<select class="uk-select uk-width-1-1">
+													<option value="不限欄位">不限欄位</option>
+													<option value="資源名稱">資源名稱</option>
+													<option value="資料庫平台/出版者">資料庫平台/出版者</option>
+													<option value="資源主題">資源主題</option>
+													<option value="ISSN/ISBN">ISSN/ISBN</option>
+												</select>
+											</div>
+											<div class="option uk-width-2-6 uk-width-expand@s">
+												<select class="uk-select uk-width-1-1">
+													<option value="AND">AND</option>
+													<option value="OR">OR</option>
+													<option value="NOT">NOT</option>
+												</select>
+											</div>
+											<div class="uk-width-1-6">
+												<button
+													class="btn_primary opacity-100 static tw-py-1 uk-flex-center uk-flex uk-flex-middle uk-button uk-alert-close uk-width-1-1"
+													title="刪除">
+													<i class="fas fa-times fa-2x"></i>
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="uk-width-1-6@s">
+									<button id="add"
+										class="btn_secondary color_white! tw-py-1 uk-flex-center uk-flex uk-flex-middle uk-button uk-width-1-1">
+										<i class="fas fa-plus fa-2x"></i>
+									</button>
+								</div>
+							</div>
+							<div class="tw-my-2">
+								<button class="btn_secondary color_white! uk-button uk-margin-remove"
+									uk-toggle="target: .range">查詢篩選</button>
+								<div class="range tw-bg-gray-100 tw-p-2" hidden>
+									<div class="tw-px-4 uk-position-relative">
+										<input id="range" class="uk-input" type="text" name="range">
+									</div>
+									<div class="uk-margin uk-grid uk-grid-small" uk-grid>
+										<div class="min_width-1/3">
+											<label class="tw-w-full">語　　言
+												<select class="uk-select uk-form-width-medium uk-margin-right">
+													<option selected="selected">全部</option>
+												</select>
+											</label>
+										</div>
+										<div class="min_width-1/3">
+											<label class="tw-w-full">資料類型
+												<select class="uk-select uk-form-width-medium uk-margin-right">
+													<option selected="selected">全部</option>
+												</select>
+											</label>
+										</div>
+										<div class="min_width-1/3">
+											<label class="tw-w-full">
+												<input class="form_white uk-checkbox tw-mr-1" name="watch" type="checkbox">只查被收藏的書目
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="uk-flex-center@s uk-grid uk-grid-small" uk-grid>
+								<div class="uk-width-1-2 uk-width-1-4@s">
+									<a href="" class="btn_primary uk-margin-small-bottom uk-button uk-width-1-1">
+										<i class="fas fa-search tw-mr-1"></i>搜尋
+									</a>
+								</div>
+								<div class="uk-width-1-2 uk-width-1-4@s">
+									<a class="btn_secondary color_white! uk-button uk-width-1-1" href="">歷史</a>
+								</div>
+							</div>
+						</form>
+					</div>
+				</li>
+				<li>
+					<div class="tw-p-2 m:tw-p-3">
+						<form onsubmit="return false;">
+							<div class="margin_y_all_child margin_y_child-0@s uk-grid uk-grid-small" uk-grid uk-margin>
+								<div class="uk-width-1-2@s uk-width-1-3@m">
+									<div class="uk-flex">
+										<div class="tw-flex-auto">
+											<input class="uk-input" type="text" placeholder="請輸入檢索詞" title="輸入關鍵字搜尋">
+										</div>
+										<!-- <div class="tw-flex-auto"><a class="btn_secondary min_width-100! tw-w-full uk-button" href="#search" uk-toggle>病症瀏覽</a></div> -->
+									</div>
+								</div>
+								<div class="uk-width-1-2@s uk-width-expand@m">
+									<select class="uk-select">
+										<option value="text" selected>不限欄位</option>
+										<option value="ti">書刊名</option>
+										<option value="cu">叢書名</option>
+										<option value="au">作者</option>
+										<option value="pub">出版者</option>
+										<option value="isn">ISSN/ISBN</option>
+										<option value="sb">標題</option>
+										<option value="callno">索書號</option>
+										<option value="regno">條碼號</option>
+										<option value="ref_id">系統號</option>
+									</select>
+								</div>
+								<div class="uk-width-expand">
+									<button class="btn_primary min_width-100! tw-w-full uk-button">搜尋</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- uk-tab-switcher -->
+</div>
+<!-- id="boundary" -->
+
+<div class="uk-grid-medium uk-grid" uk-grid>
+	<!-- Side Menu -->
+	<div class="uk-width-1-4@m uk-width-1-5@l">
+		<div class="uk-visible@m" style="height: 4px"></div>
+		{{#if tab}}
+		<ul class="border2 border_primary-dark tw-mb-3 uk-tab" uk-tab>
+			<li class="uk-active"><a href="">依科部</a></li>
+			<li><a href="">依病症</a></li>
+		</ul>
+		{{/if}}
+		{{#if navMenuTitleOn}}
+		<p class="btm_line uk-visible@m">{{navMenuTitle}}</p>
+		{{/if}}
+		<!-- List Menu -->
+		<div class="listMenu uk-visible@m">
+			<ul class="list_tabs list_tabs-icon-active-white uk-nav-parent-icon uk-nav"
+				uk-nav="multiple: true; animation: false">
+				<li class="uk-nav-header uk-parent uk-open">
+					<a class="break-all" href="#maincontent">Item</a>
+					<ul>
+						<li><a class="break-all" href="#maincontent">subItem<small class="pseudo:parentheses">999</small></a></li>
+						<li>
+							<a class="listMore tw-text-xs tw-text-right"
+								onclick="toggleAllClass(findChildren(findParent(this, 'LI', 'uk-parent'), '.listMore'), 'hidden'); return false">More</a>
+						</li>
+						<li class="listMore hidden">
+							<a class="break-all" href="#maincontent">{{!--<i class="fas fa-caret-right fa-fw"></i>--}}subItem<small
+									class="pseudo:parentheses ">999</small></a>
+						</li>
+						<li class="listMore hidden">
+							<a class="break-all" href="#maincontent">{{!--<i class="fas fa-caret-right fa-fw"></i>--}}subItem<small
+									class="pseudo:parentheses ">999</small></a>
+						</li>
+					</ul>
+				</li>
+				<li class="uk-nav-header uk-parent uk-open">
+					<a class="break-all" href="#maincontent">Item</a>
+					<ul>
+						<li><a class="break-all" href="#maincontent">subItem<small class="pseudo:parentheses">999</small></a></li>
+						<li>
+							<a class="listMore tw-text-xs tw-text-right"
+								onclick="toggleAllClass(findChildren(findParent(this, 'LI', 'uk-parent'), '.listMore'), 'hidden'); return false">More</a>
+						</li>
+						<li class="listMore hidden">
+							<a class="break-all" href="#maincontent">{{!--<i class="fas fa-caret-right fa-fw"></i>--}}subItem<small
+									class="pseudo:parentheses ">999</small></a>
+						</li>
+						<li class="listMore hidden">
+							<a class="break-all" href="#maincontent">{{!--<i class="fas fa-caret-right fa-fw"></i>--}}subItem<small
+									class="pseudo:parentheses ">999</small></a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			{{!-- <ul class="list_tabs list_tabs-link">
+				<li class="active uk-nav-header uk-parent">
+					<!-- <a href="">Level1</a>
+					<small class="pseudo:parentheses flex items-center tw-px-2">123</small> -->
+					<div class="tw-flex tw-justify-between items-stretch tw-p-0">
+						<a class="tw-flex tw-flex-1 items-center" href="">Level1</a>
+						<small class="pseudo:parentheses flex items-center tw-px-2">123</small>
+					</div>
+				</li>
+				<li class="uk-nav-header uk-parent">
+					<div class="tw-flex tw-justify-between items-stretch tw-p-0">
+						<a class="tw-flex tw-flex-1 items-center" href="">Level2</a>
+						<a class="tw-flex tw-flex-none items-start tw-justify-end w-16" href="javascript:void(0)" title="展開/收合選單"><span
+								class="toggle uk-icon" uk-icon="icon: chevron-right"></span><span class="toggle hidden uk-icon"
+								uk-icon="icon: chevron-down"></span class="toggle"></a>
+					</div>
+					<ul class="toggle hidden uk-nav-sub">
+						<li>
+							<a href="">Item</a>
+							<small class="pseudo:parentheses flex items-center tw-px-2">123</small>
+						</li>
+						<li>
+							<a href="">Item</a>
+							<small class="pseudo:parentheses flex items-center tw-px-2">123</small>
+						</li>
+					</ul>
+				</li>
+				<li class="uk-nav-header uk-parent">
+					<div class="tw-flex tw-justify-between items-stretch tw-p-0">
+						<a class="tw-flex tw-flex-1 items-center" href=""><span>Level3</span></a>
+						<a class="tw-flex tw-flex-none items-start tw-justify-end w-16" href="javascript:void(0)" title="展開/收合選單"><span
+								class="toggle uk-icon" uk-icon="icon: chevron-right"></span><span class="toggle hidden uk-icon"
+								uk-icon="icon: chevron-down"></span class="toggle"></a>
+					</div>
+					<ul class="toggle hidden uk-nav-sub">
+						<li><a href="">Item</a></li>
+						<li class="tw-mt-0 uk-nav-header uk-parent">
+							<div class="tw-flex tw-justify-between items-stretch tw-p-0">
+								<a class="tw-flex tw-flex-1 items-center" href="">Item</a>
+								<a class="tw-flex tw-flex-none items-start tw-justify-end w-16" href="javascript:void(0)" title="展開/收合選單"><span
+										class="toggle uk-icon" uk-icon="icon: chevron-right"></span><span class="toggle hidden uk-icon"
+										uk-icon="icon: chevron-down"></span class="toggle"></a>
+							</div>
+							<ul class="toggle hidden uk-nav-sub">
+								<li><a href="">SubItem</a>
+								</li>
+								<li><a href="">SubItem</a>
+								</li>
+								<li><a href="">SubItem</a>
+								</li>
+							</ul>
+						</li>
+						<li><a href="">Item</a></li>
+					</ul>
+				</li>
+				<li class="uk-nav-header uk-parent">
+					<div class="tw-flex tw-justify-between items-stretch tw-p-0">
+						<a class="tw-flex tw-flex-1 items-center" href="">Level1</a>
+						<small class="pseudo:parentheses flex items-center tw-px-2">123</small>
+					</div>
+				</li>
+			</ul> --}}
+		</div>
+		<!-- List Menu -->
+		{{!-- {{>listMenuTabs}} --}}
+	</div>
+	<!-- Side Menu -->
+
+	<!-- Main Content -->
+	<div class="uk-width-expand@m">
+		<!-- id="maincontent" -->
+		<div id="maincontent">
+			<!-- Options Bar -->
+			<div class="btm_line tw-mt-3">
+				<span>共20筆</span>
+				<!-- uk-hidden@m -->
+				<div class="uk-float-right uk-flex uk-flex-middle uk-hidden@m" style="margin-top: -5px;">
+					<a class="uk-flex uk-flex-middle uk-hidden@s" href="#email" uk-toggle="target: #email"><i
+							class="color_grey-400 fas fa-envelope fa-fw fa-2x"></i></a>
+					<!-- uk-button-dropdown -->
+					<button class="uk-button uk-button-default uk-button-small" type="button">細分搜尋結果 <i
+							uk-icon="icon: triangle-down"></i></button>
+					<div class="min_width-100" uk-dropdown="pos: bottom-right">
+						<ul class="uk-nav uk-dropdown-nav">
+							<li class="uk-parent">
+								<span>資源類型</span>
+								<ul class="tw-pl-0 uk-nav-sub">
+									<li>
+										<a href="" title="#"><i class="fas fa-angle-right fa-fw"></i>Item<span
+												class="pseudo:parentheses break-all">999</span></a>
+									</li>
+									<li>
+										<a href="" title="#"><i class="fas fa-angle-right fa-fw"></i>Item<span
+												class="pseudo:parentheses break-all">999</span></a>
+									</li>
+								</ul>
+							</li>
+							<li class="uk-parent">
+								<span>出版年</span>
+								<ul class="tw-pl-0 uk-nav-sub">
+									<li>
+										<a href="" title="#"><i class="fas fa-angle-right fa-fw"></i>Item<span
+												class="pseudo:parentheses break-all">999</span></a>
+									</li>
+									<li>
+										<a href="" title="#"><i class="fas fa-angle-right fa-fw"></i>Item<span
+												class="pseudo:parentheses break-all">999</span></a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					<!-- uk-button-dropdown -->
+				</div>
+				<!-- uk-hidden@m -->
+			</div>
+			<!-- Options Bar -->
+			<div class="grid_m grid_l@m uk-flex-middle uk-grid uk-grid-small" uk-grid uk-margin>
+				<div class="min_width-1/3 uk-visible@s">
+					{{!-- <a class="uk-hidden@s" href="#email" uk-toggle="target: #email"><i
+							class="color_grey-400 fas fa-envelope fa-fw fa-2x"></i></a> --}}
+					<div class="uk-button-group">
+						<button class="uk-button uk-button-default uk-button-small" uk-toggle="target: #save"><i
+								class="fas fa-save fa-fw"></i><span class="tw-ml-1">儲存</span></button>
+						<button class="uk-button uk-button-default uk-button-small" uk-toggle="target: #print"><i
+								class="fas fa-print fa-fw"></i><span class="tw-ml-1">列印</span></button>
+						<button class="uk-button uk-button-default uk-button-small" uk-toggle="target: #email"><i
+								class="fas fa-envelope fa-fw"></i><span class="tw-ml-1">E-Mail</span></button>
+					</div>
+					{{>save-modal id='save' modal-title='儲存'}}
+					{{>print-modal id='print' modal-title='列印'}}
+					{{>email-modal id='email' modal-title='電子信箱'}}
+				</div>
+				<div class="min_width-1/3 tw-space-x-2 uk-flex uk-flex-center uk-visible@s">
+					<label>
+						<input class="checkAll tw-mr-1 uk-checkbox" type="checkbox"><small>本頁全選</small>
+					</label>
+					<label>
+						<input class="uk-radio" type="radio" checked>
+						<small>已選<span class="checkedNumber pseudo:parentheses">0</span></small>
+					</label>
+					<button class="uncheckAll uk-button uk-button-default uk-button-small" type="button">取消所選</button>
+				</div>
+				<div class="min_width-1/3 tw-space-x-1 uk-flex uk-flex-right@s" uk-margin>
+					<div class="tw-flex uk-flex-middle">
+						<button class="uk-button uk-button-default uk-button-small" type="button">顯示方式 <i
+								uk-icon="icon: triangle-down"></i></button>
+						<div class="min_width-100" uk-dropdown>
+							<ul class="uk-nav uk-dropdown-nav">
+								<li><a href="01search.html">圖文並列</a></li>
+								<li class="uk-active"><a href="01search-txt.html">文字列表</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="tw-flex uk-flex-middle">
+						<button class="uk-button uk-button-default uk-button-small" type="button">排序方式 <i
+								uk-icon="icon: triangle-down"></i></button>
+						<div class="min_width-100" uk-dropdown>
+							<ul class="uk-nav uk-dropdown-nav">
+								<li><a href="">檢索符合率 ↑</a></li>
+								<li><a href="">檢索符合率 ↓</a></li>
+								<li><a href="">題名 ↑</a></li>
+								<li><a href="">題名 ↓</a></li>
+								<li><a href="">作者 ↑</a></li>
+								<li><a href="">作者 ↓</a></li>
+								<li><a href="">出版年 ↑</a></li>
+								<li><a href="">出版年 ↓</a></li>
+								<li><a href="">更新時間</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="tw-flex uk-flex-middle">
+						<label class="tw-mr-1 tw-text-xs" for="id_num">筆數</label>
+						<select class="min_width-50 w-auto uk-select uk-form-small" id="id_num" name="num">
+							<option value="10">10</option>
+							<option value="20">20</option>
+							<option value="50">50</option>
+							<option value="100">100</option>
+						</select>
+						{{!-- <label>每頁
+							<input class="min_width-50 uk-input" type="number" min="0" max="10" value="5"> 筆
+						</label> --}}
+						{{!-- <button class="uk-button uk-button-default uk-button-small" type="button">筆數<i
+								uk-icon="icon: triangle-down"></i></button>
+						<div class="min_width-100" uk-dropdown>
+							<ul class="uk-nav uk-dropdown-nav">
+								<li><a href="">10</a></li>
+								<li><a href="">20</a></li>
+								<li><a href="">50</a></li>
+								<li><a href="">100</a></li>
+							</ul>
+						</div> --}}
+					</div>
+				</div>
+			</div>
+			<!-- Options Bar -->
+			{{>pagination}}
+			<!-- uk-list -->
+			<ul class="tw-text-sm uk-list uk-list-striped uk-grid-width-1-1 uk-grid-match" data-uk-grid-margin
+				data-uk-grid-match="{target:'.uk-panel'}">
+				<li>
+					<label class="tw-w-full">
+						<input class="listCheck uk-checkbox" type="checkbox">
+						<!-- uk-card -->
+						<div class="tw-p-2 tw-border tw-border-solid border-gray-100 tw-bg-white uk-card uk-card-hover">
+							<!-- uk-grid -->
+							<div class="uk-grid uk-grid-small" uk-grid>
+								<!-- List Image -->
+								<div class="min_width-1/5 min_width-1/7@xl" hidden>
+									<div class="aspect ratio-3/4 tw-bg-white">
+										{{!-- <img class="tw-object-contain tw-h-full tw-w-full" src="img/book_01.jpg" alt="封面"> --}}
+										{{!-- <img class="tw-w-full uk-responsive-height	" src="img/book_01.jpg" alt="封面"> --}}
+										<div class="uk-background-contain uk-flex uk-flex-center uk-flex-middle"
+											style="background-image: url(img/book.svg);"></div>
+									</div>
+								</div>
+								<!-- List Image -->
+								<!-- List Contents -->
+								<div class="uk-width-expand">
+									<h2 class="tw-mt-0 tw-pt-1 tw-text-lg"><a class="color_primary" href="#">日本第一</a></h2>
+									<!-- List Items -->
+									<ul class="tw-pl-0 uk-grid uk-grid-small" uk-grid>
+										<li class="min_width-1/2! min_width-1/3!@m min_width-1/5!@l uk-flex-auto">
+											<div class="items-start s:flex-nowrap uk-flex uk-flex-wrap">
+												<div class="tw-mr-1 tw-inline s:flex uk-flex-nowrap uk-flex-none">
+													<span class="tw-mr-1">•</span>
+													<span class="tw-mr-1 uk-flex-none">項目名稱：</span>
+												</div>
+												<div class="tw-mr-2 break-all tw-inline">
+													<span class="pseudo:comma_ch">單一項目內容</span>
+												</div>
+												<small class="bg_secondary color_white! min_width-65 tw-text-xs tw-px-1">外借中<span
+														class="tw-ml-1">0</span></small>
+											</div>
+											{{!-- <small class="bg_secondary color_white! min_width-65 tw-text-xs tw-px-1">外借中<span class="tw-ml-1">0</span></small> --}}
+										</li>
+										<li class="min_width-1/2! min_width-1/3!@m min_width-1/5!@l uk-flex-auto">
+											<div class="items-start s:flex-nowrap uk-flex uk-flex-wrap">
+												<div class="tw-mr-1 tw-inline s:flex uk-flex-nowrap uk-flex-none">
+													<span class="tw-mr-1">•</span>
+													<span class="tw-mr-1 uk-flex-none">項目名稱：</span>
+												</div>
+												<div class="tw-mr-2 break-all tw-inline">
+													<span class="pseudo:comma_ch">單一項目內容</span>
+													<span class="pseudo:comma_ch">單一項目內容</span>
+												</div>
+												<small class="bg_secondary color_white! min_width-65 tw-text-xs tw-px-1">外借中<span
+														class="tw-ml-1">0</span></small>
+											</div>
+											{{!-- <small class="bg_secondary color_white! min_width-65 tw-text-xs tw-px-1">外借中<span class="tw-ml-1">0</span></small> --}}
+										</li>
+										<li class="min_width-1/2! min_width-1/3!@m min_width-1/5!@l uk-flex-auto">
+											<div class="items-start s:flex-nowrap uk-flex uk-flex-wrap">
+												<div class="tw-mr-1 tw-inline s:flex uk-flex-nowrap uk-flex-none">
+													<span class="tw-mr-1">•</span>
+													<span class="tw-mr-1 uk-flex-none">項目名稱：</span>
+												</div>
+												<div class="tw-mr-2 break-all tw-inline">
+													<span class="tw-w-full">1. 項目內容 (單獨佔一列)：法嚴直強友上上形父上原天一更看片聯，上子痛結，著心隊那古康拉聽會及聯減體口們有，使難人要級總校</span>
+													<span class="tw-w-full">2. 項目內容 (單獨佔一列)：一區形了主此進那上著父願、德身來些軍力標無他事的命</span>
+												</div>
+												<small class="bg_secondary color_white! min_width-65 tw-text-xs tw-px-1">外借中<span
+														class="tw-ml-1">0</span></small>
+											</div>
+										</li>
+									</ul>
+									<!-- List Items -->
+									<!-- List Icons -->
+									<div class="border-gray-200 border-t tw-border-solid tw-mt-2 tw-pt-2 uk-visible@m">
+										<small class="tw-mr-2 uk-tw-text-small"><i class="text-gray-600 tw-mr-1 fas fa-eye fa-fw"></i><span
+												title="點閱">123</span></small>
+										<small class="tw-mr-2 uk-tw-text-small"><i class="text-gray-600 tw-mr-1 fas fa-heart fa-fw"></i><span
+												title="收藏">123</span></small>
+										<small class="tw-mr-2 uk-tw-text-small"><i class="text-gray-600 tw-mr-1 fas fa-star fa-fw"></i><span
+												title="評分">123</span></small>
+										<small class="tw-mr-2 uk-tw-text-small"><i class="text-gray-600 tw-mr-1 fas fa-comment-alt fa-fw"></i><span
+												title="引用">123</span></small>
+										<small class="tw-mr-2 uk-tw-text-small"><i class="text-gray-600 tw-mr-1 fas fa-envelope fa-fw"></i><span
+												title="轉寄">123</span></small>
+									</div>
+									<!-- List Icons -->
+								</div>
+								<!-- List Contents -->
+							</div>
+							<!-- uk-grid -->
+						</div>
+						<!-- uk-card -->
+					</label>
+				</li>
+				<li>
+					<label class="tw-w-full">
+						<input class="listCheck uk-checkbox" type="checkbox">
+						<!-- uk-card -->
+						<div class="tw-p-2 tw-border tw-border-solid border-gray-100 tw-bg-white uk-card uk-card-hover">
+							<!-- uk-grid -->
+							<div class="uk-grid uk-grid-small" uk-grid>
+								<!-- List Image -->
+								<div class="min_width-1/5 min_width-1/7@xl" hidden>
+									<div class="aspect ratio-3/4 tw-bg-white">
+										<div class="uk-background-contain uk-flex uk-flex-center uk-flex-middle"
+											style="background-image: url(https://fakeimg.pl/300x400/);"></div>
+									</div>
+								</div>
+								<!-- List Image -->
+								<!-- List Contents -->
+								<div class="uk-width-expand">
+									<h2 class="tw-mt-0 tw-pt-1 tw-text-lg"><a class="color_primary" href="#">日本第一</a></h2>
+									<!-- List Items -->
+									<ul class="tw-pl-0 uk-grid uk-grid-small" uk-grid>
+										<li class="min_width-1/2! min_width-1/3!@m min_width-1/5!@l uk-flex-auto">
+											<div class="items-start s:flex-nowrap uk-flex uk-flex-wrap">
+												<div class="tw-mr-1 tw-inline s:flex uk-flex-nowrap uk-flex-none">
+													<span class="tw-mr-1">•</span>
+													<span class="tw-mr-1 uk-flex-none">項目名稱：</span>
+												</div>
+												<div class="tw-mr-2 break-all tw-inline">
+													<span class="pseudo:comma_ch">單一項目內容</span>
+												</div>
+												<small class="bg_secondary color_white! min_width-65 tw-text-xs tw-px-1">外借中<span
+														class="tw-ml-1">0</span></small>
+											</div>
+											{{!-- <small class="bg_secondary color_white! min_width-65 tw-text-xs tw-px-1">外借中<span class="tw-ml-1">0</span></small> --}}
+										</li>
+										<li class="min_width-1/2! min_width-1/3!@m min_width-1/5!@l uk-flex-auto">
+											<div class="items-start s:flex-nowrap uk-flex uk-flex-wrap">
+												<div class="tw-mr-1 tw-inline s:flex uk-flex-nowrap uk-flex-none">
+													<span class="tw-mr-1">•</span>
+													<span class="tw-mr-1 uk-flex-none">項目名稱：</span>
+												</div>
+												<div class="tw-mr-2 break-all tw-inline">
+													<span class="pseudo:comma_ch">單一項目內容</span>
+													<span class="pseudo:comma_ch">單一項目內容</span>
+												</div>
+												<small class="bg_secondary color_white! min_width-65 tw-text-xs tw-px-1">外借中<span
+														class="tw-ml-1">0</span></small>
+											</div>
+											{{!-- <small class="bg_secondary color_white! min_width-65 tw-text-xs tw-px-1">外借中<span class="tw-ml-1">0</span></small> --}}
+										</li>
+										<li class="min_width-1/2! min_width-1/3!@m min_width-1/5!@l uk-flex-auto">
+											<div class="items-start s:flex-nowrap uk-flex uk-flex-wrap">
+												<div class="tw-mr-1 tw-inline s:flex uk-flex-nowrap uk-flex-none">
+													<span class="tw-mr-1">•</span>
+													<span class="tw-mr-1 uk-flex-none">項目名稱：</span>
+												</div>
+												<div class="tw-mr-2 break-all tw-inline">
+													<span class="tw-w-full">1. 項目內容 (單獨佔一列)：法嚴直強友上上形父上原天一更看片聯，上子痛結，著心隊那古康拉聽會及聯減體口們有，使難人要級總校</span>
+													<span class="tw-w-full">2. 項目內容 (單獨佔一列)：一區形了主此進那上著父願、德身來些軍力標無他事的命</span>
+												</div>
+												<small class="bg_secondary color_white! min_width-65 tw-text-xs tw-px-1">外借中<span
+														class="tw-ml-1">0</span></small>
+											</div>
+										</li>
+									</ul>
+									<!-- List Items -->
+									<!-- List Icons -->
+									<div class="border-gray-200 border-t tw-border-solid tw-mt-2 tw-pt-2 uk-visible@m">
+										<small class="tw-mr-2 uk-tw-text-small"><i class="text-gray-600 tw-mr-1 fas fa-eye fa-fw"></i><span
+												title="點閱">123</span></small>
+										<small class="tw-mr-2 uk-tw-text-small"><i class="text-gray-600 tw-mr-1 fas fa-heart fa-fw"></i><span
+												title="收藏">123</span></small>
+										<small class="tw-mr-2 uk-tw-text-small"><i class="text-gray-600 tw-mr-1 fas fa-star fa-fw"></i><span
+												title="評分">123</span></small>
+										<small class="tw-mr-2 uk-tw-text-small"><i class="text-gray-600 tw-mr-1 fas fa-comment-alt fa-fw"></i><span
+												title="引用">123</span></small>
+										<small class="tw-mr-2 uk-tw-text-small"><i class="text-gray-600 tw-mr-1 fas fa-envelope fa-fw"></i><span
+												title="轉寄">123</span></small>
+									</div>
+									<!-- List Icons -->
+								</div>
+								<!-- List Contents -->
+							</div>
+							<!-- uk-grid -->
+						</div>
+						<!-- uk-card -->
+					</label>
+				</li>
+			</ul>
+			<!-- uk-list -->
+			{{>pagination}}
+			<!-- Options Bar -->
+			<div class="grid_m grid_l@m uk-flex-middle uk-grid uk-grid-small" uk-grid uk-margin>
+				<div class="min_width-1/3 uk-visible@s">
+					{{!-- <a class="uk-hidden@s" href="#email" uk-toggle="target: #email"><i
+							class="color_grey-400 fas fa-envelope fa-fw fa-2x"></i></a> --}}
+					<div class="uk-button-group">
+						<button class="uk-button uk-button-default uk-button-small" uk-toggle="target: #save"><i
+								class="fas fa-save fa-fw"></i><span class="tw-ml-1">儲存</span></button>
+						<button class="uk-button uk-button-default uk-button-small" uk-toggle="target: #print"><i
+								class="fas fa-print fa-fw"></i><span class="tw-ml-1">列印</span></button>
+						<button class="uk-button uk-button-default uk-button-small" uk-toggle="target: #email"><i
+								class="fas fa-envelope fa-fw"></i><span class="tw-ml-1">E-Mail</span></button>
+					</div>
+					{{>save-modal id='save' modal-title='儲存'}}
+					{{>print-modal id='print' modal-title='列印'}}
+					{{>email-modal id='email' modal-title='電子信箱'}}
+				</div>
+				<div class="min_width-1/3 tw-space-x-2 uk-flex uk-flex-center uk-visible@s">
+					<label>
+						<input class="checkAll tw-mr-1 uk-checkbox" type="checkbox"><small>本頁全選</small>
+					</label>
+					<label>
+						<input class="uk-radio" type="radio" checked>
+						<small>已選<span class="checkedNumber pseudo:parentheses">0</span></small>
+					</label>
+					<button class="uncheckAll uk-button uk-button-default uk-button-small" type="button">取消所選</button>
+				</div>
+				<div class="min_width-1/3 tw-space-x-1 uk-flex uk-flex-right@s" uk-margin>
+					<div class="tw-flex uk-flex-middle">
+						<button class="uk-button uk-button-default uk-button-small" type="button">顯示方式 <i
+								uk-icon="icon: triangle-down"></i></button>
+						<div class="min_width-100" uk-dropdown>
+							<ul class="uk-nav uk-dropdown-nav">
+								<li><a href="01search.html">圖文並列</a></li>
+								<li class="uk-active"><a href="01search-txt.html">文字列表</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="tw-flex uk-flex-middle">
+						<button class="uk-button uk-button-default uk-button-small" type="button">排序方式 <i
+								uk-icon="icon: triangle-down"></i></button>
+						<div class="min_width-100" uk-dropdown>
+							<ul class="uk-nav uk-dropdown-nav">
+								<li><a href="">檢索符合率 ↑</a></li>
+								<li><a href="">檢索符合率 ↓</a></li>
+								<li><a href="">題名 ↑</a></li>
+								<li><a href="">題名 ↓</a></li>
+								<li><a href="">作者 ↑</a></li>
+								<li><a href="">作者 ↓</a></li>
+								<li><a href="">出版年 ↑</a></li>
+								<li><a href="">出版年 ↓</a></li>
+								<li><a href="">更新時間</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="tw-flex uk-flex-middle">
+						<label class="tw-mr-1 tw-text-xs" for="num">筆數</label>
+						<select class="min_width-50 w-auto uk-select uk-form-small" id="num" name="num">
+							<option value="10">10</option>
+							<option value="20">20</option>
+							<option value="50">50</option>
+							<option value="100">100</option>
+						</select>
+						{{!-- <label>每頁
+							<input class="min_width-50 uk-input" type="number" min="0" max="10" value="5"> 筆
+						</label> --}}
+						{{!-- <button class="uk-button uk-button-default uk-button-small" type="button">筆數<i
+								uk-icon="icon: triangle-down"></i></button>
+						<div class="min_width-100" uk-dropdown>
+							<ul class="uk-nav uk-dropdown-nav">
+								<li><a href="">10</a></li>
+								<li><a href="">20</a></li>
+								<li><a href="">50</a></li>
+								<li><a href="">100</a></li>
+							</ul>
+						</div> --}}
+					</div>
+				</div>
+			</div>
+			<!-- Options Bar -->
+			<!-- Fixed bottom bar for mobile -->
+			<div
+				class="tw-text-center tw-space-x-2 fixed left-0 bottom-0 tw-w-full tw-bg-white tw-p-1 uk-box-tw-shadow-medium uk-position-z-index uk-hidden@m">
+				<label>
+					<input class="checkAll tw-mr-1 uk-checkbox" type="checkbox"><small>本頁全選</small>
+				</label>
+				<label>
+					<input class="uk-radio" type="radio" checked>
+					<small>已選<span class="checkedNumber pseudo:parentheses">0</span></small>
+				</label>
+				<button class="uncheckAll uk-button uk-button-default uk-button-small" type="button">取消所選</button>
+			</div>
+			<!-- Fixed bottom bar for mobile -->
+		</div>
+		<!-- id="maincontent" -->
+	</div>
+	<!-- Main Content -->
+</div>

@@ -1,0 +1,15 @@
+<!-- page main content -->
+<section class="tw-p-0 m:tw-py-2 tw-relative" uk-height-viewport="expand: true">
+  <!-- container -->
+  <div class="container_responsive@s uk-container{{#if containerXlarge}} uk-container-xlarge{{/if}}">
+    {{#if card}}
+    <!-- uk-card -->
+    <div class="min_height-200 tw-bg-white tw-bg-opacity-80 tw-px-0 m:tw-px-3 tw-py-7 uk-card uk-card-small uk-card-default uk-card-body">
+      {{> (lookup . 'content') }}
+    </div>
+    <!-- /uk-card -->
+    {{/if}}
+  </div>
+  <!-- /container -->
+</section>
+<!-- /page main content -->

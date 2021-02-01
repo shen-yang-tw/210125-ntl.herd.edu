@@ -1,0 +1,30 @@
+{{!-- {{>sliderButtons h3='true' h3Title='Tag Clouds'}} --}}
+
+<!-- Slider Buttons with flexible width -->
+{{#if h3}}
+<h3 class="tw-text-base tw-mb-1">{{h3Title}}</h3>
+{{/if}}
+<div class="uk-position-relative uk-visible-toggle uk-light uk-slider" uk-slider>
+	<ul class="uk-slider-items uk-child-width-expand">
+		<li class="uk-flex uk-flex-nowrap uk-width-auto">
+			<div>
+				<a class="uk-text-nowrap tw-bg-white tw-border tw-border-solid border-l-8 tw-px-3 min_width-100!" href="#"
+					target="_blank">project</a>
+			</div>
+			<div><span class="min_width-10!">&nbsp;</span></div>
+		</li>
+		<li class="uk-flex uk-flex-nowrap uk-width-auto">
+			<div>
+				<a class="uk-text-nowrap tw-bg-white tw-border tw-border-solid border-l-8 tw-px-3 min_width-100!" href="#"
+					target="_blank">love</a>
+			</div>
+			<div><span class="min_width-10!">&nbsp;</span></div>
+		</li>
+	</ul>
+	<a class="w-50 tw-px-lg-5 uk-position-left uk-flex uk-flex-middle uk-slidenav-large uk-hidden-hover" href="#"
+		uk-slidenav-previous uk-slider-item="previous" aria-label="previous" title="前一個"><span
+			class="tw-sr-only">前一個</span></a>
+	<a class="w-50 tw-px-lg-5 uk-position-right uk-flex uk-flex-right uk-flex-middle uk-slidenav-large uk-hidden-hover"
+		href="#" uk-slidenav-next uk-slider-item="next" aria-label="next" title="下一個"><span class="tw-sr-only">下一個</span></a>
+</div>
+<!-- Slider Buttons with flexible width -->
