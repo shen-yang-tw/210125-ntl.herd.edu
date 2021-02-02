@@ -6,7 +6,7 @@
 
 	<head>
 		{{!-- {{>meta bootstrap='true' bootstrap4='true' jquery='true' editor='true' }} --}}
-		{{>meta jquery='true' bootstrap='true'}}
+		{{>meta bootstrap='true'}}
 	</head>
 
 	<body>
@@ -15,9 +15,15 @@
 		{{>pageContent card='true' content='copyright'}}
 
 		{{>footer}}
+
 		{{#if jqueryBody}}
 		<!-- jq:js -->
 		<script src="js/jquery.min.js"></script>
+		<!-- endinject -->
+		{{/if}}
+		{{#if bootstrapBody}}
+		<!-- bs:js -->
+		<script src="js/bootstrap.min.js"></script>
 		<!-- endinject -->
 		{{/if}}
 	</body>
