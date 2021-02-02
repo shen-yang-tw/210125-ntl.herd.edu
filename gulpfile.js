@@ -198,7 +198,8 @@ gulp.task('templates', async function() {
   var templateData = {
       title: '國立臺灣圖書館-本土教育資源中心',
       // focus: 'true' //Add the class 'focus' to <body> for AA,
-      jqueryBody: 'true'
+      jqueryBody: 'true',
+      bootstrapBody: 'true'
     },
     options = {
       batch: [paths.src.root + paths.dist.templates + '/partials'],
@@ -319,11 +320,18 @@ gulp.task('inject', function() {
     }), {
       name: 'bs',
       relative: true,
-      removeTags: true,
-      transform: function(filepath) {
-        return '<script src="' + filepath + '" defer>' + '</script>';
-      }
+      removeTags: true
     }))
+    // .pipe(inject(gulp.src(paths.src.root + paths.dist.js + '/bootstrap*.js', {
+    //   read: false
+    // }), {
+    //   name: 'bs',
+    //   relative: true,
+    //   removeTags: true,
+    //   transform: function(filepath) {
+    //     return '<script src="' + filepath + '" defer>' + '</script>';
+    //   }
+    // }))
     // .pipe(inject(gulp.src([paths.src.root + paths.dist.js + '/script.js'], {
     //   read: false
     // }), {
@@ -447,11 +455,18 @@ gulp.task('build-inject', function() {
     }), {
       name: 'bs',
       relative: true,
-      removeTags: true,
-      transform: function(filepath) {
-        return '<script src="' + filepath + '" defer>' + '</script>';
-      }
+      removeTags: true
     }))
+    // .pipe(inject(gulp.src(paths.dist.root + paths.dist.js + '/bootstrap*.js', {
+    //   read: false
+    // }), {
+    //   name: 'bs',
+    //   relative: true,
+    //   removeTags: true,
+    //   transform: function(filepath) {
+    //     return '<script src="' + filepath + '" defer>' + '</script>';
+    //   }
+    // }))
     // .pipe(inject(gulp.src([paths.dist.root + paths.dist.js + '/script*.js'], {
     //   read: false
     // }), {

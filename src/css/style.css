@@ -405,10 +405,6 @@ select:not([multiple]):not([size]) {
   color: white !important;
 }
 
-.container > .row:not(:only-child) {
-  margin-left: 5px;
-}
-
 /*---------- End Bootstrap 3 ------------------------------*/
 /*---------- Page ------------------------------*/
 h4.title, h4.title > * {
@@ -655,10 +651,6 @@ nav.navbar.tabBar > .container, nav.navbar.tabBar > .container ul.nav.navbar-nav
     padding: 0 15px;
     padding-right: 15px;
     padding-right: 0;
-  }
-
-  .container > .row > div {
-    padding-left: 0;
   }
 
   #tabBar {
