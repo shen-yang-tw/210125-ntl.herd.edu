@@ -12,19 +12,15 @@ const pngQuint = require('imagemin-pngquant');
 const browserSync = require('browser-sync').create();
 const gulpautoprefixer = require('gulp-autoprefixer');
 const jpgRecompress = require('imagemin-jpeg-recompress');
-// const autopolyfiller = require('gulp-autopolyfiller');
 
 const inject = require('gulp-inject');
 const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const purgecss = require("@fullhuman/postcss-purgecss");
-// const purgecss = require("gulp-purgecss");
 const tailwindcss = require("tailwindcss");
-// const series = require("stream-series");
 const atimport = require("postcss-import");
 const del = require("del");
 const replace = require('gulp-replace');
-// const webp = require('gulp-webp');
 var handlebars = require('gulp-compile-handlebars');
 var merge = require('merge-stream');
 
@@ -109,10 +105,10 @@ gulp.task('tailwind', function() {
       postcss([
         atimport(),
         tailwindcss("tailwind.config.js"),
-        purgecss({ //For "@fullhuman/postcss-purgecss"
-          content: [paths.src.html, paths.src.js],
-          defaultExtractor: content =>
-            content.match(/[\w-/:!@]+(?<!:)/g) || []
+        purgecss({ // Using '@fullhuman/postcss-purgecss'
+          content: [paths.src.html, paths.src.js], // Must be necessary with 'tailwind.config.js'
+          // defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
+          defaultExtractor: content => content.match(/[\w-/:!@]+(?<!:)/g) || []
         }),
         autoprefixer()
       ])
@@ -505,7 +501,7 @@ gulp.task('sass', function() {
 
 // Minify + Combine CSS
 gulp.task('css', function() {
-  return gulp.src([paths.src.css, '!' + paths.src.root + paths.dist.css + '/font*.css', '!' + paths.src.root + paths.dist.css + '/tail*.css', '!' + paths.src.root + paths.dist.css + '/ui*.css'])
+  return gulp.src([paths.src.css, '!' + paths.src.root + paths.dist.css + '/font*.css', '!' + paths.src.root + paths.dist.css + '/tail*.css', '!' + paths.src.root + paths.dist.css + '/ui*.css', '!' + paths.src.root + paths.dist.css + '/boot*.css'])
     .pipe(mode.development(
       postcss([
         atimport(),
@@ -531,11 +527,10 @@ gulp.task('css', function() {
     .pipe(mode.purge(
       postcss([
         atimport(),
-        purgecss({
+        purgecss({ // Using '@fullhuman/postcss-purgecss'
           content: [paths.src.html, paths.src.js],
-          // whitelist: ['opacity-100'],
-          defaultExtractor: content =>
-            content.match(/[\w-/:!@]+(?<!:)/g) || []
+          // 'defaultExtractor' Must be necessary here
+          defaultExtractor: content => content.match(/[\w-/:!@]+(?<!:)/g) || []
         }),
         autoprefixer()
       ])
@@ -571,10 +566,42 @@ gulp.task('css', function() {
     // }))
     .pipe(gulp.dest(paths.dist.root + paths.dist.css))
 });
+gulp.task('mincss', function() {
+  return gulp.src([paths.src.root + paths.dist.css + '/*.min.css'])
+    .pipe(mode.production(
+      postcss([
+        atimport(),
+        autoprefixer()
+      ])
+    ))
+    .pipe(mode.production(
+      cleanCSS({
+        compatibility: 'ie8'
+      })
+    ))
+    .pipe(mode.purge(
+      postcss([
+        atimport(),
+        purgecss({
+          content: [paths.src.html, paths.src.js],
+          // whitelist: ['opacity-100'],
+          defaultExtractor: content =>
+            content.match(/[\w-/:!@]+(?<!:)/g) || []
+        }),
+        autoprefixer()
+      ])
+    ))
+    .pipe(mode.purge(
+      cleanCSS({
+        compatibility: 'ie8'
+      })
+    ))
+    .pipe(gulp.dest(paths.dist.root + paths.dist.css))
+});
 
 // Minify + Combine JS
 gulp.task('js', function() {
-  return gulp.src([paths.src.js, '!' + paths.src.root + paths.dist.js + '/*.min.js', '!' + paths.src.root + paths.dist.js + '/*-i.js', '!' + paths.src.root + paths.dist.js + '/*-bak.js'])
+  return gulp.src([paths.src.js, '!' + paths.src.root + paths.dist.js + '/*.min.js', '!' + paths.src.root + paths.dist.js + '/*-i.js', '!' + paths.src.root + paths.dist.js + '/*-bak.js', '!' + paths.src.root + paths.dist.js + '/*-old.js'])
     // .pipe(mode.production(
     //   autopolyfiller('script_polyfill.js', {
     //     browsers: require('autoprefixer').default
@@ -603,7 +630,6 @@ gulp.task('js', function() {
     //   suffix: '.min'
     // }))
     // .pipe(gulp.dest(paths.dist.root + paths.dist.js))
-    .pipe(mode.development(gulp.dest(paths.src.root + paths.dist.js)))
     .pipe(mode.production(gulp.dest(paths.dist.root + paths.dist.js)))
     .pipe(mode.purge(gulp.dest(paths.dist.root + paths.dist.js)))
 
@@ -655,11 +681,12 @@ gulp.task('watch', function() {
 
 //------------------- First run 'gulp start' ---------------------------------------------------------
 //First Preset all files
-gulp.task('vendors', gulp.series('tailwind', 'copyjs', 'copycss', 'fontawesome', 'copyfonts'));
-gulp.task('notw', gulp.series('copyjs', 'copycss', 'fontawesome', 'copyfonts'));
+// gulp.task('vendors', gulp.series('tailwind', 'copyjs', 'copycss', 'fontawesome', 'copyfonts'));
+gulp.task('vendors', gulp.series('copyjs', 'copycss', 'fontawesome', 'copyfonts'));
 
 //Compile Tailwind to CSS and minify css, using 'gulp tailwind' & 'gulp tailwind --production' to purge css on production
-gulp.task('tocss', gulp.series('tailwind', 'sass', 'css'));
+gulp.task('tocss', gulp.series('tailwind', 'sass', 'css', 'mincss'));
+// gulp.task('tocss', gulp.series('tailwind', 'sass', 'css'));
 
 //Compile SCSS to CSS and purge & minify css, needed when modify scss
 gulp.task('scss', gulp.series('sass', 'css'));
@@ -673,17 +700,14 @@ gulp.task('html', gulp.series('delhtml', 'templates', 'sass', 'js', 'inject'));
 
 //0. Preset
 gulp.task('start', gulp.series('vendors', 'delhtml', 'templates', 'sass', 'js', 'inject'));
-gulp.task('startnotw', gulp.series('notw', 'delhtml', 'templates', 'sass', 'js', 'inject'));
 
 //1. Preset then watch
-gulp.task('server', gulp.series('vendors', 'templates', 'sass', 'css', 'js', 'inject', 'watch'));
-gulp.task('servernotw', gulp.series('notw', 'templates', 'sass', 'css', 'js', 'inject', 'watch'));
+gulp.task('server', gulp.series('vendors', 'tailwind', 'templates', 'sass', 'inject', 'watch'));
 
 //3. Prepare all assets for production, run: 'yarn build-nohtml' or 'yarn build'
 gulp.task('build-nohtml', gulp.series('vendors', 'tocss', 'js', 'img'));
-gulp.task('build-purge', gulp.series('dist', 'clean', 'vendors', 'delhtml', 'templates', 'tocss', 'js', 'img', 'build-inject'));
-gulp.task('build', gulp.series('dist', 'clean', 'vendors', 'delhtml', 'templates', 'tocss', 'js', 'img', 'inject', 'build-inject'));
-gulp.task('buildnotw', gulp.series('dist', 'clean', 'notw', 'delhtml', 'templates', 'tocss', 'js', 'img', 'inject', 'build-inject'));
+gulp.task('build-purge', gulp.series('dist', 'clean', 'vendors', 'delhtml', 'templates', 'js', 'tocss', 'img', 'build-inject'));
+gulp.task('build', gulp.series('dist', 'clean', 'vendors', 'delhtml', 'templates', 'js', 'tocss', 'img', 'inject', 'build-inject'));
 
 //--- 0.First run: 'gulp start'
 //--- 1.For development run: 'gulp server' or 'yarn server'

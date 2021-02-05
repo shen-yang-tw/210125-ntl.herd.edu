@@ -1,8 +1,14 @@
-@tailwind base;
+/* For '@fullhuman/postcss-purgecss' */
+/* @tailwind base;
 
 @tailwind components;
 
 @tailwind utilities;
 
 @layer components {
-}
+} */
+
+/* Need 'postcss-import' */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";

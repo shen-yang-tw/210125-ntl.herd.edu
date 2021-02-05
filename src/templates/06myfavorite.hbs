@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+  {{!-- First edit the title of the templateData in the gulp.task('templates') of gulpfile.js.
+  The title will be changed to {{title}} in all hbs --}}
+
+  <head>
+    {{!-- {{>meta bootstrap='true' bootstrap4='true' jquery='true' editor='true' }} --}}
+    {{>meta bootstrap='true'}}
+  </head>
+
+  <body>
+    {{>header}}
+
+    {{>pageContent card='true' content='myfavorite'}}
+
+    {{>footer}}
+
+    {{#if jqueryBody}}
+    <!-- jq:js -->
+    <script src="js/jquery.min.js"></script>
+    <!-- endinject -->
+    {{/if}}
+    {{#if bootstrapBody}}
+    <!-- bs:js -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- endinject -->
+    {{/if}}
+    <script type="text/javascript">
+      function test(key) {
+        var box = document.getElementsByName(key + "box")[0];
+        var btnbox = document.getElementsByName(key + "btnbox")[0];
+
+        var atag = document.getElementsByName(key + "a")[0];
+        var btntag = document.getElementsByName(key)[0];
+
+        var inputElement = document.createElement("input"); //創建input  
+        inputElement.name = key + "input";
+        inputElement.type = "text";
+        inputElement.value = atag.innerHTML;
+
+        box.appendChild(inputElement); //將input file加入div容器  
+
+
+        atag.remove();
+        btntag.remove();
+
+        btnbox.innerHTML = '';
+        var okbtn = document.createElement("button"); //創建btn
+        okbtn.name = key + "rebtn";
+        okbtn.innerHTML = "儲存"; //OK
+        okbtn.className = 'btn ' + 'btn-default';
+        okbtn.onclick = function () { saveinfo(key, true, atag, btntag) };
+        btnbox.appendChild(okbtn); //將input file加入div容器  
+
+        var nobtn = document.createElement("button"); //創建btn
+        nobtn.name = key + "rebtn";
+        nobtn.innerHTML = "取消"; //NO
+        nobtn.className = 'btn ' + 'btn-default';
+        nobtn.onclick = function () { saveinfo(key, false, atag, btntag) };
+        btnbox.appendChild(nobtn); //將input file加入div容器  
+
+      }
+
+      function saveinfo(key, isok, atemp, btnemp) {
+
+        var box = document.getElementsByName(key + "box")[0];
+        var btnbox = document.getElementsByName(key + "btnbox")[0];
+
+        var inputtag = document.getElementsByName(key + "input")[0];
+        var rebtn = document.getElementsByName(key + "rebtn");
+
+        var inputstr = inputtag.value;
+        if (inputstr == "" && isok) {
+          alert("不可為空")
+          return;
+        }
+        if (!isok) {
+          inputstr = atemp.innerHTML;
+        }
+
+        atemp.innerHTML = inputstr;
+
+        var all = rebtn.length;
+        for (var i = 0;i < all;i++) {
+          rebtn[0].remove();
+        }
+
+        inputtag.remove();
+
+        box.appendChild(atemp);
+        btnbox.appendChild(btnemp);
+
+        //btnbox.innerHTML = '';
+        //console.log(`key = ${key}  isok = ${isok} ${atemp.innerHTML}`)
+      }
+
+
+      //側邊欄手風琴開闔效果，切換icon表示展開/收闔狀態
+      function toggleIcon(e) {
+        $(e.target)
+          .prev('.panel-heading')
+          .find(".more-less")
+          .toggleClass('glyphicon-plus glyphicon-minus');
+      }
+      $('.panel-group').on('hidden.bs.collapse', toggleIcon);
+      $('.panel-group').on('shown.bs.collapse', toggleIcon);
+
+    </script>
+  </body>
+
+</html>

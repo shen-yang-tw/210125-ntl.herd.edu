@@ -10,5 +10,6 @@ temp
 *old*
 *-i.*
 *-bak.*
+*-new.*
 *.lock
 .DS_Store

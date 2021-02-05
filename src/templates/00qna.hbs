@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="text-m" lang="zh-Hant">
+<html lang="zh-Hant">
 
 	{{!-- First edit the title of the templateData in the gulp.task('templates') of gulpfile.js.
 	The title will be changed to {{title}} in all hbs --}}
@@ -26,6 +26,17 @@
 		<script src="js/bootstrap.min.js"></script>
 		<!-- endinject -->
 		{{/if}}
+		<script type="text/javascript">
+			function toggleIcon(e) {
+				$(e.target)
+					.prev('.panel-heading')
+					.find(".more-less")
+					.toggleClass('glyphicon-plus glyphicon-minus');
+			}
+			$('.panel-group').on('hidden.bs.collapse', toggleIcon);
+			$('.panel-group').on('shown.bs.collapse', toggleIcon);
+    //側邊欄手風琴開闔效果，切換icon表示展開/收闔狀態
+		</script>
 	</body>
 
 </html>

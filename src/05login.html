@@ -13,15 +13,33 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <!-- bs:css -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- endinject -->
+    <!-- uk:css -->
     <link rel="stylesheet" href="css/uikit.min.css">
-    <link rel="stylesheet" href="css/tailwind.min.css">
+    <!-- endinject -->
+    <!-- tw:css -->
+    <link rel="stylesheet" href="css/tailwind.css">
+    <!-- endinject -->
+    <!-- fa:css -->
     <link rel="stylesheet" href="css/fontawesome.min.css">
-    <link rel="stylesheet" href="css/main.min.css">
-    <link rel="stylesheet" href="css/colors.min.css">
-    <link rel="stylesheet" href="css/style.min.css">
+    <!-- endinject -->
+    <!-- main:css -->
+    <link rel="stylesheet" href="css/main.css">
+    <!-- endinject -->
+    <!-- colors:css -->
+    <link rel="stylesheet" href="css/colors.css">
+    <!-- endinject -->
+    <!-- style:css -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- endinject -->
+    <!-- uk:js -->
     <script src="js/uikit.min.js"></script>
+    <!-- endinject -->
+    <!-- uk2:js -->
     <script src="js/uikit-icons.min.js"></script>
+    <!-- endinject -->
   </head>
 
   <body>
@@ -81,41 +99,71 @@
         <div class="min_height-200 tw-bg-white tw-bg-opacity-80 tw-px-0 m:tw-px-3 m:tw-py-7 uk-card uk-card-small uk-card-default uk-card-body">
           <!-- 【內容區塊】頁首(含導覽列)、頁尾以外的所有內容放置區域 -->
           <div class="container container-wrapper">
-            <!-- 標題區塊 -->
             <div class="row">
-              <div class="col-xs-12 col-lg-7">
-                <!-- 左邊：主標題/麵包屑功能 -->
-                <h4 class="title css-beforeTriangle mt-0"><a href="index.html">首頁</a>/相關網站</h4>
+              <div class="col-xs-12">
+                <!-- 【內容區塊】開始塞內容 -->
+                <!-- 左邊(這塊沒有右邊) -->
+                <div class="col-xs-12 mainContent">
+                  <!-- 複合式搜尋框 -->
+                  <div class="col-xs-12 p-0">
+                    <!-- 複合式搜尋框 -->
+                    <div class="col-xs-12 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 pv-30">
+                      <div class="input-group mb-10">
+                        <label class="input-group-addon" for="loginId"><i class="glyphicon glyphicon-user"></i>帳號：</label>
+                        <input id="loginId" type="text" class="form-control" name="email" placeholder="請輸入e-mail">
+                      </div>
+                      <div class="input-group mb-10">
+                        <label class="input-group-addon" for="loginPassword"><i class="glyphicon glyphicon-lock"></i>密碼：</label>
+                        <input id="loginPassword" type="text" class="form-control" placeholder="請輸入密碼">
+                        <a class="input-group-addon btn">忘記密碼？</a>
+                      </div>
+          
+          
+                      <span>錯誤狀態 ＋has-error has-feedback：</span>
+                      <p class="text-center text-danger">請輸入帳號或密碼</p>
+                      <div class="input-group mb-10 has-error has-feedback">
+                        <label class="input-group-addon" for="loginId"><i class="glyphicon glyphicon-user"></i>帳號：</label>
+                        <input id="loginId" type="text" class="form-control" name="email" placeholder="請輸入e-mail">
+                      </div>
+          
+          
+                      <div class="input-group mb-10 has-error has-feedback">
+                        <label class="input-group-addon" for="loginPassword"><i class="glyphicon glyphicon-lock"></i>密碼：</label>
+                        <input id="loginPassword" type="text" class="form-control" placeholder="請輸入密碼">
+                        <a class="input-group-addon btn">忘記密碼？</a>
+                      </div>
+          
+                      <div class="form-inline text-center mb-10">
+                        <label for="checkNum" class="sr-only">請輸入您在右圖中看到的字元：</label>
+          
+                        <div class="form-group">
+                          <img src="img/loginImg.png" alt="若無法閱讀請按下撥放語音按鈕" style="margin:0 auto">
+                          <a href="" class="btn btn-link"><span class="glyphicon glyphicon-volume-up"></span>撥放圖檔聲音</a>
+                          <a href="" class="btn btn-link"><span class="glyphicon glyphicon-refresh"></span>換一張</a>
+                        </div>
+                        <div class="form-group">
+                          <input id="checkNum" type="text" class="form-control" placeholder="請輸入圖中字元">
+                        </div>
+                      </div>
+          
+                      <div class="text-center">
+                        <a href="p6-1-我的帳戶.html" class="btn btn-default btn-block">登入</a>
+                      </div>
+                      <hr>
+                      <div class="text-center">
+                        <h4>標題文字以及<a href="" class="h4 color-2">說明連結。</a></h4>
+                        <p>請輸入您飛資得大學的電子郵件信箱帳號與密碼。</p>
+                        <p>帳號及密碼認證問題：請洽本校資訊中心2658-9298</p>
+                      </div>
+                    </div>
+                    <!-- /複合式搜尋框 -->
+                  </div>
+                  <!-- /複合式搜尋框 -->
+                </div>
+                <!-- /左邊(這塊沒有右邊) -->
+                <!-- /【內容區塊】內容結束處 -->
               </div>
-              <!-- /左邊：主標題/麵包屑功能 -->
-              <!-- 右邊：小功能(分享、返回等) -->
-              <div class="col-xs-12 col-lg-5 text-right">
-              </div>
-              <!-- /右邊：小功能(分享、返回等) -->
             </div>
-            <!-- /標題區塊 -->
-            <!-- 【內容區塊】開始塞內容 -->
-            <div class="row">
-              <div class="col-xs-12 col-sm-6 col-md-4 mb-20">
-                <a href="" class="btn btn-block btn-lg btn-primary" title="另開新視窗" target="_blank">相關網站連結</a>
-              </div>
-              <div class="col-xs-12 col-sm-6 col-md-4 mb-20">
-                <a href="" class="btn btn-block btn-lg btn-primary" title="另開新視窗" target="_blank">相關網站連結</a>
-              </div>
-              <div class="col-xs-12 col-sm-6 col-md-4 mb-20">
-                <a href="" class="btn btn-block btn-lg btn-primary" title="另開新視窗" target="_blank">相關網站連結</a>
-              </div>
-              <div class="col-xs-12 col-sm-6 col-md-4 mb-20">
-                <a href="" class="btn btn-block btn-lg btn-primary" title="另開新視窗" target="_blank">相關網站連結</a>
-              </div>
-              <div class="col-xs-12 col-sm-6 col-md-4 mb-20">
-                <a href="" class="btn btn-block btn-lg btn-primary" title="另開新視窗" target="_blank">相關網站連結</a>
-              </div>
-              <div class="col-xs-12 col-sm-6 col-md-4 mb-20">
-                <a href="" class="btn btn-block btn-lg btn-primary" title="另開新視窗" target="_blank">相關網站連結</a>
-              </div>
-            </div>
-            <!-- /【內容區塊】內容結束處 -->
           </div>
           <!-- /【內容區塊】頁首(含導覽列)、頁尾以外的所有內容放置區域 -->    </div>
         <!-- /uk-card -->
@@ -140,26 +188,12 @@
     	</div>
     </footer>
     <!-- /【頁尾】 -->
+		<!-- jq:js -->
 		<script src="js/jquery.min.js"></script>
+		<!-- endinject -->
+		<!-- bs:js -->
 		<script src="js/bootstrap.min.js"></script>
-    <script type="text/javascript">
-      //根據點選的頁籤名稱，換標題文字
-      function changeText(obj) {
-        var x = $(obj).text();
-        document.getElementById("changeTextByClick").innerHTML = x;
-        // console.log(x);
-      }
-      //側邊欄手風琴開闔效果，切換icon表示展開/收闔狀態
-      function toggleIcon(e) {
-        $(e.target)
-          .prev('.panel-heading')
-          .find(".more-less")
-          .toggleClass('glyphicon-plus glyphicon-minus');
-      }
-      $('.panel-group').on('hidden.bs.collapse', toggleIcon);
-      $('.panel-group').on('shown.bs.collapse', toggleIcon);
-
-    </script>
+		<!-- endinject -->
   </body>
 
 </html>

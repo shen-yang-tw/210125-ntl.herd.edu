@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="text-m" lang="zh-Hant">
+<html lang="zh-Hant">
 
 
 	<head>
@@ -14,7 +14,6 @@
 		  <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
 		<![endif]-->
 		<link rel="stylesheet" href="css/bootstrap.min.css">
-		<link rel="stylesheet" href="css/bootstrap.min.min.css">
 		<link rel="stylesheet" href="css/uikit.min.css">
 		<link rel="stylesheet" href="css/tailwind.min.css">
 		<link rel="stylesheet" href="css/fontawesome.min.css">
@@ -276,6 +275,17 @@
 		<!-- /【頁尾】 -->
 		<script src="js/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
+		<script type="text/javascript">
+			function toggleIcon(e) {
+				$(e.target)
+					.prev('.panel-heading')
+					.find(".more-less")
+					.toggleClass('glyphicon-plus glyphicon-minus');
+			}
+			$('.panel-group').on('hidden.bs.collapse', toggleIcon);
+			$('.panel-group').on('shown.bs.collapse', toggleIcon);
+    //側邊欄手風琴開闔效果，切換icon表示展開/收闔狀態
+		</script>
 	</body>
 
 </html>
