@@ -32,19 +32,21 @@ const mode = require('gulp-mode')({
   verbose: false
 });
 
+const uk='true', fa='true', bs='true', jq='true'
+
 // Paths
 var paths = {
   root: {
     www: './src'
   },
   vendors: {
-    // css: ['node_modules/uikit/dist/css/uikit.min.css'],
-    // js: ['node_modules/uikit/dist/js/uikit.min.js', 'node_modules/uikit/dist/js/uikit-icons.min.js'],
-    css: ['node_modules/uikit/dist/css/uikit.min.css', 'node_modules/bootstrap/dist/css/bootstrap.min.css'], //Bootstrap
-    js: ['node_modules/uikit/dist/js/uikit.min.js', 'node_modules/uikit/dist/js/uikit-icons.min.js', 'node_modules/bootstrap/dist/js/bootstrap.min.js', 'node_modules/jquery/dist/jquery.min.js'], //Bootstrap
-    // js: ['node_modules/uikit/dist/js/uikit.min.js', 'node_modules/uikit/dist/js/uikit-icons.min.js', 'node_modules/jquery/dist/jquery.min.js'], //jQuery
-    // js: ['node_modules/uikit/dist/js/uikit.min.js', 'node_modules/uikit/dist/js/uikit-icons.min.js', 'node_modules/FitText-UMD/fittext.js'], //FitText
-    fonts: ['node_modules/@fortawesome/fontawesome-free/webfonts/*'],
+    ukjs: ['node_modules/uikit/dist/js/uikit.min.js', 'node_modules/uikit/dist/js/uikit-icons.min.js'],
+    bsjs: ['node_modules/bootstrap/dist/js/bootstrap.min.js', 'node_modules/jquery/dist/jquery.min.js'],
+    ukcss: ['node_modules/uikit/dist/css/uikit.min.css'],
+    bscss: ['node_modules/bootstrap/dist/css/bootstrap.min.css'],
+    jq: ['node_modules/jquery/dist/jquery.min.js'], //jQuery
+    // fittext: ['node_modules/FitText-UMD/fittext.js'], //FitText
+    fsfonts: ['node_modules/@fortawesome/fontawesome-free/webfonts/*'],
     bsfonts: ['node_modules/bootstrap/dist/fonts/*'], //Bootstrap
     fontawesome: ['node_modules/@fortawesome/fontawesome-free/css/all.min.css'],
   },
@@ -67,7 +69,7 @@ var paths = {
     css: 'css',
     js: 'js',
     img: 'img',
-    font: 'webfonts',
+    fsfont: 'webfonts',
     bsfont: 'fonts',
     vendors: 'libs'
   }
@@ -146,47 +148,79 @@ gulp.task('tailwind', function() {
   // .pipe(gulp.dest(paths.dist.root + paths.dist.vendors))
 });
 
-// copy vendors files to src & dist
-gulp.task('copyjs', function() {
-  return gulp.src(paths.vendors.js)
+if (uk) {
+  gulp.task('ukjs', function() {
+  return gulp.src(paths.vendors.ukjs)
     .pipe(gulp.dest(paths.src.root + paths.dist.js))
     .pipe(gulp.dest(paths.dist.root + paths.dist.js))
   // .pipe(mode.production(gulp.dest(paths.dist.vendors)))
-});
-gulp.task('copycss', function() {
-  return gulp.src(paths.vendors.css)
-    // Find digits between "font-size:" and "px" in Visual Studio Code using: "font-size:(\d+)px" or "font-size:\s+(\d+)px"
-    //\d+ means one or more digits, \s means one or more whitespaces
-    // .pipe(replace('font-size:12px', 'font-size:calc(12rem/16)'))
-    .pipe(replace(/font-size:(\d+)px/g, function(match) {
-      return "font-size:calc(" + match.slice(10, -2) + "rem/16)"
-    }))
-    .pipe(gulp.dest(paths.src.root + paths.dist.css))
-    .pipe(gulp.dest(paths.dist.root + paths.dist.css))
-  // .pipe(gulp.dest(paths.dist.root + paths.dist.css))
-});
-gulp.task('fontawesome', function() {
-  return gulp.src(paths.vendors.fontawesome)
-    .pipe(rename("fontawesome.min.css"))
-    .pipe(gulp.dest(paths.src.root + paths.dist.css))
-    .pipe(gulp.dest(paths.dist.root + paths.dist.css))
-  // .pipe(gulp.dest(paths.dist.root + paths.dist.css))
-});
-// gulp.task('copyfonts', function() {
-//   return gulp.src(paths.vendors.fonts)
-//     .pipe(gulp.dest(paths.src.root + paths.dist.font))
-//     .pipe(gulp.dest(paths.dist.root + paths.dist.font))
-// });
-gulp.task('copyfonts', function() {
-  var bootstrap = gulp.src(paths.vendors.bsfonts)
-  .pipe(gulp.dest(paths.src.root + paths.dist.bsfont))
-  .pipe(gulp.dest(paths.dist.root + paths.dist.bsfont))
+  })
+  gulp.task('ukcss', function() {
+    return gulp.src(paths.vendors.ukcss)
+      // Find digits between "font-size:" and "px" in Visual Studio Code using: "font-size:(\d+)px" or "font-size:\s+(\d+)px"
+      //\d+ means one or more digits, \s means one or more whitespaces
+      // .pipe(replace('font-size:12px', 'font-size:calc(12rem/16)'))
+      .pipe(replace(/font-size:(\d+)px/g, function(match) {
+        return "font-size:calc(" + match.slice(10, -2) + "rem/16)"
+      }))
+      .pipe(gulp.dest(paths.src.root + paths.dist.css))
+      .pipe(gulp.dest(paths.dist.root + paths.dist.css))
+    // .pipe(gulp.dest(paths.dist.root + paths.dist.css))
+  })
+}
+if (fa) {
+  gulp.task('fontawesome', function() {
+    return gulp.src(paths.vendors.fontawesome)
+      .pipe(rename("fontawesome.min.css"))
+      .pipe(gulp.dest(paths.src.root + paths.dist.css))
+      .pipe(gulp.dest(paths.dist.root + paths.dist.css))
+  })
+  gulp.task('fsfonts', function() {
+    return gulp.src(paths.vendors.fsfonts)
+      .pipe(gulp.dest(paths.src.root + paths.dist.fsfont))
+      .pipe(gulp.dest(paths.dist.root + paths.dist.fsfont))
+  })
+}
+if (bs) {
+  gulp.task('bsjs', function() {
+  return gulp.src(paths.vendors.bsjs)
+    .pipe(gulp.dest(paths.src.root + paths.dist.js))
+    .pipe(gulp.dest(paths.dist.root + paths.dist.js))
+  // .pipe(mode.production(gulp.dest(paths.dist.vendors)))
+  })
+  gulp.task('bscss', function() {
+    return gulp.src(paths.vendors.bscss)
+      .pipe(replace(/font-size:(\d+)px/g, function(match) {
+        return "font-size:calc(" + match.slice(10, -2) + "rem/16)"
+      }))
+      .pipe(gulp.dest(paths.src.root + paths.dist.css))
+      .pipe(gulp.dest(paths.dist.root + paths.dist.css))
+  })
+  gulp.task('bsfonts', function() {
+    return gulp.src(paths.vendors.bsfonts)
+      .pipe(gulp.dest(paths.src.root + paths.dist.bsfont))
+      .pipe(gulp.dest(paths.dist.root + paths.dist.bsfont))
+  })
+}
+if (jq) {
+  gulp.task('jqjs', function() {
+  return gulp.src(paths.vendors.jq)
+    .pipe(gulp.dest(paths.src.root + paths.dist.js))
+    .pipe(gulp.dest(paths.dist.root + paths.dist.js))
+  // .pipe(mode.production(gulp.dest(paths.dist.vendors)))
+  })
+}
 
-  var fontawesome = gulp.src(paths.vendors.fonts)
-  .pipe(gulp.dest(paths.src.root + paths.dist.font))
-  .pipe(gulp.dest(paths.dist.root + paths.dist.font));
-  return merge(fontawesome, bootstrap);
-});
+// gulp.task('copyfonts', function() {
+//   var bootstrap = gulp.src(paths.vendors.bsfonts)
+//   .pipe(gulp.dest(paths.src.root + paths.dist.bsfont))
+//   .pipe(gulp.dest(paths.dist.root + paths.dist.bsfont))
+
+//   var fontawesome = gulp.src(paths.vendors.fonts)
+//   .pipe(gulp.dest(paths.src.root + paths.dist.font))
+//   .pipe(gulp.dest(paths.dist.root + paths.dist.font))
+//   return merge(fontawesome, bootstrap);
+// });
 
 //Handlebars templates
 //gulp.task('templates', async function(){}): It must need the 'async' or get error 'Did you forget to signal async completion?'
@@ -682,7 +716,8 @@ gulp.task('watch', function() {
 //------------------- First run 'gulp start' ---------------------------------------------------------
 //First Preset all files
 // gulp.task('vendors', gulp.series('tailwind', 'copyjs', 'copycss', 'fontawesome', 'copyfonts'));
-gulp.task('vendors', gulp.series('copyjs', 'copycss', 'fontawesome', 'copyfonts'));
+// gulp.task('vendors', gulp.series('copyjs', 'copycss', 'fontawesome', 'copyfonts'));
+gulp.task('vendors', gulp.series(uk ? ['ukjs', 'ukcss'] : '', bs ? ['bsjs', 'bscss', 'bsfonts'] : '', fa ? ['fontawesome', 'fsfonts'] : '', jq ? 'jqjs' : ''));
 
 //Compile Tailwind to CSS and minify css, using 'gulp tailwind' & 'gulp tailwind --production' to purge css on production
 gulp.task('tocss', gulp.series('tailwind', 'sass', 'css', 'mincss'));
