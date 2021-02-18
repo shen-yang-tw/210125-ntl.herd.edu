@@ -1034,30 +1034,6 @@ mark {
     padding: 0 5px;
   }
 }
-@media (min-width: 768px) {
-  .sticky {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 99;
-    width: 100%;
-    background: #fcfcfc;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  }
-
-  .sticky > .container {
-    padding: 0 5px;
-  }
-}
-@media (min-width: 1200px) {
-  .sticky > .container {
-    width: 1155px;
-  }
-}
 .clearfix {
   float: none;
   clear: both;

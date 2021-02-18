@@ -308,6 +308,13 @@ gulp.task('inject', function() {
       relative: true,
       removeTags: true
     }))
+    .pipe(inject(gulp.src([paths.src.root + paths.dist.css + '/jquery-ui.css'], {
+      read: false
+    }), {
+      name: 'head',
+      relative: true,
+      removeTags: true
+    }))
     .pipe(inject(gulp.src([paths.src.root + paths.dist.css + '/*.css', '!' + paths.src.root + paths.dist.css + '/bootstrap*.css', '!' + paths.src.root + paths.dist.css + '/ui*.css', '!' + paths.src.root + paths.dist.css + '/ta*.css', '!' + paths.src.root + paths.dist.css + '/font*.css', '!' + paths.src.root + paths.dist.css + '/main*.css', '!' + paths.src.root + paths.dist.css + '/colors*.css', '!' + paths.src.root + paths.dist.css + '/style*.css'], {
       read: false
     }), {
@@ -440,6 +447,13 @@ gulp.task('build-inject', function() {
       read: false
     }), {
       name: 'style2',
+      relative: true,
+      removeTags: true
+    }))
+    .pipe(inject(gulp.src([paths.dist.root + paths.dist.css + '/jquery-ui.css'], {
+      read: false
+    }), {
+      name: 'head',
       relative: true,
       removeTags: true
     }))
